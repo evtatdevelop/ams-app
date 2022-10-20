@@ -1,0 +1,10 @@
+.section {
+  display: grid;
+  outline: 1px solid lightblue;
+  margin-bottom: 1vmax;
+
+  .name {
+    font-weight: 700;
+    margin-bottom: .5vmax;
+  }
+}

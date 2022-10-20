@@ -1,3 +1,13 @@
 .mainpage {
   display: grid;
+
+  .langSwitcher {
+    height: 2vmax;
+    width: 2vmax;
+  }
+
+  .name {
+    font-weight: 700;
+    margin-bottom: 2vmax;
+  }
 }

@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { data, lang, getDataAsync, changeLang } from "./mainpageSlice";
+import Section from "./section";
 
 export const Mainpage = () => {
 
@@ -13,13 +14,14 @@ export const Mainpage = () => {
   return (
     <section className={styles.mainpage}>
       <button type='button'
+        className={styles.langSwitcher}
         onClick={() => dispatch(changeLang())}
-      >{language}</button>
+      >{language === 'ru' ? 'En' : 'Ru'}</button>
 
-      <h1>Account Management System</h1>
+      <h1 className={styles.name}>Account Management System</h1>
       <ul>
         {pageData.map(section => {
-          return <p>{section.name}</p>
+          return <Section key={section.id} section={section}/>
         })}
       </ul>
     </section>

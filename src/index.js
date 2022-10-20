@@ -6,6 +6,7 @@ import ErrorBoundry from './features/errorBoundry';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './rest.css'
 import './index.css';
 
 const container = document.getElementById('root');
