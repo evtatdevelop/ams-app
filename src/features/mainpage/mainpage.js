@@ -1,15 +1,16 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { data, lang, getDataAsync, changeLang } from "./mainpageSlice";
+import { mainpage, getMainpage } from "./mainpageSlice";
+import { user, lang, changeLang } from '../user/userSlice';
 import Section from "./section";
 
 export const Mainpage = () => {
 
-  const pageData = useSelector(data);
+  const pageData = useSelector(mainpage);
   const language = useSelector(lang);
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getDataAsync(language)) }, [dispatch, language]);
+  useEffect(() => { dispatch(getMainpage(language)) }, [dispatch, language]);
 
   return (
     <section className={styles.mainpage}>
