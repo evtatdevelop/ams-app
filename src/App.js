@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { Mainpage } from './features/mainpage/mainpage';
 import { Loader } from './features/loader/loader';
-import { useSelector, useDispatch } from "react-redux";
-import { lang, getUser } from './features/user/userSlice';
+import { useDispatch } from "react-redux";
+import { getUser } from './features/user/userSlice';
 import './App.scss';
 
 function App() {
-  const language = useSelector(lang);
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getUser(language)) }, [dispatch, language]);
+  useEffect(() => { dispatch(getUser()) }, [dispatch, ]);
 
   return (
     <div className="App">

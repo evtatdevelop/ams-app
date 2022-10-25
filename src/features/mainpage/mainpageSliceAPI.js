@@ -1,7 +1,11 @@
 import Service from "../../services";
+import { testMode } from "../../config";
 
 const service = new Service();
-const _apiBase = 'https://request.sibgenco.local/ams_api';
+
+const _apiBase = testMode 
+? 'https://request.sibgenco.local/ams_api_tst'
+: 'https://request.sibgenco.local/ams_api';
 
 export const getMainpageData = ( lang ) => service.getResource(`${_apiBase}/?q=mainpage&lang=${lang}`);
 // export const getAsset = ( id ) => service.getResource(`${_apiBase}/?q=assets&id=${id}`);
