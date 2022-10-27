@@ -7,7 +7,8 @@ const initialState = {
   dictionary: [],
 }
 
-export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async ( lang ) => await getMainpageData(lang) )
+// export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async ( lang ) => await getMainpageData(lang) )
+export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async () => await getMainpageData() )
 
 export const mainpageSlice = createSlice({
   name: 'mainpage',

@@ -10,7 +10,9 @@ export const Section = props => {
       <h2 className={styles.name}>{section.name}</h2>
       <ul>
         {section.systems.map(system => {
-          return <System key={system.system_prefix} system={system}/>
+          return !(Section.prefix === 'LK' && +system.show !== 1)
+          ? <System key={system.system_prefix} system={system}/>
+          : null
         })}
       </ul>
     </li>

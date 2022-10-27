@@ -5,9 +5,17 @@ export const System = props => {
 
   return (
     <li className={styles.system}>
-
-      <h3>{system.request_name}</h3>
-
+      <div>
+        <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>
+        <a href={`${system.request_url}`}>
+          {system.request_name}
+          {system.cnt ? ` (${system.cnt})` : null}
+        </a>       
+      </div>
+     {system.add_systems_info 
+      ? <p>{system.add_systems_info}</p>
+      : null
+    }
     </li>
   )
 }

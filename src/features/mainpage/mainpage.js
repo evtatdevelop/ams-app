@@ -11,7 +11,8 @@ export const Mainpage = () => {
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getMainpage(userData['lang'])) }, [dispatch, userData]);
+  // useEffect(() => { dispatch(getMainpage(userData['lang'])) }, [dispatch, userData]);
+  useEffect(() => { dispatch(getMainpage()) }, [dispatch, userData]);
 
   return (
     <section className={styles.mainpage}>
@@ -21,7 +22,12 @@ export const Mainpage = () => {
       >{userData['lang'] === 'RU' ? 'En' : 'Ru'}</button>
 
       <h1 className={styles.name}>{dictionaryData.head_systemname}</h1>
-      <p className={styles.remoteUser}> {dictionaryData.head_currentuser} {userData['shortname']} ({userData['ad_user']})</p>
+
+      {dictionaryData.head_currentuser && userData.ad_user
+        ? <p className={styles.remoteUser}> {`${dictionaryData.head_currentuser} ${userData.shortname} (${userData.ad_user})`} </p>
+        : null
+      }
+      
       <ul>
         {pageData.map(section => {
           return <Section key={section.id} section={section}/>

@@ -1,3 +1,13 @@
 .system {
   display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+  }
+
+  .sysIcon {
+    width: 150px;
+    height: 42px;
+  }
 }
