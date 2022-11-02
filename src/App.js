@@ -7,19 +7,22 @@ import { useDispatch } from "react-redux";
 import { getUser } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
+import { testMode } from './config';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getUser()) }, [dispatch, ]);
+
+  const _pathBase = testMode ? '' : '/ams/'
 
   return (
     <div className="App">
       {/* <main className='main'><Mainpage/></main> */}
       
       <Routes>
-        <Route path='/' element={<Mainpage/>}/>
-        <Route path='/personalArea' element={<PersonalArea/>}/>
-        <Route path='/resources' element={<Resources/>}/>
+        <Route path={`${_pathBase}/`} element={<Mainpage/>}/>
+        <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/>  {/* ToDo: this rouut doesn't work */}
+        <Route path={`${_pathBase}/resources`} element={<Resources/>}/>        {/* ToDo: this rouut doesn't work */}
       </Routes>
 
       <Loader/>

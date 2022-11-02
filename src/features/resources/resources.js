@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const Resources = () => {
 
-  throw'';
+
 
   return (
     <section className={styles.tests}>
