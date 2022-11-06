@@ -21,8 +21,8 @@ function App() {
       
       <Routes>
         <Route path={`${_pathBase}/`} element={<Mainpage/>}/>
-        <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/>  {/* ToDo: this rouut doesn't work */}
-        <Route path={`${_pathBase}/resources`} element={<Resources/>}/>        {/* ToDo: this rouut doesn't work */}
+        <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/>  {/* ToDo: this route doesn't work */}
+        <Route path={`${_pathBase}/resources`} element={<Resources/>}/>        {/* ToDo: this route doesn't work */}
       </Routes>
 
       <Loader/>
