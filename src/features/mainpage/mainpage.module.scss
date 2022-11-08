@@ -1,18 +1,55 @@
 .mainpage {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .langSwitcher {
-    height: 2vmax;
-    width: 2vmax;
-    margin-bottom: 2vmax;
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 4vmax;
+
+    // outline: 1px solid red;
+
+    div {
+      width: 1600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+
+      // outline: 1px solid blue;
+
+      .langSwitcher {
+        height: 2vmax;
+        width: 2vmax;
+
+        outline: 1px solid green;
+      }
+
+      .name {
+        font-weight: 700;
+
+        // outline: 1px solid blue;
+      }
+
+      .remoteUser {
+
+        // outline: 1px solid orange;
+      }       
+    }
+    
+   
   }
 
-  .name {
-    font-weight: 700;
-    margin-bottom: 2vmax;
+  .syetems {
+    display: flex;
+    flex-direction: column;
+    width: 1600px;
+
+    // outline: 1px solid red;
   }
 
-  .remoteUser {
-    margin-bottom: 2vmax;
-  }
+
 }
