@@ -1,9 +1,18 @@
 .system {
-  width: 200px;
-  height: 200px;
-  border: 3px solid #437EC7;
-  border-radius: 5px;
+  width: 12vw;
+  height: 12vw;
+  border: 1px solid #DDDDDD;
+  border-radius: .3vw;
   position: relative;
+  overflow-y: hidden;
+  padding: .3vmax;
+  transition: border .1s, box-shadow .1s;
+
+  &:active,
+  &:hover {
+    border: 1px solid rgba($color: #333333, $alpha: .5);
+    box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+  }
 
   .request_url {
     display: flex;
@@ -14,25 +23,24 @@
     color: #F04E25;
 
     .sysIcon {
-      width: 150px;
-      height: 42px;
-      // margin-left: -10px;
+      width: 100%;
+      height: 4vw;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
     }
 
     .request_name {
-      font-size: 20px;
+      font-size: 1vmax;
+      overflow-y: hidden;
     }
 
     .cnt {
       position: absolute;
       bottom: 5px;
       right: 5px;
-      color: #424242;
+      color: #2c2c2c;;
+      font-weight: 700;
+      font-size: 1vmax;
     }
-
   }
-
-
-
-
 }

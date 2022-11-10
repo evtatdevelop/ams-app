@@ -2,53 +2,65 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;  
+  color: white;
 
   .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 4vmax;
+    padding: 3vh 3vw;
+    background-color: #F04E25;
 
-    // outline: 1px solid red;
+    .head_systemname {
+      font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 700;
+      font-size: 1.2vmax;
+    }
 
-    div {
-      width: 1600px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-
-      // outline: 1px solid blue;
-
-      .langSwitcher {
-        height: 2vmax;
-        width: 2vmax;
-
-        outline: 1px solid green;
-      }
-
-      .name {
-        font-weight: 700;
-
-        // outline: 1px solid blue;
-      }
-
-      .remoteUser {
-
-        // outline: 1px solid orange;
-      }       
+    .remoteUser {
+      font-size: 1vmax;      
     }
     
-   
+    .search {
+      height: 3vh;
+      border-radius: .2vmax;
+      padding: 1vmax;
+      font: inherit;
+      font-size: 1vmax;
+
+    }
+
+    .langSwitcher {
+      height: 2vmax;
+      width: 2vmax;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      font-size: 1vmax; 
+      color: inherit;
+      border-radius: .2vmax;
+      transition: border .3s;
+      border: 1px solid transparent;
+
+      &:active,
+      &:hover {
+        border: 1px solid white;
+      }
+    }   
   }
 
   .syetems {
     display: flex;
     flex-direction: column;
-    width: 1600px;
-
-    // outline: 1px solid red;
+    width: 100%;
+    outline: 1px solid red;
   }
 
 
