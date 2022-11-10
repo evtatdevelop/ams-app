@@ -13,7 +13,7 @@ export const System = props => {
 
         {system.cnt ? <div className={styles.cnt}>{system.cnt}</div> : null}
 
-        {system.add_systems_info ? <div>{system.add_systems_info}</div> : null}
+        {/* {system.add_systems_info ? <div>{system.add_systems_info}</div> : null} */}
       
       </a>
     </li>
