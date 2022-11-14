@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary, getMainpage } from "./mainpageSlice";
 import { user, setLang } from '../user/userSlice';
 import Section from "./section";
+import RowSection from "./rowSection";
 
 export const Mainpage = () => {
 
@@ -18,7 +19,6 @@ export const Mainpage = () => {
     <section className={styles.mainpage}>
 
       <header className={styles.header}>
-
         <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1>
         
         {dictionaryData.head_currentuser && userData.ad_user
@@ -35,14 +35,18 @@ export const Mainpage = () => {
 
       </header>
 
-      
       <ul className={styles.syetems}>
-        {pageData.map(section => {
-          return <Section key={section.id} section={section}/>
-        })}
+        <RowSection 
+          key='qweqwq' 
+          sections={pageData.filter(section => section.prefix === 'LK' || section.prefix === 'CORPORATE')
+          // sections={pageData.filter(section => section.prefix === 'LK')
+        }/>
+
+        { pageData
+          .filter(section => section.prefix !== 'LK' && section.prefix !== 'CORPORATE')
+          .map(section => <Section key={section.id} section={section}/>)
+        }
       </ul>
-
-
     </section>
   )
 }

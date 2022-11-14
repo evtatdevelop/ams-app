@@ -1,14 +1,16 @@
 .section {
-  margin-bottom: 1vmax;
+  margin-bottom: 3vmax;
+  // outline: 1px solid red;
 
   ul {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 1.4vw;
+    grid-template-columns: repeat(8, 1fr); 
+    gap: 1.7vw;
     padding: 1vh 3vw;
     
     place-items: center;
     grid-template-rows: auto;
+
   }
 
   .name {

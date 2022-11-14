@@ -1,0 +1,28 @@
+.rowSection {
+
+  &>ul {
+    display: grid;
+    grid-template-columns: 72.3vw 25vw;
+
+    li:first-child {
+      ul {
+        grid-template-columns: repeat(6, 1fr); 
+        padding-right: 0;
+      }
+    }
+    li:nth-child(2) {
+      ul {
+        grid-template-columns: repeat(1, 1fr); 
+        padding-left: 1.7vw;
+        place-items: normal start;
+      }
+      h2 {
+        padding-left: 1.7vw;
+      }
+    }
+
+
+
+  }
+
+}
