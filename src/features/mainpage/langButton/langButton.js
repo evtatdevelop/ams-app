@@ -9,35 +9,25 @@ export const LangButton = () => {
   const userData = useSelector(user);
   const dispatch = useDispatch();
   const [show, onShow] = useState(false);
+  const lang = userData['lang'] === 'RU' ? 'EN' : 'RU';
 
   return (
     <div className={styles.langButton}>
-      {/* <button type='button'
-        className={styles.langSwitcher}
-        onClick={() => {dispatch(setLang( {'app12_id': userData['id'], 'lang': userData['lang'] === 'RU' ? 'EN' : 'RU'} ))}}
-      >{userData['lang'] === 'RU' ? 'En' : 'Ru'}</button> */}
-      
       <button type='button'
         className={styles.langSwitcher}
         onClick={() => onShow(!show)}
-      >{ ucFirst(userData['lang'])}</button>
+      >{ ucFirst(lang)}</button>
       { show 
         ? <div className={styles.dropList}>
-            <input type="radio" id="langRu" name="lang" value="RU" 
-              onChange={() => {
-                dispatch(setLang( {'app12_id': userData['id'], 'lang': 'RU'} ))
-                onShow(false)
-              }}
-            />
-            <label htmlFor="langRu">Ru</label>
+            { 
+              <button type="button"
+                onClick={() => {
+                  dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'} ))
+                  onShow(false)
+                }}
+              >{lang === 'RU' ? 'EN' : 'RU'}</button>  
+            }
 
-            <input type="radio" id="langEn" name="lang" value="EN" 
-              onChange={() => {
-                dispatch(setLang( {'app12_id': userData['id'], 'lang': 'EN'} ))
-                onShow(false)
-              }}
-            />
-            <label htmlFor="langEn">En</label>
           </div>
         : null
       }    
