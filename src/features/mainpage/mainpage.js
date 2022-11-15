@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary, getMainpage } from "./mainpageSlice";
-import { user, setLang } from '../user/userSlice';
+import { user } from '../user/userSlice';
 import Section from "./section";
 import RowSection from "./rowSection";
+import LangButton from "./langButton";
 
 export const Mainpage = () => {
 
@@ -12,7 +13,6 @@ export const Mainpage = () => {
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
   const dispatch = useDispatch();
-  // useEffect(() => { dispatch(getMainpage(userData['lang'])) }, [dispatch, userData]);
   useEffect(() => { dispatch(getMainpage()) }, [dispatch, userData]);
 
   return (
@@ -28,10 +28,7 @@ export const Mainpage = () => {
 
         <input className={styles.search} type="search" id="search" name="search" placeholder="Search"/>
 
-        <button type='button'
-          className={styles.langSwitcher}
-          onClick={() => {dispatch(setLang( {'app12_id': userData['id'], 'lang': userData['lang'] === 'RU' ? 'EN' : 'RU'} ))}}
-        >{userData['lang'] === 'RU' ? 'En' : 'Ru'}</button>            
+        <LangButton/>
 
       </header>
 
@@ -39,7 +36,6 @@ export const Mainpage = () => {
         <RowSection 
           key='qweqwq' 
           sections={pageData.filter(section => section.prefix === 'LK' || section.prefix === 'CORPORATE')
-          // sections={pageData.filter(section => section.prefix === 'LK')
         }/>
 
         { pageData

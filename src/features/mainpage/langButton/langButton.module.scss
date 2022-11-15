@@ -1,0 +1,54 @@
+.langButton {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .langSwitcher {
+    height: 2vmax;
+    width: 2vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    font-size: 1vmax; 
+    color: inherit;
+    border-radius: .2vmax;
+    transition: border .3s;
+    border: .1vw solid transparent;
+
+    &:active,
+    &:hover {
+      border: .1vw solid white;
+    }
+  }
+  
+  .dropList {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 99;
+    background-color: #FFFFFF;
+    color: #494949;
+    top: 2.1vmax;
+    left: 0;
+    height: 4vmax;
+    width: 2vmax;
+    border: .1vw solid rgba($color: #333333, $alpha: .5);
+    box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+    font-size: 1vmax; 
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    }
+    label {
+      text-align: center;
+    }
+  }
+}
