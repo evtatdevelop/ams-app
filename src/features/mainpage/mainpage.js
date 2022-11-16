@@ -6,6 +6,7 @@ import { user } from '../user/userSlice';
 import Section from "./section";
 import RowSection from "./rowSection";
 import LangButton from "./langButton";
+import SearchSystems from "./search";
 
 export const Mainpage = () => {
 
@@ -26,8 +27,7 @@ export const Mainpage = () => {
           : null
         }
 
-        <input className={styles.search} type="search" id="search" name="search" placeholder="Search"/>
-
+        <SearchSystems/>
         <LangButton/>
 
       </header>

@@ -9,7 +9,7 @@ export const LangButton = () => {
   const userData = useSelector(user);
   const dispatch = useDispatch();
   const [show, onShow] = useState(false);
-  const lang = userData['lang'] === 'RU' ? 'EN' : 'RU';
+  const lang = userData['lang'];
 
   return (
     <div className={styles.langButton}>
@@ -25,7 +25,7 @@ export const LangButton = () => {
                   dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'} ))
                   onShow(false)
                 }}
-              >{lang === 'RU' ? 'EN' : 'RU'}</button>  
+              >{lang === 'RU' ? 'En' : 'Ru'}</button>  
             }
 
           </div>

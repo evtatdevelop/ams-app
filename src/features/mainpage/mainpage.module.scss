@@ -27,34 +27,6 @@
     .remoteUser {
       font-size: 1vmax;
     }
-    
-    .search {
-      height: 2vmax;
-      border-radius: .2vmax;
-      padding: 1vmax;
-      font: inherit;
-      font-size: 1vmax;
-
-    }
-
-    .langSwitcher {
-      height: 2vmax;
-      width: 2vmax;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: transparent;
-      font-size: 1vmax; 
-      color: inherit;
-      border-radius: .2vmax;
-      transition: border .3s;
-      border: .1vw solid transparent;
-
-      &:active,
-      &:hover {
-        border: .1vw solid white;
-      }
-    }   
   }
 
   .syetems {

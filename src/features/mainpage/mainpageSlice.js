@@ -5,6 +5,8 @@ const initialState = {
   loading: false,
   data: [],
   dictionary: [],
+  search: '',
+  filtred: [],
 }
 
 // export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async ( lang ) => await getMainpageData(lang) )
@@ -14,6 +16,8 @@ export const mainpageSlice = createSlice({
   name: 'mainpage',
   initialState,
   reducers: {
+    onSearch: (state, action) => { state.search = action.payload },
+    clearSearch: (state) => { state.search = '' },
   },
 
   extraReducers: (builder) => {
@@ -29,11 +33,13 @@ export const mainpageSlice = createSlice({
   }
 });
 
-// export const { 
-// } = mainpageSlice.actions;
+export const { 
+  onSearch, clearSearch
+} = mainpageSlice.actions;
 
 export const mainpage   = ( state ) => state.mainpage.data;
 export const dictionary = ( state ) => state.mainpage.dictionary;
 export const loading    = ( state ) => state.mainpage.loading;
+export const search    = ( state ) => state.mainpage.search;
 
 export default mainpageSlice.reducer;
