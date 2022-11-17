@@ -2,7 +2,7 @@
 
   &>ul {
     display: grid;
-    grid-template-columns: 72.3vw 25vw;
+    grid-template-columns: 66.7vw 24.5vw;
 
     li:first-child {
       ul {
@@ -13,14 +13,14 @@
     li:nth-child(2) {
       ul {
         grid-template-columns: repeat(1, 1fr); 
-        padding-left: 1.7vw;
+        padding-left: 0;
         place-items: normal start;
       }
       h2 {
-        padding-left: 1.7vw;
+        width: 20vw;
+        padding-left: 0;
       }
     }
-
 
 
   }

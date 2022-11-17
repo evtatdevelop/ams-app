@@ -1,0 +1,17 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); 
+  gap: 1.7vw;
+  padding: 1vh 3vw;
+  
+  place-items: center;
+  grid-template-rows: auto;
+
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1.2vmax;
+  color: #437EC7;
+  padding: 2vh 3vw .5vh 3vw;
+}
