@@ -3,6 +3,7 @@ import styles from './langButton.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { user, setLang } from "../../user/userSlice";
 import { ucFirst } from "../../../helpers";
+import { clearSearch } from "../mainpageSlice";
 
 export const LangButton = () => {
 
@@ -24,6 +25,7 @@ export const LangButton = () => {
                 onClick={() => {
                   dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'} ))
                   onShow(false)
+                  dispatch(clearSearch())
                 }}
               >{lang === 'RU' ? 'En' : 'Ru'}</button>  
             }

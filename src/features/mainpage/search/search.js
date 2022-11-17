@@ -3,18 +3,18 @@ import styles from './search.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { user } from "../../user/userSlice";
 import { search, onSearch, clearSearch } from "../mainpageSlice";
+import dictionary from '../../../dictionary.json'
 
 export const SearchSystems = () => {
 
   const userData = useSelector(user);
   const value = useSelector(search);
   const dispatch = useDispatch();
-  // const [show, onShow] = useState(false);
 
   return (
     <div className={styles.search}>
       <input type="text" className={styles.inputSearch}
-        placeholder={userData['lang'] === 'RU' ? 'Поиск' : 'Search'}
+        placeholder={dictionary.search[userData['lang']]}
         value = {value}
         onInput={ e => dispatch(onSearch(e.target.value)) }
       />

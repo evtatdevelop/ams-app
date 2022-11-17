@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { filtred } from "../mainpageSlice";
 import { System } from "../section/system/system";
 import { user } from '../../user/userSlice';
+import dictionary from '../../../dictionary.json'
 
 export const SearchList = () => {
 
@@ -13,7 +14,8 @@ export const SearchList = () => {
   return (
 
     <>
-      <h2 className={styles.name}>{userData['lang'] === 'RU' ? 'Результаты поиска' : 'Searching results'}</h2>
+      {/* <h2 className={styles.name}>{userData['lang'] === 'RU' ? 'Результаты поиска' : 'Searching results'}</h2> */}
+      <h2 className={styles.name}>{dictionary.searching_results[userData['lang']]}</h2>
       <ul>
         {searchList.map(system => {
           // return !(section.prefix === 'LK' && +system.show !== 1) ? 
