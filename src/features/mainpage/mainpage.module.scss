@@ -21,11 +21,16 @@
       -moz-osx-font-smoothing: grayscale;
       font-weight: 700;
       font-size: 1.2vmax;
-      
+      width: 40vw;
+      // outline: 1px solid blue;
     }
 
     .remoteUser {
       font-size: 1vmax;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      // outline: 1px solid blue;
     }
   }
 

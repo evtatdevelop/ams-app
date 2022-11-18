@@ -25,7 +25,7 @@ export const Mainpage = () => {
         <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1>
         
         {dictionaryData.head_currentuser && userData.ad_user
-          ? <p className={styles.remoteUser}> {`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`} </p>
+          ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
           : null
         }
 
