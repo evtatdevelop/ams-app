@@ -12,6 +12,7 @@
     width: 100%;
     padding: 3vh 3vw;
     background-color: #F04E25;
+    min-height: 5.6vw;
 
     .head_systemname {
       font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,8 +22,8 @@
       -moz-osx-font-smoothing: grayscale;
       font-weight: 700;
       font-size: 1.2vmax;
-      width: 40vw;
-      // outline: 1px solid blue;
+      width: 41vw;
+      animation: appearance 500ms ease-in-out forwards;
     }
 
     .remoteUser {
@@ -30,7 +31,7 @@
       flex-grow: 1;
       display: flex;
       justify-content: center;
-      // outline: 1px solid blue;
+      animation: appearance 500ms ease-in-out forwards;
     }
   }
 
@@ -40,5 +41,15 @@
     width: 100%;
   }
 
+  @keyframes appearance {
+    0% {
+      opacity: .3;
+    }
+    80% {
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 }

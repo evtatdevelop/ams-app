@@ -7,11 +7,23 @@
   overflow-y: hidden;
   padding: .3vmax;
   transition: border .1s, box-shadow .1s;
+  animation: appearance 500ms ease-in-out forwards;
 
   &:active,
   &:hover {
     border: .1vw solid rgba($color: #333333, $alpha: .5);
     box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+  }
+
+  @keyframes appearance {
+    0% {
+      opacity: .3;
+    }
+    80% {
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .request_url {
