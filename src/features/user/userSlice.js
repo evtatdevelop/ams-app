@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export const getUser = createAsyncThunk( 'user/getUser', async () => await getUserData() )
-export const setLang = createAsyncThunk( 'user/setUserLang', async ( data, api_key ) => await setUserLang(data, api_key) )
+export const setLang = createAsyncThunk( 'user/setLang', async ( data ) => await setUserLang(data) )
 
 export const userSlice = createSlice({
   name: 'user',

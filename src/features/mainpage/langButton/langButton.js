@@ -12,6 +12,8 @@ export const LangButton = () => {
   const [show, onShow] = useState(false);
   const lang = userData['lang'];
 
+  // console.log(userData.api_key);
+
   return (
     <div className={styles.langButton}>
       <button type='button'
@@ -23,7 +25,7 @@ export const LangButton = () => {
             { 
               <button type="button"
                 onClick={() => {
-                  dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'}, userData.api_key ))
+                  dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU', 'api_key': userData.api_key} ))
                   onShow(false)
                   dispatch(clearSearch())
                 }}
