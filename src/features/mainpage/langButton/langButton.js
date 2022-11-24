@@ -23,7 +23,7 @@ export const LangButton = () => {
             { 
               <button type="button"
                 onClick={() => {
-                  dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'} ))
+                  dispatch(setLang( {'app12_id': userData['id'], 'lang': lang === 'RU' ? 'EN' : 'RU'}, userData.api_key ))
                   onShow(false)
                   dispatch(clearSearch())
                 }}

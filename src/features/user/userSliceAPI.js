@@ -8,4 +8,4 @@ const _apiBase = testMode
 : 'https://request.sibgenco.local/ams_api';
 
 export const getUserData = ( lang ) => service.getResource(`${_apiBase}/?q=user`);
-export const setUserLang = ( data ) => service.updateResource(`${_apiBase}/?q=user`, data);
+export const setUserLang = ( data, api_key ) => service.updateResource(`${_apiBase}/?q=user`, data,  api_key);

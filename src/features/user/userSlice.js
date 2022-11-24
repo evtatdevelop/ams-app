@@ -7,15 +7,15 @@ const initialState = {
 }
 
 export const getUser = createAsyncThunk( 'user/getUser', async () => await getUserData() )
-export const setLang = createAsyncThunk( 'user/setUserLang', async ( data ) => await setUserLang(data) )
+export const setLang = createAsyncThunk( 'user/setUserLang', async ( data, api_key ) => await setUserLang(data, api_key) )
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    changeLang: (state, action) => {
-      // state.data.lang = state.data.lang === 'RU' ? 'EN' : 'RU';
-    },
+    // changeLang: (state, action) => {
+    //   // state.data.lang = state.data.lang === 'RU' ? 'EN' : 'RU';
+    // },
   },
 
   extraReducers: (builder) => {

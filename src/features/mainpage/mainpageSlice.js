@@ -9,8 +9,7 @@ const initialState = {
   filtred: [],
 }
 
-// export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async ( lang ) => await getMainpageData(lang) )
-export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async () => await getMainpageData() )
+export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async (api_key) => await getMainpageData(api_key) )
 
 export const mainpageSlice = createSlice({
   name: 'mainpage',

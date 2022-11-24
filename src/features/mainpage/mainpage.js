@@ -16,7 +16,7 @@ export const Mainpage = () => {
   const dictionaryData = useSelector(dictionary);
   const searchString = useSelector(search);
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getMainpage()) }, [dispatch, userData]);
+  useEffect(() => { dispatch(getMainpage(userData.api_key)) }, [dispatch, userData]);
 
   return (
     <section className={styles.mainpage}>
