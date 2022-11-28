@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary, getMainpage, search } from "./mainpageSlice";
@@ -8,6 +8,7 @@ import RowSection from "./rowSection";
 import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
+import ExpirationScreen from "../expirationScreen";
 
 export const Mainpage = () => {
 
@@ -16,7 +17,13 @@ export const Mainpage = () => {
   const dictionaryData = useSelector(dictionary);
   const searchString = useSelector(search);
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getMainpage(userData.api_key)) }, [dispatch, userData]);
+  useEffect(() => { 
+    dispatch(getMainpage(userData.api_key)) 
+    setTimeout(() => onExpired(true), 12*60*60*1000)
+    // setTimeout(() => onExpired(true), 15*1000)
+  }, [dispatch, userData]);
+  const [expired, onExpired] = useState(false);
+  // 
 
   return (
     <section className={styles.mainpage}>
@@ -49,7 +56,8 @@ export const Mainpage = () => {
           : <SearchList/>  
         }  
 
-
+        { expired ? <ExpirationScreen/> : null }
+        
 
     </section>
   )
