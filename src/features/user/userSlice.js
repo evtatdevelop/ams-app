@@ -4,6 +4,7 @@ import { getUserData, setUserLang } from './userSliceAPI';
 const initialState = {
   loading: false,
   data: [],
+  // timeout: false 
 }
 
 export const getUser = createAsyncThunk( 'user/getUser', async () => await getUserData() )
@@ -13,8 +14,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // changeLang: (state, action) => {
-    //   // state.data.lang = state.data.lang === 'RU' ? 'EN' : 'RU';
+    // updateTimeout: (state) => {
+    //   setTimeout(() => state.timeout = true, 15*1000)
     // },
   },
 
@@ -34,12 +35,13 @@ export const userSlice = createSlice({
   }
 });
 
-export const {
-  changeLang
-} = userSlice.actions;
+// export const {
+//   updateTimeout
+// } = userSlice.actions;
 
 export const loading  = ( state ) => state.user.loading;
 export const user     = ( state ) => state.user.data;
+export const timeout  = ( state ) => state.user.timeout;
 
 
 export default userSlice.reducer;
