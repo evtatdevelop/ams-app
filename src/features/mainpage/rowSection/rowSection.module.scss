@@ -1,72 +1,72 @@
-.rowSection {
+// .rowSection {
 
-  &>ul {
-    display: grid;
-    grid-template-columns: 54vw 37.5vw;
-    place-items: normal start;
+//   &>ul {
+//     display: grid;
+//     grid-template-columns: 54vw 37.5vw;
+//     place-items: normal start;
 
-    li:first-child {
-      ul {
-        grid-template-columns: repeat(3, 1fr); 
-        padding-right: 0;
-      }
-    }
-    li:nth-child(2) {
-      ul {
-        grid-template-columns: repeat(1, 1fr); 
-        padding-left: 0;
-        place-items: normal start;
-      }
-      h2 {
-        width: 20vw;
-        padding-left: 0;
-      }
-    }
-  }
-}
+//     li:first-child {
+//       ul {
+//         grid-template-columns: repeat(3, 1fr); 
+//         padding-right: 0;
+//       }
+//     }
+//     li:nth-child(2) {
+//       ul {
+//         grid-template-columns: repeat(1, 1fr); 
+//         padding-left: 0;
+//         place-items: normal start;
+//       }
+//       h2 {
+//         width: 20vw;
+//         padding-left: 0;
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 800px) {
-  .rowSection {
+// @media screen and (min-width: 800px) {
+//   .rowSection {
 
-    &>ul {
-      grid-template-columns: 64vw 33.5vw;
+//     &>ul {
+//       grid-template-columns: 64vw 33.5vw;
 
-      li:first-child {
-        ul {
-          grid-template-columns: repeat(4, 1fr); 
-        }
-      }
-    }
-  }
-}
+//       li:first-child {
+//         ul {
+//           grid-template-columns: repeat(4, 1fr); 
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1000px) {
-  .rowSection {
+// @media screen and (min-width: 1000px) {
+//   .rowSection {
 
-    &>ul {
-      grid-template-columns: 70vw 28.5vw;
+//     &>ul {
+//       grid-template-columns: 70vw 28.5vw;
 
-      li:first-child {
-        ul {
-          grid-template-columns: repeat(5, 1fr); 
-        }
-      }
-    }
-  }
-}
+//       li:first-child {
+//         ul {
+//           grid-template-columns: repeat(5, 1fr); 
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1200px) {  
-  .rowSection {
+// @media screen and (min-width: 1200px) {  
+//   .rowSection {
 
-    &>ul {
-      grid-template-columns: 66.7vw 24.5vw;
-      place-items: center;
+//     &>ul {
+//       grid-template-columns: 66.7vw 24.5vw;
+//       place-items: center;
 
-      li:first-child {
-        ul {
-          grid-template-columns: repeat(6, 1fr); 
-        }
-      }
-    }
-  }
-}  
+//       li:first-child {
+//         ul {
+//           grid-template-columns: repeat(6, 1fr); 
+//         }
+//       }
+//     }
+//   }
+// }  
