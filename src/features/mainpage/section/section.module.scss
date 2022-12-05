@@ -1,54 +1,54 @@
 .section {
 
   ul {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 1.7vw;
-    padding: 1vh 3vw;
-    place-items: center;
-    grid-template-rows: auto;
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr); 
+    // gap: 1.7vw;
+    // padding: 1vh 3vw;
+    // place-items: center;
+    // grid-template-rows: auto;
   }
 
   .name {
-    font-weight: 700;
-    font-size: 1.5vmax;
-    color: #437EC7;
-    padding: 2vh 3vw .5vh 3vw;
+    // font-weight: 700;
+    // font-size: 1.5vmax;
+    // color: #437EC7;
+    // padding: 2vh 3vw .5vh 3vw;
   }
 }
 
 @media screen and (min-width: 800px) {
-  .section {
-    ul {
-      grid-template-columns: repeat(6, 1fr); 
-    }
+  // .section {
+  //   ul {
+  //     grid-template-columns: repeat(6, 1fr); 
+  //   }
 
-    .name {
-      font-size: 1.4vmax;
-    }
-  }
+  //   .name {
+  //     font-size: 1.4vmax;
+  //   }
+  // }
 }
 
 @media screen and (min-width: 1000px) {
-  .section {
-    ul {
-      grid-template-columns: repeat(7, 1fr); 
-    }
+  // .section {
+  //   ul {
+  //     grid-template-columns: repeat(7, 1fr); 
+  //   }
 
-    .name {
-      font-size: 1.3vmax;
-    }
-  }
+  //   .name {
+  //     font-size: 1.3vmax;
+  //   }
+  // }
 }
 
 @media screen and (min-width: 1200px) {
-  .section {
-    ul {
-      grid-template-columns: repeat(8, 1fr); 
-    }
+  // .section {
+  //   ul {
+  //     grid-template-columns: repeat(8, 1fr); 
+  //   }
 
-    .name {
-      font-size: 1.2vmax;
-    }
-  }
+  //   .name {
+  //     font-size: 1.2vmax;
+  //   }
+  // }
 } 

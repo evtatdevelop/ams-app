@@ -1,19 +1,19 @@
 .system {
-  width: 16vw;
-  height: 16vw;
-  border: .1vw solid #DDDDDD;
-  border-radius: .3vw;
-  position: relative;
-  overflow-y: hidden;
-  padding: .3vmax;
-  transition: border .1s, box-shadow .1s;
-  animation: appearance 500ms ease-in-out forwards;
+  // width: 16vw;
+  // height: 16vw;
+  // border: .1vw solid #DDDDDD;
+  // border-radius: .3vw;
+  // position: relative;
+  // overflow-y: hidden;
+  // padding: .3vmax;
+  // transition: border .1s, box-shadow .1s;
+  // animation: appearance 500ms ease-in-out forwards;
 
-  &:active,
-  &:hover {
-    border: .1vw solid rgba($color: #333333, $alpha: .5);
-    box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
-  }
+  // &:active,
+  // &:hover {
+  //   border: .1vw solid rgba($color: #333333, $alpha: .5);
+  //   box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+  // }
 
   @keyframes appearance {
     0% {
@@ -27,120 +27,120 @@
   }
 
   .request_url {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    padding: .1vmax;
-    color: #494949;
+    // display: flex;
+    // flex-direction: column;
+    // width: 100%;
+    // height: 100%;
+    // padding: .1vmax;
+    // color: #494949;
 
     .sysIcon {
-      width: 100%;
-      height: 7vw;
-      background-repeat: no-repeat;
-      background-size: 100% auto;
+      // width: 100%;
+      // height: 7vw;
+      // background-repeat: no-repeat;
+      // background-size: 100% auto;
     }
 
     .request_name {
-      font-size: 1.2vmax;
-      overflow-y: hidden;
-      line-height: 1.3vw;
+      // font-size: 1.2vmax;
+      // overflow-y: hidden;
+      // line-height: 1.3vw;
     }
 
     .cnt {
-      position: absolute;
-      bottom: .3vmax;
-      right: .3vmax;
-      color: #2c2c2c;
-      font-weight: 700;
-      font-size: 1.2vmax;
+      // position: absolute;
+      // bottom: .3vmax;
+      // right: .3vmax;
+      // color: #2c2c2c;
+      // font-weight: 700;
+      // font-size: 1.2vmax;
     }
   }
 }
 
 @media screen and (min-width: 800px) {
-  .system {
-    width: 14vw;
-    height: 14vw;
+  // .system {
+  //   width: 14vw;
+  //   height: 14vw;
 
-    .request_url {
-      width: 100%;
-      height: 100%;
-      padding: .1vmax;
+  //   .request_url {
+  //     width: 100%;
+  //     height: 100%;
+  //     padding: .1vmax;
 
-      .sysIcon {
-        width: 100%;
-        height: 5vw;
-      }
+  //     .sysIcon {
+  //       width: 100%;
+  //       height: 5vw;
+  //     }
 
-      .request_name {
-        font-size: 1.1vmax;
-        line-height: 1.1vw;
-      }
+  //     .request_name {
+  //       font-size: 1.1vmax;
+  //       line-height: 1.1vw;
+  //     }
 
-      .cnt {
-        bottom: .3vmax;
-        right: .3vmax;
-        font-size: 1.1vmax;
-      }
-    }    
-  }  
+  //     .cnt {
+  //       bottom: .3vmax;
+  //       right: .3vmax;
+  //       font-size: 1.1vmax;
+  //     }
+  //   }    
+  // }  
 }
 
 @media screen and (min-width: 1000px) {
-  .system {
-    width: 12vw;
-    height: 12vw;
+  // .system {
+  //   width: 12vw;
+  //   height: 12vw;
 
-    .request_url {
-      width: 100%;
-      height: 100%;
-      padding: .1vmax;
+  //   .request_url {
+  //     width: 100%;
+  //     height: 100%;
+  //     padding: .1vmax;
 
-      .sysIcon {
-        width: 100%;
-        height: 4vw;
-      }
+  //     .sysIcon {
+  //       width: 100%;
+  //       height: 4vw;
+  //     }
 
-      .request_name {
-        font-size: 1vmax;
-        line-height: 1vw;
-      }
+  //     .request_name {
+  //       font-size: 1vmax;
+  //       line-height: 1vw;
+  //     }
 
-      .cnt {
-        bottom: .3vmax;
-        right: .3vmax;
-        font-size: 1vmax;
-      }
-    }    
-  }  
+  //     .cnt {
+  //       bottom: .3vmax;
+  //       right: .3vmax;
+  //       font-size: 1vmax;
+  //     }
+  //   }    
+  // }  
 }
 
 @media screen and (min-width: 1200px) {
-  .system {
-    width: 10vw;
-    height: 10vw;
+  // .system {
+  //   width: 10vw;
+  //   height: 10vw;
 
-    .request_url {
-      width: 100%;
-      height: 100%;
-      padding: .1vmax;
+  //   .request_url {
+  //     width: 100%;
+  //     height: 100%;
+  //     padding: .1vmax;
 
-      .sysIcon {
-        width: 100%;
-        height: 4vw;
-      }
+  //     .sysIcon {
+  //       width: 100%;
+  //       height: 4vw;
+  //     }
 
-      .request_name {
-        font-size: .8vmax;
-        line-height: .9vw;
-      }
+  //     .request_name {
+  //       font-size: .8vmax;
+  //       line-height: .9vw;
+  //     }
 
-      .cnt {
-        bottom: .3vmax;
-        right: .3vmax;
-        font-size: .8vmax;
-      }
-    }
-  }
+  //     .cnt {
+  //       bottom: .3vmax;
+  //       right: .3vmax;
+  //       font-size: .8vmax;
+  //     }
+  //   }
+  // }
 }
