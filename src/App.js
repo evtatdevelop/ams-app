@@ -17,8 +17,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <main className='main'><Mainpage/></main> */}
-      
       <Routes>
         <Route path={`${_pathBase}/`} element={<Mainpage/>}/>
         <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/>  {/* ToDo: this route doesn't work */}

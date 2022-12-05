@@ -4,7 +4,6 @@ import { getUserData, setUserLang } from './userSliceAPI';
 const initialState = {
   loading: false,
   data: [],
-  // timeout: false 
 }
 
 export const getUser = createAsyncThunk( 'user/getUser', async () => await getUserData() )
