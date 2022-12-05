@@ -4,14 +4,14 @@ import { PersonalArea } from './features/personalArea/personalArea';
 import { Resources } from './features/resources/resources';
 import { Loader } from './features/loader/loader';
 import { useDispatch } from "react-redux";
-import { getUser } from './features/user/userSlice';
+import { getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { testMode } from './config';
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getUser()) }, [dispatch, ]);
+  useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
 
   const _pathBase = testMode ? '' : '/ams/'
 

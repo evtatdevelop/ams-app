@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUserData, setUserLang } from './userSliceAPI';
+import { getUserData, setUserLang, getRemoteUser } from './userSliceAPI';
 
 const initialState = {
   loading: false,
   data: [],
 }
 
-export const getUser = createAsyncThunk( 'user/getUser', async () => await getUserData() )
-export const setLang = createAsyncThunk( 'user/setLang', async ( data ) => await setUserLang(data) )
+export const getRemote  = createAsyncThunk( 'user/getRemote', async () => await getRemoteUser() )
+export const getUser    = createAsyncThunk( 'user/getUser', async ( data ) => await getUserData(data) )
+export const setLang    = createAsyncThunk( 'user/setLang', async ( data ) => await setUserLang(data) )
 
 export const userSlice = createSlice({
   name: 'user',
@@ -20,8 +21,8 @@ export const userSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getUser.pending, ( state ) => { state.loading = true })
-      .addCase(getUser.fulfilled, ( state, action ) => {
+      .addCase(getRemote.pending, ( state ) => { state.loading = true })
+      .addCase(getRemote.fulfilled, ( state, action ) => {
         state.loading = false;
         state.data = action.payload;
       })
