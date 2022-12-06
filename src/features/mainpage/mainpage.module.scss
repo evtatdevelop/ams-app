@@ -11,7 +11,15 @@
     width: 100%;
     min-height: 100px;
     background-color: #FFFFFF;
+    padding-left: 55px;
+    padding-right: 55px;
+    justify-content: space-between;
+    align-items: center;
 
+    img {
+      height: 55px;
+      width: auto;
+    }
   }
 
   main {
@@ -46,9 +54,20 @@
 
   footer {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     min-height: 100px;
     background-color: #999999;
+    
+    div:first-child {
+      outline: 1px solid red;
+      // background-image: url("../../../public/assets/bottomleftbg2.png");
+      width: 100px;
+    }
+    
+    div:last-child {
+      outline: 1px solid blue;
+    }
   }
 
 //   @keyframes appearance {
