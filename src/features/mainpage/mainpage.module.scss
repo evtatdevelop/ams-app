@@ -1,45 +1,55 @@
-// .mainpage {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 100%;  
-//   color: white;
+.mainpage {
+  width: 1280px;
+  background-color: #E6E6E6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #555555;
 
-//   .header {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     width: 100%;
-//     padding: 3vh 3vw;
-//     background-color: #F04E25;
-//     min-height: 5.6vw;
+  header {
+    display: flex;
+    width: 100%;
+    min-height: 100px;
+    background-color: #FFFFFF;
 
-//     .head_systemname {
-//       font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//       sans-serif;
-//       -webkit-font-smoothing: antialiased;
-//       -moz-osx-font-smoothing: grayscale;
-//       font-weight: 700;
-//       font-size: 1.2vmax;
-//       width: 41vw;
-//       animation: appearance 500ms ease-in-out forwards;
-//     }
+  }
 
-//     .remoteUser {
-//       font-size: 1vmax;
-//       flex-grow: 1;
-//       display: flex;
-//       justify-content: center;
-//       animation: appearance 500ms ease-in-out forwards;
-//     }
-//   }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 16px solid #E6E6E6;
+    background-color: #FFFFFF;
+    padding: 10px;
 
-//   .syetems {
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//   }
+    .head_systemname {
+      // font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      // 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      // sans-serif;
+      // -webkit-font-smoothing: antialiased;
+      // -moz-osx-font-smoothing: grayscale;
+      // font-weight: 700;
+      // font-size: 1.2vmax;
+      // width: 41vw;
+      // animation: appearance 500ms ease-in-out forwards;
+    }
+
+    .remoteUser {
+      // font-size: 1vmax;
+      // flex-grow: 1;
+      // display: flex;
+      // justify-content: center;
+      // animation: appearance 500ms ease-in-out forwards;
+    }
+  }
+
+  footer {
+    display: flex;
+    width: 100%;
+    min-height: 100px;
+    background-color: #999999;
+  }
 
 //   @keyframes appearance {
 //     0% {
@@ -52,4 +62,4 @@
 //     }
 //   }
 
-// }
+}
