@@ -12,8 +12,6 @@ export const LangButton = () => {
   const [show, onShow] = useState(false);
   const lang = userData['lang'];
 
-  // console.log(userData.api_key);
-
   return (
     <div className={styles.langButton}>
       <button type='button'

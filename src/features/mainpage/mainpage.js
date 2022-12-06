@@ -38,16 +38,18 @@ export const Mainpage = () => {
 
       {searchString === "" 
         ? <ul className={styles.syetems}>
-            <RowSection 
+            {/* <RowSection 
               key='qweqwq' 
               sections={pageData.filter(section => section.prefix === 'LK' || section.prefix === 'CORPORATE')
             }/>
-
             { pageData
               .filter(section => section.prefix !== 'LK' && section.prefix !== 'CORPORATE')
               .map(section => <Section key={section.id} section={section}/>)
-            }
+            } */}
+            { pageData.map(section => <Section key={section.id} section={section}/>) }
+          
           </ul>
+
         : <SearchList/>  
       }  
 
