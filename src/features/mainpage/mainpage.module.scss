@@ -35,20 +35,37 @@
       // font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       // 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       // sans-serif;
-      // -webkit-font-smoothing: antialiased;
-      // -moz-osx-font-smoothing: grayscale;
-      // font-weight: 700;
-      // font-size: 1.2vmax;
-      // width: 41vw;
-      // animation: appearance 500ms ease-in-out forwards;
+      font-family: 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 24px;
+      color: #F04E25;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 20px;
     }
 
     .remoteUser {
-      // font-size: 1vmax;
-      // flex-grow: 1;
-      // display: flex;
-      // justify-content: center;
-      // animation: appearance 500ms ease-in-out forwards;
+      font-size: 17px;
+      color: #F04E25;
+      font-family: 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: 1px;
+      margin-top: 4px;
+      opacity: .7;
+    }
+
+    .syetems {
+      width: 100%;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -58,16 +75,7 @@
     width: 100%;
     min-height: 100px;
     background-color: #999999;
-    
-    div:first-child {
-      outline: 1px solid red;
-      // background-image: url("../../../public/assets/bottomleftbg2.png");
-      width: 100px;
-    }
-    
-    div:last-child {
-      outline: 1px solid blue;
-    }
+
   }
 
 //   @keyframes appearance {

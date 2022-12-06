@@ -1,7 +1,25 @@
-// .langButton {
-//   display: flex;
-//   flex-direction: column;
-//   position: relative;
+.langButton {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  margin-top: 10px;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      font-size: 14px; 
+      color: #F47435;
+      cursor: pointer;
+
+
+    }
+     .current {
+        text-decoration: underline;
+      }
+  // flex-direction: column;
+  // position: relative;
 
 //   .langSwitcher {
 //     height: 2vmax;
@@ -55,4 +73,4 @@
 //     }
 
 //   }
-// }
+}

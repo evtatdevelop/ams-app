@@ -33,7 +33,6 @@ export const Mainpage = () => {
     setTimeout(() => onExpired(true), 12*60*60*1000)
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);
-  // 
 
   return (
     <section className={styles.mainpage}>
@@ -57,7 +56,7 @@ export const Mainpage = () => {
       </header>
       
       <main>
-      <LangButton/>
+        <LangButton/>
         <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1>
         {dictionaryData.head_currentuser && userData.ad_user
           ? <div className={styles.remoteUser}> {`${dictionaryData.head_currentuser}`} {`${userData.shortname} (${userData.ad_user})`}</div>
