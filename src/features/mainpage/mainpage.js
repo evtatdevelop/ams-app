@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary, getMainpage, search } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
-import RowSection from "./rowSection";
 import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
@@ -22,7 +21,6 @@ export const Mainpage = () => {
     setTimeout(() => onExpired(true), 12*60*60*1000)
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);
-  // 
 
   return (
     <section className={styles.mainpage}>
@@ -38,15 +36,6 @@ export const Mainpage = () => {
 
       {searchString === "" 
         ? <ul className={styles.syetems}>
-            {/* <RowSection 
-              key='qweqwq' 
-              sections={pageData.filter(section => section.prefix === 'LK' || section.prefix === 'CORPORATE')
-            }/>
-
-            { pageData
-              .filter(section => section.prefix !== 'LK' && section.prefix !== 'CORPORATE')
-              .map(section => <Section key={section.id} section={section}/>)
-            } */}
             { pageData.map(section => <Section key={section.id} section={section}/>) }
           </ul>
         : <SearchList/>  

@@ -6,7 +6,6 @@ import { ucFirst } from "../../../helpers";
 import { clearSearch } from "../mainpageSlice";
 
 export const LangButton = () => {
-
   const userData = useSelector(user);
   const dispatch = useDispatch();
   const [show, onShow] = useState(false);
