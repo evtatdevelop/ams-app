@@ -2,23 +2,25 @@
   // outline: 1px solid red;
 
   header {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
     margin-top: 2vh;
     margin-bottom: .5vh;
-
-    .name {
-      font-weight: 700;
-      font-size: 1.2vmax;
-      color: #437EC7;
-      // padding: 0 3vw 0 3vw;
-    }
     
     label {
+      display: flex;
+      align-items: center;
       color: #437EC7;
-      margin: 0 10px;
+      // margin: 0 10px;
       cursor: pointer;
 
+      .name {
+        font-weight: 700;
+        font-size: 1.2vmax;
+        color: #437EC7;
+        margin: 0 10px;
+        // padding: 0 3vw 0 3vw;
+      }
 
       .iconButtonClose {
         transform: rotate(180deg);

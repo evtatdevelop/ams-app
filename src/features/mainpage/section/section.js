@@ -12,8 +12,9 @@ export const Section = props => {
     <li className={styles.section}>
 
       <header>
-        <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2>
+        {/* <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2> */}
         <label htmlFor={section.prefix}>
+          <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2>
           <FontAwesomeIcon icon={ faCaretDown } className={show ? styles.iconButtonClose : styles.iconButton} />
         </label>
       </header>
