@@ -1,11 +1,11 @@
-/* @font-face {
+@font-face {
   font-family: segoeui; 
   src: url(./fonts/segoeui.ttf);
 }
 @font-face {
   font-family: pragmaticaextralight;
   src: url(./fonts/pragmaticaextralight.woff);
-} */
+}
 body {
   font-family: segoeui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
