@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from './section.module.scss';
 import { System } from './system/system';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 export const Section = props => {
   const { section } = props;
@@ -11,7 +13,9 @@ export const Section = props => {
 
       <header>
         <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2>
-        <label htmlFor={section.prefix}>+</label>
+        <label htmlFor={section.prefix}>
+          <FontAwesomeIcon icon={ faCaretDown } className={show ? styles.iconButtonClose : styles.iconButton} />
+        </label>
       </header>
       
       <input type="checkbox" 

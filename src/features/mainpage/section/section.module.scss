@@ -11,16 +11,24 @@
       font-weight: 700;
       font-size: 1.2vmax;
       color: #437EC7;
-      padding: 0 3vw 0 3vw;
-      // padding: 2vh 3vw .5vh 3vw;
+      // padding: 0 3vw 0 3vw;
     }
     
     label {
-      color: black;
+      color: #437EC7;
       margin: 0 10px;
       cursor: pointer;
-    } 
 
+
+      .iconButtonClose {
+        transform: rotate(180deg);
+        transition: transform .3s;
+      }
+      .iconButton {
+        transform: rotate(0deg);
+        transition: transform .3s;
+      }      
+    }
   }
 
   input[type=checkbox] {
@@ -53,8 +61,6 @@
     grid-template-rows: auto;
     transition: opacity .5s, padding-top .2s;
   }
-
-
 }
 
 @media screen and (min-width: 800px) {
@@ -62,10 +68,11 @@
     ul {
       grid-template-columns: repeat(6, 1fr); 
     }
-
-    .name {
-      font-size: 1.4vmax;
-    }
+    header {
+      .name {
+        font-size: 1.4vmax;
+      }
+    }  
   }
 }
 
@@ -74,10 +81,11 @@
     ul {
       grid-template-columns: repeat(7, 1fr); 
     }
-
-    .name {
-      font-size: 1.3vmax;
-    }
+    header {
+      .name {
+        font-size: 1.3vmax;
+      }
+    }  
   }
 }
 
@@ -86,9 +94,10 @@
     ul {
       grid-template-columns: repeat(8, 1fr); 
     }
-
-    .name {
-      font-size: 1.2vmax;
-    }
+    header {
+      .name {
+        font-size: 1.2vmax;
+      }
+    }  
   }
 } 
