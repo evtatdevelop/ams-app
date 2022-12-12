@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  background: linear-gradient(57deg, rgb(220, 220, 255), rgb(255, 232, 237));
+  background: linear-gradient(57deg, rgb(238, 238, 252), rgb(249, 234, 238));
   animation: appearance 500ms ease-in-out forwards;
   color: #494949;
 
@@ -44,7 +44,7 @@
     80% {
     }
     100% {
-      opacity: .93;
+      opacity: .9;
     }
   }
 }

@@ -7,12 +7,11 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 export const Section = props => {
   const { section } = props;
   const [show, onShow] = useState(section.prefix !== 'LK' ? true : false);
-  
+
   return (
-    <li className={styles.section}>
+    <li className={styles.section} id={section.id}>
 
       <header>
-        {/* <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2> */}
         <label htmlFor={section.prefix}>
           <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2>
           <FontAwesomeIcon icon={ faCaretDown } className={show ? styles.iconButtonClose : styles.iconButton} />
@@ -22,7 +21,10 @@ export const Section = props => {
       <input type="checkbox" 
         id={section.prefix}
         checked={show}
-        onChange={()=>onShow(!show)}
+        onChange={()=>{
+          document.getElementById(section.id).scrollIntoView(false);
+          return onShow(!show)
+        }}
       /> 
       <ul>
         {section.systems.map(system => {

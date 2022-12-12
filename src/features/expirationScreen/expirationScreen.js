@@ -12,7 +12,7 @@ export const ExpirationScreen = () => {
     <div className={styles.expirationScreen}>
     
       <p className={styles.msgReload}>{dictionary.page_timeout_exceeded[userData['lang']]}</p>
-      <a href="http://localhost:3000/" className={styles.btnReload}>{dictionary.continue_work[userData['lang']]}</a>
+      <a href={window.location.href} className={styles.btnReload}>{dictionary.continue_work[userData['lang']]}</a>
     
     </div>
   )
