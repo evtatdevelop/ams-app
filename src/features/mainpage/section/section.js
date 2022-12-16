@@ -22,7 +22,7 @@ export const Section = props => {
         id={section.prefix}
         checked={show}
         onChange={()=>{
-          document.getElementById(section.id).scrollIntoView(false);
+          if ( show ) document.getElementById(section.id).scrollIntoView('top');
           return onShow(!show)
         }}
       /> 
