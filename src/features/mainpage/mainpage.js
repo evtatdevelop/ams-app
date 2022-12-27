@@ -32,7 +32,8 @@ export const Mainpage = () => {
     <section className={styles.mainpage}>
       
       <header className={styles.header}>
-        <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1>
+        {/* <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1> */}
+        <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
         {dictionaryData.head_currentuser && userData.ad_user
           ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
           : null

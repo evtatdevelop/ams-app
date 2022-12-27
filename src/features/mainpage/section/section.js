@@ -13,9 +13,11 @@ export const Section = props => {
 
       <header>
         <label htmlFor={section.prefix}>
-          <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2>
+          {/* <h2 className={styles.name}>{section.name} ({Object.keys(section.systems).length})</h2> */}
+          <h2 className={styles.name_sf}>{section.name} ({Object.keys(section.systems).length})</h2>
           <FontAwesomeIcon icon={ faCaretDown } className={show ? styles.iconButtonClose : styles.iconButton} />
         </label>
+        
       </header>
       
       <input type="checkbox" 

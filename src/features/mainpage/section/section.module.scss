@@ -21,12 +21,25 @@
         margin: 0 10px;
         // padding: 0 3vw 0 3vw;
       }
+      // standard font
+      .name_sf {
+        font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 600;
+        font-size: 1.27vmax;
+        color: #437EC7;
+        margin: 0 10px;
+        letter-spacing: -0.05vmax;
+      }
 
       .iconButtonClose {
+        font-size: 1.27vmax;
         transform: rotate(180deg);
         transition: transform .3s;
       }
       .iconButton {
+        font-size: 1.27vmax;
         transform: rotate(0deg);
         transition: transform .3s;
       }      

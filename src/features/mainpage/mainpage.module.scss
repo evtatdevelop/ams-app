@@ -25,6 +25,16 @@
       width: 41vw;
       animation: appearance 500ms ease-in-out forwards;
     }
+    // standard font
+    .head_systemname_sf { 
+      font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 1.2vmax;
+      width: 41vw;
+      animation: mainpage_appearance__5pBMr 500ms ease-in-out forwards;
+      letter-spacing: -0.05vmax;
+    }
 
     .remoteUser {
       font-size: 1vmax;
