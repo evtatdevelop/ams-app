@@ -47,4 +47,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## !!
 
-font-family:segoeui;src:url(../media/segoeui
+Add to package.json:
+
+"homepage": ".",
