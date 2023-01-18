@@ -1,0 +1,20 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #fea58d;
+  border-bottom: 1px solid #F04E25;
+  background-color: #F04E25;
+  padding: .2vmax 3vw;
+
+  a {
+    margin-right: 2vmax;
+    color: #fdfdfd;
+    transition: color .3s;
+    font-size: small;
+
+    &:hover {
+      color: #60fc60;
+    }
+  }
+}

@@ -8,7 +8,9 @@ import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Navigation from '../navigation';
+
 
 export const Mainpage = () => {
 
@@ -44,11 +46,9 @@ export const Mainpage = () => {
       </header>
 
       { userData.login === 'TatarenkoEG' 
-        ? <>
-            <Link to = '/personalArea'>PersonalArea</Link>
-            <Link to = '/resources'>Resources</Link>
-          </> 
-        : null}
+        ? <Navigation/>
+        : null
+      }
 
       {searchString === "" 
         ? <ul className={styles.syetems}>

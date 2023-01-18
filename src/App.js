@@ -8,6 +8,7 @@ import { getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { testMode } from './config';
+import { TestPage } from './testPage/testPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/resources`} element={<Resources/>}/> 
+        <Route path={`/apiTests`} element={<TestPage/>}/> 
       </Routes>
 
       <Loader/>

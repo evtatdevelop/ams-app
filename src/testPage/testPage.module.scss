@@ -1,0 +1,39 @@
+.testPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; 
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1vh 3vw;
+    background-color: #F04E25;
+    color: white;
+  }
+  
+  .tests {
+    width: 100%;
+    padding-top: 2vmax;
+    padding-left: 2vmax;
+    padding-right: 2vmax;
+
+    .testRow {
+      display: flex;
+      margin-bottom: 1vmax;
+
+      .testName {
+        margin-right: 1vmax;
+      }
+      .testRes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
