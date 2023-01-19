@@ -11,12 +11,13 @@ export const TestPage = () => {
   
   const [remoteUser, remoteUserTest] = useState(false)
   const [mainpageData, mainpageDataTest] = useState(false)
-  const [userData, userDataTest] = useState(false)
+  const [userDataId, userDataIdTest] = useState(false)
+  const [userDataLogin, userDataLoginTest] = useState(false)
 
   getRemoteUser({}).then(value => remoteUserTest(true))
   getMainpageData({'api_key': 'TatarenkoEG'}).then(value => mainpageDataTest(true))
-  // getUserData({'api_key': 'TatarenkoEG', 'app12_id': 1833}).then(value => userDataTest(true))
-  getUserData({'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\tatarenkoeg'}).then(value => userDataTest(true))
+  getUserData({'api_key': 'TatarenkoEG', 'app12_id': 1833}).then(value => userDataIdTest(true))
+  getUserData({'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\tatarenkoeg'}).then(value => userDataLoginTest(true))
 
 
   return (
@@ -39,8 +40,13 @@ export const TestPage = () => {
         </div>
 
         <div className={styles.testRow}>
-          <div className={styles.testName}>User Data</div>
-          <div className={styles.testRes}>{ userData ? <FontAwesomeIcon icon={faCheck} /> : <TestLoader/> }</div>       
+          <div className={styles.testName}>User Data by ID</div>
+          <div className={styles.testRes}>{ userDataId ? <FontAwesomeIcon icon={faCheck} /> : <TestLoader/> }</div>       
+        </div>
+
+        <div className={styles.testRow}>
+          <div className={styles.testName}>User Data by Login</div>
+          <div className={styles.testRes}>{ userDataLogin ? <FontAwesomeIcon icon={faCheck} /> : <TestLoader/> }</div>       
         </div>
 
       </main>

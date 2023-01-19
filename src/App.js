@@ -3,14 +3,15 @@ import { Mainpage } from './features/mainpage/mainpage';
 import { PersonalArea } from './features/personalArea/personalArea';
 import { Resources } from './features/resources/resources';
 import { Loader } from './features/loader/loader';
-import { useDispatch } from "react-redux";
-import { getRemote } from './features/user/userSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { testMode } from './config';
 import { TestPage } from './testPage/testPage';
 
 function App() {
+  const userData = useSelector(user);
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
 
@@ -23,7 +24,7 @@ function App() {
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/resources`} element={<Resources/>}/> 
-        <Route path={`/apiTests`} element={<TestPage/>}/> 
+        {userData.login === 'TatarenkoEG' ? <Route path={`/apiTests`} element={<TestPage/>}/> : null} 
       </Routes>
 
       <Loader/>
