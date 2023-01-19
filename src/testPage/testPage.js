@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './testPage.module.scss';
 import Navigation from "../features/navigation";
 import { getMainpageData } from "../features/mainpage/mainpageSliceAPI";
-import { getRemoteUser } from "../features/user/userSliceAPI";
+import { getRemoteUser, getUserData } from "../features/user/userSliceAPI";
 import { TestLoader } from "./testLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +11,13 @@ export const TestPage = () => {
   
   const [remoteUser, remoteUserTest] = useState(false)
   const [mainpageData, mainpageDataTest] = useState(false)
+  const [userData, userDataTest] = useState(false)
 
-  getRemoteUser().then(value => remoteUserTest(true))
-  getMainpageData('TatarenkoEG').then(value => mainpageDataTest(true))
+  getRemoteUser({}).then(value => remoteUserTest(true))
+  getMainpageData({'api_key': 'TatarenkoEG'}).then(value => mainpageDataTest(true))
+  // getUserData({'api_key': 'TatarenkoEG', 'app12_id': 1833}).then(value => userDataTest(true))
+  getUserData({'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\tatarenkoeg'}).then(value => userDataTest(true))
+
 
   return (
     <section className={styles.testPage}>
@@ -32,6 +36,11 @@ export const TestPage = () => {
         <div className={styles.testRow}>
           <div className={styles.testName}>Main Page Data</div>
           <div className={styles.testRes}>{ mainpageData ? <FontAwesomeIcon icon={faCheck} /> : <TestLoader/> }</div>       
+        </div>
+
+        <div className={styles.testRow}>
+          <div className={styles.testName}>User Data</div>
+          <div className={styles.testRes}>{ userData ? <FontAwesomeIcon icon={faCheck} /> : <TestLoader/> }</div>       
         </div>
 
       </main>

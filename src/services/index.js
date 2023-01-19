@@ -1,11 +1,11 @@
 export default class Service {
 
-  getResource = async (url, api_key) => {
+  getResource = async (url, data) => {
     const res = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'API-Key': api_key
+        'API-Key': data.api_key
       }
     });
     if (!res.ok) throw new Error(`Could non fetch ${url}. Status: ${res.status}`);

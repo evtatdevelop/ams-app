@@ -6,7 +6,7 @@ const initialState = {
   data: [],
 }
 
-export const getRemote  = createAsyncThunk( 'user/getRemote', async () => await getRemoteUser() )
+export const getRemote  = createAsyncThunk( 'user/getRemote', async () => await getRemoteUser({}) )
 export const getUser    = createAsyncThunk( 'user/getUser', async ( data ) => await getUserData(data) )
 export const setLang    = createAsyncThunk( 'user/setLang', async ( data ) => await setUserLang(data) )
 
