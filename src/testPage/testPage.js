@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 export const TestPage = () => {
-  
   const [remoteUser, remoteUserTest] = useState(false)
   const [mainpageData, mainpageDataTest] = useState(false)
   const [userDataId, userDataIdTest] = useState(false)
@@ -19,14 +18,12 @@ export const TestPage = () => {
   getUserData({'api_key': 'TatarenkoEG', 'app12_id': 1833}).then(value => userDataIdTest(true))
   getUserData({'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\tatarenkoeg'}).then(value => userDataLoginTest(true))
 
-
   return (
     <section className={styles.testPage}>
       <header className={styles.header}>
         <h1>API Tests</h1>
       </header>
       <Navigation/>
-
       <main className={styles.tests}>
 
         <div className={styles.testRow}>
@@ -50,7 +47,6 @@ export const TestPage = () => {
         </div>
 
       </main>
-
     </section>
   )
 }
