@@ -19,21 +19,5 @@
     padding-top: 2vmax;
     padding-left: 2vmax;
     padding-right: 2vmax;
-
-    .testRow {
-      display: flex;
-      margin-bottom: 1vmax;
-
-      .testName {
-        margin-right: 1vmax;
-      }
-      .testRes {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 25px;
-        height: 25px;
-      }
-    }
   }
 }

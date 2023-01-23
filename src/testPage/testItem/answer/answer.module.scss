@@ -1,0 +1,17 @@
+.answer {
+  background-color: antiquewhite;
+  font-size: 1vmax;
+  
+  .answerItem {
+    display: flex;
+    &:hover {
+      background-color: aquamarine;
+    }
+
+    .ansKey {
+      color: #898888;
+      min-width: 11vmax;
+      margin-right: 1vmax;
+    }
+  }
+}
