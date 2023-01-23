@@ -24,7 +24,7 @@ export const TestItem = props => {
         ? <FontAwesomeIcon icon={faCheck} className={styles.successIcon}/> 
         : <TestLoader/> }
       </div>
-      <Answer data={answer}/>
+      <div className={styles.answerSection}><Answer data={answer}/></div>
     </div>
   )
 }

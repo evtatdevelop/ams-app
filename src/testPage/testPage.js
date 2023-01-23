@@ -15,21 +15,22 @@ export const TestPage = () => {
       <Navigation/>
       <main className={styles.tests}>
 
-        <TestItem name='Remote User Data'
-          request={getRemoteUser}
-          data={{}} 
-        />
         <TestItem name='Main Page Data'
           request={getMainpageData}
           data={{'api_key': 'TatarenkoEG'}}
         />
+        <TestItem name='Remote User Data'
+          request={getRemoteUser}
+          data={{}} 
+        />
+
         <TestItem name='User Data by ID'
           request={getUserData}
           data={{'api_key': 'TatarenkoEG', 'app12_id': 1833}}
         />
         <TestItem name='User Data by Login'
           request={getUserData}
-          data={{'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\tatarenkoeg'}}
+          data={{'api_key': 'TatarenkoEG', 'login': 'SUEKCORP\\martynenkoaa'}}
         />
 
       </main>

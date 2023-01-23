@@ -1,6 +1,7 @@
 .testItem {
   display: flex;
   margin-bottom: 1vmax;
+  // position: relative;
 
   .testName {
     margin-right: 1vmax;
@@ -18,5 +19,21 @@
       color: rgb(26, 190, 26);
     }
   }
+  .answerSection {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    opacity: 0;
+    transition: opacity .3s;
+    overflow-y: auto;
+    height: 90vh;
+  }
 
+  &:hover {
+    .answerSection {
+      z-index: 999;
+      opacity: 1;
+    }   
+  }
 }

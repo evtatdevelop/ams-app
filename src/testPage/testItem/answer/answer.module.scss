@@ -1,7 +1,16 @@
 .answer {
   background-color: antiquewhite;
   font-size: 1vmax;
-  
+  width: 100%;
+
+  .uperKey {
+    color: #898888;
+    font-weight: 700;
+  }
+  .subData {
+    margin-left: 1vmax;
+  }
+    
   .answerItem {
     display: flex;
     &:hover {
