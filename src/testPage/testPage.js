@@ -2,7 +2,7 @@ import React from "react";
 import styles from './testPage.module.scss';
 import Navigation from "../features/navigation";
 import { getMainpageData } from "../features/mainpage/mainpageSliceAPI";
-import { getRemoteUser, getUserData, setUserLang } from "../features/user/userSliceAPI";
+import { getRemoteUser, getUserData, setUserLang, searchUsers } from "../features/user/userSliceAPI";
 import { TestItem } from "./testItem/testItem";
 
 export const TestPage = () => {
@@ -34,6 +34,10 @@ export const TestPage = () => {
         <TestItem name='Switching User Lang'
           request={setUserLang}
           data={{'app12_id': 1833, 'lang': 'RU', 'api_key': 'TatarenkoEG'}}
+        />
+        <TestItem name='User search'
+          request={searchUsers}
+          data={{'string': 'Порпо Аррр Арпар', 'api_key': 'TatarenkoEG'}}
         />
 
       </main>

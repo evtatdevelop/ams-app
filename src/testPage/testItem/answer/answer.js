@@ -12,7 +12,7 @@ export const Answer = props => {
             <div className={styles.subData}>{objectShow(item[1])}</div>
           </div>
         : <div key={index} className={styles.answerItem}>
-            <div className={styles.ansKey}>{`${item[0]} ::`}</div> 
+            <div className={styles.ansKey}>{`${item[0]} :`}</div> 
             {`${item[1]}`}
           </div>
       )
