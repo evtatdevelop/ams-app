@@ -15,7 +15,7 @@ export const TestPage = () => {
       <Navigation/>
       <main className={styles.tests}>
 
-        {/* <TestItem name='Remote User Data'
+        <TestItem name='Remote User Data'
           request={getRemoteUser}
           data={{}} 
         />
@@ -34,7 +34,7 @@ export const TestPage = () => {
         <TestItem name='Switching User Lang'
           request={setUserLang}
           data={{'app12_id': 1833, 'lang': 'RU', 'api_key': 'TatarenkoEG'}}
-        /> */}
+        />
         <TestItem name='User search'
           request={searchUsers}
           // data={{'string': 'тат', 'api_key': 'TatarenkoEG'}}
