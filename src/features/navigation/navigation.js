@@ -11,7 +11,7 @@ export const Navigation = () => {
     <nav className={styles.navigation}>
       <Link to = {`${_pathBase}/`}>Mainpage</Link>
       <Link to = '/personalArea'>PersonalArea</Link>
-      <Link to = '/resources'>Resources</Link>
+      <Link to = '/components'>Components</Link>
       <Link to = '/apiTests'>API Tests</Link>
     </nav>
   )

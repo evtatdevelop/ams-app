@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Mainpage } from './features/mainpage/mainpage';
 import { PersonalArea } from './features/personalArea/personalArea';
-import { Resources } from './features/resources/resources';
+import { Components } from './features/components/components';
 import { Loader } from './features/loader/loader';
 import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
-        <Route path={`/resources`} element={<Resources/>}/> 
+        {userData.login === 'TatarenkoEG' ? <Route path={`/components`} element={<Components/>}/> : null} 
         {userData.login === 'TatarenkoEG' ? <Route path={`/apiTests`} element={<TestPage/>}/> : null} 
       </Routes>
 
