@@ -1,0 +1,35 @@
+.input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  .htmInput {
+    border: 1px solid grey;
+    width: 100%;
+    padding: 1vmax 3.5vmax 1vmax 1vmax;
+    
+    &:focus {
+      outline: 1px solid lightblue;
+    }
+  }
+
+  .clearBtn {
+    position: absolute;
+    right: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    width: 3.1vmax;
+    height: 3.7vmax;
+    color: gray;
+    transition: color .3s;
+    font-size: 2vmax;
+    font-weight: 100;
+
+    &:hover {
+      color: red;
+    } 
+  }
+}

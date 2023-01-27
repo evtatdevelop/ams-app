@@ -13,4 +13,13 @@
     background-color: #F04E25;
     color: white;
   }
+
+  .componentList {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 1.7vw;
+    padding: 1vh 3vw;
+    grid-template-rows: auto;
+  }
 }
