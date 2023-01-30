@@ -28,7 +28,7 @@ export const Section = props => {
           return onShow(!show)
         }}
       /> 
-      <ul>
+      <ul className={styles.sectionList}>
         {section.systems.map(system => {
           return !(section.prefix === 'LK' && +system.show !== 1)
           ? <System key={system.system_prefix} system={system}/>

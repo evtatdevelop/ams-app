@@ -1,0 +1,43 @@
+.selectInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  .selectList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+
+    // outline:  1px solid red;
+
+    .itemLi {
+      width: 100%;
+
+      input[type=radio] {
+        // position: absolute;
+        // width: 1px;
+        // height: 1px;
+        // margin: -1px;
+        // border: 0;
+        // padding: 0;
+        // clip: rect(0 0 0 0);
+        // overflow: hidden;
+  
+        &:checked, &:focus {
+          &+label {
+            color: red; 
+          }
+        }
+      }
+
+      outline: 1px solid green;
+    }
+  }
+}

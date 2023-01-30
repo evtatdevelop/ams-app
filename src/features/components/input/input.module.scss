@@ -7,7 +7,10 @@
   .htmInput {
     border: 1px solid grey;
     width: 100%;
-    padding: 1vmax 3.5vmax 1vmax 1vmax;
+    padding: .8vmax 3.5vmax .8vmax 1vmax;
+    font: inherit;
+    letter-spacing: .6px;
+    font-size: inherit;
     
     &:focus {
       outline: 1px solid lightblue;
@@ -27,7 +30,14 @@
     transition: color .3s;
     font-size: 2vmax;
     font-weight: 100;
+    opacity: 0;
+    transition: opacity .3s;
 
+    &.showClnBtn {
+      opacity: 1;
+    }
+
+    &:focus,
     &:hover {
       color: red;
     } 
