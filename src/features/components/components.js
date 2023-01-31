@@ -7,6 +7,8 @@ import SelectInput from "./selectInput";
 
 export const Components = () => {
 
+  const onWork = val => console.log(`${val}`)
+
   return (
     <section className={styles.components}>
       <header className={styles.header}>
@@ -16,14 +18,15 @@ export const Components = () => {
 
       <main className={styles.componentList}>
         <Input 
-          inputHandler = { val => console.log(`Input: ${val}`) }
+          inputHandler = { val => onWork(val) }
           placeholder = 'Test Input'
           val = ''
         />
         <SelectInput 
-          inputHandler = { val => console.log(`SelectInput: ${val}`) }
+          selectHandler = { val => onWork(val) }
           placeholder = 'Test SelectInput'
-          selectList = {[{'id':1, 'name': 'one'}, {'id':2, 'name': 'two'}, {'id':3, 'name': 'three'}, ]}
+          selectList = {[{'id':1, 'name': 'one'}, {'id':2, 'name': 'two'}, {'id':3, 'name': 'three'}, {'id':4, 'name': 'four'}, {'id':5, 'name': 'five'}, {'id':6, 'name': 'six'}, {'id':7, 'name': 'seven'}, {'id':8, 'name': 'eight'}, ]}
+          val = ''
         />
 
       </main>

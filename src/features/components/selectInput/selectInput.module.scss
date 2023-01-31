@@ -5,6 +5,53 @@
   position: relative;
   width: 100%;
 
+  .input {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  
+    .htmInput {
+      border: 1px solid lightblue;
+      width: 100%;
+      padding: .8vmax 3.5vmax .8vmax 1vmax;
+      font: inherit;
+      letter-spacing: .6px;
+      font-size: inherit;
+      outline: 1px solid gray;
+      
+      &:focus {
+        outline: 1px solid lightblue;
+      }
+    }
+  
+    .clearBtn {
+      position: absolute;
+      right: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      width: 3.1vmax;
+      height: 3.7vmax;
+      color: gray;
+      transition: color .3s;
+      font-size: 2vmax;
+      font-weight: 100;
+      opacity: 0;
+      transition: opacity .3s;
+  
+      &.showClnBtn {
+        opacity: 1;
+      }
+  
+      &:focus,
+      &:hover {
+        color: red;
+      } 
+    }
+  }
+
   .selectList {
     display: flex;
     flex-direction: column;
@@ -13,31 +60,57 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    outline:  1px solid rgb(152, 226, 251);
+    transition: opacity .3s, max-height .5s;
+   
+    &.hideSelectList {
+      max-height: 0px;
+      overflow: hidden;
+      opacity: 0;
+    }
 
-
-    // outline:  1px solid red;
+    &.showSelectList {
+      max-height: 200px;
+      overflow: auto;
+      opacity: 1;
+    }
 
     .itemLi {
       width: 100%;
+      margin-top: 1px;
+
+      label {
+        display: block;
+        width: 100%;
+        height: 100%;  
+        background-color: rgb(205, 232, 242);
+        padding: .8vmax 1vmax .8vmax 1vmax;
+        transition: background-color .3s;
+      }
 
       input[type=radio] {
-        // position: absolute;
-        // width: 1px;
-        // height: 1px;
-        // margin: -1px;
-        // border: 0;
-        // padding: 0;
-        // clip: rect(0 0 0 0);
-        // overflow: hidden;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
   
         &:checked, &:focus {
           &+label {
-            color: red; 
+            color: red;
+          }
+        }
+
+        &:hover {
+          &+label {
+            background-color: rgb(152, 226, 251);
           }
         }
       }
-
-      outline: 1px solid green;
+    
     }
   }
 }

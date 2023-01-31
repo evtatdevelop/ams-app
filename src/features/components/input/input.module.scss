@@ -5,12 +5,13 @@
   width: 100%;
 
   .htmInput {
-    border: 1px solid grey;
+    border: 1px solid lightblue;
     width: 100%;
     padding: .8vmax 3.5vmax .8vmax 1vmax;
     font: inherit;
     letter-spacing: .6px;
     font-size: inherit;
+    outline: 1px solid gray;
     
     &:focus {
       outline: 1px solid lightblue;
