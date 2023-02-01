@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import styles from './selectInput.module.scss';
+import styles from './select.module.scss';
 
-export const SelectInput = props => {
+export const Select = props => {
   const {selectHandler, placeholder, selectList, val, name} = props
   const [value, setValue] = useState(val ? val : "")
   const [show, setShow] = useState(false)
-  const [timerId, setTimerId] = useState(null)
-
-  const onInput = val => {
-    setValue(val);
-    clearTimeout(timerId);
-    const timer = setTimeout(() => console.log(val), 500);
-    setTimerId(timer);
-  }
-
   const onChange = item => {
     setValue(item.name);
     selectHandler(item.id)
@@ -25,12 +16,12 @@ export const SelectInput = props => {
   const styleSelectList = show ? `${styles.selectList} ${styles.showSelectList}` : `${styles.selectList} ${styles.hideSelectList}`
 
   return (
-    <div className={styles.selectInput}>
+    <div className={styles.select}>
       <div className={styles.input}>
         <input type="text" className={styles.htmInput}
           value={value}
           placeholder = {placeholder}
-          onInput={e => onInput(e.target.value)}
+          readOnly={true}
           onClick={()=>setShow(true)}
           onFocus={()=>setShow(true)}
           onBlur={()=>onBlur()}

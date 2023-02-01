@@ -3,6 +3,7 @@ import styles from './components.module.scss';
 import Navigation from "../navigation";
 
 import Input from "./input";
+import Select from "./select";
 import SelectInput from "./selectInput";
 
 export const Components = () => {
@@ -19,14 +20,24 @@ export const Components = () => {
       <main className={styles.componentList}>
         <Input 
           inputHandler = { val => onWork(val) }
-          placeholder = 'Test Input'
+          placeholder = 'Input'
           val = ''
         />
-        <SelectInput 
+
+        <Select
           selectHandler = { val => onWork(val) }
-          placeholder = 'Test SelectInput'
+          placeholder = 'Select'
           selectList = {[{'id':1, 'name': 'one'}, {'id':2, 'name': 'two'}, {'id':3, 'name': 'three'}, {'id':4, 'name': 'four'}, {'id':5, 'name': 'five'}, {'id':6, 'name': 'six'}, {'id':7, 'name': 'seven'}, {'id':8, 'name': 'eight'}, ]}
           val = ''
+          name='TestSelect'
+        />
+
+        <SelectInput
+          selectHandler = { val => onWork(val) }
+          placeholder = 'SelectInput'
+          selectList = {[{'id':1, 'name': 'one'}, {'id':2, 'name': 'two'}, {'id':3, 'name': 'three'}, {'id':4, 'name': 'four'}, {'id':5, 'name': 'five'}, {'id':6, 'name': 'six'}, {'id':7, 'name': 'seven'}, {'id':8, 'name': 'eight'}, ]}
+          val = ''
+          name='TestSelectInput'
         />
 
       </main>
