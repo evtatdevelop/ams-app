@@ -20,6 +20,7 @@
       letter-spacing: .6px;
       font-size: inherit;
       outline: 1px solid gray;
+      border-radius: 3px;
       
       &:focus {
         outline: 1px solid lightblue;
@@ -41,6 +42,7 @@
       font-weight: 100;
       opacity: 0;
       transition: opacity .3s;
+      border-radius: 3px;
 
       &.showClnBtn {
         opacity: 1;
@@ -63,8 +65,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-top: 39px;
-    outline:  1px solid rgb(152, 226, 251);
+    margin-top: 40px;
+    // outline:  1px solid rgb(152, 226, 251);
+    outline:  1px solid white;
     transition: opacity .3s, max-height .5s;
     background-color: white;
    
@@ -91,6 +94,7 @@
         background-color: rgb(205, 232, 242);
         padding: .8vmax 1vmax .8vmax 1vmax;
         transition: background-color .3s;
+        border-radius: 3px;
       }
 
       input[type=radio] {
