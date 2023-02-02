@@ -11,7 +11,6 @@ export const SelectInput = props => {
     
   const onSearchUsers  = (string) => {
     searchUsers({'string': string, 'api_key': 'TatarenkoEG'}).then(value => {
-      console.log(value);
       setSelectList(value)
       setShow(true)
     }) 
@@ -25,13 +24,16 @@ export const SelectInput = props => {
   }
 
   const onChange = item => {
-    setValue(`${item.last_name ? item.last_name : null} ${item.first_name ? item.first_name : null} ${item.middle_name ? item.middle_name : null}`);
+    setValue(
+      item.middle_name
+      ? `${item.last_name ? item.last_name : ''} ${item.first_name ? item.first_name : ''} ${item.middle_name ? item.middle_name : ''}`
+      : `${item.first_name ? item.first_name : ''} ${item.last_name ? item.last_name : ''}`
+    );
     selectHandler(item.id)
     setShow(false)
   }
 
   const onFocus = e => {
-    console.log(e.target.value);
     onSearchUsers(e.target.value)
   }
 
@@ -68,9 +70,11 @@ export const SelectInput = props => {
                 id={`${item.id}${name}`} 
                 name={name}
                 onClick={()=>onChange(item)}
-              /><label htmlFor={`${item.id}${name}`}>{`
-                ${item.last_name ? item.last_name : null} ${item.first_name ? item.first_name : null} ${item.middle_name ? item.middle_name : null} (${item.email ? item.email : null})
-              `}</label>
+              /><label htmlFor={`${item.id}${name}`}>{
+                item.middle_name 
+                ? `${item.last_name ? item.last_name : ''} ${item.first_name ? item.first_name : ''} ${item.middle_name ? item.middle_name : ''} ${item.email ? `(${item.email})` : ''}`
+                : `${item.first_name ? item.first_name : ''} ${item.last_name ? item.last_name : ''} ${item.email ? `(${item.email})` : ''}`
+              }</label>
             </li>
           )
           : null  
