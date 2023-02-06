@@ -5,6 +5,7 @@ import Navigation from "../navigation";
 import Input from "./input";
 import Select from "./select";
 import SelectInput from "./selectInput";
+import Calendar from "./calendar";
 
 export const Components = () => {
 
@@ -38,6 +39,8 @@ export const Components = () => {
           val = ''
           name='TestSelectInput'
         />
+
+        <Calendar/>
 
       </main>
 

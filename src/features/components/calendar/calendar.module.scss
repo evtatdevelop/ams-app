@@ -1,0 +1,21 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  
+  .date {
+    width: 100%;
+  }
+  .picker {
+    display: flex;
+    flex-direction: column;
+
+    .navigation {
+      display: flex;
+    }
+    .dates {
+      display: grid;
+    }
+  }
+
+  outline: 1px solid grey;
+}
