@@ -1,0 +1,43 @@
+.picker {
+  display: flex;
+  flex-direction: column;
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dayNames {
+    display: grid;
+    place-items: center;
+    gap: .7vmin;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+
+    .weekDayName {
+
+      &.weekend {
+        color: red;
+      }
+    }
+
+  }
+
+  .dates {
+    display: grid;
+    place-items: center;
+    gap: .7vmin;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+
+    .dateCell {
+
+      &.today {
+        outline: 1px solid blue;
+      }
+      &.weekend {
+        color: red;
+      }
+    }
+  }
+}

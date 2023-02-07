@@ -42,9 +42,9 @@ export const Components = () => {
 
         <Calendar
           dateHandler = { val => onWork(val) }
-          placeholder = 'DateInput'
           val = ''
           name='TestDateInput'
+          lang='en'
         />
 
       </main>
