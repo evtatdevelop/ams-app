@@ -40,7 +40,12 @@ export const Components = () => {
           name='TestSelectInput'
         />
 
-        <Calendar/>
+        <Calendar
+          dateHandler = { val => onWork(val) }
+          placeholder = 'DateInput'
+          val = ''
+          name='TestDateInput'
+        />
 
       </main>
 
