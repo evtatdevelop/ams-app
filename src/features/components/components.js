@@ -40,12 +40,21 @@ export const Components = () => {
           name='TestSelectInput'
         />
 
-        <Calendar
-          dateHandler = { val => onWork(val) }
-          val = ''
-          name='TestDateInput'
-          lang='en'
-        />
+        <div className={styles.calendarsBox}>
+           <Calendar
+              dateHandler = { val => onWork(val) }
+              val = ''
+              name='TestDateInput'
+              lang='ru'
+            />
+           <Calendar
+              dateHandler = { val => onWork(val) }
+              val = ''
+              name='TestDateInput'
+              lang='en'
+            />
+        </div>
+
 
       </main>
 

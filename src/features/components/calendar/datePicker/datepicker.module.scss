@@ -1,21 +1,51 @@
 .picker {
   display: flex;
   flex-direction: column;
+  max-width: 310px;
+  outline: 1px solid gray;
+  border-radius: 3px;
+  top: 44px;
+  position: absolute;
 
   .navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 2px;
+    width: 100%;
+
+    &>div {
+      flex-shrink: 0;
+
+      button {
+        background-color: transparent;
+        font: inherit;
+
+        &.rest {
+          width: 90px;
+        }
+      }      
+    }
+
+
+
+    // outline: 1px solid green;
   }
 
   .dayNames {
+    width: 100%;
     display: grid;
     place-items: center;
-    gap: .7vmin;
+    gap: 2px;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
+    padding: 2px;
+    color: #424242;
+
+    // outline: 1px solid red;
 
     .weekDayName {
-
+      font-weight: 700;
+      font-size: smaller;
       &.weekend {
         color: red;
       }
@@ -24,19 +54,36 @@
   }
 
   .dates {
+    width: 100%;
     display: grid;
     place-items: center;
-    gap: .7vmin;
+    gap: 2px;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
+    padding: 2px;
+
+    // outline: 1px solid blue;
 
     .dateCell {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border-radius: 3px;
+      border: 1px solid rgba(128, 128, 128, 0.19);
+      transition: border .3s, font-size .1s;
 
       &.today {
         outline: 1px solid blue;
       }
       &.weekend {
         color: red;
+      }
+
+      &:hover {
+        border: 1px solid rgb(128, 128, 128);
       }
     }
   }

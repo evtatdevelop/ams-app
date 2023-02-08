@@ -21,5 +21,13 @@
     gap: 1.7vw;
     padding: 1vh 3vw;
     grid-template-rows: auto;
+
+    .calendarsBox {
+      display: flex;
+      justify-content: space-between;
+      &>div:first-child {
+        margin-right: 3vmax;
+      }
+    }
   }
 }

@@ -41,12 +41,16 @@ export const DatePicker = props => {
   return (
     <div className={styles.picker}>
       <nav className={styles.navigation}>
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerMonth('prev')}>prev</button>
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerMonth('curr')}>{monthDay.toLocaleString(lang, { month: 'long' })}</button>         
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerMonth('next')}>next</button>
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerYear('prev')}>prev</button>
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerYear('curr')}>{monthDay.getFullYear()}</button>
-        <button type="button" className={styles.pickerNavBtn} onClick={() => setPickerYear('next')}>next</button>
+        <div>
+          <button type="button" onClick={() => setPickerMonth('prev')}>&lt;</button>
+          <button type="button" className={styles.rest} onClick={() => setPickerMonth('curr')}>{monthDay.toLocaleString(lang, { month: 'long' })}</button>         
+          <button type="button" onClick={() => setPickerMonth('next')}>&gt;</button>          
+        </div>
+        <div>
+          <button type="button" onClick={() => setPickerYear('prev')}>&lt;</button>
+          <button type="button" onClick={() => setPickerYear('curr')}>{monthDay.getFullYear()}</button>
+          <button type="button" onClick={() => setPickerYear('next')}>&gt;</button>         
+        </div>
       </nav>
 
       <div className={styles.dayNames}>
