@@ -1,15 +1,19 @@
 /* eslint-disable no-useless-escape */
 import React, {useState, useRef } from "react";
-import styles from './calendar.module.scss';
+import styles from './inputDate.module.scss';
 import DatePicker from "./datePicker";
 
-export const Calendar = props => {
+export const InputDate = props => {
   const ref = useRef(null)
   const {dateHandler, lang} = props
   
   const [value, setValue] = useState("")
   const [jsDate, setJsDate] = useState(null)
   const [showPicker, setShowPicker] = useState(false)
+
+  const onShowPicker = () => {
+    setShowPicker(true)
+  }
 
   const onSetDate = date => {
     if ( !date ) { setValue(''); setJsDate(null); return }
@@ -42,12 +46,14 @@ export const Calendar = props => {
 
   const clearInput = () => {
     onSetDate(null)
-    ref.current.focus();
+    setShowPicker(false)
+    // ref.current.focus();
   }
 
   const localMask = lang === 'ru' ? 'дд.мм.гггг' : 'dd-mm-yyyy'
-  const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
+  const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
+  const stylePickerCloser = jsDate ? `${styles.pickerCloser} ${styles.showPickerCloser}` : `${styles.pickerCloser}  ${styles.hidePickerCloser}`
 
   return (
     <div className={styles.calendar}>
@@ -58,8 +64,7 @@ export const Calendar = props => {
           placeholder = {localMask}
           ref={ref}
           onBlur={() => onBlur()}
-          onFocus={()=>setShowPicker(true)}
-          // readOnly={true}
+          onFocus={()=>onShowPicker()}
         />
         {<button type="button" className={styleClnBtn}
             onClick={() => clearInput()}
@@ -73,11 +78,15 @@ export const Calendar = props => {
           lang={lang}
           value={jsDate}
           setValue={onSetDate}
+          closePicker={()=>setShowPicker(false)}
         />
         <button type="button" 
-          className={styles.pickerCloser}
-          onClick={()=>setShowPicker(false)}
-        >&times;</button>     
+          className={stylePickerCloser}
+          onClick={()=>{
+            setShowPicker(false)
+            onBlur()
+          }}
+        >&times;</button>
       </div>  
 
 

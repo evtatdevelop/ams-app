@@ -5,7 +5,7 @@ import Navigation from "../navigation";
 import Input from "./input";
 import Select from "./select";
 import SelectInput from "./selectInput";
-import Calendar from "./calendar";
+import InputDate from "./inputDate";
 
 export const Components = () => {
 
@@ -41,17 +41,16 @@ export const Components = () => {
         />
 
         <div className={styles.calendarsBox}>
-           <Calendar
+           <InputDate
               dateHandler = { val => onWork(val) }
               lang='ru'
             />
-           <Calendar
+           <InputDate
               dateHandler = { val => onWork(val) }
               lang='en'
             />
         </div>
-
-
+        
       </main>
 
     </section>
