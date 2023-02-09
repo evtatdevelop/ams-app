@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 
 export const DatePicker = props => {
-  const { lang, value } = props
+  const { lang, value, setValue } = props
 
   const [monthDay, setmonthDay] = useState(new Date(Date.now()))
   useEffect(()=> setmonthDay(value ? value : new Date(Date.now())), [value])
@@ -80,7 +80,10 @@ export const DatePicker = props => {
             ? `${styleDateCell} ${styles.weekend}`
             : `${styleDateCell}`
 
-          return <div key={d} className={styleDateCell}>{`${d}`}</div>
+          return <div key={d} 
+                    className={styleDateCell}
+                    onClick={()=>setValue(day)}
+                  >{`${d}`}</div>
         })}
       </main>
     </div>
