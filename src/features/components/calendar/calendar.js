@@ -9,6 +9,7 @@ export const Calendar = props => {
   
   const [value, setValue] = useState("")
   const [jsDate, setJsDate] = useState(null)
+  const [showPicker, setShowPicker] = useState(false)
 
   const onSetDate = date => {
     if ( !date ) { setValue(''); setJsDate(null); return }
@@ -16,7 +17,8 @@ export const Calendar = props => {
     const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
     const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
     setValue(lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`)
-    dateHandler(date) 
+    dateHandler(date)
+    // setShowPicker(false)
   }
 
   const onInput = val => {
@@ -45,6 +47,7 @@ export const Calendar = props => {
 
   const localMask = lang === 'ru' ? 'дд.мм.гггг' : 'dd-mm-yyyy'
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
+  const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
 
   return (
     <div className={styles.calendar}>
@@ -55,6 +58,7 @@ export const Calendar = props => {
           placeholder = {localMask}
           ref={ref}
           onBlur={() => onBlur()}
+          onFocus={()=>setShowPicker(true)}
           // readOnly={true}
         />
         {<button type="button" className={styleClnBtn}
@@ -64,11 +68,18 @@ export const Calendar = props => {
         }
       </div>
 
-      <DatePicker
-        lang={lang}
-        value={jsDate}
-        setValue={onSetDate}
-      />
+      <div className={stylePickerWrapper}>
+        <DatePicker
+          lang={lang}
+          value={jsDate}
+          setValue={onSetDate}
+        />
+        <button type="button" 
+          className={styles.pickerCloser}
+          onClick={()=>setShowPicker(false)}
+        >&times;</button>     
+      </div>  
+
 
     </div>
   )

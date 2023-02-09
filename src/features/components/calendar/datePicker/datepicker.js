@@ -79,6 +79,10 @@ export const DatePicker = props => {
             styleDateCell = day.getDay() === 0 || day.getDay() === 6
             ? `${styleDateCell} ${styles.weekend}`
             : `${styleDateCell}`
+          
+            styleDateCell = value && day.getTime() === value.setHours(0, 0, 0, 0)
+            ? `${styleDateCell} ${styles.selected}`
+            : `${styleDateCell}`
 
           return <div key={d} 
                     className={styleDateCell}
