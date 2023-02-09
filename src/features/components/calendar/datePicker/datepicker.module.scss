@@ -19,16 +19,23 @@
       button {
         background-color: transparent;
         font: inherit;
+        color:#424242;
+        outline: 1px solid white;
+        transition: outline .3s;
+
+        .faCaret {
+          color:rgb(128, 128, 128);
+        }  
 
         &.rest {
+          padding: 0;
           width: 90px;
+        }
+        &:hover:has(.faCaret) {
+          outline: 1px solid rgb(128, 128, 128);
         }
       }      
     }
-
-
-
-    // outline: 1px solid green;
   }
 
   .dayNames {
@@ -40,8 +47,6 @@
     grid-template-rows: auto;
     padding: 2px;
     color: #424242;
-
-    // outline: 1px solid red;
 
     .weekDayName {
       font-weight: 700;
@@ -61,8 +66,6 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
     padding: 2px;
-
-    // outline: 1px solid blue;
 
     .dateCell {
       width: 40px;
