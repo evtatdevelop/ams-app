@@ -2,6 +2,8 @@
 import React, {useState, useRef } from "react";
 import styles from './inputDate.module.scss';
 import DatePicker from "./datePicker";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 
 export const InputDate = props => {
   const ref = useRef(null)
@@ -26,7 +28,7 @@ export const InputDate = props => {
   }
 
   const onInput = val => {
-    let dateVal = val.replace(/[^0-9\.\/-]/ig, "")
+    let dateVal = val.replace(/[^0-9\.\/-: ]/ig, "")
     dateVal = dateVal.replace(/\.{2,}/ig, ".")
     dateVal = dateVal.replace(/\/{2,}/ig, "/")
     dateVal = dateVal.replace(/-{2,}/ig, "-")
@@ -53,7 +55,9 @@ export const InputDate = props => {
   const localMask = lang === 'ru' ? 'дд.мм.гггг' : 'dd-mm-yyyy'
   const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
-  const stylePickerCloser = jsDate ? `${styles.pickerCloser} ${styles.showPickerCloser}` : `${styles.pickerCloser}  ${styles.hidePickerCloser}`
+  // const stylePickerCloser = jsDate ? `${styles.pickerCloser} ${styles.showPickerCloser}` : `${styles.pickerCloser}  ${styles.hidePickerCloser}`
+  const stylePickerCloser = `${styles.pickerCloser}`
+  const styleIconClock = `${styles.iconClock}`
 
   return (
     <div className={styles.calendar}>
@@ -80,13 +84,22 @@ export const InputDate = props => {
           setValue={onSetDate}
           closePicker={()=>setShowPicker(false)}
         />
-        <button type="button" 
-          className={stylePickerCloser}
-          onClick={()=>{
-            setShowPicker(false)
-            onBlur()
-          }}
-        >&times;</button>
+
+        <div className={styles.pickerControl}>
+          <button type="button" 
+            className={stylePickerCloser}
+            onClick={()=>{
+              setShowPicker(false)
+              onBlur()
+            }}
+          >&times;</button>
+
+          <button type="button" 
+            className={styleIconClock}
+            onClick={()=>{}}
+          ><FontAwesomeIcon icon={ faClock } className={styles.faCaret} /></button>          
+        </div>
+
       </div>  
 
 

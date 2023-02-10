@@ -9,6 +9,8 @@ export const DatePicker = props => {
   const [monthDay, setmonthDay] = useState(new Date(Date.now()))
   useEffect(()=> setmonthDay(value ? value : new Date(Date.now())), [value])
 
+  
+
   const year = monthDay.getFullYear(),
         month = monthDay.getMonth(),
         date = new Date(year, month, 1),
@@ -39,6 +41,12 @@ export const DatePicker = props => {
     }
     setmonthDay(new Date(setYear, month , 1))
   }
+
+  // const [hoursTop, setHoursTop] = useState(-100)
+  // const hourScroll = e => {
+  //   console.log(e.deltaY);
+  //   setHoursTop(hoursTop - 20)
+  // }
 
   return (
     <div className={styles.picker}>
@@ -93,6 +101,43 @@ export const DatePicker = props => {
                   >{`${d}`}</div>
         })}
       </main>
+
+      {/* <div className={styles.timePicker}>
+        <button type="button">up</button>
+        <div className={styles.times}
+          onWheel={e=>hourScroll(e)}
+          onMouseOver={()=>document.body.style.overflow='hidden'}
+          onMouseLeave={()=>document.body.style.overflow='auto'}
+        >
+          <div className={styles.hours} style={{top: hoursTop}}>
+            <label>0</label>
+            <label>1</label>
+            <label>2</label>
+            <label>3</label>
+            <label>4</label>
+            <label>5</label>
+            <label>6</label>
+            <label>7</label>
+            <label>8</label>
+            <label>9</label>
+            <label>10</label>
+            <label>11</label>
+            <label>12</label>
+            <label>13</label>
+            <label>14</label>
+            <label>15</label>
+            <label>16</label>
+            <label>17</label>
+            <label>18</label>
+            <label>19</label>
+            <label>20</label>
+            <label>21</label>
+            <label>22</label>
+            <label>23</label>
+          </div>
+        </div>
+        <button type="button">down</button>
+      </div> */}
     </div>
   )
 }
