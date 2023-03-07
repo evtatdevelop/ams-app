@@ -6,6 +6,7 @@ import Input from "./input";
 import Select from "./select";
 import SelectInput from "./selectInput";
 import InputDate from "./inputDate";
+import DateInterval from "./dateInterval";
 
 export const Components = () => {
 
@@ -50,6 +51,11 @@ export const Components = () => {
               lang='en'
             />
         </div>
+
+        <DateInterval 
+          dateHandler = { val => onWork(val) }
+          lang='ru'
+        />
         
       </main>
 

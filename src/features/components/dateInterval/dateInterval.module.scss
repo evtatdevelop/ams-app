@@ -1,4 +1,4 @@
-.calendar {
+.dateInterval {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -55,6 +55,9 @@
   }
 
   .datePickerWrapper {
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
     top: 44px;
     position: absolute;
     z-index: 99;
@@ -82,10 +85,6 @@
       align-items: center;
 
       .pickerCloser {
-        // position: absolute;
-        // right: -20px;
-        // top: 00px;
-        // z-index: 100;
         border: none;
         padding: 0;
         margin: 0;
@@ -106,25 +105,7 @@
           opacity: 1;
         }
       }
-      
-      .iconClock {
-        // position: absolute;
-        // right: -20px;
-        // top: 30px;
-        // z-index: 100;
-        border: none;
-        padding: 0;
-        margin: 0;
-        background-color: white;
-        color: gray;
-        font-size: 14px;
-        font-weight: 100;
-        transition: opacity 1s;
-        &:focus,
-        &:hover {
-          color: #424242;
-        }
-      }
+
     }
 
 
