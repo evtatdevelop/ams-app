@@ -8,39 +8,81 @@ export const DateInterval = props => {
   const {dateHandler, lang} = props
   
   const [value, setValue] = useState("")
-  const [jsDate, setJsDate] = useState(null)
+  const [jsDateFrom, setJsDateFrom] = useState(null)
+  const [jsDateTill, setJsDateTill] = useState(null)
   const [showPicker, setShowPicker] = useState(false)
 
-  const onShowPicker = () => {
-    setShowPicker(true)
-  }
+  const onShowPicker = () => setShowPicker(true)
 
   const onSetDate = date => {
-    if ( !date ) { setValue(''); setJsDate(null); return }
-    setJsDate(date)
+    if ( !date ) { 
+      setValue(''); 
+      setJsDateFrom(null); 
+      setJsDateTill(null); 
+      return 
+  }
     const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
     const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
-    setValue(lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`)
+    const strDate = lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
+
+
+    let splitVal = value.split(' - ')
+    console.log( splitVal );
+
+    if ( !splitVal[0] ) {
+      setJsDateFrom(date)
+      setValue(`${strDate} - `)
+    } else { 
+      setJsDateTill(date)
+      splitVal[1] = strDate 
+      setValue(splitVal.join(' - '))  
+    }
+
     dateHandler(date)
   }
+  // const onSetDateTill = date => {
+  //   if ( !date ) { setValue(''); setJsDateTill(null); return }
+  //   setJsDateTill(date)
+  //   const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
+  //   const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
+  //   const strDate = lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
+    
+  //   let splitVal = value.split(' - ')
+  //   console.log(splitVal);
+
+  //   if ( !splitVal[1] ) {
+  //     const today = new Date();
+  //     const dd = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`
+  //     const mm = today.getMonth()+1 > 9 ? today.getMonth()+1 : `0${today.getMonth()+1}`
+  //     const strToday = lang === 'ru' ? `${dd}.${mm}.${today.getFullYear()}` : `${dd}-${mm}-${today.getFullYear()}`
+  //     console.log(strToday);
+  //     splitVal[0] = strToday 
+  //   }
+  //   splitVal[1] = strDate 
+  //   setValue(splitVal.join(' - '))   
+    
+  //   dateHandler(date)
+  // }
+
 
   const onInput = val => {
-    let dateVal = val.replace(/[^0-9\.\/-: ]/ig, "")
-    dateVal = dateVal.replace(/\.{2,}/ig, ".")
-    dateVal = dateVal.replace(/\/{2,}/ig, "/")
-    dateVal = dateVal.replace(/-{2,}/ig, "-")
-    setValue(dateVal);
+    // let dateVal = val.replace(/[^0-9\.\/-: ]/ig, "")
+    // dateVal = dateVal.replace(/\.{2,}/ig, ".")
+    // dateVal = dateVal.replace(/\/{2,}/ig, "/")
+    // dateVal = dateVal.replace(/-{2,}/ig, "-")
+    // setValue(dateVal);
+    setValue(val);
   }
 
   const onBlur = () => {
-    let val;
-    if ( /\./.test(value) ) val = value.split('.');
-    if ( /-/.test(value) ) val = value.split('-');
-    if ( /\//.test(value) ) val = value.split('/');
-    if ( !val || val.length !== 3) { onSetDate(null); return }
-    const inputDate = new Date(`${val[1]}-${val[0]}-${val[2]}`);
-    if ( !inputDate.getTime() ) { onSetDate(null); return }
-    onSetDate(inputDate)
+    // let val;
+    // if ( /\./.test(value) ) val = value.split('.');
+    // if ( /-/.test(value) ) val = value.split('-');
+    // if ( /\//.test(value) ) val = value.split('/');
+    // if ( !val || val.length !== 3) { onSetDate(null); return }
+    // const inputDate = new Date(`${val[1]}-${val[0]}-${val[2]}`);
+    // if ( !inputDate.getTime() ) { onSetDate(null); return }
+    // onSetDate(inputDate)
   }
 
   const clearInput = () => {
@@ -74,13 +116,8 @@ export const DateInterval = props => {
       <div className={stylePickerWrapper}>
         <DatePicker
           lang={lang}
-          value={jsDate}
-          setValue={onSetDate}
-          closePicker={()=>setShowPicker(false)}
-        />
-        <DatePicker
-          lang={lang}
-          value={jsDate}
+          valueFrom={jsDateFrom}
+          valueTill={jsDateTill}
           setValue={onSetDate}
           closePicker={()=>setShowPicker(false)}
         />
