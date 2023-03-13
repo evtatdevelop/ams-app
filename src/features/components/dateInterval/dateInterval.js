@@ -20,70 +20,29 @@ export const DateInterval = props => {
       setJsDateFrom(null); 
       setJsDateTill(null); 
       return 
-  }
+    }
+
     const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
     const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
     const strDate = lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
-
-
-    let splitVal = value.split(' - ')
-    console.log( splitVal );
-
-    if ( !splitVal[0] ) {
+    const splitVal = value.split(' - ')
+    if ( !jsDateFrom 
+      || ( jsDateFrom && jsDateTill ) 
+      || ( jsDateFrom && date < jsDateFrom )
+    ) {
       setJsDateFrom(date)
+      setJsDateTill(null)
       setValue(`${strDate} - `)
     } else { 
       setJsDateTill(date)
       splitVal[1] = strDate 
-      setValue(splitVal.join(' - '))  
+      setValue(splitVal.join(' - ')) 
+      dateHandler([jsDateFrom, date])
     }
-
-    dateHandler(date)
-  }
-  // const onSetDateTill = date => {
-  //   if ( !date ) { setValue(''); setJsDateTill(null); return }
-  //   setJsDateTill(date)
-  //   const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
-  //   const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
-  //   const strDate = lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
-    
-  //   let splitVal = value.split(' - ')
-  //   console.log(splitVal);
-
-  //   if ( !splitVal[1] ) {
-  //     const today = new Date();
-  //     const dd = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`
-  //     const mm = today.getMonth()+1 > 9 ? today.getMonth()+1 : `0${today.getMonth()+1}`
-  //     const strToday = lang === 'ru' ? `${dd}.${mm}.${today.getFullYear()}` : `${dd}-${mm}-${today.getFullYear()}`
-  //     console.log(strToday);
-  //     splitVal[0] = strToday 
-  //   }
-  //   splitVal[1] = strDate 
-  //   setValue(splitVal.join(' - '))   
-    
-  //   dateHandler(date)
-  // }
-
-
-  const onInput = val => {
-    // let dateVal = val.replace(/[^0-9\.\/-: ]/ig, "")
-    // dateVal = dateVal.replace(/\.{2,}/ig, ".")
-    // dateVal = dateVal.replace(/\/{2,}/ig, "/")
-    // dateVal = dateVal.replace(/-{2,}/ig, "-")
-    // setValue(dateVal);
-    setValue(val);
   }
 
-  const onBlur = () => {
-    // let val;
-    // if ( /\./.test(value) ) val = value.split('.');
-    // if ( /-/.test(value) ) val = value.split('-');
-    // if ( /\//.test(value) ) val = value.split('/');
-    // if ( !val || val.length !== 3) { onSetDate(null); return }
-    // const inputDate = new Date(`${val[1]}-${val[0]}-${val[2]}`);
-    // if ( !inputDate.getTime() ) { onSetDate(null); return }
-    // onSetDate(inputDate)
-  }
+  const onInput = val => {}
+  const onBlur = () => {}
 
   const clearInput = () => {
     onSetDate(null)
@@ -105,6 +64,7 @@ export const DateInterval = props => {
           ref={ref}
           onBlur={() => onBlur()}
           onFocus={()=>onShowPicker()}
+          readOnly={true}
         />
         {<button type="button" className={styleClnBtn}
             onClick={() => clearInput()}

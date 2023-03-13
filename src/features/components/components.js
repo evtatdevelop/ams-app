@@ -10,7 +10,11 @@ import DateInterval from "./dateInterval";
 
 export const Components = () => {
 
-  const onWork = val => console.log(`${val}`)
+  const onWork = val => {
+    // if ( typeof(val) === 'object') 
+
+    console.log(`${val}`)
+  }
 
   return (
     <section className={styles.components}>
