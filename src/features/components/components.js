@@ -7,6 +7,7 @@ import Select from "./select";
 import SelectInput from "./selectInput";
 import InputDate from "./inputDate";
 import DateInterval from "./dateInterval";
+import WindowInput from "./windowInput";
 
 export const Components = () => {
 
@@ -59,6 +60,11 @@ export const Components = () => {
         <DateInterval 
           dateHandler = { val => onWork(val) }
           lang='ru'
+        />
+
+        <WindowInput 
+          inputHandler = { val => onWork(val) }
+          placeholder = 'WindowInput'
         />
         
       </main>
