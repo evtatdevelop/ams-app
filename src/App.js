@@ -9,6 +9,8 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { testMode } from './config';
 import { TestPage } from './testPage/testPage';
+import { Workplace } from './features/workplace/workplace';
+import { Resources } from './features/resources/resources';
 
 function App() {
   const userData = useSelector(user);
@@ -23,6 +25,8 @@ function App() {
       <Routes>
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
+        <Route path={`/workplace`} element={<Workplace/>}/>
+        <Route path={`/resources`} element={<Resources/>}/>
         {userData.login === 'TatarenkoEG' ? <Route path={`/components`} element={<Components/>}/> : null} 
         {userData.login === 'TatarenkoEG' ? <Route path={`/apiTests`} element={<TestPage/>}/> : null} 
       </Routes>

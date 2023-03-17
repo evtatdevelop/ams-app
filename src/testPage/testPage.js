@@ -3,6 +3,8 @@ import styles from './testPage.module.scss';
 import Navigation from "../features/navigation";
 import { getMainpageData } from "../features/mainpage/mainpageSliceAPI";
 import { getRemoteUser, getUserData, setUserLang, searchUsers } from "../features/user/userSliceAPI";
+import { getContractorsData } from "../features/workplace/workplaceSliceAPI";
+import { getServersData } from "../features/resources/resourcesSliceAPI";
 import { TestItem } from "./testItem/testItem";
 
 export const TestPage = () => {
@@ -39,6 +41,14 @@ export const TestPage = () => {
           request={searchUsers}
           // data={{'string': 'тат', 'api_key': 'TatarenkoEG'}}
           data={{'string': 'тат', 'author_id': 1833, 'api_key': 'TatarenkoEG'}}
+        />
+        <TestItem name='Contractors'
+          request={getContractorsData}
+          data={{'api_key': 'TatarenkoEG'}}
+        />
+        <TestItem name='Servers'
+          request={getServersData}
+          data={{'api_key': 'TatarenkoEG'}}
         />
 
       </main>

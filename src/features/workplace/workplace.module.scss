@@ -1,0 +1,16 @@
+.workplace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; 
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1vh 3vw;
+    background-color: #F04E25;
+    color: white;
+  }
+}
