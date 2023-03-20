@@ -1,21 +1,39 @@
 import React, {useState, useRef } from "react";
 import styles from './windowInput.module.scss';
+import { TestLoader } from "./testLoader";
+import { getContractorsData } from "../../workplace/workplaceSliceAPI";
+import { getServersData } from "../../resources/resourcesSliceAPI";
 
 export const WindowInput = props => {
   const ref = useRef(null)
-  const {inputHandler, placeholder} = props
+  const {inputHandler, placeholder, winContentFunc} = props
   const [value, setValue] = useState("")
   const [showWin, setShowWin] = useState(false)
+  const [loading, setloading] = useState(false)
+  const [winContent, setWinContent] = useState([])
 
   const clearInput = () => {
     setValue('');
     ref.current.focus();
   }
 
+  const onFocus = () => {
+    getWinContent()
+    setShowWin(true)
+    setloading(true)
+  }
+
   const winCloser = () => setShowWin(false)
 
+    const getWinContent  = () => {
+      winContentFunc({'api_key': 'TatarenkoEG'}).then(value => {
+      setWinContent(value)
+      setloading(false)
+    }) 
+  }
+
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
-  const styleSelectList = showWin ? `${styles.window} ${styles.showWindow}` : `${styles.window} ${styles.hideWindow}`
+  const styleWindow = showWin ? `${styles.window} ${styles.showWindow}` : `${styles.window} ${styles.hideWindow}`
 
   return (
     <div className={styles.windowInput}>
@@ -24,7 +42,7 @@ export const WindowInput = props => {
         placeholder = {placeholder}
         ref={ref}
         readOnly={true}
-        onFocus={() => setShowWin(true)}
+        onFocus={() => onFocus()}
       />
       {<button type="button" className={styleClnBtn}
           onClick={() => clearInput()}
@@ -32,17 +50,24 @@ export const WindowInput = props => {
           >&times;</button>
       }
 
-        <div className={styleSelectList}>
-            <header className={styles.windowHead}>
-              <h1 className={styles.windowName}>Name</h1>
-              <button type="button" className={styles.windowCloser}
-                onClick={() => winCloser()}
-              >&times;</button>
-            </header>
-            <main>
-
-            </main>
-          </div>
+      <div className={styleWindow}>
+        <header className={styles.windowHead}>
+          <h1 className={styles.windowName}>{placeholder}</h1>
+          <button type="button" className={styles.windowCloser}
+            onClick={() => winCloser()}
+          >&times;</button>
+        </header>
+        <main className={styles.winContent}>
+          { loading 
+            ? <TestLoader/> 
+            : winContent.map( item => {
+              return <div className={styles.winLine}>
+                { Object.entries(item).map( field => <div>{field[1]}</div> ) }
+              </div>
+            }) 
+          }
+        </main>
+      </div>
 
 
     </div>

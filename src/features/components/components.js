@@ -9,6 +9,9 @@ import InputDate from "./inputDate";
 import DateInterval from "./dateInterval";
 import WindowInput from "./windowInput";
 
+import { getContractorsData } from "../workplace/workplaceSliceAPI";
+import { getServersData } from "../resources/resourcesSliceAPI";
+
 export const Components = () => {
 
   const onWork = val => {
@@ -62,11 +65,19 @@ export const Components = () => {
           lang='ru'
         />
 
-        <WindowInput 
-          inputHandler = { val => onWork(val) }
-          placeholder = 'WindowInput'
-        />
-        
+        <div className={styles.calendarsBox}>
+          <WindowInput 
+            inputHandler = { val => onWork(val) }
+            placeholder = 'Contractors'
+            winContentFunc = {getContractorsData}
+          />
+          <WindowInput 
+            inputHandler = { val => onWork(val) }
+            placeholder = 'Servers'
+            winContentFunc = {getServersData}
+          />
+        </div>
+
       </main>
 
     </section>
