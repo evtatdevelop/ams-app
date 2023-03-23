@@ -34,7 +34,7 @@ export const WindowInput = props => {
 
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const styleWindow = showWin ? `${styles.window} ${styles.showWindow}` : `${styles.window} ${styles.hideWindow}`
-
+  
   return (
     <div className={styles.windowInput}>
       <input type="text" className={styles.htmInput}
@@ -60,9 +60,9 @@ export const WindowInput = props => {
         <main className={styles.winContent}>
           { loading 
             ? <TestLoader/> 
-            : winContent.map( item => {
-              return <div className={styles.winLine}>
-                { Object.entries(item).map( field => <div>{field[1]}</div> ) }
+            : winContent.map( (item, row) => {
+              return <div key={row} className={styles.winLine}>
+                { Object.entries(item).map( (field, col) => <div key={col}>{field[1]}</div> ) }
               </div>
             }) 
           }
