@@ -67,9 +67,9 @@
       border: 1px solid gray;
       border-radius: 3px;
 
-      min-width: 30vw;
-      min-height: 30vh;
-      max-width: 90vw;
+      // min-width: 30vw;
+      // min-height: 30vh;
+      max-width: 98vw;
       max-height: 90vh;
 
       .windowHead {
@@ -118,14 +118,8 @@
         flex-direction: column;
         // justify-content: center;
         align-items: center;
-        // overflow-y: auto;
-
         outline: 1px solid red;
 
-        .tableContent {
-          flex-grow: 1;
-          overflow-y: auto;
-        }
       }
     }
 

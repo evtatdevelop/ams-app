@@ -61,16 +61,7 @@ export const WindowInput = props => {
           <main className={styles.winMain}>
             { loading 
               ? <TestLoader/> 
-              : <><table>
-                    <thead><tr><th>1</th><th>2</th><th>3</th></tr></thead>
-                  </table>
-                  <div className={styles.tableContent}>
-                    <table>
-                      {winContent.map( (item, row) => <tr key={row} className={styles.winLine}> { Object.entries(item).map( (field, col) => <td key={col}>{field[1]}</td> ) } </tr> ) }
-                    </table>
-                  </div>
-
-              </>
+              : null
             }
           </main>
         </div>        
