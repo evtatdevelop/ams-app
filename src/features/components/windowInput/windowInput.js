@@ -33,8 +33,9 @@ export const WindowInput = props => {
   }
 
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
-  const styleWindow = showWin ? `${styles.window} ${styles.showWindow}` : `${styles.window} ${styles.hideWindow}`
-  
+  const stylesModalWrapper = showWin ? `${styles.modalWrapper} ${styles.showWindow}` : `${styles.modalWrapper} ${styles.hideWindow}`
+
+
   return (
     <div className={styles.windowInput}>
       <input type="text" className={styles.htmInput}
@@ -49,25 +50,32 @@ export const WindowInput = props => {
           aria-label="Clear"
           >&times;</button>
       }
+      <div className={stylesModalWrapper}>
+        <div className={styles.window}>
+          <header className={styles.windowHead}>
+            <h1 className={styles.windowName}>{placeholder}</h1>
+            <button type="button" className={styles.windowCloser}
+              onClick={() => winCloser()}
+            >&times;</button>
+          </header>
+          <main className={styles.winMain}>
+            { loading 
+              ? <TestLoader/> 
+              : <><table>
+                    <thead><tr><th>1</th><th>2</th><th>3</th></tr></thead>
+                  </table>
+                  <div className={styles.tableContent}>
+                    <table>
+                      {winContent.map( (item, row) => <tr key={row} className={styles.winLine}> { Object.entries(item).map( (field, col) => <td key={col}>{field[1]}</td> ) } </tr> ) }
+                    </table>
+                  </div>
 
-      <div className={styleWindow}>
-        <header className={styles.windowHead}>
-          <h1 className={styles.windowName}>{placeholder}</h1>
-          <button type="button" className={styles.windowCloser}
-            onClick={() => winCloser()}
-          >&times;</button>
-        </header>
-        <main className={styles.winContent}>
-          { loading 
-            ? <TestLoader/> 
-            : winContent.map( (item, row) => {
-              return <div key={row} className={styles.winLine}>
-                { Object.entries(item).map( (field, col) => <div key={col}>{field[1]}</div> ) }
-              </div>
-            }) 
-          }
-        </main>
+              </>
+            }
+          </main>
+        </div>        
       </div>
+
 
 
     </div>

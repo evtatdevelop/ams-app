@@ -46,23 +46,88 @@
     } 
   }
 
-  .window {
+  .modalWrapper {
     position: fixed;
     display: flex;
-    flex-direction: column;
-    width: 80%; 
-    height: 80vh;
+    justify-content: center;
+    align-items: center;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    margin: auto;
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 3px;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.223);
     opacity: 0;
     transition: opacity .3s;
-    z-index: 998;
+    z-index: 998;    
+  
+    .window {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border: 1px solid gray;
+      border-radius: 3px;
+
+      min-width: 30vw;
+      min-height: 30vh;
+      max-width: 90vw;
+      max-height: 90vh;
+
+      .windowHead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 12px;
+        border-bottom: 1px solid rgba(128, 128, 128, .3);
+        background-color: rgb(205, 232, 242);
+
+        .windowName {
+          font: inherit;
+          font-weight: 700;
+          letter-spacing: 1.1px;
+          color: #424242;
+        }
+
+        .windowCloser {
+          border: none;
+          padding: 0;
+          margin: 0;
+          background-color: transparent;
+          width: 38px;
+          height: 38px;
+          color: gray;
+          transition: color .3s;
+          font-size: 24px;
+          font-weight: 100;
+          border-radius: 3px;
+      
+          &.showClnBtn {
+            opacity: 1;
+          }
+      
+          &:focus,
+          &:hover {
+            color: red;
+          }       
+        }
+      }
+    
+      .winMain {
+        flex-grow: 1;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        // overflow-y: auto;
+
+        outline: 1px solid red;
+
+        .tableContent {
+          flex-grow: 1;
+          overflow-y: auto;
+        }
+      }
+    }
 
     &.showWindow {
       animation: open .3s ease-in-out forwards;
@@ -72,58 +137,9 @@
     &.hideWindow {
       animation: close .3s ease-in-out forwards;
       overflow: hidden;
-    }
-
-
-    
-    .windowHead {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 12px;
-      border-bottom: 1px solid rgba(128, 128, 128, .3);
-      background-color: rgb(205, 232, 242);
-
-      .windowName {
-        font: inherit;
-        font-weight: 700;
-        letter-spacing: 1.1px;
-        color: #424242;
-      }
-
-      .windowCloser {
-        border: none;
-        padding: 0;
-        margin: 0;
-        background-color: transparent;
-        width: 38px;
-        height: 38px;
-        color: gray;
-        transition: color .3s;
-        font-size: 24px;
-        font-weight: 100;
-        border-radius: 3px;
-    
-        &.showClnBtn {
-          opacity: 1;
-        }
-    
-        &:focus,
-        &:hover {
-          color: red;
-        }       
-      }
-    }
-    
-    .winContent {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      padding: 5px;
-
-
-    }
+    }  
   }
+
 
 }
 
@@ -138,8 +154,8 @@
   }  
   1% {
     opacity: 0;
-    width: 80%; 
-    height: 80vh;
+    width: auto; 
+    height: auto;
     margin: auto;
     border: 1px solid gray;
     clip: auto;
@@ -152,16 +168,16 @@
 @keyframes close {
   0% {
     opacity: .95;
-    width: 80%; 
-    height: 80vh;
+    width: auto; 
+    height: auto;
     margin: auto;
     border: 1px solid gray;
     clip: auto;
   }
   99% {
     opacity: 0;
-    width: 80%; 
-    height: 80vh;
+    width: auto; 
+    height: auto;
   }
   100% {  
     width: 1px; 
