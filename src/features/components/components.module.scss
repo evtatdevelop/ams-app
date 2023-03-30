@@ -31,3 +31,82 @@
     }
   }
 }
+
+.contractors {
+  width: 90vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: columns;
+
+  .list {
+    height: 80vh;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    div {
+      background-color: white;
+      transition: background-color .3s;
+      padding: 3px;
+      margin-bottom: 3px;
+      &:hover {
+        background-color: rgb(152, 226, 251);
+      }
+    }
+  }
+}
+
+.servers {
+  width: 90vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+
+  .columns {
+    display: flex;
+    font-weight: 700;
+    color: #424242;
+    width: 86vw;
+    margin-bottom: 8px;
+
+    div {
+      height: 7vh;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      padding: 5px;
+      outline: 1px solid green;   
+    }
+  }
+  .list {
+    height: 70vh;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    
+    .row {
+      display: flex;
+      width: 86vw;
+      background-color: white;
+      transition: background-color .3s;
+      &:hover {
+        background-color: rgb(152, 226, 251);
+      }
+      border-bottom: 1px solid grey;
+      padding: 3px;
+      div {
+        padding: px;
+        flex-shrink: 0;
+        margin-bottom: 4px;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

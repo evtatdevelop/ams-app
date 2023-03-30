@@ -66,11 +66,9 @@
       background-color: white;
       border: 1px solid gray;
       border-radius: 3px;
-
-      // min-width: 30vw;
-      // min-height: 30vh;
       max-width: 98vw;
       max-height: 90vh;
+
 
       .windowHead {
         display: flex;
@@ -113,12 +111,11 @@
     
       .winMain {
         flex-grow: 1;
-        padding: 10px;
+        // padding: 10px;
         display: flex;
-        flex-direction: column;
-        // justify-content: center;
+        // flex-direction: column;
         align-items: center;
-        outline: 1px solid red;
+        justify-content: center;
 
       }
     }
@@ -136,6 +133,70 @@
 
 
 }
+
+// .contractors {
+//   width: 90vw;
+//   height: 80vh;
+//   display: flex;
+//   flex-direction: columns;
+
+//   .list {
+//     height: 80vh;
+//     flex-grow: 1;
+//     overflow-y: auto;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 10px;
+//   }
+// }
+
+// .servers {
+//   width: 90vw;
+//   height: 80vh;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 1vw;
+
+//   .columns {
+//     display: flex;
+//     font-weight: 700;
+//     width: 88vw;
+//     margin-bottom: 8px;
+
+//     div {
+//       height: 7vh;
+//       display: flex;
+//       justify-content: center;
+//       align-content: center;
+//       flex-wrap: wrap;
+//       padding: 5px;
+//       outline: 1px solid green;   
+//     }
+//   }
+//   .list {
+//     height: 70vh;
+//     flex-grow: 1;
+//     overflow-y: auto;
+//     display: flex;
+//     flex-direction: column;
+    
+//     .row {
+//       display: flex;
+//       width: 88vw;
+//       // outline: 1px solid blue;
+
+//       div {
+//         padding: 3px;
+//         // outline: 1px solid blue;  
+//         flex-shrink: 0;
+//         margin-bottom: 4px;
+//         display: flex;
+//         align-content: center;
+//         flex-wrap: wrap;
+//       }
+//     }
+//   }
+// }
 
 @keyframes open {
   0% {
