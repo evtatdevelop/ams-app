@@ -88,27 +88,28 @@ export const Components = () => {
   )
 }
 
-  const contractorList = (value) => 
-    <div className={styles.contractors}>
-      <div className={styles.list}>
-        {value.data.map(item => <div>{`${item.name} (${item.inn})`}</div>)}
-      </div>
-    </div>
-  
 
-  const serverList = (value) => 
-    <div className={styles.servers}>
-      <div className={styles.columns}>
-        {value.columns.map((item, index) => <div key={index} style={{width: `${item.width}%`}}>{item.name}</div>)} 
-      </div>
-      <div className={styles.list}>
-        {value.data.map((item, index) => <div className={styles.row} key={index}>
-          <div style={{width: `${value.columns[0].width}%`}}>{`${item.server_name }`}</div>
-          <div style={{width: `${value.columns[1].width}%`}}>{`${item.place_name }`}</div>
-          <div style={{width: `${value.columns[2].width}%`}}>{`${item.server_type_name }`}</div>
-          <div style={{width: `${value.columns[3].width}%`}}>{`${item.group_name }`}</div>
-          <div style={{width: `${value.columns[4].width}%`}}>{`${item.app12_system_fio }`}</div>
-          <div style={{width: `${value.columns[5].width}%`}}>{`${item.app12_boss_fio }`}</div>
-          </div>)}
-      </div>
+const contractorList = (value) => 
+  <div className={styles.contractors}>
+    <div className={styles.list}>
+      {value.data ? value.data.map(item => <div key={item.id}>{`${item.name} (${item.inn})`}</div>) : null}
     </div>
+  </div>
+
+
+const serverList = (value) => 
+  <div className={styles.servers}>
+    <div className={styles.columns}>
+      {value.columns ? value.columns.map((item, index) => <div key={index} style={{width: `${item.width}%`}}>{item.name}</div>) : null} 
+    </div>
+    <div className={styles.list}>
+      {value.data ? value.data.map((item, index) => <div className={styles.row} key={index}>
+        <div style={{width: `${value.columns[0].width}%`}}>{`${item.server_name }`}</div>
+        <div style={{width: `${value.columns[1].width}%`}}>{`${item.place_name }`}</div>
+        <div style={{width: `${value.columns[2].width}%`}}>{`${item.server_type_name }`}</div>
+        <div style={{width: `${value.columns[3].width}%`}}>{`${item.group_name }`}</div>
+        <div style={{width: `${value.columns[4].width}%`}}>{`${item.app12_system_fio }`}</div>
+        <div style={{width: `${value.columns[5].width}%`}}>{`${item.app12_boss_fio }`}</div>
+      </div>) : null}
+    </div>
+  </div>

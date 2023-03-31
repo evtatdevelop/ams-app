@@ -1,4 +1,4 @@
-import React, {useState, useRef } from "react";
+import React, {useState, useEffect, useRef } from "react";
 import styles from './windowInput.module.scss';
 import { TestLoader } from "./testLoader";
 
@@ -8,32 +8,46 @@ export const WindowInput = props => {
   const {inputHandler, placeholder, winContentFunc, content} = props
   const [value, setValue] = useState("")
   const [showWin, setShowWin] = useState(false)
-  const [loading, setloading] = useState(false)
-  const [winContent, setWinContent] = useState(null)
+  const [loading, setloading] = useState(true)
+  const [winData, setWinData] = useState(null)
+  const [searchValue, setsSarchValue] = useState('')
+  // const [filtredData, setFiltredData] = useState([])
+
+
+  const searhing = () => {
+    let filtrded = [];
+    winData.data.map(item => item.name === '1' ? filtrded.push(item) : false)
+    return {'columns': winData.columns , 'data': filtrded}
+  }
+
+  const getWinContent  = () => {  
+    winContentFunc({'api_key': 'TatarenkoEG'}).then(value => {
+      setWinData(value)
+      setloading(false)
+    }) 
+  }  
+  useEffect(()=> getWinContent(), [])
+
+
+
 
   const clearInput = () => {
     setValue('');
     ref.current.focus();
   }
 
-  const onFocus = () => {
-    getWinContent()
-    setShowWin(true)
-    setloading(true)
-  }
-
+  const onFocus = () => setShowWin(true)
   const winCloser = () => setShowWin(false)
 
-  const getWinContent  = () => {
-    winContentFunc({'api_key': 'TatarenkoEG'}).then(value => {
-      setWinContent(content(value))
-      setloading(false)
-    }) 
+  const onSearch = (searchValue) => {
+    setsSarchValue(searchValue)
   }
+  const clearSearch = () => setsSarchValue('')
 
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylesModalWrapper = showWin ? `${styles.modalWrapper} ${styles.showWindow}` : `${styles.modalWrapper} ${styles.hideWindow}`
-
+  const styleLoading = loading ? `${styles.loading} ${styles.showLoading}` : `${styles.loading}`
+  const styleClnSearchBtn = searchValue ? `${styles.styleClnSearchBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
 
   return (
     <div className={styles.windowInput}>
@@ -44,6 +58,7 @@ export const WindowInput = props => {
         readOnly={true}
         onFocus={() => onFocus()}
       />
+      { <div className={styleLoading}><TestLoader/></div> }
       {<button type="button" className={styleClnBtn}
           onClick={() => clearInput()}
           aria-label="Clear"
@@ -57,12 +72,23 @@ export const WindowInput = props => {
                 onClick={() => winCloser()}
               >&times;</button>
             </header>
+            
+            <div className={styles.search}>
+              <input type="text" placeholder = "Search"
+                value={searchValue} 
+                onInput={e => onSearch(e.target.value)}
+              />
+              <button type="button" className={styleClnSearchBtn} onClick={() => clearSearch()} aria-label="Clear Search" >&times;</button>
+            </div>
+            
             <main className={styles.winMain}
               onClick={(e) => console.log(e.target)}
             >
-              { loading 
-                ? <TestLoader/> 
-                : winContent
+              { winData 
+                ? searchValue 
+                  ? content(searhing()) 
+                  : content(winData)
+                : <TestLoader/>
               }
             </main>
           </div>        
