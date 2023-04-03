@@ -5,24 +5,22 @@ import { TestLoader } from "./testLoader";
 
 export const WindowInput = props => {
   const ref = useRef(null)
-  const {inputHandler, placeholder, winContentFunc, content} = props
+  const {inputHandler, placeholder, winContentFunc, content, search} = props
   const [value, setValue] = useState("")
   const [showWin, setShowWin] = useState(false)
   const [loading, setloading] = useState(true)
+
   const [winData, setWinData] = useState(null)
+  const [showData, setshowData] = useState(null)
   const [searchValue, setsSarchValue] = useState('')
-  // const [filtredData, setFiltredData] = useState([])
 
 
-  const searhing = () => {
-    let filtrded = [];
-    winData.data.map(item => item.name === '1' ? filtrded.push(item) : false)
-    return {'columns': winData.columns , 'data': filtrded}
-  }
+
 
   const getWinContent  = () => {  
     winContentFunc({'api_key': 'TatarenkoEG'}).then(value => {
       setWinData(value)
+      setshowData(value)
       setloading(false)
     }) 
   }  
@@ -39,10 +37,32 @@ export const WindowInput = props => {
   const onFocus = () => setShowWin(true)
   const winCloser = () => setShowWin(false)
 
+
+  const clearSearch = () => {
+    setsSarchValue('')
+    setshowData(winData)
+  }
+
   const onSearch = (searchValue) => {
     setsSarchValue(searchValue)
+    if ( searchValue ) setshowData(searhing(searchValue))
+    else  setshowData(winData)
   }
-  const clearSearch = () => setsSarchValue('')
+
+  const searhing = ( searchValue ) => {
+    if ( !searchValue ) return winData;
+    let filtrded = [];
+    winData.data.map(item => search.map( serchItem => 
+      item[serchItem] && !filtrded.includes(item)
+      ? item[serchItem].toUpperCase().includes(searchValue.toUpperCase())
+        ? filtrded.push(item)
+        : false
+      : false  
+      )
+    )  
+    return {'columns': winData.columns , 'data': filtrded}
+  }
+
 
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylesModalWrapper = showWin ? `${styles.modalWrapper} ${styles.showWindow}` : `${styles.modalWrapper} ${styles.hideWindow}`
@@ -85,9 +105,7 @@ export const WindowInput = props => {
               onClick={(e) => console.log(e.target)}
             >
               { winData 
-                ? searchValue 
-                  ? content(searhing()) 
-                  : content(winData)
+                ? content(showData)
                 : <TestLoader/>
               }
             </main>

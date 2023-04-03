@@ -71,12 +71,14 @@ export const Components = () => {
             placeholder = 'Contractors'
             winContentFunc = {getContractorsData}
             content = {contractorList}
+            search = {['inn', 'name']}
           />
           <WindowInput 
             inputHandler = { val => onWork(val) }
             placeholder = 'Servers'
             winContentFunc = {getServersData}
             content= {serverList}
+            search = {['server_name', 'place_name', 'group_name', 'app12_system_fio', 'app12_boss_fio']}
           />
         </div>
 
