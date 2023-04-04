@@ -71,7 +71,7 @@ export const Components = () => {
             placeholder = 'Contractors'
             winContentFunc = {getContractorsData}
             content = {contractorList}
-            search = {['inn', 'name']}
+            search = {['name', 'inn']}
           />
           <WindowInput 
             inputHandler = { val => onWork(val) }

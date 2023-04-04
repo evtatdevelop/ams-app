@@ -65,8 +65,17 @@ export const WindowInput = (props) => {
     return { columns: winData.columns, data: filtrded };
   };
 
+  const setChoice = (item) => {
+    inputHandler(item.id)
+    setValue(item[search[0]])
+    setShowWin(false)
+
+  }
+
   const onChoose = (itemId) => {
-    console.log(itemId);
+    winData.data.map(item => item.id === itemId 
+      ? setChoice(item) 
+      : false)
   };
 
   const styleClnBtn = value
@@ -91,7 +100,8 @@ export const WindowInput = (props) => {
         placeholder={placeholder}
         ref={ref}
         readOnly={true}
-        onFocus={() => onFocus()}
+        // onFocus={() => onFocus()}
+        onClick={() => onFocus()}
       />
       {
         <div className={styleLoading}>
