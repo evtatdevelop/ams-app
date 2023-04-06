@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { testMode } from './config';
+import { testMode, permitted } from './config';
 import { TestPage } from './testPage/testPage';
 import { Workplace } from './features/workplace/workplace';
 import { Resources } from './features/resources/resources';
@@ -18,7 +18,6 @@ function App() {
   useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
 
   const _pathBase = testMode ? '' : '/ams'
-  // const _pathBase = '';
 
   return (
     <div className="App">
@@ -27,8 +26,10 @@ function App() {
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/workplace`} element={<Workplace/>}/>
         <Route path={`/resources`} element={<Resources/>}/>
-        {userData.login === 'TatarenkoEG' ? <Route path={`/components`} element={<Components/>}/> : null} 
-        {userData.login === 'TatarenkoEG' ? <Route path={`/apiTests`} element={<TestPage/>}/> : null} 
+        {/* {userData.login === 'TatarenkoEG' ? <Route path={`/components`} element={<Components/>}/> : null} 
+        {userData.login === 'TatarenkoEG' ? <Route path={`/apiTests`} element={<TestPage/>}/> : null}  */}
+        {permitted.includes(userData.login) ? <Route path={`/components`} element={<Components/>}/> : null} 
+        {permitted.includes(userData.login) ? <Route path={`/apiTests`} element={<TestPage/>}/> : null} 
       </Routes>
 
       <Loader/>

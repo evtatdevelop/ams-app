@@ -10,6 +10,7 @@ import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
 // import { Link } from 'react-router-dom';
 import Navigation from '../navigation';
+import { permitted } from '../../config';
 
 
 export const Mainpage = () => {
@@ -45,7 +46,7 @@ export const Mainpage = () => {
         <LangButton/>
       </header>
 
-      { userData.login === 'TatarenkoEG' 
+      { permitted.includes(userData.login) 
         ? <Navigation/>
         : null
       }
