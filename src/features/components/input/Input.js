@@ -14,9 +14,10 @@ export const Input = props => {
   }
   const clearInput = () => {
     clearTimeout(timerId);
-    setValue('');
+    setValue(val);
     ref.current.focus();
   }
+
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
 
   return (

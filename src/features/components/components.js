@@ -49,7 +49,7 @@ export const Components = () => {
           name='TestSelectInput'
         />
 
-        <div className={styles.calendarsBox}>
+        <div className={styles.fieldBox}>
            <InputDate
               dateHandler = { val => onWork(val) }
               lang='ru'
@@ -65,7 +65,7 @@ export const Components = () => {
           lang='ru'
         />
 
-        <div className={styles.calendarsBox}>
+        <div className={styles.fieldBox}>
           <WindowInput 
             inputHandler = { val => onWork(val) }
             placeholder = 'Contractors'
@@ -83,10 +83,7 @@ export const Components = () => {
         </div>
 
       </main>
-
     </section>
-
-
   )
 }
 

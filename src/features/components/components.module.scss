@@ -22,18 +22,14 @@
     padding: 1vh 3vw;
     grid-template-rows: auto;
 
-    .calendarsBox {
+    .fieldBox {
       display: flex;
       justify-content: space-between;
-      &>div:first-child {
-        margin-right: 3vmax;
-      }
+      & > div { margin-right: 1vmax; }
+      & > div:last-child { margin-right: 0; }
     }
   }
 }
-
-
-
 
 
 .contractors {
@@ -43,7 +39,7 @@
   flex-direction: columns;
 
   .list {
-    height: 80vh;
+    height: 79vh;
     flex-grow: 1;
     overflow-y: auto;
     display: flex;

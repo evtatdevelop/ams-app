@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './select.module.scss';
 
 export const Select = props => {
-  const {selectHandler, placeholder, selectList, val, name} = props
+  const {selectHandler, selectClear, placeholder, selectList, val, name} = props
   const [value, setValue] = useState(val ? val : "")
   const [show, setShow] = useState(false)
   const onChange = item => {
@@ -11,7 +11,10 @@ export const Select = props => {
     setShow(false)
   }
   const onBlur = () => setTimeout(()=>setShow(false), 100)
-  const clearInput = () => setValue('')
+  const clearInput = () => {
+    setValue('')
+    selectClear('')
+  }
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const styleSelectList = show ? `${styles.selectList} ${styles.showSelectList}` : `${styles.selectList} ${styles.hideSelectList}`
 

@@ -1,3 +1,3 @@
 export const testMode = true;
 
-export const permitted = ['TatarenkoEG', ];
+export const permitted = ['TatarenkoEG', 'GanakovskiiFS', ];
