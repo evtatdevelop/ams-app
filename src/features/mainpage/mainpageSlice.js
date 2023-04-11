@@ -18,12 +18,17 @@ export const mainpageSlice = createSlice({
     onSearch: (state, action) => { 
       state.search = action.payload 
       state.filtred = []
-      state.data.map(section => section.systems.map(
-        system => 
-          system.request_name.toUpperCase().includes(state.search.toUpperCase()) && state.search !== ""
-            ? state.filtred.push(system)
+      state.data.map(section => 
+        section.prefix !== 'TOP_ORDERS' && section.prefix !== 'FAVORITES'
+        ? section.systems.map(system => 
+          (system.request_name.toUpperCase().includes(state.search.toUpperCase())
+            || (system.synonyms && system.synonyms.toUpperCase().includes(state.search.toUpperCase()))
+          ) && state.search !== ""
+            ? state.filtred.includes(system) ? null : state.filtred.push(system)
             : null
-      ))
+          )
+        : false  
+      )
     },
 
     clearSearch: (state) => { 
