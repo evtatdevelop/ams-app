@@ -6,7 +6,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 export const Section = props => {
   const { section } = props;
-  const [show, onShow] = useState(section.prefix !== 'LK' ? true : false);
+  const [show, onShow] = useState(section.prefix !== 'LK' && section.prefix !== 'TOP_ORDERS' ? true : false);
 
   return (
     <li className={styles.section} id={section.id}>
