@@ -14,6 +14,10 @@ export const System = props => {
         {system.cnt ? <div className={styles.cnt}>{system.cnt}</div> : null}
       
       </a>
+      <nav className={styles.systemNav}>
+        <button type='button'>1</button>
+        <button type='button'>2</button>
+      </nav>
     </li>
   )
 }

@@ -1,18 +1,21 @@
 .system {
   width: 16vw;
-  height: 16vw;
-  border: .1vw solid #DDDDDD;
-  border-radius: .3vw;
+  height: 15vw;
   position: relative;
-  overflow-y: hidden;
-  padding: .3vmax;
-  transition: border .1s, box-shadow .1s;
+  // outline: 1px solid red;
+  
   animation: appearance 500ms ease-in-out forwards;
 
   &:active,
   &:hover {
-    border: .1vw solid rgba($color: #333333, $alpha: .5);
-    box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+    .request_url {
+      border: .1vw solid rgba($color: #333333, $alpha: .5);
+      box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+    }
+    .systemNav {
+      right: 0;
+      opacity: 1;
+    }
   }
 
   @keyframes appearance {
@@ -27,18 +30,28 @@
   }
 
   .request_url {
+    // outline: 1px solid green;
+    border: .1vw solid #DDDDDD;
+    border-radius: .3vw;
+    position: relative;
+    overflow-y: hidden;
+    padding: .3vmax;
+
+    width: 15vw;
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
     padding: .1vmax;
     color: #494949;
+    transition: border .1s, box-shadow .1s;
 
     .sysIcon {
       width: 100%;
       height: 7vw;
       background-repeat: no-repeat;
       background-size: 100% auto;
+
+      // outline: 1px solid blue;
     }
 
     .request_name {
@@ -56,15 +69,42 @@
       font-size: 1.2vmax;
     }
   }
+
+  .systemNav {
+    // outline: 1px solid red;
+    width: 1vw;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 1vw;
+    top: 0;
+    transition: right .3s, opacity .3s;
+    opacity: 0;
+    
+    button {
+      font-size: .7vw;
+      width: 100%;
+      height: 1vw;
+      margin: 0;
+      padding: 0;
+      border: none;
+      margin-bottom: 4px;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 800px) {
   .system {
-    width: 14vw;
+    width: 15vw;
     height: 14vw;
 
     .request_url {
-      width: 100%;
+      width: 14vw;
       height: 100%;
       padding: .1vmax;
 
@@ -90,11 +130,11 @@
 
 @media screen and (min-width: 1000px) {
   .system {
-    width: 12vw;
+    width: 13vw;
     height: 12vw;
 
     .request_url {
-      width: 100%;
+      width: 12vw;
       height: 100%;
       padding: .1vmax;
 
@@ -119,11 +159,11 @@
 
 @media screen and (min-width: 1200px) {
   .system {
-    width: 10vw;
+    width: 11vw;
     height: 10vw;
 
     .request_url {
-      width: 100%;
+      width: 10vw;
       height: 100%;
       padding: .1vmax;
 
