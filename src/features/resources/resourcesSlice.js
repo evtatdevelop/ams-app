@@ -14,9 +14,9 @@ export const resourcesSlice = createSlice({
   name: 'resources',
   initialState,
   reducers: {
-    // setPhone: (state, action) => { 
-    //   state.phone = action.payload 
-    // },
+    setPhone: (state, action) => { 
+      state.phone = action.payload 
+    },
     setReruestType: (state, action) => { 
       state.requestType = action.payload 
     },
@@ -38,9 +38,9 @@ export const {
 } = resourcesSlice.actions;
 
 // export const applicantPhone = ( state ) => state.resources.applicantPhone;
-export const servers = ( state ) => state.resources.servers;
-export const loading = ( state ) => state.resources.loading;
-export const requestType = ( state ) => state.resources.requestType;
-export const phone = ( state ) => state.resources.phone;
+export const servers      = ( state ) => state.resources.servers;
+export const loading      = ( state ) => state.resources.loading;
+export const requestType  = ( state ) => state.resources.requestType;
+export const phone        = ( state ) => state.resources.phone;
 
 export default resourcesSlice.reducer;

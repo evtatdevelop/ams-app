@@ -9,6 +9,6 @@ export const store = configureStore({
     mainpage: mainpageReducer,
     user: userReducer,
     workplace: workplaceReducer,
-    recources: resourcesReducer,
+    resources: resourcesReducer,
   },
 });

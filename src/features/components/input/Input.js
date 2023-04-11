@@ -3,7 +3,7 @@ import styles from './input.module.scss';
 
 export const Input = props => {
   const ref = useRef(null)
-  const {inputHandler, placeholder, val} = props
+  const {inputHandler, inputClear, placeholder, val} = props
   const [value, setValue] = useState(val ? val : "")
   const [timerId, setTimerId] = useState(null)
   const onInput = val => {
@@ -15,6 +15,7 @@ export const Input = props => {
   const clearInput = () => {
     clearTimeout(timerId);
     setValue(val);
+    inputClear();
     ref.current.focus();
   }
 
