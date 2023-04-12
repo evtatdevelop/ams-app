@@ -24,13 +24,13 @@ export const System = props => {
             <button type='button'>
               <FontAwesomeIcon icon={ faQuestion } className={styles.iconButton} />
             </button>
-            <div className={styles.hint}>Question</div>          
+            <div className={styles.hint}>Информация о запросе / заявке</div>          
           </div>
           <div>
             <button type='button'>
               <FontAwesomeIcon icon={ faPlus } className={styles.iconButton} />
             </button>
-            <div className={styles.hint}>Plus</div>          
+            <div className={styles.hint}>Добавить в избранное</div>          
           </div>
         </nav>
        : null       
