@@ -1,9 +1,8 @@
 .system {
   width: 16vw;
-  height: 15vw;
+  height: 16vw;
   position: relative;
-  // outline: 1px solid red;
-  
+
   animation: appearance 500ms ease-in-out forwards;
 
   &:active,
@@ -13,7 +12,7 @@
       box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
     }
     .systemNav {
-      right: 0;
+      // right: 0;
       opacity: 1;
     }
   }
@@ -50,8 +49,6 @@
       height: 7vw;
       background-repeat: no-repeat;
       background-size: 100% auto;
-
-      // outline: 1px solid blue;
     }
 
     .request_name {
@@ -72,35 +69,57 @@
 
   .systemNav {
     // outline: 1px solid red;
-    width: 1vw;
-    overflow: hidden;
+    // width: 1vw;
+    // overflow: hidden;
     position: absolute;
     display: flex;
     flex-direction: column;
-    right: 1vw;
-    top: 0;
+    right: 4px;
+    top: 4px;
     transition: right .3s, opacity .3s;
     opacity: 0;
     
     button {
-      font-size: .7vw;
-      width: 100%;
-      height: 1vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1vw;
+      font-weight: 500;
+      width: 1.6vw;
+      height: 1.6vw;
       margin: 0;
       padding: 0;
       border: none;
       margin-bottom: 4px;
+      background-color: transparent;
+      color: #0DA6E9;
+      border: .15vw solid #0DA6E9;
+      border-radius: .8vw;
 
       &:hover {
-        color: red;
+        &+div {
+          opacity: 1;
+        }
       }
+    }
+    .hint {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      position: absolute;
+      color: gray;
+      background-color: rgb(234, 246, 206);
+      opacity: 0;
+      margin-top: -1.7vw;
+      right: -110px;
     }
   }
 }
 
 @media screen and (min-width: 800px) {
   .system {
-    width: 15vw;
+    width: 14vw;
     height: 14vw;
 
     .request_url {
@@ -130,7 +149,7 @@
 
 @media screen and (min-width: 1000px) {
   .system {
-    width: 13vw;
+    width: 12vw;
     height: 12vw;
 
     .request_url {
@@ -159,7 +178,7 @@
 
 @media screen and (min-width: 1200px) {
   .system {
-    width: 11vw;
+    width: 10vw;
     height: 10vw;
 
     .request_url {
