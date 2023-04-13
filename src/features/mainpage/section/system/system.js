@@ -1,3 +1,4 @@
+import React, { useState, useRef, useEffect } from "react";
 import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
@@ -6,9 +7,17 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 export const System = props => {
   const { system, prefix, index } = props;
   const zIndex = 999-index;
+  const [showInfo, onShowInfo] = useState(false);
+
+  const createMarkup = () => { return {__html: system.hint_text}}
+  const ref = useRef();
+
+  useEffect(() => {
+    console.log(ref.current ? ref.current.getBoundingClientRect() : null)
+  });
 
   return (
-    <li className={styles.system} style={{zIndex: `${zIndex}`}}>
+    <li  ref={ref} className={styles.system} style={{zIndex: `${zIndex}`}}>
       <a href={`${system.request_url}`} className={styles.request_url}>
         <div>
           <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
@@ -21,7 +30,7 @@ export const System = props => {
       {prefix !== 'LK'
        ? <nav className={styles.systemNav}>
           <div>
-            <button type='button'>
+            <button type='button' onClick={() => onShowInfo(!showInfo)}>
               <FontAwesomeIcon icon={ faQuestion } className={styles.iconButton} />
             </button>
             <div className={styles.hint}>Информация о запросе / заявке</div>          
@@ -35,7 +44,13 @@ export const System = props => {
         </nav>
        : null       
       }
-
+      {system.hint_text && showInfo
+        ? <div className={styles.sysInfo}>
+            <div dangerouslySetInnerHTML={createMarkup()} />
+            <button type='button' className={styles.colserInfo} onClick={() => onShowInfo(false)} >&times;</button>
+          </div>
+        : null
+      }
     </li>
   )
 }

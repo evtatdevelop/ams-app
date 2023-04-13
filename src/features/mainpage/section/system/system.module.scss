@@ -2,7 +2,6 @@
   width: 16vw;
   height: 16vw;
   position: relative;
-
   animation: appearance 500ms ease-in-out forwards;
 
   &:active,
@@ -12,30 +11,16 @@
       box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
     }
     .systemNav {
-      // right: 0;
-      opacity: 1;
-    }
-  }
-
-  @keyframes appearance {
-    0% {
-      opacity: .3;
-    }
-    80% {
-    }
-    100% {
       opacity: 1;
     }
   }
 
   .request_url {
-    // outline: 1px solid green;
     border: .1vw solid #DDDDDD;
     border-radius: .3vw;
     position: relative;
     overflow-y: hidden;
     padding: .3vmax;
-
     width: 15vw;
     display: flex;
     flex-direction: column;
@@ -68,9 +53,6 @@
   }
 
   .systemNav {
-    // outline: 1px solid red;
-    // width: 1vw;
-    // overflow: hidden;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -98,8 +80,9 @@
 
       &:hover {
         &+div {
-          opacity: 1;
           width: 200px;
+          padding: 4px;
+          animation: showHint 1000ms ease-in-out forwards;
         }
       }
     }
@@ -114,10 +97,59 @@
       background-color: rgb(234, 246, 206);
       opacity: 0;
       margin-top: -1.9vw;
-      padding: 4px;
+      padding: 0;
       left: 1.9vw;
-      transition: opacity .3s, width .1s;
     }
+  }
+
+  .sysInfo {
+    position: absolute;
+    width: 32vw;
+    height: auto;
+    overflow-y: auto;
+    background-color: white;
+    color: #424242;
+    border: 1px solid grey;
+    top: 3vw;
+    left: 3vw;
+    padding: 4px;
+
+    .colserInfo {
+      position: absolute;
+      width: 2vw;
+      height: 2vw;
+      font-size: 1.5vw;
+      top: 0;
+      right: 0;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+
+@keyframes showHint {
+  0% {
+
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appearance {
+  0% {
+    opacity: .3;
+  }
+  80% {
+  }
+  100% {
+    opacity: 1;
   }
 }
 
