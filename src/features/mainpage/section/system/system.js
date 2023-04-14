@@ -6,15 +6,18 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export const System = props => {
   const { system, prefix, index } = props;
-  const zIndex = 999-index;
+  let zIndex = 999-index;
   const [showInfo, onShowInfo] = useState(false);
-
+  const [hintTextPos, sethintTextPos] = useState('left');
+  const widthSysInfo = 575;
   const createMarkup = () => { return {__html: system.hint_text}}
   const ref = useRef();
 
   useEffect(() => {
-    console.log(ref.current ? ref.current.getBoundingClientRect() : null)
-  });
+    sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
+  },[]);
+
+  const styleSysInfo = `${styles.sysInfo} ${styles[hintTextPos]}`
 
   return (
     <li  ref={ref} className={styles.system} style={{zIndex: `${zIndex}`}}>
@@ -30,7 +33,7 @@ export const System = props => {
       {prefix !== 'LK'
        ? <nav className={styles.systemNav}>
           <div>
-            <button type='button' onClick={() => onShowInfo(!showInfo)}>
+            <button type='button' onClick={() => {onShowInfo(!showInfo)}}>
               <FontAwesomeIcon icon={ faQuestion } className={styles.iconButton} />
             </button>
             <div className={styles.hint}>Информация о запросе / заявке</div>          
@@ -45,7 +48,7 @@ export const System = props => {
        : null       
       }
       {system.hint_text && showInfo
-        ? <div className={styles.sysInfo}>
+        ? <div className={styleSysInfo} style={{width: `${widthSysInfo}px`}}>
             <div dangerouslySetInnerHTML={createMarkup()} />
             <button type='button' className={styles.colserInfo} onClick={() => onShowInfo(false)} >&times;</button>
           </div>

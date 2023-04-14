@@ -104,15 +104,21 @@
 
   .sysInfo {
     position: absolute;
-    width: 32vw;
     height: auto;
     overflow-y: auto;
     background-color: white;
     color: #424242;
     border: 1px solid grey;
-    top: 3vw;
-    left: 3vw;
+    top: 40px;
     padding: 4px;
+    z-index: 999;
+
+    &.left {
+      left: 40px;
+    }
+    &.right {
+      right: 40px;;
+    }
 
     .colserInfo {
       position: absolute;
