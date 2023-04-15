@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Mainpage } from './features/mainpage/mainpage';
+import { PrimaryPage } from './features/primaryPage/mainpage';
 import { PersonalArea } from './features/personalArea/personalArea';
 import { Components } from './features/components/components';
 import { Loader } from './features/loader/loader';
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+        <Route path={`/mainpage`} element={<PrimaryPage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/workplace`} element={<Workplace/>}/>
         <Route path={`/resources`} element={<Resources/>}/>

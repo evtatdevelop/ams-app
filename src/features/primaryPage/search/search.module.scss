@@ -1,0 +1,33 @@
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 5vw;
+
+  .inputSearch {
+    height: 2vmax;
+    border-radius: .2vmax;
+    padding: 1vmax;
+    font: inherit;
+    font-size: 1vmax;
+    padding-right: 2vmax;
+  }
+
+  .clearSearch {
+    position: absolute;
+    height: 2vmax;
+    width: 2vmax;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vmax;
+    background-color: transparent;
+    padding: 0;
+    padding-top: .1vmax;
+    margin: 0;
+    border: none;
+    color: #a8a8a8;
+    cursor: pointer;
+  }
+}

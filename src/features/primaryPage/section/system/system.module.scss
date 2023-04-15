@@ -1,0 +1,248 @@
+.system {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: appearance 500ms ease-in-out forwards;
+
+  &:active,
+  &:hover {
+    .request_url {
+      border: .1vw solid rgba($color: #333333, $alpha: .5);
+      box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
+    }
+    .systemNav {
+      opacity: 1;
+    }
+  }
+
+  .request_url {
+    border: .1vw solid #DDDDDD;
+    border-radius: .3vw;
+    position: relative;
+    overflow-y: hidden;
+    padding: .3vmax;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: .1vmax;
+    color: #494949;
+    transition: border .1s, box-shadow .1s;
+
+    .sysIcon {
+      width: 100%;
+      height: 7vw;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+
+    .request_name {
+      font-size: 1.2vmax;
+      overflow-y: hidden;
+      line-height: 1.3vw;
+    }
+
+    .cnt {
+      position: absolute;
+      bottom: .3vmax;
+      right: .3vmax;
+      color: #2c2c2c;
+      font-weight: 700;
+      font-size: 1.2vmax;
+    }
+  }
+
+  .systemNav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 4px;
+    top: 4px;
+    transition: right .3s, opacity .3s;
+    opacity: 0;
+    
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1vw;
+      font-weight: 500;
+      width: 1.6vw;
+      height: 1.6vw;
+      margin: 0;
+      padding: 0;
+      border: none;
+      margin-bottom: 4px;
+      background-color: transparent;
+      color: #0DA6E9;
+      border: .15vw solid #0DA6E9;
+      border-radius: .8vw;
+
+      &:hover {
+        &+div {
+          width: 200px;
+          padding: 4px;
+          animation: showHint 1000ms ease-in-out forwards;
+        }
+      }
+    }
+    .hint {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 0px;
+      overflow-x: hidden;
+      position: absolute;
+      color: gray;
+      background-color: rgb(234, 246, 206);
+      opacity: 0;
+      margin-top: -1.9vw;
+      padding: 0;
+      left: 1.9vw;
+    }
+  }
+
+  .sysInfo {
+    position: absolute;
+    height: auto;
+    overflow-y: auto;
+    background-color: white;
+    color: #424242;
+    border: 1px solid grey;
+    top: 40px;
+    padding: 4px;
+    z-index: 999;
+
+    &.left {
+      left: 40px;
+    }
+    &.right {
+      right: 40px;;
+    }
+
+    .colserInfo {
+      position: absolute;
+      width: 2vw;
+      height: 2vw;
+      font-size: 1.5vw;
+      top: 0;
+      right: 0;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+
+@keyframes showHint {
+  0% {
+
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appearance {
+  0% {
+    opacity: .3;
+  }
+  80% {
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .system {
+    width: 14vw;
+    height: 14vw;
+
+    .request_url {
+      width: 14vw;
+      height: 100%;
+      padding: .1vmax;
+
+      .sysIcon {
+        width: 100%;
+        height: 5vw;
+        background-size: 150px auto;
+      }
+
+      .request_name {
+        font-size: 1.1vmax;
+        line-height: 1.1vw;
+      }
+
+      .cnt {
+        bottom: .3vmax;
+        right: .3vmax;
+        font-size: 1.1vmax;
+      }
+    }    
+  }  
+}
+
+@media screen and (min-width: 1000px) {
+  .system {
+    width: 12vw;
+    height: 12vw;
+
+    .request_url {
+      width: 12vw;
+      height: 100%;
+      padding: .1vmax;
+
+      .sysIcon {
+        width: 100%;
+        height: 4vw;
+      }
+
+      .request_name {
+        font-size: 1vmax;
+        line-height: 1vw;
+      }
+
+      .cnt {
+        bottom: .3vmax;
+        right: .3vmax;
+        font-size: 1vmax;
+      }
+    }    
+  }  
+}
+
+@media screen and (min-width: 1200px) {
+  .system {
+    width: 10vw;
+    height: 10vw;
+
+    .request_url {
+      width: 10vw;
+      height: 100%;
+      padding: .1vmax;
+
+      .sysIcon {
+        width: 100%;
+        height: 4vw;
+      }
+
+      .request_name {
+        font-size: .8vmax;
+        line-height: .9vw;
+      }
+
+      .cnt {
+        bottom: .3vmax;
+        right: .3vmax;
+        font-size: .8vmax;
+      }
+    }
+  }
+}
