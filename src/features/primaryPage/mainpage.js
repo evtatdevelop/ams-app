@@ -34,9 +34,51 @@ export const PrimaryPage = () => {
 
   return (
     <section className={styles.mainpage}>
+
+      <aside className={styles.sidebar}>
+        <LangButton/>
+        {dictionaryData.head_currentuser && userData.ad_user
+          ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
+          : null
+        }
+
+        <div className={styles.lk}>
+          {pageData.map(section => section.prefix === 'LK' 
+            ? section.systems.map(system => 
+              <a key={system.system_prefix} href={system.request_url} className={styles.lkLink}>
+                <div className={styles.lkIkon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div> 
+                {system.request_name}
+              </a>
+            )
+            : null)
+          }          
+        </div>
+
+        
+        { permitted.includes(userData.login) 
+          ? <Navigation/>
+          : null
+        }
+      </aside>
+
+      <main className={styles.main}>
+        <header className={styles.mainHeader}>
+          <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
+          <SearchSystems/>
+        </header>
+        <div className={styles.systemList}>
+          {searchString === "" 
+            ? <ul className={styles.sections}>
+                { pageData.map(section => section.systems.length !== 0 && section.prefix !== 'LK'
+                  ? <Section key={section.id} section={section}/> 
+                  : null) }
+              </ul>
+            : <SearchList/>  
+          }
+        </div>
+      </main>
       
-      <header className={styles.header}>
-        {/* <h1 className={styles.head_systemname}>{dictionaryData.head_systemname}</h1> */}
+      {/* <header className={styles.header}>
         <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
         {dictionaryData.head_currentuser && userData.ad_user
           ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
@@ -58,7 +100,7 @@ export const PrimaryPage = () => {
         : <SearchList/>  
       }  
 
-      { expired ? <ExpirationScreen/> : null }
+      { expired ? <ExpirationScreen/> : null } */}
       
     </section>
   )

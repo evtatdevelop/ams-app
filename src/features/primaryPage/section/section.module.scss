@@ -1,81 +1,85 @@
 .section {
   // outline: 1px solid red;
+  margin-top: 24px;
   // overflow-x: hidden;
 
-  header {
-    // display: flex;
-    // align-items: center;
-    margin-top: 2vh;
-    margin-bottom: .5vh;
+  // header {
+  //   // display: flex;
+  //   // align-items: center;
+  //   margin-top: 2vh;
+  //   margin-bottom: .5vh;
     
-    label {
-      display: flex;
-      align-items: center;
-      color: #437EC7;
-      // margin: 0 10px;
-      cursor: pointer;
+  //   label {
+  //     display: flex;
+  //     align-items: center;
+  //     color: #437EC7;
+  //     // margin: 0 10px;
+  //     cursor: pointer;
 
-      .name {
-        font-weight: 700;
-        font-size: 1.2vmax;
-        color: #437EC7;
-        margin: 0 10px;
-        // padding: 0 3vw 0 3vw;
-      }
-      // standard font
-      .name_sf {
-        // font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        // -webkit-font-smoothing: antialiased;
-        // -moz-osx-font-smoothing: grayscale;
-        font-weight: 600;
-        font-size: 1vmax;
-        color: #437EC7;
-        margin: 0 10px;
-        letter-spacing: -0.05vmax;
-      }
+  //     .name {
+  //       font-weight: 700;
+  //       font-size: 1.2vmax;
+  //       color: #437EC7;
+  //       margin: 0 10px;
+  //       // padding: 0 3vw 0 3vw;
+  //     }
+  //     // standard font
+  //     .name_sf {
+  //       font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  //       -webkit-font-smoothing: antialiased;
+  //       -moz-osx-font-smoothing: grayscale;
+  //       font-weight: 600;
+  //       font-size: 1vmax;
+  //       color: #437EC7;
+  //       margin: 0 10px;
+  //       letter-spacing: -0.05vmax;
+  //     }
 
-      .iconButtonClose {
-        font-size: 1.27vmax;
-        transform: rotate(180deg);
-        transition: transform .3s;
-      }
-      .iconButton {
-        font-size: 1.27vmax;
-        transform: rotate(0deg);
-        transition: transform .3s;
-      }      
-    }
-  }
+  //     .iconButtonClose {
+  //       font-size: 1.27vmax;
+  //       transform: rotate(180deg);
+  //       transition: transform .3s;
+  //     }
+  //     .iconButton {
+  //       font-size: 1.27vmax;
+  //       transform: rotate(0deg);
+  //       transition: transform .3s;
+  //     }      
+  //   }
+  // }
 
-  input[type=checkbox] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  // input[type=checkbox] {
+  //   position: absolute;
+  //   width: 1px;
+  //   height: 1px;
+  //   margin: -1px;
+  //   border: 0;
+  //   padding: 0;
+  //   clip: rect(0 0 0 0);
+  //   overflow: hidden;
 
-    &:checked {
-      &~ul {
-        height: 0;
-        overflow: hidden;
-        padding-top: 0;
-        padding-bottom: 0;
-        opacity: 0; 
-      }        
-    }
-  }
+  //   &:checked {
+  //     &~ul {
+  //       height: 0;
+  //       overflow: hidden;
+  //       padding-top: 0;
+  //       padding-bottom: 0;
+  //       opacity: 0; 
+  //     }        
+  //   }
+  // }
 
-  .sectionList {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: .7vw;
-    padding: 1vh 3vw;
-    place-items: center;
-    grid-template-rows: auto;
-    transition: opacity .5s, padding-top .2s;
+  .systemList {
+    // outline: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr); 
+    // gap: .7vw;
+    // padding: 1vh 3vw;
+    // place-items: center;
+    // grid-template-rows: auto;
+    // transition: opacity .5s, padding-top .2s;
   }
 }
 

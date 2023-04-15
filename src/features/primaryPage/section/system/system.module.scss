@@ -1,17 +1,16 @@
 .system {
   width: 16vw;
   height: 16vw;
-  position: relative;
+  // position: relative;
   animation: appearance 500ms ease-in-out forwards;
+  margin-left: 20px;
+  margin-top: 20px;
 
   &:active,
   &:hover {
     .request_url {
       border: .1vw solid rgba($color: #333333, $alpha: .5);
       box-shadow: 0px 0px .3vmax rgba($color: #888888, $alpha: .5);
-    }
-    .systemNav {
-      opacity: 1;
     }
   }
 
@@ -52,87 +51,11 @@
     }
   }
 
-  .systemNav {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    right: 4px;
-    top: 4px;
-    transition: right .3s, opacity .3s;
-    opacity: 0;
+  
+
     
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1vw;
-      font-weight: 500;
-      width: 1.6vw;
-      height: 1.6vw;
-      margin: 0;
-      padding: 0;
-      border: none;
-      margin-bottom: 4px;
-      background-color: transparent;
-      color: #0DA6E9;
-      border: .15vw solid #0DA6E9;
-      border-radius: .8vw;
 
-      &:hover {
-        &+div {
-          width: 200px;
-          padding: 4px;
-          animation: showHint 1000ms ease-in-out forwards;
-        }
-      }
-    }
-    .hint {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 0px;
-      overflow-x: hidden;
-      position: absolute;
-      color: gray;
-      background-color: rgb(234, 246, 206);
-      opacity: 0;
-      margin-top: -1.9vw;
-      padding: 0;
-      left: 1.9vw;
-    }
-  }
 
-  .sysInfo {
-    position: absolute;
-    height: auto;
-    overflow-y: auto;
-    background-color: white;
-    color: #424242;
-    border: 1px solid grey;
-    top: 40px;
-    padding: 4px;
-    z-index: 999;
-
-    &.left {
-      left: 40px;
-    }
-    &.right {
-      right: 40px;;
-    }
-
-    .colserInfo {
-      position: absolute;
-      width: 2vw;
-      height: 2vw;
-      font-size: 1.5vw;
-      top: 0;
-      right: 0;
-
-      &:hover {
-        color: red;
-      }
-    }
-  }
 }
 
 
