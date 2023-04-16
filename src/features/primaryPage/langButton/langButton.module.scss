@@ -11,7 +11,7 @@
     align-items: center;
     background: transparent;
     font-size: 1vmax; 
-    color: inherit;
+    color: rgb(8, 87, 161);
     border-radius: .2vmax;
     transition: border .3s;
     border: .1vw solid transparent;
@@ -20,7 +20,7 @@
     &:focus,
     &:active,
     &:hover {
-      border: .1vw solid white;
+      border: .1vw solid rgb(8, 87, 161);
     }
   }
 }

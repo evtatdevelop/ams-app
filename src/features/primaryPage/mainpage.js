@@ -11,10 +11,11 @@ import ExpirationScreen from "../expirationScreen";
 // import { Link } from 'react-router-dom';
 import Navigation from '../navigation';
 import { permitted } from '../../config';
-
+import { Link } from 'react-router-dom';
+import { testMode } from "../../config";
 
 export const PrimaryPage = () => {
-
+  const _pathBase = testMode ? '' : '/ams';
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
@@ -36,11 +37,17 @@ export const PrimaryPage = () => {
     <section className={styles.mainpage}>
 
       <aside className={styles.sidebar}>
-        <LangButton/>
-        {dictionaryData.head_currentuser && userData.ad_user
-          ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
-          : null
-        }
+        {/* <div className={styles.lngBtn}> <LangButton/> </div> */}
+        
+        <div className={styles.logPrsn}>
+          {dictionaryData.head_currentuser && userData.ad_user
+            ? <div className={styles.remoteUser}>
+                <p className={styles.name}>{userData.shortname}</p>
+                <p className={styles.domain}>{userData.ad_user}</p>
+              </div>
+            : null
+          }          
+        </div>
 
         <div className={styles.lk}>
           {pageData.map(section => section.prefix === 'LK' 
@@ -54,17 +61,19 @@ export const PrimaryPage = () => {
           }          
         </div>
 
-        
-        { permitted.includes(userData.login) 
-          ? <Navigation/>
-          : null
-        }
+        <div className={styles.backLink}>
+          { permitted.includes(userData.login) 
+            ? <Link to = {`${_pathBase}/`}>&lt; Back</Link>
+            : null
+          }          
+        </div>
       </aside>
 
       <main className={styles.main}>
         <header className={styles.mainHeader}>
-          <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
+          <h1 className={styles.pageName}>{dictionaryData.head_systemname}</h1>
           <SearchSystems/>
+          <LangButton/>
         </header>
         <div className={styles.systemList}>
           {searchString === "" 
@@ -101,7 +110,8 @@ export const PrimaryPage = () => {
       }  
 
       { expired ? <ExpirationScreen/> : null } */}
-      
+
+      { expired ? <ExpirationScreen/> : null }
     </section>
   )
 }
