@@ -7,6 +7,7 @@ const initialState = {
   dictionary: [],
   search: '',
   filtred: [],
+  hint: {}
 }
 
 export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -36,6 +37,13 @@ export const mainpageSlice = createSlice({
       state.filtred = []
     },
 
+    onHint: (state, action) => {
+      state.hint = action.payload
+    },
+    
+    clearHint: (state) => {
+      state.hint = {}
+    }
   },
 
   extraReducers: (builder) => {
@@ -51,13 +59,14 @@ export const mainpageSlice = createSlice({
 });
 
 export const { 
-  onSearch, clearSearch
+  onSearch, clearSearch, onHint, clearHint
 } = mainpageSlice.actions;
 
 export const mainpage   = ( state ) => state.mainpage.data;
 export const dictionary = ( state ) => state.mainpage.dictionary;
 export const loading    = ( state ) => state.mainpage.loading;
-export const search    = ( state ) => state.mainpage.search;
+export const search     = ( state ) => state.mainpage.search;
 export const filtred    = ( state ) => state.mainpage.filtred;
+export const hint       = ( state ) => state.mainpage.hint;
 
 export default mainpageSlice.reducer;

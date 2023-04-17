@@ -3,21 +3,24 @@ import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from "react-redux";
+import { onHint } from "../../mainpageSlice";
 
 export const System = props => {
   const { system, prefix, index } = props;
-  let zIndex = 999-index;
-  const [showInfo, onShowInfo] = useState(false);
-  const [hintTextPos, sethintTextPos] = useState('left');
-  const widthSysInfo = 575;
-  const createMarkup = () => { return {__html: system.hint_text}}
+  let zIndex = 100-index;
+  // const [hintTextPos, sethintTextPos] = useState({});
   const ref = useRef();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
-  },[]);
+  // useEffect(() => {
+  //   sethintTextPos(ref.current.getBoundingClientRect())
+  // },[]);
 
-  const styleSysInfo = `${styles.sysInfo} ${styles[hintTextPos]}`
+  const hintHandler = (e) => {
+    console.log(e);
+    dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
+  }
 
   return (
     <li  ref={ref} className={styles.system} style={{zIndex: `${zIndex}`}}>
@@ -33,7 +36,9 @@ export const System = props => {
       {prefix !== 'LK'
        ? <nav className={styles.systemNav}>
           <div>
-            <button type='button' onClick={() => {onShowInfo(!showInfo)}}>
+            <button type='button' 
+              onClick={(e) => hintHandler(e)}
+            >
               <FontAwesomeIcon icon={ faQuestion } className={styles.iconButton} />
             </button>
             <div className={styles.hint}>Информация о запросе / заявке</div>          
@@ -46,13 +51,6 @@ export const System = props => {
           </div>
         </nav>
        : null       
-      }
-      {system.hint_text && showInfo
-        ? <div className={styleSysInfo} style={{width: `${widthSysInfo}px`}}>
-            <div dangerouslySetInnerHTML={createMarkup()} />
-            <button type='button' className={styles.colserInfo} onClick={() => onShowInfo(false)} >&times;</button>
-          </div>
-        : null
       }
     </li>
   )

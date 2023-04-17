@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary, getMainpage, search } from "./mainpageSlice";
+import { mainpage, dictionary, getMainpage, search, hint } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -11,6 +11,7 @@ import ExpirationScreen from "../expirationScreen";
 // import { Link } from 'react-router-dom';
 import Navigation from '../navigation';
 import { permitted } from '../../config';
+import Hint from "./hint";
 
 
 export const Mainpage = () => {
@@ -19,6 +20,7 @@ export const Mainpage = () => {
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
   const searchString = useSelector(search);
+  const dataHint = useSelector(hint);
   const dispatch = useDispatch();
   useEffect(() => { 
     if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
@@ -31,6 +33,11 @@ export const Mainpage = () => {
     )
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);
+  // const [hint, onHint] = useState({
+  //   text: '<h1>text<br>test</h1>',
+  //   top: 300, 
+  //   left: 300
+  // });
 
   return (
     <section className={styles.mainpage}>
@@ -56,7 +63,9 @@ export const Mainpage = () => {
             { pageData.map(section => <Section key={section.id} section={section}/>) }
           </ul>
         : <SearchList/>  
-      }  
+      }
+
+      <Hint data = {dataHint} />
 
       { expired ? <ExpirationScreen/> : null }
       

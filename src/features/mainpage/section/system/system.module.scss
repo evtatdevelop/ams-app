@@ -102,37 +102,6 @@
     }
   }
 
-  .sysInfo {
-    position: absolute;
-    height: auto;
-    overflow-y: auto;
-    background-color: white;
-    color: #424242;
-    border: 1px solid grey;
-    top: 40px;
-    padding: 4px;
-    z-index: 999;
-
-    &.left {
-      left: 40px;
-    }
-    &.right {
-      right: 40px;;
-    }
-
-    .colserInfo {
-      position: absolute;
-      width: 2vw;
-      height: 2vw;
-      font-size: 1.5vw;
-      top: 0;
-      right: 0;
-
-      &:hover {
-        color: red;
-      }
-    }
-  }
 }
 
 
