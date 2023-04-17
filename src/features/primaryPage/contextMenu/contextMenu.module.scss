@@ -1,0 +1,39 @@
+.contextMenu {
+  position: absolute;
+  // height: 0;
+  background-color: #161619d3;
+  color: wheat;
+  padding: 4px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+
+  animation: open .3s linear;
+
+  button {
+    margin: 0;
+    padding: .3vmax;
+    background-color: transparent;
+    color: white;
+    font-size: small;
+    text-align: left;
+    border: 1px solid transparent;
+    transition: border .3s;
+    &:hover {
+      border: 1px solid wheat;
+    }
+  }
+
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+
+  }  
+
+  to {
+    opacity: 1;
+
+  }
+}

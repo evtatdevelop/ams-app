@@ -1,4 +1,5 @@
 .system {
+  position: relative;
   width: 10vmax;
   height: 10vmax;
   margin-left: 1.5vmax;
@@ -18,7 +19,7 @@
   }
 
   .request_url {
-    position: relative;
+    // position: relative;
     height: 100%;
     width: 100%; 
     padding: .3vmax;
@@ -48,7 +49,24 @@
   }
 
   
-
+  .infoBtn {
+    width: 1.4vmax;
+    height: 1.4vmax;
+    position: absolute;
+    top: .5vmax;
+    right: .1vmax;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .8vmax;
+    transition: font-size .3s;
+    &:hover {
+      font-size: 1vmax;
+    }
+  }
     
 
 

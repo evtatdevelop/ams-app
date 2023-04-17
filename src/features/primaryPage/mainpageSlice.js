@@ -7,12 +7,13 @@ const initialState = {
   dictionary: [],
   search: '',
   filtred: [],
+  contextMenu: {},
 }
 
-export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
+export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
 
-export const mainpageSlice = createSlice({
-  name: 'mainpage',
+export const primarypageSlice = createSlice({
+  name: 'primarypage',
   initialState,
   reducers: {
     onSearch: (state, action) => { 
@@ -36,6 +37,13 @@ export const mainpageSlice = createSlice({
       state.filtred = []
     },
 
+    onContextMenu: (state, action) => {
+      state.contextMenu = action.payload
+    },
+    
+    offContextMenu: (state) => {
+      state.contextMenu = {}
+    }
   },
 
   extraReducers: (builder) => {
@@ -51,13 +59,14 @@ export const mainpageSlice = createSlice({
 });
 
 export const { 
-  onSearch, clearSearch
-} = mainpageSlice.actions;
+  onSearch, clearSearch, onContextMenu, offContextMenu
+} = primarypageSlice.actions;
 
-export const mainpage   = ( state ) => state.mainpage.data;
-export const dictionary = ( state ) => state.mainpage.dictionary;
-export const loading    = ( state ) => state.mainpage.loading;
-export const search    = ( state ) => state.mainpage.search;
-export const filtred    = ( state ) => state.mainpage.filtred;
+export const mainpage     = ( state ) => state.primaripage.data;
+export const dictionary   = ( state ) => state.primaripage.dictionary;
+export const loading      = ( state ) => state.primaripage.loading;
+export const search       = ( state ) => state.primaripage.search;
+export const filtred      = ( state ) => state.primaripage.filtred;
+export const contextMenu  = ( state ) => state.primaripage.contextMenu;
 
-export default mainpageSlice.reducer;
+export default primarypageSlice.reducer;

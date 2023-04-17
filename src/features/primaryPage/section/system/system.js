@@ -1,20 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from "react-redux";
+import { onContextMenu, offContextMenu } from "../../mainpageSlice";
 
 export const System = props => {
   const { system, prefix } = props;
-  const [showInfo, onShowInfo] = useState(false);
+  // const [showInfo, onShowInfo] = useState(false);
   // const [hintTextPos, sethintTextPos] = useState('left');
   // const widthSysInfo = 575;
-  const createMarkup = () => { return {__html: system.hint_text}}
+  // const createMarkup = () => { return {__html: system.hint_text}}
   const ref = useRef();
-
+  const dispatch = useDispatch();
   // useEffect(() => {
   //   sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
   // },[]);
 
+  const handlerContextMenu = (e) => {
+    dispatch(offContextMenu());
+    setTimeout(() => dispatch(onContextMenu({ top: e.pageY, left: e.pageX})), 0);
+    
+  }
+
+  // const styleSystem = showInfo ? `${styles.system} ${styles.infoMode}` : `${styles.system}`
 
   return (
     <li  ref={ref} className={styles.system}>
@@ -22,21 +31,19 @@ export const System = props => {
         <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
         <div className={styles.request_name}>{system.request_name}</div>         
       </a>
-      {/* {prefix !== 'LK'
-       ? <div className={styles.information}>
-          <button type='button' onClick={() => {onShowInfo(!showInfo)}}>
-            <FontAwesomeIcon icon={ faInfo } className={styles.iconButton} />
+      {system.hint_text 
+        ? <button type='button' className={styles.infoBtn}
+          onClick={(e) => handlerContextMenu(e)}>
+            <FontAwesomeIcon icon={ faEllipsisVertical } className={styles.iconButton} />
           </button>
-          {system.hint_text
-            ? <div className={styles.infoContent}>
-                <div dangerouslySetInnerHTML={createMarkup()} />
-              </div>
-            : null
-          }
-
-        </div>
+          // {system.hint_text
+          //   ? <div className={styles.infoContent}>
+          //       <div dangerouslySetInnerHTML={createMarkup()} />
+          //     </div>
+          //   : null
+          // }
        : null       
-      } */}
+      }
 
     </li>
   )

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary, getMainpage, search } from "./mainpageSlice";
+import { mainpage, dictionary, getMainpage, search, contextMenu, offContextMenu } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
-// import { Link } from 'react-router-dom';
-import Navigation from '../navigation';
 import { permitted } from '../../config';
 import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
+import ContextMenu from "./contextMenu";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
@@ -20,6 +19,7 @@ export const PrimaryPage = () => {
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
   const searchString = useSelector(search);
+  const dataContextMenu = useSelector(contextMenu);
   const dispatch = useDispatch();
   useEffect(() => { 
     if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
@@ -34,7 +34,9 @@ export const PrimaryPage = () => {
   const [expired, onExpired] = useState(false);
 
   return (
-    <section className={styles.mainpage}>
+    <section className={styles.mainpage}
+      onClick={()=>dispatch(offContextMenu())}
+    >
 
       <aside className={styles.sidebar}>
         {/* <div className={styles.lngBtn}> <LangButton/> </div> */}
@@ -86,30 +88,8 @@ export const PrimaryPage = () => {
           }
         </div>
       </main>
-      
-      {/* <header className={styles.header}>
-        <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
-        {dictionaryData.head_currentuser && userData.ad_user
-          ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
-          : null
-        }
-        <SearchSystems/>
-        <LangButton/>
-      </header>
 
-      { permitted.includes(userData.login) 
-        ? <Navigation/>
-        : null
-      }
-
-      {searchString === "" 
-        ? <ul className={styles.syetems}>
-            { pageData.map(section => <Section key={section.id} section={section}/>) }
-          </ul>
-        : <SearchList/>  
-      }  
-
-      { expired ? <ExpirationScreen/> : null } */}
+      <ContextMenu data = {dataContextMenu} />
 
       { expired ? <ExpirationScreen/> : null }
     </section>
