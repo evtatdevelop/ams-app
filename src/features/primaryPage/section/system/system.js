@@ -19,10 +19,8 @@ export const System = props => {
 
   const handlerContextMenu = (e) => {
     dispatch(offContextMenu());
-    setTimeout(() => dispatch(onContextMenu({ top: e.pageY, left: e.pageX})), 0);
-    
+    setTimeout(() => dispatch(onContextMenu({ top: e.pageY, left: e.pageX, systemId: system.asz22_id})), 0);
   }
-
   // const styleSystem = showInfo ? `${styles.system} ${styles.infoMode}` : `${styles.system}`
 
   return (
@@ -31,19 +29,20 @@ export const System = props => {
         <div className={styles.sysIcon} style={{backgroundImage: `url(system_icons/${system.icon_filename})`}}></div>      
         <div className={styles.request_name}>{system.request_name}</div>         
       </a>
-      {system.hint_text 
-        ? <button type='button' className={styles.infoBtn}
+      {/* {system.hint_text  */}
+        {/* ?  */}
+          <button type='button' className={styles.infoBtn}
           onClick={(e) => handlerContextMenu(e)}>
             <FontAwesomeIcon icon={ faEllipsisVertical } className={styles.iconButton} />
           </button>
-          // {system.hint_text
-          //   ? <div className={styles.infoContent}>
+          {/* {system.hint_text
+           ? <div className={styles.infoContent}>
           //       <div dangerouslySetInnerHTML={createMarkup()} />
           //     </div>
           //   : null
           // }
-       : null       
-      }
+      //  : null       
+      // } */}
 
     </li>
   )

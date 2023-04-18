@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMainpageData } from './mainpageSliceAPI';
+import { getMainpageData, addPrefers, delPrefers  } from './mainpageSliceAPI';
 
 const initialState = {
   loading: false,
@@ -11,6 +11,9 @@ const initialState = {
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
+
+export const addToPrefers = createAsyncThunk( 'mainpage/addToPrefers', async ( data ) => await addPrefers(data) )
+export const delToPrefers = createAsyncThunk( 'mainpage/delToPrefers', async ( data ) => await delPrefers(data) )
 
 export const primarypageSlice = createSlice({
   name: 'primarypage',
@@ -53,6 +56,16 @@ export const primarypageSlice = createSlice({
         state.loading = false;
         state.data = action.payload.sections;
         state.dictionary = action.payload.dictionary;
+      })
+
+      .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(addToPrefers.fulfilled, ( state, action ) => {
+        state.loading = false;
+      })
+
+      .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(delToPrefers.fulfilled, ( state, action ) => {
+        state.loading = false;
       })
 
   }
