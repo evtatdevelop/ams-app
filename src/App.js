@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
-        <Route path={`/mainpage`} element={<PrimaryPage/>}/>
+        <Route path={`/primarypage`} element={<PrimaryPage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/workplace`} element={<Workplace/>}/>
         <Route path={`/resources`} element={<Resources/>}/>

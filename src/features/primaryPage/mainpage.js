@@ -77,7 +77,7 @@ export const PrimaryPage = () => {
           <SearchSystems/>
           <LangButton/>
         </header>
-        <div className={styles.systemList}>
+        <div className={styles.systemList} onScroll={()=>dispatch(offContextMenu())}>
           {searchString === "" 
             ? <ul className={styles.sections}>
                 { pageData.map(section => section.systems.length !== 0 && section.prefix !== 'LK'

@@ -28,7 +28,7 @@ export const System = props => {
   return (
     <li  ref={ref} className={styles.system}>
       <a href={`${system.request_url}`} className={styles.request_url}>
-        <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
+        <div className={styles.sysIcon} style={{backgroundImage: `url(system_icons/${system.icon_filename})`}}></div>      
         <div className={styles.request_name}>{system.request_name}</div>         
       </a>
       {system.hint_text 
