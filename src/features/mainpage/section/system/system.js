@@ -1,29 +1,33 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from "react-redux";
-import { onHint } from "../../mainpageSlice";
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import { useSelector, useDispatch } from "react-redux";
+import { getMainpage, addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
+import { user } from '../../../user/userSlice';
 
 export const System = props => {
   const { system, prefix, index } = props;
   let zIndex = 100-index;
-  // const [hintTextPos, sethintTextPos] = useState({});
-  const ref = useRef();
   const dispatch = useDispatch();
+  const userData = useSelector(user);
 
-  // useEffect(() => {
-  //   sethintTextPos(ref.current.getBoundingClientRect())
-  // },[]);
+  const hintHandler = (e) => dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
 
-  const hintHandler = (e) => {
-    console.log(e);
-    dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
+  const addPrefersHandler = () => {
+    dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
+    setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
+  }
+
+  const delPrefersHandler = () => {
+    dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
+    setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
   }
 
   return (
-    <li  ref={ref} className={styles.system} style={{zIndex: `${zIndex}`}}>
+    <li className={styles.system} style={{zIndex: `${zIndex}`}}>
       <a href={`${system.request_url}`} className={styles.request_url}>
         <div>
           <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
@@ -44,10 +48,20 @@ export const System = props => {
             <div className={styles.hint}>Информация о запросе / заявке</div>          
           </div>
           <div>
-            <button type='button'>
-              <FontAwesomeIcon icon={ faPlus } className={styles.iconButton} />
-            </button>
-            <div className={styles.hint}>Добавить в избранное</div>          
+            {prefix === 'FAVORITES'
+              ? <>
+                  <button type='button' onClick={()=>delPrefersHandler()}>
+                    <FontAwesomeIcon icon={ faMinus } className={styles.iconButton} />
+                  </button>
+                  <div className={styles.hint}>Удалить из избранного</div>
+                </>
+              : <>
+                  <button type='button' onClick={()=>addPrefersHandler()}  >
+                    <FontAwesomeIcon icon={ faPlus } className={styles.iconButton} />
+                  </button>
+                  <div className={styles.hint}>Добавить в избранное</div>
+                </>
+            }       
           </div>
         </nav>
        : null       

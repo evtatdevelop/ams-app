@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMainpageData } from './mainpageSliceAPI';
+import { getMainpageData, addPrefers, delPrefers } from './mainpageSliceAPI';
 
 const initialState = {
   loading: false,
@@ -11,6 +11,9 @@ const initialState = {
 }
 
 export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
+
+export const addToPrefers = createAsyncThunk( 'mainpage/addToPrefers', async ( data ) => await addPrefers(data) )
+export const delToPrefers = createAsyncThunk( 'mainpage/delToPrefers', async ( data ) => await delPrefers(data) )
 
 export const mainpageSlice = createSlice({
   name: 'mainpage',
@@ -37,13 +40,9 @@ export const mainpageSlice = createSlice({
       state.filtred = []
     },
 
-    onHint: (state, action) => {
-      state.hint = action.payload
-    },
-    
-    clearHint: (state) => {
-      state.hint = {}
-    }
+    onHint: (state, action) => { state.hint = action.payload },
+    clearHint: (state) => { state.hint = {} },
+
   },
 
   extraReducers: (builder) => {
@@ -55,11 +54,24 @@ export const mainpageSlice = createSlice({
         state.dictionary = action.payload.dictionary;
       })
 
+      .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(addToPrefers.fulfilled, ( state, action ) => {
+        // state.data.lang = action.payload;
+        console.log(action.payload);
+        state.loading = false;
+      })
+
+      .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(delToPrefers.fulfilled, ( state, action ) => {
+        // state.data.lang = action.payload;
+        console.log(action.payload);
+        state.loading = false;
+      })
   }
 });
 
 export const { 
-  onSearch, clearSearch, onHint, clearHint
+  onSearch, clearSearch, onHint, clearHint,
 } = mainpageSlice.actions;
 
 export const mainpage   = ( state ) => state.mainpage.data;
