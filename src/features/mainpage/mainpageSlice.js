@@ -56,15 +56,15 @@ export const mainpageSlice = createSlice({
 
       .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
-        // state.data.lang = action.payload;
-        console.log(action.payload);
+        state.data = action.payload.sections;
+        state.dictionary = action.payload.dictionary;
         state.loading = false;
       })
 
       .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
-        // state.data.lang = action.payload;
-        console.log(action.payload);
+        state.data = action.payload.sections;
+        state.dictionary = action.payload.dictionary;
         state.loading = false;
       })
   }

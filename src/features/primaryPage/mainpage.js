@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary, getMainpage, search, contextMenu, offContextMenu } from "./mainpageSlice";
+import { mainpage, dictionary, getMainpage, search, 
+  contextMenu, offContextMenu, notification } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -12,6 +13,7 @@ import { permitted } from '../../config';
 import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
+import Notification from "./notification";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
@@ -19,6 +21,7 @@ export const PrimaryPage = () => {
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dictionary);
   const searchString = useSelector(search);
+  const notice = useSelector(notification);
   const dataContextMenu = useSelector(contextMenu);
   const dispatch = useDispatch();
   useEffect(() => { 
@@ -38,9 +41,7 @@ export const PrimaryPage = () => {
       onClick={()=>dispatch(offContextMenu())}
     >
 
-      <aside className={styles.sidebar}>
-        {/* <div className={styles.lngBtn}> <LangButton/> </div> */}
-        
+      <aside className={styles.sidebar}>      
         <div className={styles.logPrsn}>
           {dictionaryData.head_currentuser && userData.ad_user
             ? <div className={styles.remoteUser}>
@@ -55,7 +56,7 @@ export const PrimaryPage = () => {
           {pageData.map(section => section.prefix === 'LK' 
             ? section.systems.map(system => 
               <a key={system.system_prefix} href={system.request_url} className={styles.lkLink}>
-                <div className={styles.lkIkon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div> 
+                <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
                 {system.request_name}
               </a>
             )
@@ -86,6 +87,7 @@ export const PrimaryPage = () => {
               </ul>
             : <SearchList/>  
           }
+          { notice ? <Notification/> : null}
         </div>
       </main>
 

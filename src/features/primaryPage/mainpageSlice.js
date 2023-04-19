@@ -8,6 +8,7 @@ const initialState = {
   search: '',
   filtred: [],
   contextMenu: {},
+  notification: '',
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -46,7 +47,15 @@ export const primarypageSlice = createSlice({
     
     offContextMenu: (state) => {
       state.contextMenu = {}
-    }
+    },
+
+    onNotification: (state, action) => {
+      state.notification = action.payload
+    },
+    
+    offNotification: (state) => {
+      state.notification = ""
+    },
   },
 
   extraReducers: (builder) => {
@@ -61,18 +70,22 @@ export const primarypageSlice = createSlice({
       .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
+        state.data = action.payload.sections;
+        state.dictionary = action.payload.dictionary;
       })
 
       .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
+        state.data = action.payload.sections;
+        state.dictionary = action.payload.dictionary;
       })
 
   }
 });
 
 export const { 
-  onSearch, clearSearch, onContextMenu, offContextMenu
+  onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification
 } = primarypageSlice.actions;
 
 export const mainpage     = ( state ) => state.primaripage.data;
@@ -81,5 +94,6 @@ export const loading      = ( state ) => state.primaripage.loading;
 export const search       = ( state ) => state.primaripage.search;
 export const filtred      = ( state ) => state.primaripage.filtred;
 export const contextMenu  = ( state ) => state.primaripage.contextMenu;
+export const notification  = ( state ) => state.primaripage.notification;
 
 export default primarypageSlice.reducer;

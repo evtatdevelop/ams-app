@@ -16,14 +16,15 @@ export const System = props => {
 
   const hintHandler = (e) => dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
 
-  const addPrefersHandler = () => {
+  const addPrefersHandler = (e) => {
     dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
+    setTimeout(() => dispatch(onHint({text: 'Добавлено в избранное', top: e.pageY, left: e.pageX})))
+    // setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
   }
 
   const delPrefersHandler = () => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
+    // setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
   }
 
   return (
@@ -56,7 +57,7 @@ export const System = props => {
                   <div className={styles.hint}>Удалить из избранного</div>
                 </>
               : <>
-                  <button type='button' onClick={()=>addPrefersHandler()}  >
+                  <button type='button' onClick={(e)=>addPrefersHandler(e)}  >
                     <FontAwesomeIcon icon={ faPlus } className={styles.iconButton} />
                   </button>
                   <div className={styles.hint}>Добавить в избранное</div>

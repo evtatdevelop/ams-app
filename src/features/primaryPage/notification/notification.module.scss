@@ -1,0 +1,25 @@
+.notification {
+  position: fixed;
+  width: 30vmax;
+  height: auto;
+  right: 1vmax;
+  top: calc(100px + 1vmax);
+  padding: .5vmax;
+  display: flex;
+  background-color: rgba(256, 256, 256, .9);
+  animation: open .5s linear;
+  border: 1px solid rgb(8, 87, 161);
+  border-radius: 3px;  
+}
+
+@keyframes open {
+  from {
+    top: -500px;
+
+  }  
+
+  to {
+    top: calc(100px + 1vmax);
+
+  }
+}
