@@ -1,12 +1,13 @@
 .searchList {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 1.7vw;
-  padding: 1vh 3vw;
+  // display: grid;
+  // grid-template-columns: repeat(5, 1fr); 
+  // gap: 1.7vw;
+  // padding: 1vh 3vw;
   
-  place-items: center;
-  grid-template-rows: auto;
-
+  // place-items: center;
+  // grid-template-rows: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .name {

@@ -5,7 +5,7 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
-import { getMainpage, addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
+import { addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
 import { user } from '../../../user/userSlice';
 
 export const System = props => {
@@ -18,13 +18,11 @@ export const System = props => {
 
   const addPrefersHandler = (e) => {
     dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    setTimeout(() => dispatch(onHint({text: 'Добавлено в избранное', top: e.pageY, left: e.pageX})))
-    // setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
+    setTimeout(() => dispatch(onHint({text: '<div style="padding: 7px 35px 7px 7px;">Добавлено в избранное</div>', top: e.pageY, left: e.pageX})))
   }
 
   const delPrefersHandler = () => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    // setTimeout(() => dispatch(dispatch(getMainpage(userData.api_key))))
   }
 
   return (

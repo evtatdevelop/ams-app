@@ -16,7 +16,7 @@ export const Hint = props => {
 
   return (
     text
-      ? <div className={styles.hint} style={{left: `${X}px`, top: `${Y}px`, width: `${widthHint}px`}}>
+      ? <div className={styles.hint} style={{left: `${X}px`, top: `${Y}px`, width: `auto`}}>
           <div dangerouslySetInnerHTML={createMarkup()} />
           <button type='button' className={styles.colserInfo} onClick={() => {dispatch(clearHint())}} >&times;</button>      
         </div>

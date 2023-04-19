@@ -1,8 +1,9 @@
 import React  from "react";
 import styles from './contextMenu.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { getMainpage, addToPrefers, delToPrefers, onNotification, offNotification } from "../mainpageSlice";
+import { addToPrefers, delToPrefers, onNotification, offNotification } from "../mainpageSlice";
 import { user } from '../../user/userSlice';
+import dictionary from '../../../dictionary.json';
 
 export const ContextMenu = props => {
 
@@ -24,13 +25,13 @@ export const ContextMenu = props => {
   const addPrefersHandler = () => {
     dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));
     dispatch(offNotification())
-    setTimeout(()=>dispatch(onNotification("Добавлено в избранное"))) 
+    setTimeout(()=>dispatch(onNotification(dictionary.added_preferences[userData['lang']]))) 
   }
 
   const delPrefersHandler = () => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));
     dispatch(offNotification())
-    setTimeout(()=>dispatch(onNotification("Удалено из избранного"))) 
+    setTimeout(()=>dispatch(onNotification(dictionary.removed_preferences[userData['lang']]))) 
   }
 
   const notify = () => {
@@ -40,11 +41,11 @@ export const ContextMenu = props => {
 
   return (
     left && top 
-      ? <div className={styles.contextMenu} style={{left: `${left}px`, top: `${top}px`, width: `${width}px`}}>
-          <button type="button" onClick={()=>notify()}>Информация</button>
+      ? <div className={styles.contextMenu} style={{left: `${left}px`, top: `${top}px`, width: `auto`}}>
+          <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button>
           {section === 'FAVORITES'
-            ? <button type="button" onClick={()=>delPrefersHandler()}>Удалить из избранного</button>
-            : <button type="button" onClick={()=>addPrefersHandler()}>Добавить в избранное</button>
+            ? <button type="button" onClick={()=>delPrefersHandler()}>{dictionary.del_from_preferences[userData['lang']]}</button>
+            : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
           }
           
           

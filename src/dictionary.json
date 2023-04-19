@@ -14,5 +14,26 @@
   "continue_work": {
     "EN": "Continue work",
     "RU": "Продолжить работу"    
+  },
+  "about": {
+    "EN": "About",
+    "RU": "Информация"    
+  },
+  "add_into_preferences": {
+    "EN": "Add to favorites",
+    "RU": "Добавить в избранное"    
+  },
+  "del_from_preferences": {
+    "EN": "Remove from favorites",
+    "RU": "Удалить из избранного"    
+  },
+  "added_preferences": {
+    "EN": "Added to Favorites",
+    "RU": "Добавлено в Избранное"    
+  },
+  "removed_preferences": {
+    "EN": "Removed from Favorites",
+    "RU": "Удалено из избранного"    
   }
+
 }
