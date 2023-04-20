@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary, getMainpage, search, 
+import { mainpage, dictionary as dicts, getMainpage, search, 
   contextMenu, offContextMenu, notification } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
@@ -14,12 +14,13 @@ import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
+import dictionary from '../../dictionary.json';
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
-  const dictionaryData = useSelector(dictionary);
+  const dictionaryData = useSelector(dicts);
   const searchString = useSelector(search);
   const notice = useSelector(notification);
   const dataContextMenu = useSelector(contextMenu);
@@ -55,10 +56,16 @@ export const PrimaryPage = () => {
         <div className={styles.lk}>
           {pageData.map(section => section.prefix === 'LK' 
             ? section.systems.map(system => 
-              <a key={system.system_prefix} href={system.request_url} className={styles.lkLink}>
-                <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
-                {system.request_name}
-              </a>
+              <div className={styles.lkrow}>
+                <a key={system.system_prefix} href={system.request_url} className={styles.lkLink}>
+                  <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
+                  {/* {system.request_name} */}
+                  {dictionary[system.system_prefix][userData['lang']]}
+                </a>
+                <p className={styles.cnt}>{system.cnt}</p>
+                <div className={styles.lkHint}>{system.request_name}</div>               
+              </div>
+
             )
             : null)
           }          

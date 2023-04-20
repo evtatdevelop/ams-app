@@ -7,9 +7,30 @@
   padding: .5vmax;
   display: flex;
   background-color: rgba(256, 256, 256, .9);
+  background-image: linear-gradient(#e7f1f9, rgba(256, 256, 256, .9));
+  box-shadow: 0 0 7px rgb(139, 181, 220);
   animation: open .5s linear;
-  border: 1px solid rgb(8, 87, 161);
-  border-radius: 3px;  
+  border: 1px solid rgba(8, 87, 161, 0.097);
+  border-radius: 3px;
+
+  .notiCloser {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    width: 2vmax;
+    height: 2vmax;
+    border-radius: 1vmax;
+    font-size: 1.5vmax;
+    color: #424242;
+    transition: color .3s;
+
+    &:hover {
+      color: #F04E25;
+    }
+  }
 }
 
 @keyframes open {

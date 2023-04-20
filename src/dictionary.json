@@ -34,6 +34,32 @@
   "removed_preferences": {
     "EN": "Removed from Favorites",
     "RU": "Удалено из избранного"    
+  },
+
+  "LK_01": {
+    "EN": "My applications",
+    "RU": "Мои заявки"    
+  },
+  "LK_02": {
+    "EN": "Pending approval",
+    "RU": "На согласовании"    
+  },
+  "LK_04_05": {
+    "EN": "Approval settings",
+    "RU": "Настройки согласований"    
+  },
+  "LK_03": {
+    "EN": "Resolved applications",
+    "RU": "Рассмотренные заявки"    
+  },
+  "LK_06": {
+    "EN": "Requests for execution",
+    "RU": "Заявки на исполнении"    
+  },
+  "LK_07": {
+    "EN": "Сompleted requests",
+    "RU": "Исполненные заявки"    
   }
+
 
 }
