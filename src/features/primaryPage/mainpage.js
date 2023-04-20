@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary as dicts, getMainpage, search, 
+import { mainpage, prefers, dictionary as dicts, getMainpage, search, 
   contextMenu, offContextMenu, notification } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
@@ -21,6 +21,7 @@ export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
+  // const prefersData = useSelector(prefers);
   const dictionaryData = useSelector(dicts);
   const searchString = useSelector(search);
   const notice = useSelector(notification);
@@ -57,10 +58,9 @@ export const PrimaryPage = () => {
         <div className={styles.lk}>
           {pageData.map(section => section.prefix === 'LK' 
             ? section.systems.map(system => 
-              <div className={styles.lkrow}>
-                <a key={system.system_prefix} href={system.request_url} className={styles.lkLink}>
+              <div key={system.system_prefix} className={styles.lkrow}>
+                <a href={system.request_url} className={styles.lkLink}>
                   <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
-                  {/* {system.request_name} */}
                   {dictionary[system.system_prefix][userData['lang']]}
                 </a>
                 <p className={styles.cnt}>{system.cnt}</p>
@@ -95,7 +95,10 @@ export const PrimaryPage = () => {
         <div className={styles.systemList} onScroll={()=>dispatch(offContextMenu())}>
           {searchString === "" 
             ? <ul className={styles.sections}>
-                { pageData.map(section => section.systems.length !== 0 && section.prefix !== 'LK'
+
+                {/* <Section key="9999" section={{di: 9999, prefix: 'prefers', name: 'Частые', systems: prefersData}}/> */}
+
+                { pageData.map(section => section.systems.length !== 0 && section.prefix !== 'LK' 
                   ? <Section key={section.id} section={section}/> 
                   : null) }
               </ul>

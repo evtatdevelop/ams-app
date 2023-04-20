@@ -21,8 +21,9 @@ export const System = props => {
     setTimeout(() => dispatch(onHint({text: '<div style="padding: 7px 35px 7px 7px;">Добавлено в избранное</div>', top: e.pageY, left: e.pageX})))
   }
 
-  const delPrefersHandler = () => {
+  const delPrefersHandler = (e) => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
+    setTimeout(() => dispatch(onHint({text: '<div style="padding: 7px 35px 7px 7px;">Удалено из избранного</div>', top: e.pageY, left: e.pageX})))
   }
 
   return (
@@ -49,7 +50,7 @@ export const System = props => {
           <div>
             {prefix === 'FAVORITES'
               ? <>
-                  <button type='button' onClick={()=>delPrefersHandler()}>
+                  <button type='button' onClick={(e)=>delPrefersHandler(e)}>
                     <FontAwesomeIcon icon={ faMinus } className={styles.iconButton} />
                   </button>
                   <div className={styles.hint}>Удалить из избранного</div>

@@ -50,6 +50,7 @@
           justify-content: space-between;
           align-items: center;
           border-bottom: 1px solid transparent;
+          transition: border-bottom .3s;
 
           .lkLink {
             display: flex;
@@ -59,7 +60,6 @@
             margin-bottom: 4px;
             // height: 40px;
             padding: 10px 0 5px 0;
-            transition: border-bottom .3s;
             flex-grow: 1;
 
             // outline: 1px solid red;
