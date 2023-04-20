@@ -15,6 +15,7 @@ import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
 import dictionary from '../../dictionary.json';
+// import Navigation from "../navigation";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
@@ -75,7 +76,13 @@ export const PrimaryPage = () => {
           { permitted.includes(userData.login) 
             ? <Link to = {`${_pathBase}/`}>&lt; Back</Link>
             : null
-          }          
+          } 
+          {/* <Link to = {`${_pathBase}/mainpage`}>&lt; Back</Link>
+          <Link to = '/personalArea'>PersonalArea</Link>
+          <Link to = '/workplace'>Workplace</Link>
+          <Link to = '/resources'>Resources</Link>
+          <Link to = '/components'>Components</Link>
+          <Link to = '/apiTests'>API Tests</Link>         */}
         </div>
       </aside>
 

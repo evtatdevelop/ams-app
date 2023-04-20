@@ -23,7 +23,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        {/* {permitted.includes(userData.login) 
+          ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
+          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+        } */}
         <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+        {/* {permitted.includes(userData.login) 
+          ? <Route path={`/mainpage`} element={<Mainpage/>}/>
+          : <Route path={`/primarypage`} element={<PrimaryPage/>}/>
+        } */}
         <Route path={`/primarypage`} element={<PrimaryPage/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
         <Route path={`/workplace`} element={<Workplace/>}/>

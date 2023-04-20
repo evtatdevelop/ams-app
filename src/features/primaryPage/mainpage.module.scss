@@ -67,16 +67,16 @@
             .lkIkon {
               background-size: cover;
               background-repeat: no-repeat;
-              width: 20px;
-              height: 20px;
+              width: 15px;
+              height: 15px;
               margin-right: .5vmax;
               flex-grow: 0;
               flex-shrink: 0;
             }
           }
           .cnt {
-            width: auto;
-            font-size: small;
+            // padding-left: 1px;
+            font-size: 12px;
           }
           .lkHint {
             width: auto;
@@ -104,6 +104,8 @@
         position: absolute;
         left: 10px;
         bottom: 10px;
+        display: flex;
+        flex-direction: column;
         
         a{color: white;}
       }

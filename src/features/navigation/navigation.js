@@ -9,7 +9,6 @@ export const Navigation = () => {
 
   return (
     <nav className={styles.navigation}>
-      <Link to = {`${_pathBase}/`}>Back</Link>
       <Link to = {`/primarypage`}>Mainpage</Link>
       <Link to = '/personalArea'>PersonalArea</Link>
       <Link to = '/workplace'>Workplace</Link>

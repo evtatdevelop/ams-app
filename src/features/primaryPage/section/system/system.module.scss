@@ -6,6 +6,20 @@
   margin-top: 1.5vmax;
   animation: appearance 500ms ease-in-out forwards;
 
+  &.topOrders {
+    width: 8vmax;
+    height: 8vmax;
+    .request_url {
+      .sysIcon {
+        height: 3vmax;
+      }
+      .request_name {
+        font-size: .8vmax;
+        line-height: 1.15vmax;
+      }
+    }
+  }
+
   &:active,
   &:hover {
     .request_url {

@@ -22,8 +22,9 @@ export const System = props => {
     setTimeout(() => dispatch(onContextMenu({ top: target.top, left: target.left, systemId: system.asz22_id, section: prefix, about: system.hint_text})), 0);
   }
 
+  const styleSystem = prefix === 'TOP_ORDERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`
   return (
-    <li  ref={ref} className={styles.system}>
+    <li  ref={ref} className={styleSystem}>
       <a href={`${system.request_url}`} className={styles.request_url}>
         <div className={styles.sysIcon} style={{backgroundImage: `url(${_pathBase}system_icons/${system.icon_filename})`}}></div>      
         <div className={styles.request_name}>{system.request_name}</div>         
