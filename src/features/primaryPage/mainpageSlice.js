@@ -9,7 +9,6 @@ const initialState = {
   filtred: [],
   contextMenu: {},
   notification: '',
-  prefers: []
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -63,22 +62,6 @@ export const primarypageSlice = createSlice({
     builder
       .addCase(getMainpage.pending, ( state ) => { state.loading = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
-
-        // Union TOP_ORDERS and FAVORITES sections 
-        // if ( state.prefers.length === 0 ) {
-        //   const setPrefers = [];
-        //   const setPrefix = new Set();
-        //   action.payload.sections.forEach(section => {
-        //     if ( section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' ) {
-        //       section.systems.forEach(system => {
-        //         if ( !setPrefix.has(system.system_prefix) ) setPrefers.push(system)
-        //         setPrefix.add(system.system_prefix);
-        //       });
-        //     }
-        //   });
-        //   state.prefers = [...setPrefers]
-        // }
-
         state.data = action.payload.sections;
         state.dictionary = action.payload.dictionary;
         state.loading = false;
@@ -97,7 +80,6 @@ export const primarypageSlice = createSlice({
         state.data = action.payload.sections;
         state.dictionary = action.payload.dictionary;
       })
-
   }
 });
 
@@ -106,7 +88,6 @@ export const {
 } = primarypageSlice.actions;
 
 export const mainpage     = ( state ) => state.primaripage.data;
-// export const prefers     = ( state ) => state.primaripage.prefers;
 export const dictionary   = ( state ) => state.primaripage.dictionary;
 export const loading      = ( state ) => state.primaripage.loading;
 export const search       = ( state ) => state.primaripage.search;

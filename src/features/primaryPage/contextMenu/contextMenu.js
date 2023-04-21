@@ -7,7 +7,7 @@ import dictionary from '../../../dictionary.json';
 
 export const ContextMenu = props => {
 
-  const {top, left, systemId, section, about} = props.data;
+  const {top, left, systemId, section, about, section_prefix} = props.data;
   const dispatch = useDispatch();
   const userData = useSelector(user);
   // const width= 160;
@@ -29,13 +29,18 @@ export const ContextMenu = props => {
     setTimeout(()=>dispatch(onNotification(about))) 
   }
 
+  console.log(section_prefix);
+
   return (
     left && top 
       ? <div className={styles.contextMenu} style={{left: `${left}px`, top: `${top}px`, width: `auto`}}>
           <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button>
-          {section === 'FAVORITES'
-            ? <button type="button" onClick={()=>delPrefersHandler()}>{dictionary.del_from_preferences[userData['lang']]}</button>
-            : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
+          {/* {section === 'FAVORITES' || section === 'PREFERS' */}
+          {section_prefix !== 'TOP_ORDERS' 
+            ? section === 'PREFERS'
+              ? <button type="button" onClick={()=>delPrefersHandler()}>{dictionary.del_from_preferences[userData['lang']]}</button>
+              : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
+            : null
           }
         </div>
       : null  

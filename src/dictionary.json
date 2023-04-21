@@ -59,6 +59,10 @@
   "LK_07": {
     "EN": "Сompleted requests",
     "RU": "Исполненные заявки"    
+  },
+  "FAVORITES": {
+    "EN": "Favorites",
+    "RU": "Избранное"    
   }
 
 
