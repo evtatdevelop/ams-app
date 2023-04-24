@@ -7,6 +7,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
 import { addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
 import { user } from '../../../user/userSlice';
+import dictionary from '../../../../dictionary.json';
 
 export const System = props => {
   const { system, prefix, index } = props;
@@ -18,12 +19,12 @@ export const System = props => {
 
   const addPrefersHandler = (e) => {
     dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    setTimeout(() => dispatch(onHint({text: '<div style="padding: 7px 35px 7px 7px;">Добавлено в избранное</div>', top: e.pageY, left: e.pageX})))
+    setTimeout(() => dispatch(onHint({text: `<div style="padding: 7px 35px 7px 7px;">${dictionary['added_preferences'][userData['lang']]}</div>`, top: e.pageY, left: e.pageX})))
   }
 
   const delPrefersHandler = (e) => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': system.asz22_id, 'api_key': userData.api_key}));
-    setTimeout(() => dispatch(onHint({text: '<div style="padding: 7px 35px 7px 7px;">Удалено из избранного</div>', top: e.pageY, left: e.pageX})))
+    setTimeout(() => dispatch(onHint({text: `<div style="padding: 7px 35px 7px 7px;">${dictionary['removed_preferences'][userData['lang']]}</div>`, top: e.pageY, left: e.pageX})))
   }
 
   return (
@@ -45,7 +46,7 @@ export const System = props => {
             >
               <FontAwesomeIcon icon={ faQuestion } className={styles.iconButton} />
             </button>
-            <div className={styles.hint}>Информация о запросе / заявке</div>          
+            <div className={styles.hint}>{dictionary['request_info'][userData['lang']]}</div>          
           </div>
           <div>
             {prefix === 'FAVORITES'
@@ -53,13 +54,13 @@ export const System = props => {
                   <button type='button' onClick={(e)=>delPrefersHandler(e)}>
                     <FontAwesomeIcon icon={ faMinus } className={styles.iconButton} />
                   </button>
-                  <div className={styles.hint}>Удалить из избранного</div>
+                  <div className={styles.hint}>{dictionary['del_from_preferences'][userData['lang']]}</div>
                 </>
               : <>
                   <button type='button' onClick={(e)=>addPrefersHandler(e)}  >
                     <FontAwesomeIcon icon={ faPlus } className={styles.iconButton} />
                   </button>
-                  <div className={styles.hint}>Добавить в избранное</div>
+                  <div className={styles.hint}>{dictionary['add_into_preferences'][userData['lang']]}</div>
                 </>
             }       
           </div>

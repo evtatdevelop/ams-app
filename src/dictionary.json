@@ -19,6 +19,10 @@
     "EN": "About",
     "RU": "Информация"    
   },
+  "request_info": {
+    "EN": "Request info",
+    "RU": "Информация о запросе / заявке"    
+  },
   "add_into_preferences": {
     "EN": "Add to favorites",
     "RU": "Добавить в избранное"    
@@ -28,11 +32,11 @@
     "RU": "Удалить из избранного"    
   },
   "added_preferences": {
-    "EN": "Added to Favorites",
+    "EN": "Added to favorites",
     "RU": "Добавлено в Избранное"    
   },
   "removed_preferences": {
-    "EN": "Removed from Favorites",
+    "EN": "Removed from favorites",
     "RU": "Удалено из избранного"    
   },
 

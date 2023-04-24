@@ -9,7 +9,7 @@ export const Section = props => {
  
   const sectionHide = localStorage[section.prefix] 
     ? localStorage[section.prefix] === 'true' ? true : false
-    : section.prefix === 'LK' || section.prefix === 'TOP_ORDERS' ? false : true
+    : section.prefix === 'TOP_ORDERS' ? false : true
 
   const [hide, onHide] = useState(sectionHide);
   localStorage[section.prefix] = sectionHide;

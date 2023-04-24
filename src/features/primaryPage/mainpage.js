@@ -64,12 +64,21 @@ export const PrimaryPage = () => {
       <aside className={styles.sidebar}>      
         <div className={styles.logPrsn}>
           {dictionaryData.head_currentuser && userData.ad_user
-            ? <div className={styles.remoteUser}>
-                <p className={styles.name}>{userData.shortname}</p>
-                <p className={styles.domain}>{userData.ad_user}</p>
-              </div>
+            ? <>
+                <div className={styles.remoteUser}>
+                  <p className={styles.name}>{userData.shortname}</p>
+                  <p className={styles.domain}>{userData.ad_user}</p>
+                </div>
+                <div className={styles.remoteSimple}>
+                  {`${userData.first_name[0]}${userData.last_name[0]}`}
+                  <div className={styles.remoteHint}>
+                    <p className={styles.hintName}>{userData.shortname}</p>
+                    <p className={styles.hintDomain}>{userData.ad_user}</p>
+                  </div>
+                </div>
+              </>
             : null
-          }          
+          }
         </div>
 
         <div className={styles.lk}>

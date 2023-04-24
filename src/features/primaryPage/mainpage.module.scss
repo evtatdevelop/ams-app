@@ -1,6 +1,5 @@
 .mainpage {
   position: relative;
-  // outline: 1px solid red;
   display: flex;
   width: 100%;
   height: 100vh;
@@ -8,9 +7,9 @@
 
   .sidebar {
     position: relative;
-    width: 200px;
+    // width: 200px;
+    width: 75px;
     height: 100vh;
-    // overflow: hidden;
     flex-shrink: 0;
     background-color: rgb(8, 87, 161);
     color: white;
@@ -28,16 +27,56 @@
         justify-content: center;
 
         .remoteUser {
-          width: 100%;
+          // width: 100%;
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          // font-size: 18px;
+          // .name { font-weight: 700; }
+          // .domain { font-size: 14px; }
+          display: none;
+        }
+        .remoteSimple {
+          position: relative;
           display: flex;
-          flex-direction: column;
+          justify-content: center;
           align-items: center;
-          
-          .name {
-            font-weight: 700;
+          width: 6vmax;
+          height: 6vmax;
+          font-size: 3vmax;
+          font-weight: 700;
+          letter-spacing: .3vmax;
+          border-radius: 3vmax;
+          flex-grow: 0;
+          flex-shrink: 0;
+          background-color: wheat;
+          color: rgb(8, 87, 161);
+
+          .remoteHint {
+            position: absolute;
+            left: -1000px;
+            bottom: -24px;
+            padding: 4px 4px;
+            background-color: #f7efec;
+            display: flex;
+            flex-direction: column;
+            p {
+              font-size: 12px;
+              
+              color: black;
+              font-weight: 500;
+              letter-spacing: normal;
+              z-index: 999;
+              &.hintDomain {
+                font-size: 10px;
+              }
+            }
           }
-          .domain {
-            font-size: smaller;
+          &:hover {
+            .remoteHint {
+              left: 20px;
+              animation: appearance 1500ms ease-in-out forwards;
+            }
           }
         }
 
@@ -52,34 +91,55 @@
           border-bottom: 1px solid transparent;
           transition: border-bottom .3s;
 
+          margin-bottom: 12px;
+          margin-right: 3px;
+
           .lkLink {
+            // display: flex;
+            // align-items: center;
+            // color: wheat;
+            // font-size: smaller;
+            // margin-bottom: 4px;
+            // padding: 10px 0 5px 0;
+            // flex-grow: 1;
             display: flex;
             align-items: center;
             color: wheat;
-            font-size: smaller;
+            font-size: 0;
             margin-bottom: 4px;
-            // height: 40px;
-            padding: 10px 0 5px 0;
-            flex-grow: 1;
-
-            // outline: 1px solid red;
+            padding: 0;
+            flex-grow: 0;
 
             .lkIkon {
+              // background-size: cover;
+              // background-repeat: no-repeat;
+              // width: 15px;
+              // height: 15px;
+              // margin-right: .5vmax;
+              // flex-grow: 0;
+              // flex-shrink: 0;
               background-size: cover;
               background-repeat: no-repeat;
-              width: 15px;
-              height: 15px;
-              margin-right: .5vmax;
+              width: 30px;
+              height: 30px;
               flex-grow: 0;
               flex-shrink: 0;
             }
           }
-          .cnt {
-            // padding-left: 1px;
-            font-size: 12px;
-          }
+
+          .cnt { font-size: 10px; }
+
           .lkHint {
-            width: auto;
+            // width: auto;
+            // padding: 2px 4px;
+            // position: absolute;
+            // top: 30px;
+            // left: -1000px;
+            // color: black;
+            // background-color: #f7efec;
+            // z-index: 999;
+            // font-size: 12px;
+            min-width: 150px;
             padding: 2px 4px;
             position: absolute;
             top: 30px;
@@ -88,10 +148,9 @@
             background-color: #f7efec;
             z-index: 999;
             font-size: 12px;
-
           }
           &:hover {
-            border-bottom: 1px solid wheat;
+            // border-bottom: 1px solid wheat;
             .lkHint {
               left: 20px;
               animation: appearance 1500ms ease-in-out forwards;
@@ -107,7 +166,7 @@
         display: flex;
         flex-direction: column;
         
-        a{color: white;}
+        a { color: white; }
       }
     }
   }
@@ -140,17 +199,14 @@
         font-weight: 700;
         color: rgb(8, 87, 161);
       }
-
     }
+
     .systemList {
       width: 100%;
       flex-grow: 1;
-      // outline: 1px solid green;
       overflow-y: auto;
       padding-left: 1vmax;
       padding-right: 1vmax;
-
-      
       overflow-y: scroll;
       overflow-x: hidden;
       scrollbar-width: 4px;
@@ -158,15 +214,107 @@
       &::-webkit-scrollbar { width: 4px; }
       &::-webkit-scrollbar-track { background: white; }
       &::-webkit-scrollbar-thumb { background-color: rgb(8, 87, 161); }
-
       .sections {
         height: 100%;
         display: flex;
         flex-direction: column;
       }
-
     }
   }
+
+
+
+  @media screen and (min-width: 500px) {
+    .sidebar {
+      width: 20vmax;
+      > div {
+        &.logPrsn {
+          .remoteSimple {
+            width: 8vmax;
+            height: 8vmax;
+            border-radius: 4vmax;
+            font-size: 4vmax;
+            letter-spacing: .4vmax;
+          }
+        }
+        &.lk {
+          .lkrow {
+            margin-bottom: 0px;
+            flex-direction: row;
+
+            .lkLink {
+              display: flex;
+              align-items: center;
+              color: wheat;
+              font-size: smaller;
+              margin-bottom: 4px;
+              padding: 10px 0 5px 0;
+              flex-grow: 1;
+
+              .lkIkon {
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 15px;
+                height: 15px;
+                margin-right: .5vmax;
+                flex-grow: 0;
+                flex-shrink: 0;
+              }
+            }
+            .lkHint {
+              width: auto;
+              padding: 2px 4px;
+              position: absolute;
+              top: 30px;
+              left: -1000px;
+              color: black;
+              background-color: #f7efec;
+              z-index: 999;
+              font-size: 12px;
+            }
+            &:hover {
+              border-bottom: 1px solid wheat;
+            }             
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .sidebar {
+      width: 20vmax;
+      > div {
+        &.logPrsn {
+          .remoteUser {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 18px;
+            .name { font-weight: 700; }
+            .domain { font-size: 14px; }
+          }
+          .remoteSimple {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .sidebar {
+      width: 200px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+
+  } 
+
+
+
+
 
   @keyframes appearance {
     0% {
@@ -185,58 +333,5 @@
       opacity: 1;
     }
   }
-
-  // flex-direction: column;
-  // align-items: center;
-  // width: 100%;  
-  // color: white;
-
-  // .header {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   width: 100%;
-  //   padding: 1.4vh 3vw;
-  //   background-color: #F04E25;
-  //   // min-height: 1.6vw;
-
-  //   .head_systemname {
-  //     font-family: pragmaticaextralight, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  //     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  //     sans-serif;
-  //     -webkit-font-smoothing: antialiased;
-  //     -moz-osx-font-smoothing: grayscale;
-  //     font-weight: 700;
-  //     font-size: 1.2vmax;
-  //     width: 41vw;
-  //     animation: appearance 500ms ease-in-out forwards;
-  //   }
-  //   // standard font
-  //   .head_systemname_sf { 
-  //     font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  //     -webkit-font-smoothing: antialiased;
-  //     -moz-osx-font-smoothing: grayscale;
-  //     font-size: 1.2vmax;
-  //     width: 41vw;
-  //     animation: mainpage_appearance__5pBMr 500ms ease-in-out forwards;
-  //     letter-spacing: -0.05vmax;
-  //   }
-
-  //   .remoteUser {
-  //     font-size: 1vmax;
-  //     flex-grow: 1;
-  //     display: flex;
-  //     justify-content: center;
-  //     animation: appearance 500ms ease-in-out forwards;
-  //   }
-  // }
-
-  // .syetems {
-  //   display: flex;
-  //   flex-direction: column;
-  //   width: 100%;
-  // }
-
-
-
 }
+
