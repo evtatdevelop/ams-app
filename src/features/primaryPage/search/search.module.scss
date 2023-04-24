@@ -14,6 +14,12 @@
     font-size: 1vmax;
     padding-right: 2vmax;
     background-color: transparent;
+    border-radius: 1vmax;
+    transition: background-color .3s;
+
+    &:focus {
+      background-color: white;
+    }
   }
 
   .clearSearch {

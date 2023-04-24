@@ -170,6 +170,11 @@
 
   @keyframes appearance {
     0% {
+      left: -1000px;
+      opacity: .0;
+    }
+    79% {
+      left: -1000px;
       opacity: .0;
     }
     80% {
