@@ -3,7 +3,7 @@
   width: 30vmax;
   height: auto;
   right: 1vmax;
-  top: calc(100px + 1vmax);
+  top: calc(80px + 1vmax);
   padding: .5vmax 2vmax .5vmax .5vmax;
   display: flex;
   background-color: rgba(256, 256, 256, .9);
@@ -34,13 +34,15 @@
 }
 
 @keyframes open {
-  from {
+  0% {
     top: -500px;
 
   }  
-
-  to {
+  90% {
     top: calc(100px + 1vmax);
+  }
+  100% {
+    top: calc(80px + 1vmax);
 
   }
 }

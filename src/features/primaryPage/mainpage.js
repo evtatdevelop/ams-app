@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, prefers, dictionary as dicts, getMainpage, search, 
-  contextMenu, offContextMenu, notification } from "./mainpageSlice";
+import { mainpage, dictionary as dicts, getMainpage, search, 
+  contextMenu, offContextMenu, notification, fastaccess } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -15,17 +15,17 @@ import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
 import dictionary from '../../dictionary.json';
-// import Navigation from "../navigation";
+import FastAccess from "./fastAccess";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : '/ams';
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
-  // const prefersData = useSelector(prefers);
   const dictionaryData = useSelector(dicts);
   const searchString = useSelector(search);
   const notice = useSelector(notification);
   const dataContextMenu = useSelector(contextMenu);
+  const fastSection = useSelector(fastaccess);
   const dispatch = useDispatch();
   useEffect(() => { 
     if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
@@ -55,6 +55,8 @@ export const PrimaryPage = () => {
 
     }
   })
+
+console.log(fastSection);
 
   return (
     <section className={styles.mainpage}
@@ -103,12 +105,6 @@ export const PrimaryPage = () => {
             ? <Link to = {`${_pathBase}/`}>&lt; Back</Link>
             : null
           } 
-          {/* <Link to = {`${_pathBase}/mainpage`}>&lt; Back</Link>
-          <Link to = '/personalArea'>PersonalArea</Link>
-          <Link to = '/workplace'>Workplace</Link>
-          <Link to = '/resources'>Resources</Link>
-          <Link to = '/components'>Components</Link>
-          <Link to = '/apiTests'>API Tests</Link>         */}
         </div>
       </aside>
 
@@ -119,20 +115,27 @@ export const PrimaryPage = () => {
           <LangButton/>
         </header>
         <div className={styles.systemList} onScroll={()=>dispatch(offContextMenu())}>
-          {searchString === "" 
-            ? <ul className={styles.sections}>
-
-                <Section key="prefers" section={prefers}/>
-
-                { pageData.map(section => section.systems.length !== 0 
-                  && section.prefix !== 'LK' 
-                  && section.prefix !== 'TOP_ORDERS' 
-                  && section.prefix !== 'FAVORITES' 
-                  ? <Section key={section.id} section={section}/> 
-                  : null) }
-              </ul>
-            : <SearchList/>  
+          {
+            searchString === "" 
+              ? <ul className={styles.sections}>
+                {
+                  fastSection
+                  ? pageData.map(section => section.id === fastSection 
+                    ? <Section key={section.id} section={section}/> 
+                    : null)
+                  : <><Section key="prefers" section={prefers}/>
+                    {pageData.map(section => section.systems.length !== 0 
+                    && section.prefix !== 'LK' 
+                    && section.prefix !== 'TOP_ORDERS' 
+                    && section.prefix !== 'FAVORITES' 
+                    ? <Section key={section.id} section={section}/> 
+                    : null) }</>
+     
+                }
+                </ul>
+              : <SearchList/>  
           }
+          { <FastAccess/> }
           { notice ? <Notification/> : null}
         </div>
       </main>

@@ -1,0 +1,41 @@
+.fastAccess {
+  position: fixed;
+  top: calc(80px + 1vmax);
+  right: 1vmax;
+
+  li {
+    color: white;
+    padding: 3px 4px;
+    background-color: rgba($color: #161619, $alpha: .8);
+    button {
+      width: 100%;
+      margin: 0;
+      padding: .3vmax;
+      background-color: transparent;
+      color: white;
+      font-size: small;
+      text-align: left;
+      border: 1px solid transparent;
+      transition: border .3s;
+      &:hover {
+        border: 1px solid wheat;
+      }
+    }  
+  }
+  .btnShowOn {
+    width: 2vmax;
+    height: 2vmax;
+    background-color: transparent;
+    color: rgba($color: #424242, $alpha: .5);
+    font-weight: 100;
+    font-size: 1.2vmax;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition: color .3s;
+
+    &:hover {
+      color: rgba($color: #424242, $alpha: 1)
+    }
+  }
+}

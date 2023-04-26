@@ -67,6 +67,10 @@
   "FAVORITES": {
     "EN": "Favorites",
     "RU": "Избранное"    
+  },
+  "all_sections": {
+    "EN": "All sections",
+    "RU": "Все разделы"    
   }
 
 
