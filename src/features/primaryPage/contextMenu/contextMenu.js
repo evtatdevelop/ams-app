@@ -10,7 +10,7 @@ export const ContextMenu = props => {
   const {top, left, systemId, section, about, section_prefix} = props.data;
   const dispatch = useDispatch();
   const userData = useSelector(user);
-  // const width= 160;
+  const width= 140;
 
   const addPrefersHandler = () => {
     dispatch(addToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));
@@ -29,12 +29,12 @@ export const ContextMenu = props => {
     setTimeout(()=>dispatch(onNotification(about))) 
   }
 
-  console.log(section_prefix);
+  const X = document.documentElement.clientWidth < left + width ? left - width : left;
 
   return (
     left && top 
-      ? <div className={styles.contextMenu} style={{left: `${left}px`, top: `${top}px`, width: `auto`}}>
-          <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button>
+      ? <div className={styles.contextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
+          {about ? <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button> : null}
           {/* {section === 'FAVORITES' || section === 'PREFERS' */}
           {section_prefix !== 'TOP_ORDERS' 
             ? section === 'PREFERS'
