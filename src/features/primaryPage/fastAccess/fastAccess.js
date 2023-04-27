@@ -18,10 +18,12 @@ export const FastAccess = props => {
     setShow(false)
   }
 
+  const fastAccessMenu = show ? `${styles.fastAccessMenu} ${styles.show}` : `${styles.fastAccessMenu}`
+
   return (
     <div className={styles.fastAccess}>
-      {show 
-        ? <ul>
+
+        <ul className={fastAccessMenu}>
             <li key='all'><button type="button" onClick={() => onClick(null)}>{dictionary['all_sections'][userData['lang']]}</button></li>
             {pageData.map(section => 
               section.prefix !== "LK" && section.prefix !== "TOP_ORDERS" && section.prefix !== "FAVORITES" 
@@ -29,10 +31,11 @@ export const FastAccess = props => {
                 : null
             )}
           </ul>
-        : <button type="button" className={styles.btnShowOn} onClick={()=> setShow(!show)}>
+
+        <button type="button" className={styles.btnShowOn} onClick={()=> setShow(!show)}>
             <FontAwesomeIcon icon={ faBars } className={styles.iconButton} />
           </button>      
-      }
+
       
     </div>
   )

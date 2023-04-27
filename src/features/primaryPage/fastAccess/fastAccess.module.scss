@@ -3,25 +3,43 @@
   top: calc(80px + 1vmax);
   right: 1vmax;
 
-  li {
-    color: white;
-    padding: 3px 4px;
-    background-color: rgba($color: #161619, $alpha: .8);
-    button {
-      width: 100%;
-      margin: 0;
-      padding: .3vmax;
-      background-color: transparent;
+  .fastAccessMenu {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: opacity .3s;
+    opacity: 0;
+
+    li {
       color: white;
-      font-size: small;
-      text-align: left;
-      border: 1px solid transparent;
-      transition: border .3s;
-      &:hover {
-        border: 1px solid wheat;
+      padding: 3px 4px;
+      background-color: rgba($color: #161619, $alpha: .8);
+      button {
+        width: 100%;
+        margin: 0;
+        padding: .3vmax;
+        background-color: transparent;
+        color: white;
+        font-size: small;
+        text-align: left;
+        border: 1px solid transparent;
+        transition: border .3s;
+        &:hover {
+          border: 1px solid wheat;
+        }
       }
+    }
+    &.show {
+      width: 100%;
+      height: auto;
+      padding: .3vmax;
+      opacity: 1;
     }  
   }
+
+
   .btnShowOn {
     width: 2vmax;
     height: 2vmax;

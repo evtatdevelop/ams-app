@@ -42,21 +42,16 @@ export const PrimaryPage = () => {
   const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
   
   const setPrefers = new Set();
-  pageData.map(section => {
-    if ( section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES') {
-      section.systems.map(sytem => {
-        if ( !setPrefers.has(sytem.system_prefix) ) {
-          const newSystem = {...sytem, section_prefix: section.prefix}
-          
-          prefers.systems.push(newSystem)
-        }
+  pageData.map(section => 
+    section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
+    ?  section.systems.map(sytem => {
+        if ( !setPrefers.has(sytem.system_prefix) )prefers.systems.push({...sytem, section_prefix: section.prefix})
         setPrefers.add(sytem.system_prefix)
+        return null
       })
+    : null
+  )
 
-    }
-  })
-
-console.log(fastSection);
 
   return (
     <section className={styles.mainpage}
