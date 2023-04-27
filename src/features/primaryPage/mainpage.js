@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, search, 
-  contextMenu, offContextMenu, notification, fastaccess } from "./mainpageSlice";
+  contextMenu, offContextMenu, notification, fastaccess, onFastShow } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -55,7 +55,10 @@ export const PrimaryPage = () => {
 
   return (
     <section className={styles.mainpage}
-      onClick={()=>dispatch(offContextMenu())}
+      onClick={()=>{
+        dispatch(offContextMenu())
+        // dispatch(onFastShow(false))
+      }}
     >
 
       <aside className={styles.sidebar}>      
@@ -92,7 +95,7 @@ export const PrimaryPage = () => {
 
             )
             : null)
-          }          
+          }        
         </div>
 
         <div className={styles.backLink}>
@@ -103,13 +106,17 @@ export const PrimaryPage = () => {
         </div>
       </aside>
 
-      <main className={styles.main}>
+      <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>
         <header className={styles.mainHeader}>
           <h1 className={styles.pageName}>{dictionaryData.head_systemname}</h1>
           <SearchSystems/>
           <LangButton/>
         </header>
-        <div className={styles.systemList} onScroll={()=>dispatch(offContextMenu())}>
+        <div className={styles.systemList} 
+          onScroll={()=>{
+            dispatch(offContextMenu())
+            dispatch(onFastShow(false))
+          }}>
           {
             searchString === "" 
               ? <ul className={styles.sections}>
@@ -130,11 +137,11 @@ export const PrimaryPage = () => {
                 </ul>
               : <SearchList/>  
           }
-          { <FastAccess/> }
+
           { notice ? <Notification/> : null}
         </div>
       </main>
-
+      { <FastAccess/> }
       <ContextMenu data = {dataContextMenu} />
 
       { expired ? <ExpirationScreen/> : null }

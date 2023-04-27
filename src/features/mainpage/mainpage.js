@@ -37,7 +37,11 @@ export const Mainpage = () => {
     <section className={styles.mainpage}>
       
       <header className={styles.header}>
-        <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
+        <div>
+          <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
+          <a target="_blank" rel="noreferrer" href="https://request.sibgenco.local/docs/ASUZ_New_Mainpage_20230427.docx" className={styles.instructions}>Памятка по работе с обновленным интерфейсом системы</a>
+        </div>
+        
         {dictionaryData.head_currentuser && userData.ad_user
           ? <div className={styles.remoteUser}> <p>{`${dictionaryData.head_currentuser}`}<br/>{`${userData.shortname} (${userData.ad_user})`}</p></div>
           : null

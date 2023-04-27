@@ -12,6 +12,7 @@
   animation: open .5s linear;
   border: 1px solid rgba(8, 87, 161, 0.097);
   border-radius: 3px;
+  z-index: 900;
 
   .notiCloser {
     position: absolute;

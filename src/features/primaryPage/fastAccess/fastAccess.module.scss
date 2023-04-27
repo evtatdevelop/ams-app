@@ -2,6 +2,7 @@
   position: fixed;
   top: calc(80px + 1vmax);
   right: 1vmax;
+  z-index: 700;
 
   .fastAccessMenu {
     width: 1px;

@@ -1,21 +1,21 @@
-import React, { useState }  from "react";
+import React from "react";
 import styles from './fastAccess.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, onFastAccess } from "../mainpageSlice";
+import { mainpage, onFastAccess, onFastShow, fastshow } from "../mainpageSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import dictionary from '../../../dictionary.json';
 import { user } from '../../user/userSlice'
 
 export const FastAccess = props => {
-  const [show, setShow] = useState(false)
   const pageData = useSelector(mainpage);
   const userData = useSelector(user);
+  const show = useSelector(fastshow);
   const dispatch = useDispatch();
 
   const onClick = (sectionId) => {
     dispatch(onFastAccess(sectionId));
-    setShow(false)
+    dispatch(onFastShow(false));
   }
 
   const fastAccessMenu = show ? `${styles.fastAccessMenu} ${styles.show}` : `${styles.fastAccessMenu}`
@@ -32,7 +32,7 @@ export const FastAccess = props => {
             )}
           </ul>
 
-        <button type="button" className={styles.btnShowOn} onClick={()=> setShow(!show)}>
+        <button type="button" className={styles.btnShowOn} onClick={()=> dispatch(onFastShow(!show))}>
             <FontAwesomeIcon icon={ faBars } className={styles.iconButton} />
           </button>      
 
