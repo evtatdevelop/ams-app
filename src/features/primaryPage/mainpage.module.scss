@@ -8,7 +8,7 @@
   .sidebar {
     position: relative;
     // width: 200px;
-    width: 75px;
+    width: 25px;
     height: 100vh;
     flex-shrink: 0;
     background-color: rgb(8, 87, 161);
@@ -19,21 +19,16 @@
       width: 100%;
       margin-bottom: 10px;
 
+      display: none;
+
       &.logPrsn {
         height: 100px;
         width: 100%;
-        display: flex;
+        // display: flex;
         align-items: center;
         justify-content: center;
 
         .remoteUser {
-          // width: 100%;
-          // display: flex;
-          // flex-direction: column;
-          // align-items: center;
-          // font-size: 18px;
-          // .name { font-weight: 700; }
-          // .domain { font-size: 14px; }
           display: none;
         }
         .remoteSimple {
@@ -44,8 +39,6 @@
           width: 6vmax;
           height: 6vmax;
           font-size: 3vmax;
-          font-weight: 700;
-          letter-spacing: .3vmax;
           border-radius: 3vmax;
           flex-grow: 0;
           flex-shrink: 0;
@@ -95,13 +88,6 @@
           margin-right: 3px;
 
           .lkLink {
-            // display: flex;
-            // align-items: center;
-            // color: wheat;
-            // font-size: smaller;
-            // margin-bottom: 4px;
-            // padding: 10px 0 5px 0;
-            // flex-grow: 1;
             display: flex;
             align-items: center;
             color: wheat;
@@ -111,13 +97,6 @@
             flex-grow: 0;
 
             .lkIkon {
-              // background-size: cover;
-              // background-repeat: no-repeat;
-              // width: 15px;
-              // height: 15px;
-              // margin-right: .5vmax;
-              // flex-grow: 0;
-              // flex-shrink: 0;
               background-size: cover;
               background-repeat: no-repeat;
               width: 30px;
@@ -130,15 +109,6 @@
           .cnt { font-size: 10px; }
 
           .lkHint {
-            // width: auto;
-            // padding: 2px 4px;
-            // position: absolute;
-            // top: 30px;
-            // left: -1000px;
-            // color: black;
-            // background-color: #f7efec;
-            // z-index: 999;
-            // font-size: 12px;
             min-width: 150px;
             padding: 2px 4px;
             position: absolute;
@@ -150,7 +120,6 @@
             font-size: 12px;
           }
           &:hover {
-            // border-bottom: 1px solid wheat;
             .lkHint {
               left: 20px;
               animation: appearance 1500ms ease-in-out forwards;
@@ -178,10 +147,11 @@
 
     .mainHeader {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: space-around;
       align-items: center;
       width: 100%;
-      height: 80px;
+      height: 60px;
       padding: 1vmax;
       flex-shrink: 0;
       border-bottom: 1px solid rgba(8, 87, 161, 0.139);
@@ -189,7 +159,7 @@
       background-image: linear-gradient(rgba(8, 87, 161, 0.143), white);
 
       .pageName {
-        width: 60%;
+        width: 100%;
         font-family: pple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
@@ -198,6 +168,12 @@
         font-size: 1.3vmax;
         font-weight: 700;
         color: rgb(8, 87, 161);
+      }
+      .mobwraper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
     }
 
@@ -229,13 +205,16 @@
     .sidebar {
       width: 20vmax;
       > div {
+        display: block;
+
         &.logPrsn {
+          display: flex;
           .remoteSimple {
             width: 8vmax;
             height: 8vmax;
             border-radius: 4vmax;
             font-size: 4vmax;
-            letter-spacing: .4vmax;
+            // letter-spacing: .4vmax;
           }
         }
         &.lk {
@@ -279,6 +258,18 @@
           }
         }
       }
+    }
+    .main {
+      .mainHeader {
+        justify-content: space-between;
+        flex-direction: row;
+        height: 80px;
+        .pageName { width: 60%;}
+        .mobwraper {
+          width: auto;
+        }  
+      }
+
     }
   }
   @media screen and (min-width: 800px) {

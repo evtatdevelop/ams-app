@@ -98,19 +98,22 @@ export const PrimaryPage = () => {
           }        
         </div>
 
-        <div className={styles.backLink}>
+        {/* <div className={styles.backLink}>
           { permitted.includes(userData.login) 
             ? <Link to = {`${_pathBase}/`}>&lt; Back</Link>
             : null
           } 
-        </div>
+        </div> */}
       </aside>
 
       <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>
         <header className={styles.mainHeader}>
           <h1 className={styles.pageName}>{dictionaryData.head_systemname}</h1>
-          <SearchSystems/>
-          <LangButton/>
+          <div className={styles.mobwraper}>
+            <SearchSystems/>
+            <LangButton/>            
+          </div>
+
         </header>
         <div className={styles.systemList} 
           onScroll={()=>{
