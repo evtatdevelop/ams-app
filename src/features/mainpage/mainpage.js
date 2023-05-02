@@ -39,7 +39,7 @@ export const Mainpage = () => {
       <header className={styles.header}>
         <div>
           <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
-          <a target="_blank" rel="noreferrer" href="https://request.sibgenco.local/docs/ASUZ_New_Mainpage_20230427.docx" className={styles.instructions}>Памятка по работе с обновленным интерфейсом системы</a>
+          <a target="_blank" rel="noreferrer" href="https://request.sibgenco.local/lk/instructions" className={styles.instructions}>Памятка по работе с обновленным интерфейсом системы</a>
         </div>
         
         {dictionaryData.head_currentuser && userData.ad_user

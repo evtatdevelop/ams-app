@@ -9,7 +9,7 @@ import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
-import { permitted } from '../../config';
+import { mainpage as altMainpage, root} from '../../config';
 import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
@@ -18,7 +18,7 @@ import dictionary from '../../dictionary.json';
 import FastAccess from "./fastAccess";
 
 export const PrimaryPage = () => {
-  const _pathBase = testMode ? '' : '/ams';
+  const _pathBase = testMode ? '' : `/${root}`
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dicts);
@@ -98,12 +98,12 @@ export const PrimaryPage = () => {
           }        
         </div>
 
-        {/* <div className={styles.backLink}>
-          { permitted.includes(userData.login) 
-            ? <Link to = {`${_pathBase}/`}>&lt; Back</Link>
-            : null
+        <div className={styles.backLink}>
+          { altMainpage.includes(userData.login) 
+            ? <Link to = {`${_pathBase}/mainpage`}>&lt; Mainpage</Link>
+            : <Link to = {`${_pathBase}/`}>&lt; Mainpage</Link>
           } 
-        </div> */}
+        </div>
       </aside>
 
       <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>

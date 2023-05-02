@@ -259,18 +259,18 @@
         }
       }
     }
-    .main {
-      .mainHeader {
-        justify-content: space-between;
-        flex-direction: row;
-        height: 80px;
-        .pageName { width: 60%;}
-        .mobwraper {
-          width: auto;
-        }  
-      }
+    // .main {
+    //   .mainHeader {
+    //     justify-content: space-between;
+    //     flex-direction: row;
+    //     height: 80px;
+    //     .pageName { width: 60%;}
+    //     .mobwraper {
+    //       width: auto;
+    //     }  
+    //   }
 
-    }
+    // }
   }
   @media screen and (min-width: 800px) {
     .sidebar {
@@ -292,6 +292,18 @@
         }
       }
     }
+    .main {
+      .mainHeader {
+        justify-content: space-between;
+        flex-direction: row;
+        height: 80px;
+        .pageName { width: 60%;}
+        .mobwraper {
+          width: auto;
+        }  
+      }
+
+    }    
   }
   
   @media screen and (min-width: 1000px) {
