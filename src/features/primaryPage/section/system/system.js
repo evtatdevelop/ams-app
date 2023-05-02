@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from "react-redux";
 import { onContextMenu, offContextMenu } from "../../mainpageSlice";
-import { testMode } from "../../../../config";
+import { testMode, root } from "../../../../config";
 
 export const System = props => {
-  const _pathBase = testMode ? '' : 'ams/';
+  const _pathBase = testMode ? '' : `${root}/`;
   const { system, prefix } = props;
   const ref = useRef();
   const dispatch = useDispatch();

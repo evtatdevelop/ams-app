@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { testMode, permitted } from './config';
+import { testMode, permitted, root } from './config';
 import { TestPage } from './testPage/testPage';
 import { Workplace } from './features/workplace/workplace';
 import { Resources } from './features/resources/resources';
@@ -18,7 +18,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
 
-  const _pathBase = testMode ? '' : '/ams'
+  // const _pathBase = testMode ? '' : '/ams'
+  // const _pathBase = testMode ? '' : '/newpage'
+  const _pathBase = testMode ? '' : `/${root}`
 
   return (
     <div className="App">

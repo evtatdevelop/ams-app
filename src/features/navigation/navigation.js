@@ -2,10 +2,10 @@ import React from "react";
 import styles from './navigation.module.scss';
 import { Link } from 'react-router-dom';
 
-import { testMode } from "../../config";
+// import { testMode, root } from "../../config";
 
 export const Navigation = () => {
-  const _pathBase = testMode ? '' : '/ams';
+  // const _pathBase = testMode ? '' : `/${root}`;
 
   return (
     <nav className={styles.navigation}>
