@@ -7,7 +7,8 @@ import { onContextMenu, offContextMenu } from "../../mainpageSlice";
 import { testMode, root } from "../../../../config";
 
 export const System = props => {
-  const _pathBase = testMode ? '' : `${root}/`;
+  // const _pathBase = testMode ? '' : `${root}/`;
+  const _pathBase = testMode ? '' : ``;
   const { system, prefix } = props;
   const ref = useRef();
   const dispatch = useDispatch();

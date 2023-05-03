@@ -30,8 +30,8 @@ function App() {
         }
         {/* <Route path={`/primarypage`} element={<PrimaryPage/>}/> */}
         {mainpage.includes(userData.login) 
-          ? <Route path={`/mainpage`} element={<Mainpage/>}/> 
-          : <Route path={`/primarypage`} element={<PrimaryPage/>}/>
+          ? <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
+          : <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
         } 
 
         <Route path={`/personalArea`} element={<PersonalArea/>}/>
