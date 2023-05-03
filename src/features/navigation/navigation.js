@@ -33,13 +33,13 @@ export const Navigation = props => {
             ? <>
                 <li><Link to = '/personalArea'>PersonalArea</Link></li>
                 <li><Link to = '/workplace'>Workplace</Link></li>
-                <li><Link to = '/resources'>Resources</Link></li>            
+                <li><Link to = '/resources'>Resources</Link></li> 
+                <li><Link to = '/apiTests'>API Tests</Link></li>           
               </>
             : null
           }
 
           <li> <Link to = '/components'>Components</Link></li>
-          <li><Link to = '/apiTests'>API Tests</Link></li>
         </ul>
 
         

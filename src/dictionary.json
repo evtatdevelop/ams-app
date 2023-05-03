@@ -45,24 +45,24 @@
     "RU": "Мои заявки"    
   },
   "LK_02": {
-    "EN": "Pending approval",
+    "EN": "Pending",
     "RU": "На согласовании"    
   },
   "LK_04_05": {
-    "EN": "Approval settings",
+    "EN": "Settings",
     "RU": "Настройки"    
   },
   "LK_03": {
-    "EN": "Resolved applications",
-    "RU": "Рассмотренные заявки"    
+    "EN": "Resolved",
+    "RU": "Рассмотренные"    
   },
   "LK_06": {
-    "EN": "Requests for execution",
-    "RU": "Заявки на исполнении"    
+    "EN": "On execution",
+    "RU": "На исполнении"    
   },
   "LK_07": {
-    "EN": "Сompleted requests",
-    "RU": "Исполненные заявки"    
+    "EN": "Сompleted",
+    "RU": "Исполненные"    
   },
   "FAVORITES": {
     "EN": "Favorites",

@@ -55,6 +55,9 @@
       overflow: hidden;
       line-height: 1.15vmax;
       flex-grow: 1;
+      display: flex;
+      align-items: center;
+
     }
   }
 
@@ -109,20 +112,28 @@
 
 @media screen and (min-width: 500px) {
   .system {
-    width: 14vmax;
-    height: 14vmax;
+    width: 15vmax;
+    height: 15vmax;
     &.topOrders {
-      width: 12vmax;
-      height: 12vmax;
+      width: 13vmax;
+      height: 13vmax;
       .request_url {
+        .sysIcon {
+          height: 4vmax;
+        }
         .request_name {
           font-size: 1.3vmax;
+          line-height: 1.5vmax;
         }
       }    
     }
     .request_url {
+      .sysIcon {
+        height: 5vmax;
+      }
       .request_name {
-        font-size: 1.3vmax;
+        font-size: 1.7vmax;
+        line-height: 1.7vmax;
       }
     } 
   }
@@ -138,18 +149,18 @@
       height: 10vmax;
       .request_url {
         .request_name {
-          font-size: 1vmax;
+          font-size: 1.1vmax;
           line-height: 1.25vmax;
         }
       }  
     } 
     .request_url {
       .sysIcon {
-        height: 5vmax;
+        height: 4.2vmax;
       }
       .request_name {
-        line-height: 1vmax;
-        font-size: 1.1vmax;
+        line-height: 1.2vmax;
+        font-size: 1.2vmax;
       }
     }  
   }
@@ -157,20 +168,24 @@
 
 @media screen and (min-width: 1000px) {
   .system {
-    width: 11vmax;
-    height: 11vmax;
+    width: 12vmax;
+    height: 12vmax;
     &.topOrders {
-      width: 9vmax;
-      height: 9vmax;
+      width: 10vmax;
+      height: 10vmax;
       .request_url {
         .request_name {
-          font-size: .9vmax;
+          font-size: 1vmax;
         }
       }    
     }
     .request_url {
+      .sysIcon {
+        height: 4vmax;
+      }
       .request_name {
-        font-size: 1vmax;
+        font-size: 1.1vmax;
+        line-height: 1.1vmax;
       }
     }
   }
@@ -184,19 +199,22 @@
       width: 8vmax;
       height: 8vmax;
       .request_url {
+        .sysIcon {
+          height: 3vmax;
+        }
         .request_name {
-          font-size: .8vmax;
-          line-height: 1.15vmax;
+          font-size: .9vmax;
+          line-height: 1vmax;
         }
       }   
     }
     .request_url {
       .sysIcon {
-        height: 4vmax;
+        height: 3.3vmax;
       }
       .request_name {
-        line-height: .9vmax;
-        font-size: .9vmax;
+        line-height: 1.1vmax;
+        font-size: 1vmax;
       }
     } 
   }

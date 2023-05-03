@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getMainpageData, addPrefers, delPrefers  } from './mainpageSliceAPI';
+import { normalizeSystemName } from "../../helpers";
 
 const initialState = {
   loading: false,
@@ -74,7 +75,14 @@ export const primarypageSlice = createSlice({
     builder
       .addCase(getMainpage.pending, ( state ) => { state.loading = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
-        state.data = action.payload.sections;
+        // state.data = action.payload.sections;
+        state.data = action.payload.sections.map(section => {
+          return {...section, systems: section.systems.map(system => {
+            return {...system, 
+              request_name: normalizeSystemName(system.request_name)
+            }
+          })}
+        });
         state.dictionary = action.payload.dictionary;
         state.loading = false;
       })
@@ -82,14 +90,28 @@ export const primarypageSlice = createSlice({
       .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
-        state.data = action.payload.sections;
+        // state.data = action.payload.sections;
+        state.data = action.payload.sections.map(section => {
+          return {...section, systems: section.systems.map(system => {
+            return {...system, 
+              request_name: normalizeSystemName(system.request_name)
+            }
+          })}
+        });
         state.dictionary = action.payload.dictionary;
       })
 
       .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
-        state.data = action.payload.sections;
+        // state.data = action.payload.sections;
+        state.data = action.payload.sections.map(section => {
+          return {...section, systems: section.systems.map(system => {
+            return {...system, 
+              request_name: normalizeSystemName(system.request_name)
+            }
+          })}
+        });
         state.dictionary = action.payload.dictionary;
       })
   }
