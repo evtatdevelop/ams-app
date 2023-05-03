@@ -9,13 +9,15 @@ import LangButton from "./langButton";
 import SearchSystems from "./search";
 import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
-import { mainpage as altMainpage, root} from '../../config';
-import { Link } from 'react-router-dom';
+import { root} from '../../config';
+// import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
 import dictionary from '../../dictionary.json';
 import FastAccess from "./fastAccess";
+import Navigation from "../navigation";
+import { permitted } from '../../config';
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : `/${root}`
@@ -98,12 +100,12 @@ export const PrimaryPage = () => {
           }        
         </div>
 
-        <div className={styles.backLink}>
+        {/* <div className={styles.backLink}>
           { altMainpage.includes(userData.login) 
             ? <Link to = {`${_pathBase}/mainpage`}>&lt; Mainpage</Link>
             : <Link to = {`${_pathBase}/`}>&lt; Mainpage</Link>
           } 
-        </div>
+        </div> */}
       </aside>
 
       <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>
@@ -148,6 +150,11 @@ export const PrimaryPage = () => {
       <ContextMenu data = {dataContextMenu} />
 
       { expired ? <ExpirationScreen/> : null }
+
+      { permitted.includes(userData.login) 
+        ? <Navigation page = 'primaryPage'/>
+        : null
+      }        
     </section>
   )
 }

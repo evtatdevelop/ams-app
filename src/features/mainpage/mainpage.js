@@ -50,11 +50,6 @@ export const Mainpage = () => {
         <LangButton/>
       </header>
 
-      { permitted.includes(userData.login) 
-        ? <Navigation/>
-        : null
-      }
-
       {searchString === "" 
         ? <ul className={styles.syetems}>
             { pageData.map(section => <Section key={section.id} section={section}/>) }
@@ -65,7 +60,11 @@ export const Mainpage = () => {
       <Hint data = {dataHint} />
 
       { expired ? <ExpirationScreen/> : null }
-      
+
+       { permitted.includes(userData.login) 
+        ? <Navigation page = 'mainpage'/>
+        : null
+      }     
     </section>
   )
 }

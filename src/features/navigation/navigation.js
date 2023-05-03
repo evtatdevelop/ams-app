@@ -1,26 +1,54 @@
 import React from "react";
 import styles from './navigation.module.scss';
 import { Link } from 'react-router-dom';
-import { mainpage} from '../../config';
+import { mainpage, developer, testMode, root} from '../../config';
 import { user } from '../user/userSlice';
 import { useSelector } from "react-redux";
 
 // import { testMode, root } from "../../config";
 
-export const Navigation = () => {
+export const Navigation = props => {
+  const { page } = props;
   const userData = useSelector(user);
+  const _pathBase = testMode ? '' : `/${root}`
 
   return (
-    <nav className={styles.navigation}>
-      {mainpage.includes(userData.login) 
-        ? <Link to = {`/`}>PrimaryPage</Link>
-        : <Link to = {`/primarypage`}>PrimaryPage</Link>
-      }
-      {/* <Link to = '/personalArea'>PersonalArea</Link> */}
-      {/* <Link to = '/workplace'>Workplace</Link> */}
-      <Link to = '/resources'>Resources</Link>
-      <Link to = '/components'>Components</Link>
-      <Link to = '/apiTests'>API Tests</Link>
-    </nav>
+    <div className={styles.navigation}>
+      <button type="button" className={styles.btnDevNav}>Dev Navigation</button>
+      <nav className={styles.devNav}>
+        <p className={styles.headDevNav}>Dev Navigation</p>
+        <ul>
+          <li>        
+            { page === 'mainpage'
+              ? mainpage.includes(userData.login) 
+                ? <Link to = {`${_pathBase}/`}>PrimaryPage</Link>
+                : <Link to = {`${_pathBase}/primarypage`}>PrimaryPage</Link>
+              : mainpage.includes(userData.login) 
+                ? <Link to = {`${_pathBase}/mainpage`}>Mainpage</Link>
+                : <Link to = {`${_pathBase}/`}>Mainpage</Link>  
+            }
+          </li>
+
+          {developer.includes(userData.login) 
+            ? <>
+                <li><Link to = '/personalArea'>PersonalArea</Link></li>
+                <li><Link to = '/workplace'>Workplace</Link></li>
+                <li><Link to = '/resources'>Resources</Link></li>            
+              </>
+            : null
+          }
+
+          <li> <Link to = '/components'>Components</Link></li>
+          <li><Link to = '/apiTests'>API Tests</Link></li>
+        </ul>
+
+        
+        
+        
+       
+        
+      </nav>      
+    </div>
+
   )
 }
