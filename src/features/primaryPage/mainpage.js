@@ -85,7 +85,7 @@ export const PrimaryPage = () => {
           {pageData.map(section => section.prefix === 'LK' 
             ? section.systems.map(system => 
               <div key={system.system_prefix} className={styles.lkrow}>
-                <a href={system.request_url} className={styles.lkLink}>
+                <a href={system.request_url} className={styles.lkLink} target="_blank" rel="noreferrer">
                   <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
                   {dictionary[system.system_prefix][userData['lang']]}
                 </a>
@@ -97,13 +97,6 @@ export const PrimaryPage = () => {
             : null)
           }        
         </div>
-
-        {/* <div className={styles.backLink}>
-          { altMainpage.includes(userData.login) 
-            ? <Link to = {`${_pathBase}/mainpage`}>&lt; Mainpage</Link>
-            : <Link to = {`${_pathBase}/`}>&lt; Mainpage</Link>
-          } 
-        </div> */}
       </aside>
 
       <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>

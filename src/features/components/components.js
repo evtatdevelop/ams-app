@@ -44,7 +44,7 @@ export const Components = () => {
 
         <SelectInput
           selectHandler = { val => onWork(val) }
-          placeholder = 'SelectInput'
+          placeholder = 'Employee search'
           val = ''
           name='TestSelectInput'
         />
