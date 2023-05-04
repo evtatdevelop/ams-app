@@ -1,14 +1,19 @@
-export const ucFirst = (str) => {
+export const ucFirst = (str, onlyFirst = true) => {
   if (!str) return str;
-  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+  return onlyFirst 
+    ? str[0].toUpperCase() + str.slice(1).toLowerCase()
+    : str[0].toUpperCase() + str.slice(1);
 }
 
 export const normalizeSystemName = (str) => {
-  return ucFirst(str
-    .replace('Заявка на ', '')
+  let string = '';
+  str.replace('Заявка на ', '')
     .replace('Запрос на ', '')
     .replace('Request for ', '')
     .replace('организацию', 'организация')
     .replace('командировку', 'командировка')
-  ).slice(0,45);
+    .split(' ').forEach(word => {
+      string += string.length + word.length > 47 ? "" : ` ${word}`
+    })
+  return ucFirst(string.trim(), false)
 }
