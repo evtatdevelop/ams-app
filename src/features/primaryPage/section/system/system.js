@@ -26,7 +26,7 @@ export const System = props => {
   const styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`
   return (
     <li  ref={ref} className={styleSystem}>
-      <a href={`${system.request_url}`} className={styles.request_url}>
+      <a href={`${system.request_url}`} className={styles.request_url} target="_balank">
         <div className={styles.sysIcon} style={{backgroundImage: `url(${_pathBase}system_icons/${system.icon_filename})`}}></div>      
         <div className={styles.request_name}>{system.request_name}</div>         
       </a>

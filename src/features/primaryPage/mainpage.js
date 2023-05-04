@@ -10,7 +10,6 @@ import SearchSystems from "./search";
 import SearchList from "./searchList";
 import ExpirationScreen from "../expirationScreen";
 import { root} from '../../config';
-// import { Link } from 'react-router-dom';
 import { testMode } from "../../config";
 import ContextMenu from "./contextMenu";
 import Notification from "./notification";
@@ -59,7 +58,6 @@ export const PrimaryPage = () => {
     <section className={styles.mainpage}
       onClick={()=>{
         dispatch(offContextMenu())
-        // dispatch(onFastShow(false))
       }}
     >
 
