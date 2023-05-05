@@ -57,5 +57,8 @@
     &:hover {
       color: rgba($color: #424242, $alpha: 1)
     }
+    &.hide {
+      display: none;
+    } 
   }
 }

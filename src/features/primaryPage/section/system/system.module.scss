@@ -7,6 +7,15 @@
   animation: appearance 500ms ease-in-out forwards;
   font-weight: 400;
 
+  .pickedSign { display: none; }
+  &:not(.topOrders) .pickedSign {
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    color: red;
+  }
+
   &.topOrders {
     width: 12vmax;
     height: 12vmax;
@@ -37,7 +46,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: .1vw solid #DDDDDD;
+    border: .1vw solid #c2c2c2;
     border-radius: .3vmax;
     color: #424242;
     transition: border .3s, box-shadow .5s;

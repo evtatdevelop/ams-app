@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { onContextMenu, offContextMenu } from "../../mainpageSlice";
 import { testMode } from "../../../../config";
+import { user } from "../../../user/userSlice";
 
 export const System = props => {
   // const _pathBase = testMode ? '' : `${root}/`;
@@ -12,6 +13,7 @@ export const System = props => {
   const { system, prefix } = props;
   const ref = useRef();
   const dispatch = useDispatch();
+  const userData = useSelector(user);
 
   // useEffect(() => {
   //   sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
@@ -22,6 +24,9 @@ export const System = props => {
     dispatch(offContextMenu());
     setTimeout(() => dispatch(onContextMenu({ top: target.top, left: target.left, systemId: system.asz22_id, section: prefix, about: system.hint_text, section_prefix: system.section_prefix, sysPrefix: system.system_prefix})), 0);
   }
+
+  const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
+  const removerTop = lsdata ? lsdata : []
 
   const styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`
   return (
@@ -34,6 +39,8 @@ export const System = props => {
       <button type='button' className={styles.infoBtn} onClick={(e) => handlerContextMenu(e)} >
         <FontAwesomeIcon icon={ faEllipsisVertical } className={styles.iconButton} />
       </button>
+
+      {system.picked && !removerTop.includes(system.system_prefix) ? <div className={styles.pickedSign}>*</div> : null}
 
     </li>
   )

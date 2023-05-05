@@ -19,22 +19,23 @@ export const FastAccess = props => {
   }
 
   const fastAccessMenu = show ? `${styles.fastAccessMenu} ${styles.show}` : `${styles.fastAccessMenu}`
+  const btnShowOn = show ? `${styles.btnShowOn} ${styles.hide}` : `${styles.btnShowOn}`
 
   return (
     <div className={styles.fastAccess}>
 
         <ul className={fastAccessMenu}>
-            <li key='all'><button type="button" onClick={() => onClick(null)}>{dictionary['all_sections'][userData['lang']]}</button></li>
-            {pageData.map(section => 
-              section.prefix !== "LK" && section.prefix !== "TOP_ORDERS" && section.prefix !== "FAVORITES" 
-                ? <li key={section.id}><button type="button" onClick={() => onClick(section.id)}>{section.name}</button></li>
-                : null
-            )}
-          </ul>
+          <li key='all'><button type="button" onClick={() => onClick(null)}>{dictionary['all_sections'][userData['lang']]}</button></li>
+          {pageData.map(section => 
+            section.prefix !== "LK" && section.prefix !== "TOP_ORDERS" && section.prefix !== "FAVORITES" 
+              ? <li key={section.id}><button type="button" onClick={() => onClick(section.id)}>{section.name}</button></li>
+              : null
+          )}
+        </ul>
 
-        <button type="button" className={styles.btnShowOn} onClick={()=> dispatch(onFastShow(!show))}>
+        <button type="button" className={btnShowOn} onClick={()=> dispatch(onFastShow(!show))}>
             <FontAwesomeIcon icon={ faBars } className={styles.iconButton} />
-          </button>      
+        </button>      
 
       
     </div>

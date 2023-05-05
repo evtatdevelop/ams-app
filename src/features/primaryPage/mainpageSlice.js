@@ -116,8 +116,19 @@ const SystemNameRun = data => {
   return data.map(section => {
     return {...section, systems: section.systems.map(system => {
       return {...system, 
-        request_name: section.prefix === 'LK' ? system.request_name : normalizeSystemName(system.request_name)
+        request_name: section.prefix === 'LK' ? system.request_name : normalizeSystemName(system.request_name),
+        picked: checkPicked(data, system.system_prefix)
       }
     })}
   });
+}
+
+const checkPicked = (data, systemPrefix) => {
+  let result = false
+  data.map(section => {
+    if ( section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' )
+      if ( section.systems.find(system => system.system_prefix === systemPrefix) ) result = true
+    return null   
+  })
+  return result
 }

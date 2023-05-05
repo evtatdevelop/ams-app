@@ -45,7 +45,6 @@ export const PrimaryPage = () => {
   const setPrefers = new Set();
   const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
   const removerTop = lsdata ? lsdata : []
-  console.log(lsdata);
   pageData.map(section => 
     section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
     ?  section.systems.map(sytem => {
