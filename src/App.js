@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Routes>
         {/* <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/> */}        
-        {mainpage.includes(userData.login) 
+        {mainpage.includes(userData.login) || root === 'ams' 
           ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
           : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         }
@@ -43,7 +43,7 @@ function App() {
 
         {permitted.includes(userData.login)
           ? <>
-            {mainpage.includes(userData.login) 
+            {mainpage.includes(userData.login) || root === 'ams' 
               ? <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
               : <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
             } 
@@ -60,9 +60,8 @@ function App() {
           </>
           : null
         }
-
       </Routes>
-
+      
       <Loader/>
     </div>
   );

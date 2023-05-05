@@ -43,10 +43,13 @@ export const PrimaryPage = () => {
   const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
   
   const setPrefers = new Set();
+  const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
+  const removerTop = lsdata ? lsdata : []
+  console.log(lsdata);
   pageData.map(section => 
     section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
     ?  section.systems.map(sytem => {
-        if ( !setPrefers.has(sytem.system_prefix) )prefers.systems.push({...sytem, section_prefix: section.prefix})
+        if ( !setPrefers.has(sytem.system_prefix) && !removerTop.includes(sytem.system_prefix) )prefers.systems.push({...sytem, section_prefix: section.prefix})
         setPrefers.add(sytem.system_prefix)
         return null
       })

@@ -20,7 +20,7 @@ export const System = props => {
   const handlerContextMenu = (e) => {
     const target = e.target.getBoundingClientRect()
     dispatch(offContextMenu());
-    setTimeout(() => dispatch(onContextMenu({ top: target.top, left: target.left, systemId: system.asz22_id, section: prefix, about: system.hint_text, section_prefix: system.section_prefix})), 0);
+    setTimeout(() => dispatch(onContextMenu({ top: target.top, left: target.left, systemId: system.asz22_id, section: prefix, about: system.hint_text, section_prefix: system.section_prefix, sysPrefix: system.system_prefix})), 0);
   }
 
   const styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`
