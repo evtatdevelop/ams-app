@@ -49,13 +49,7 @@ export const ContextMenu = props => {
     left && top 
       ? <div className={styles.contextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
           {about ? <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button> : null}
-          {/* {section === 'FAVORITES' || section === 'PREFERS' */}
-          {/* {section_prefix !== 'TOP_ORDERS' 
-            ? section === 'PREFERS'
-              ? <button type="button" onClick={()=>delPrefersHandler()}>{dictionary.del_from_preferences[userData['lang']]}</button>
-              : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
-            : null
-          } */}
+
           {section === 'PREFERS' || ( picked && !removerTop.includes(sysPrefix) )
             ? <button type="button" onClick={()=>delPrefersHandler(section_prefix)}>{dictionary.del_from_preferences[userData['lang']]}</button>
             : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>

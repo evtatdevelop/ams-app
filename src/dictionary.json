@@ -71,6 +71,22 @@
   "all_sections": {
     "EN": "All sections",
     "RU": "Все разделы"    
+  },
+  "pageSettings": {
+    "EN": "Page settings",
+    "RU": "Настройки страницы"    
+  },
+  "defaultPageSettings": {
+    "EN": "Default settings",
+    "RU": "Сбросить по умолчанию"    
+  },
+  "systemsOrder": {
+    "EN": "Set up favorites",
+    "RU": "Настроить избранное"    
+  },
+  "cancel": {
+    "EN": "Cancel",
+    "RU": "Отмена"    
   }
 
 

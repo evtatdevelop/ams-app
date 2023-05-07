@@ -24,8 +24,8 @@ export const Navigation = props => {
                 ? <Link to = {`${_pathBase}/`}>PrimaryPage</Link>
                 : <Link to = {`${_pathBase}/primarypage`}>PrimaryPage</Link>
               : mainpage.includes(userData.login) 
-                ? <Link to = {`${_pathBase}/mainpage`}>Mainpage</Link>
-                : <Link to = {`${_pathBase}/`}>Mainpage</Link>  
+                ? <Link to = {`${_pathBase}/mainpage`}>FreakPage</Link>
+                : <Link to = {`${_pathBase}/`}>FreakPage</Link>  
             }
           </li>
 

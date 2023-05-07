@@ -1,0 +1,122 @@
+.pageSettings {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  width: 22vmax;
+  font-size: 0;
+  padding-bottom: 1vmax;
+  height: 110px;
+
+  button {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;  
+  }
+
+  .btnPageSettings {
+    font: inherit;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .optionsPageSettings {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: none;
+    animation: appearance .5s linear;
+
+    li {
+      width: 100%;
+      padding-left: .5vmax;
+      padding-right: .5vmax;
+      button {
+        padding: .3vmax 0 .3vmax 10px;
+        display: flex;
+        width: 100%;
+        font: inherit;
+        justify-content: flex-start;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid transparent;
+        transition: border-bottom .5s;
+        &:hover {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.447);
+        }
+      }
+    }
+
+    &.show {
+      display: block;
+    }
+    
+  }
+}
+
+
+
+@media screen and (min-width: 500px) {
+  .pageSettings {
+    width: 22vmax;
+    font-size: 1.5vmax;
+  }
+}
+@media screen and (min-width: 800px) {
+  .pageSettings {
+    width: 19.5vmax;
+    font-size: 1.3vmax;
+  }   
+}
+
+@media screen and (min-width: 1000px) {
+  .pageSettings {
+    width: 17vmax;
+    font-size: 1.1vmax;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pageSettings {
+    width: 13vmax;
+    font-size: .9vmax;
+  }
+} 
+
+
+// @keyframes rotate {
+//   from {
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+
+@keyframes appearance {
+  0% {
+    display: block;
+    left: -1000px;
+    opacity: .0;
+  }
+  1% {left: 0;}
+  2% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+

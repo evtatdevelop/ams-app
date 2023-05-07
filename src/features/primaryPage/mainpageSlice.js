@@ -75,7 +75,7 @@ export const primarypageSlice = createSlice({
     builder
       .addCase(getMainpage.pending, ( state ) => { state.loading = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
-        state.data = SystemNameRun(action.payload.sections);
+        state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
         state.loading = false;
       })
@@ -83,14 +83,14 @@ export const primarypageSlice = createSlice({
       .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
-        state.data = SystemNameRun(action.payload.sections);
+        state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
       })
 
       .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
-        state.data = SystemNameRun(action.payload.sections);
+        state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
       })
   }
@@ -112,7 +112,7 @@ export const fastshow     = ( state ) => state.primaripage.fastshow;
 
 export default primarypageSlice.reducer;
 
-const SystemNameRun = data => {
+const SystemRun = data => {
   return data.map(section => {
     return {...section, systems: section.systems.map(system => {
       return {...system, 

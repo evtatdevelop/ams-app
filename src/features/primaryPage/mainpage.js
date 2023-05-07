@@ -17,6 +17,7 @@ import dictionary from '../../dictionary.json';
 import FastAccess from "./fastAccess";
 import Navigation from "../navigation";
 import { permitted } from '../../config';
+import PageSettings from "./pageSettings";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : `/${root}`
@@ -141,6 +142,8 @@ export const PrimaryPage = () => {
       </main>
       { <FastAccess/> }
       <ContextMenu data = {dataContextMenu} />
+      
+      <PageSettings/>
 
       { expired ? <ExpirationScreen/> : null }
 
