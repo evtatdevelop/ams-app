@@ -11,9 +11,11 @@
   &:not(.topOrders) .pickedSign {
     display: block;
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    color: red;
+    bottom: .5vmax;
+    right: .5vmax;
+    font-size: .7vmax;
+    color: #0857A1;
+    opacity: .3;
   }
 
   &.topOrders {

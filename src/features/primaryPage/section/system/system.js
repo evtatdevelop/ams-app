@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
 import { onContextMenu, offContextMenu } from "../../mainpageSlice";
 import { testMode } from "../../../../config";
@@ -22,7 +22,16 @@ export const System = props => {
   const handlerContextMenu = (e) => {
     const target = e.target.getBoundingClientRect()
     dispatch(offContextMenu());
-    setTimeout(() => dispatch(onContextMenu({ top: target.top, left: target.left, systemId: system.asz22_id, section: prefix, about: system.hint_text, section_prefix: system.section_prefix, sysPrefix: system.system_prefix})), 0);
+    setTimeout(() => dispatch(onContextMenu({ 
+      top:            target.top, 
+      left:           target.left, 
+      systemId:       system.asz22_id, 
+      section:        prefix, 
+      about:          system.hint_text, 
+      section_prefix: system.section_prefix, 
+      sysPrefix:      system.system_prefix,
+      picked:         system.picked
+    })), 0);
   }
 
   const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
@@ -40,7 +49,10 @@ export const System = props => {
         <FontAwesomeIcon icon={ faEllipsisVertical } className={styles.iconButton} />
       </button>
 
-      {system.picked && !removerTop.includes(system.system_prefix) ? <div className={styles.pickedSign}>*</div> : null}
+      {system.picked && !removerTop.includes(system.system_prefix) 
+        ? <FontAwesomeIcon icon={ faStar } className={styles.pickedSign} />
+        : null
+      }
 
     </li>
   )

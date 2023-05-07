@@ -7,7 +7,7 @@ import dictionary from '../../../dictionary.json';
 
 export const ContextMenu = props => {
 
-  const {top, left, systemId, section, about, section_prefix, sysPrefix} = props.data;
+  const {top, left, systemId, section, about, section_prefix, sysPrefix, picked} = props.data;
   const dispatch = useDispatch();
   const userData = useSelector(user);
   const width= 140;
@@ -19,7 +19,8 @@ export const ContextMenu = props => {
 
   const delPrefers = (section) => {
     dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));       
-    if ( section === 'TOP_ORDERS' ) localTopRemove(`remobedTops${userData['id']}`, sysPrefix, 'del')
+    // if ( section === 'TOP_ORDERS' ) localTopRemove(`remobedTops${userData['id']}`, sysPrefix, 'del')
+    localTopRemove(`remobedTops${userData['id']}`, sysPrefix, 'del')
   }
 
   const addPrefersHandler = () => {
@@ -41,6 +42,9 @@ export const ContextMenu = props => {
 
   const X = document.documentElement.clientWidth < left + width ? left - width : left;
 
+  const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
+  const removerTop = lsdata ? lsdata : []
+
   return (
     left && top 
       ? <div className={styles.contextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
@@ -52,7 +56,7 @@ export const ContextMenu = props => {
               : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
             : null
           } */}
-          {section === 'PREFERS'
+          {section === 'PREFERS' || ( picked && !removerTop.includes(sysPrefix) )
             ? <button type="button" onClick={()=>delPrefersHandler(section_prefix)}>{dictionary.del_from_preferences[userData['lang']]}</button>
             : <button type="button" onClick={()=>addPrefersHandler()}>{dictionary.add_into_preferences[userData['lang']]}</button>
           }
