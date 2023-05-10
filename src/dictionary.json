@@ -77,8 +77,8 @@
     "RU": "Настройки страницы"    
   },
   "defaultPageSettings": {
-    "EN": "Default settings",
-    "RU": "Сбросить по умолчанию"    
+    "EN": "Favorites by default",
+    "RU": "Избранное по умолчанию"    
   },
   "systemsOrder": {
     "EN": "Set up favorites",

@@ -12,6 +12,8 @@ export const normalizeSystemName = (str) => {
     .replace('Request for ', '')
     .replace('организацию', 'организация')
     .replace('командировку', 'командировка')
+    .replace(' / предоставление полномочий', '')
+    .replace('/перевыпуск', '')
     .split(' ').forEach(word => {
       string += string.length + word.length > 47 ? "" : ` ${word}`
     })
