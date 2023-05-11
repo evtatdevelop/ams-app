@@ -64,12 +64,20 @@ export const PrimaryPage = () => {
         })
       : null
     )
-    return orderPrefersData.length === 0 ? prefers : orderedPrefers(prefers);
+    return orderPrefersData.length === 0 ? prefers : orderedPrefers(orderPrefersData, prefers);
   }
 
-  const orderedPrefers = ( prefers ) => {
-    console.log(prefers);
-    return prefers
+  const orderedPrefers = ( order, prefers ) => {
+    const newOredr = []
+    order.map(item => prefers.systems.map(system => {
+      if (system.system_prefix === item) newOredr.push(system)
+      return true;
+    }))
+    prefers.systems.map(system => {
+      if (!order.includes(system.system_prefix) ) newOredr.push(system)
+      return true;
+    })
+    return {...prefers, systems: newOredr}
   }
 
   return (
