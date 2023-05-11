@@ -3,7 +3,7 @@ import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, search, 
   contextMenu, offContextMenu, notification, fastaccess, onFastShow, 
-  setOrderPrefers, orderPrefers } from "./mainpageSlice";
+} from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -19,7 +19,7 @@ import FastAccess from "./fastAccess";
 import Navigation from "../navigation";
 import { permitted } from '../../config';
 import PageSettings from "./pageSettings";
-import { lsGet } from "../../helpers";
+import Prefers from "./prefers";
 
 export const PrimaryPage = () => {
   const _pathBase = testMode ? '' : `/${root}`
@@ -30,11 +30,9 @@ export const PrimaryPage = () => {
   const notice = useSelector(notification);
   const dataContextMenu = useSelector(contextMenu);
   const fastSection = useSelector(fastaccess);
-  const orderPrefersData = useSelector(orderPrefers);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setOrderPrefers(lsGet(`orderPrefers${userData['id']}`, [])))
     if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
     setTimeout(() => {
       onExpired(true)
@@ -45,40 +43,6 @@ export const PrimaryPage = () => {
     )
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);
-
-
-  const mkPrefersData = (pageData, userData) => {
-    const orderPrefersArr = []
-    const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][pageData['lang']], systems: []};
-    const setPrefers = new Set();
-    const removerTop = lsGet(`remobedTops${userData['id']}`, [])
-    pageData.map(section => 
-      section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
-      ?  section.systems.map(sytem => {
-          if ( !setPrefers.has(sytem.system_prefix) && !removerTop.includes(sytem.system_prefix) ) {
-            prefers.systems.push({...sytem, section_prefix: section.prefix})
-            orderPrefersArr.push(sytem.system_prefix)
-          }
-          setPrefers.add(sytem.system_prefix)
-          return null
-        })
-      : null
-    )
-    return orderPrefersData.length === 0 ? prefers : orderedPrefers(orderPrefersData, prefers);
-  }
-
-  const orderedPrefers = ( order, prefers ) => {
-    const newOredr = []
-    order.map(item => prefers.systems.map(system => {
-      if (system.system_prefix === item) newOredr.push(system)
-      return true;
-    }))
-    prefers.systems.map(system => {
-      if (!order.includes(system.system_prefix) ) newOredr.push(system)
-      return true;
-    })
-    return {...prefers, systems: newOredr}
-  }
 
   return (
     <section className={styles.mainpage} onClick={()=>{ dispatch(offContextMenu()) }} >
@@ -142,7 +106,7 @@ export const PrimaryPage = () => {
                   ? <Section key={section.id} section={section}/> 
                   : null)
                 : <>
-                  <Section key="prefers" section={mkPrefersData(pageData, userData)}/>
+                  <Prefers/>
                   { pageData.map(section => section.systems.length !== 0 
                     && section.prefix !== 'LK' 
                     && section.prefix !== 'TOP_ORDERS' 
