@@ -1,0 +1,275 @@
+.sidebar {
+  position: relative;
+  width: 25px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: rgb(8, 87, 161);
+  color: white;
+  padding: 8px;
+
+  > div {
+    width: 100%;
+    margin-bottom: 10px;
+
+    display: none;
+
+    &.logPrsn {
+      height: 60px;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+
+      .remoteUser {
+        display: none;
+      }
+      .remoteSimple {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 6vmax;
+        height: 6vmax;
+        font-size: 3vmax;
+        border-radius: 3vmax;
+        flex-grow: 0;
+        flex-shrink: 0;
+        background-color: wheat;
+        color: rgb(8, 87, 161);
+
+        .remoteHint {
+          position: absolute;
+          left: -1000px;
+          bottom: -24px;
+          padding: 4px 4px;
+          background-color: #f7efec;
+          display: flex;
+          flex-direction: column;
+          z-index: 999;
+          p {
+            font-size: 12px;
+            color: black;
+            font-weight: 500;
+            letter-spacing: normal;
+            z-index: 999;
+            &.hintDomain {
+              font-size: 10px;
+            }
+          }
+        }
+        &:hover {
+          .remoteHint {
+            left: 20px;
+            animation: appearance 1500ms ease-in-out forwards;
+          }
+        }
+      }
+
+    }
+    &.lk {
+      margin-top: 4.5vmax;
+      .lkrow {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid transparent;
+        transition: border-bottom .3s;
+        margin-bottom: 12px;
+        margin-right: 3px;
+
+        .lkLink {
+          display: flex;
+          align-items: center;
+          color: wheat;
+          font-size: 0;
+          margin-bottom: 4px;
+          padding: 0;
+          flex-grow: 0;
+
+          .lkIkon {
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            flex-grow: 0;
+            flex-shrink: 0;
+          }
+        }
+
+        .cnt { font-size: 10px; }
+
+        .lkHint {
+          min-width: 150px;
+          padding: 2px 4px;
+          position: absolute;
+          top: 30px;
+          left: -1000px;
+          color: black;
+          background-color: #f7efec;
+          z-index: 999;
+          font-size: 12px;
+        }
+        &:hover {
+          .lkHint {
+            left: 20px;
+            animation: appearance 1500ms ease-in-out forwards;
+          }
+        }         
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .sidebar {
+    width: 22vmax;
+    > div {
+      display: block;
+
+      &.logPrsn {
+        flex-shrink: 0;
+        display: flex;
+        .remoteSimple {
+          width: 8vmax;
+          height: 8vmax;
+          border-radius: 4vmax;
+          font-size: 4vmax;
+          // letter-spacing: .4vmax;
+        }
+      }
+      &.lk {
+        .lkrow {
+          margin-bottom: 0px;
+          flex-direction: row;
+
+          .lkLink {
+            display: flex;
+            align-items: center;
+            color: wheat;
+            font-size: 1.6vmax;
+            margin-bottom: 4px;
+            padding: 10px 0 5px 0;
+            flex-grow: 1;
+
+            .lkIkon {
+              background-size: cover;
+              background-repeat: no-repeat;
+              width: 15px;
+              height: 15px;
+              margin-right: .5vmax;
+              flex-grow: 0;
+              flex-shrink: 0;
+            }
+          }
+          .lkHint {
+            width: auto;
+            padding: 2px 4px;
+            position: absolute;
+            top: 30px;
+            left: -1000px;
+            color: black;
+            background-color: #f7efec;
+            z-index: 999;
+            font-size: 12px;
+          }
+          &:hover {
+            border-bottom: 1px solid wheat;
+          }             
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 800px) {
+  .sidebar {
+    width: 19.5vmax;
+    > div {
+      &.logPrsn {
+        .remoteUser {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 1.7vmax;
+          .name { font-weight: 500; }
+          .domain { font-size: 1.5vmax; }
+        }
+        .remoteSimple {
+          display: none;
+        }
+      }
+      &.lk {
+        .lkrow {
+          .lkLink {
+            font-size: 1.4vmax;
+          }
+        }
+      }              
+    }
+  }    
+}
+
+@media screen and (min-width: 1000px) {
+  .sidebar {
+    width: 17vmax;
+    > div {
+      &.logPrsn {
+        .remoteUser {
+          font-size: 1.5vmax;
+          .domain { font-size: 1.3vmax; }
+        }
+      }
+      &.lk {
+        .lkrow {
+          .lkLink {
+            font-size: 1.2vmax;
+          }
+        }
+      }              
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sidebar {
+    width: 13vmax;
+    > div {
+      &.logPrsn {
+        .remoteUser {
+          font-size: 1.3vmax;
+          .domain { font-size: 1vmax; }
+        }
+      }
+      &.lk {
+        .lkrow {
+          .lkLink {
+            font-size: 1vmax;
+          }
+        }
+      }              
+    }      
+  }
+} 
+
+
+
+
+
+@keyframes appearance {
+  0% {
+    left: -1000px;
+    opacity: .0;
+  }
+  79% {
+    left: -1000px;
+    opacity: .0;
+  }
+  80% {
+    left: 20px;
+    opacity: .0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

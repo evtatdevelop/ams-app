@@ -1,14 +1,15 @@
 import React  from "react";
 import styles from './contextMenu.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { addToPrefers, delToPrefers, onNotification, offNotification } from "../mainpageSlice";
+import { addToPrefers, delToPrefers, onNotification, offNotification, contextMenu } from "../mainpageSlice";
 import { user } from '../../user/userSlice';
 import dictionary from '../../../dictionary.json';
 import { lsGet } from "../../../helpers";
 
 export const ContextMenu = props => {
-
-  const {top, left, systemId, section, about, section_prefix, sysPrefix, picked} = props.data;
+  // const dataContextMenu = useSelector(contextMenu);
+  // const {top, left, systemId, section, about, section_prefix, sysPrefix, picked} = props.data;
+  const {top, left, systemId, section, about, section_prefix, sysPrefix, picked} = useSelector(contextMenu);
   const dispatch = useDispatch();
   const userData = useSelector(user);
   const width= 140;
