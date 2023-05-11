@@ -19,3 +19,10 @@ export const normalizeSystemName = (str) => {
     })
   return ucFirst(string.trim(), false)
 }
+
+export const lsGet = ( lskey, dataInit ) => {
+  const lsdata = localStorage.getItem(lskey)
+  if ( lsdata ) return JSON.parse(lsdata)
+  localStorage.setItem(lskey, JSON.stringify(dataInit))
+  return dataInit
+}

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToPrefers, delToPrefers, onNotification, offNotification } from "../mainpageSlice";
 import { user } from '../../user/userSlice';
 import dictionary from '../../../dictionary.json';
+import { lsGet } from "../../../helpers";
 
 export const ContextMenu = props => {
 
@@ -18,8 +19,7 @@ export const ContextMenu = props => {
   }
 
   const delPrefers = (section) => {
-    dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));       
-    // if ( section === 'TOP_ORDERS' ) localTopRemove(`remobedTops${userData['id']}`, sysPrefix, 'del')
+    dispatch(delToPrefers({'app12_id': userData['id'], 'asz22_id': systemId, 'api_key': userData.api_key}));
     localTopRemove(`remobedTops${userData['id']}`, sysPrefix, 'del')
   }
 
@@ -42,8 +42,9 @@ export const ContextMenu = props => {
 
   const X = document.documentElement.clientWidth < left + width ? left - width : left;
 
-  const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
-  const removerTop = lsdata ? lsdata : []
+  // const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
+  // const removerTop = lsdata ? lsdata : []s
+  const removerTop = lsGet(`remobedTops${userData['id']}`, [])
 
   return (
     left && top 

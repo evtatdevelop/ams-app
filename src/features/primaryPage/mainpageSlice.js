@@ -12,6 +12,7 @@ const initialState = {
   notification: '',
   fastaccess: null,
   fastshow: false,
+  orderPrefers: [],
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -37,6 +38,10 @@ export const primarypageSlice = createSlice({
           )
         : false  
       )
+    },
+
+    setOrderPrefers: (state, action) => {
+      state.orderPrefers = action.payload
     },
 
     clearSearch: (state) => { 
@@ -97,7 +102,7 @@ export const primarypageSlice = createSlice({
 });
 
 export const { 
-  onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification, onFastAccess, onFastShow
+  onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification, onFastAccess, onFastShow, setOrderPrefers
 } = primarypageSlice.actions;
 
 export const mainpage     = ( state ) => state.primaripage.data;
@@ -109,6 +114,7 @@ export const contextMenu  = ( state ) => state.primaripage.contextMenu;
 export const notification = ( state ) => state.primaripage.notification;
 export const fastaccess   = ( state ) => state.primaripage.fastaccess;
 export const fastshow     = ( state ) => state.primaripage.fastshow;
+export const orderPrefers = ( state ) => state.primaripage.orderPrefers;
 
 export default primarypageSlice.reducer;
 
