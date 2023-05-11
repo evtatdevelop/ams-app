@@ -87,6 +87,10 @@
   "cancel": {
     "EN": "Cancel",
     "RU": "Отмена"    
+  },
+  "prefersSettings": {
+    "EN": "Favorites setting",
+    "RU": "Настройка избранного"    
   }
 
 

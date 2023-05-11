@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, search, 
-  offContextMenu, notification, fastaccess, onFastShow, 
+  offContextMenu, notification, fastaccess, onFastShow, toolbarShow
 } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
@@ -18,6 +18,7 @@ import { permitted } from '../../config';
 import PageSettings from "./pageSettings";
 import Prefers from "./prefers";
 import Sidebar from "../sidebar";
+import Toolbar from "./toolbar";
 
 export const PrimaryPage = () => {
   const userData = useSelector(user);
@@ -26,6 +27,7 @@ export const PrimaryPage = () => {
   const searchString = useSelector(search);
   const notice = useSelector(notification);
   const fastSection = useSelector(fastaccess);
+  const showToolbar = useSelector(toolbarShow);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -86,12 +88,9 @@ export const PrimaryPage = () => {
       <FastAccess/>
       <ContextMenu/> 
       <PageSettings/>
+      { showToolbar ? <Toolbar/> : null }
       { expired ? <ExpirationScreen/> : null }
-      { permitted.includes(userData.login) 
-        ? <Navigation page = 'primaryPage'/>
-        : null
-      }
-
+      { permitted.includes(userData.login) ? <Navigation page = 'primaryPage'/> : null }
     </section>
   )
 }

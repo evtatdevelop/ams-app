@@ -18,7 +18,7 @@ export const Prefers = () => {
 
   const mkPrefersData = (pageData, userData) => {
     const orderPrefersArr = []
-    const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][pageData['lang']], systems: []};
+    const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();
     const removerTop = lsGet(`remobedTops${userData['id']}`, [])
     pageData.map(section => 
