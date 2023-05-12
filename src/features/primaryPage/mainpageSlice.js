@@ -87,6 +87,7 @@ export const primarypageSlice = createSlice({
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
+        state.orderPrefers = mkPrefersData(action.payload.sections)
         state.loading = false;
       })
 
@@ -144,4 +145,17 @@ const checkPicked = (data, systemPrefix) => {
     return null   
   })
   return result
+}
+
+const mkPrefersData = (pageData) => {
+  const setPrefers = new Set();
+  pageData.map(section => 
+    section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
+    ?  section.systems.map(sytem => {
+        setPrefers.add(sytem.system_prefix)
+        return null
+      })
+    : null
+  )
+  return [...setPrefers]
 }
