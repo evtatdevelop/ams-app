@@ -5,7 +5,7 @@ import { user } from '../../user/userSlice';
 import dictionary from '../../../dictionary.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
-import { onToolbar } from "../mainpageSlice";
+import { onToolbar, setOrderPrefers } from "../mainpageSlice";
 
 export const PageSettings = () => {
   const userData = useSelector(user);
@@ -16,6 +16,8 @@ export const PageSettings = () => {
   const btnPageSettings = show ? `${styles.btnPageSettings} ${styles.hide}` : `${styles.btnPageSettings}`
 
   const restDefault = () => {
+    dispatch(setOrderPrefers([]))
+    localStorage.removeItem(`orderPrefers${userData['id']}`)
     localStorage.removeItem(`remobedTops${userData['id']}`)
     onShow(false)
   }

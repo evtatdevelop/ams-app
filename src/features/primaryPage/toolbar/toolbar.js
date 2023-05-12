@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './toolbar.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, setOrderPrefers, orderPrefers, onToolbar } from "../mainpageSlice";
@@ -12,23 +12,42 @@ import { testMode } from "../../../config";
 export const Toolbar = () => {
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
-  const orderPrefersData = useSelector(orderPrefers);
+  let orderPrefersData = useSelector(orderPrefers);
   const dispatch = useDispatch();
   const _pathBase = testMode ? '' : ``;
+  const [drag, onDrag] = useState(null);
+  const [ordPrefers, setOrdPrefers] = useState([...orderPrefersData]);
 
   const dragItem = (e, systemPrefix) => {
     e.preventDefault();
-    console.log(systemPrefix);
+    onDrag(systemPrefix);
   }
 
   const dropItem = (e, systemPrefix) => {
     e.preventDefault();
-    console.log(systemPrefix);
+    moveItem(systemPrefix)
   }
 
+
+  const moveItem = (drop) => {
+    const neword = ordPrefers.filter(item => item !== drag) 
+    const newOrdPrefers = [] 
+    neword.forEach(item => {
+      if ( item === drop ) newOrdPrefers.push(drag)
+      newOrdPrefers.push(item)
+    })
+    setOrdPrefers([...newOrdPrefers])
+    onDrag(null)
+  } 
+
+  const setNewOredrPrevs = () => {
+    dispatch(setOrderPrefers([...ordPrefers]))
+    localStorage.setItem(`orderPrefers${userData['id']}`, JSON.stringify([...ordPrefers])) 
+    dispatch(onToolbar(false))
+  }
+
+  
   const mkPrefersData = (pageData, userData) => {
-    
-    const orderPrefersArr = []
     const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();
     const removerTop = lsGet(`remobedTops${userData['id']}`, [])
@@ -37,7 +56,6 @@ export const Toolbar = () => {
       ?  section.systems.map(sytem => {
           if ( !setPrefers.has(sytem.system_prefix) && !removerTop.includes(sytem.system_prefix) ) {
             prefers.systems.push({...sytem, section_prefix: section.prefix})
-            orderPrefersArr.push(sytem.system_prefix)
           }
           setPrefers.add(sytem.system_prefix)
           return null
@@ -50,11 +68,15 @@ export const Toolbar = () => {
   const orderedPrefers = ( order, prefers ) => {
     const newOredr = []
     order.map(item => prefers.systems.map(system => {
-      if (system.system_prefix === item) newOredr.push(system)
+      if (system.system_prefix === item) {
+        newOredr.push(system)
+      }  
       return true;
     }))
     prefers.systems.map(system => {
-      if (!order.includes(system.system_prefix) ) newOredr.push(system)
+      if (!order.includes(system.system_prefix) ) {
+        newOredr.push(system)
+      }  
       return true;
     })
     return {...prefers, systems: newOredr}
@@ -79,7 +101,7 @@ export const Toolbar = () => {
 
         </main>
         <div className={styles.btnSection}>
-          <button type="button" onClick={() => dispatch(onToolbar(false))} className={styles.btnAccept}>
+          <button type="button" onClick={() =>setNewOredrPrevs()} className={styles.btnAccept}>
             <FontAwesomeIcon icon={ faCheck } className={styles.iconButton} />
           </button>
           <button type="button" onClick={() => dispatch(onToolbar(false))} className={styles.btnCancel}>

@@ -13,6 +13,7 @@
   .window {
     padding: 1%;
     min-height: 100px;
+    
     border: 2px solid gray;
     background-color: rgba($color: #161619, $alpha: .9);
     display: flex;
@@ -23,8 +24,17 @@
       margin-bottom: 30px;
 
       .systemItemList {
+        padding-right: 4px;
+        padding-left: 4px;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        max-height: 80vh;
+        scrollbar-width: 2px;
+        scrollbar-color:white rgb(16, 16, 19) ;
+        &::-webkit-scrollbar { width: 4px; }
+        &::-webkit-scrollbar-track { background: rgb(16, 16, 19); }
+        &::-webkit-scrollbar-thumb { background-color: white; }
 
         .systemItem {
           position: relative;

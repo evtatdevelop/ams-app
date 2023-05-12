@@ -33,6 +33,8 @@ export const Prefers = () => {
         })
       : null
     )
+
+    if ( orderPrefersData.length === 0 ) dispatch(setOrderPrefers([...orderPrefersArr]))
     return orderPrefersData.length === 0 ? prefers : orderedPrefers(orderPrefersData, prefers);
   }
 

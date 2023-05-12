@@ -29,7 +29,7 @@ export const primarypageSlice = createSlice({
       state.search = action.payload 
       state.filtred = []
       state.data.map(section => 
-        section.prefix !== 'TOP_ORDERS' && section.prefix !== 'FAVORITES'
+        section.prefix !== 'TOP_ORDERS' && section.prefix !== 'FAVORITES' && section.prefix !== 'LK'
         ? section.systems.map(system => 
           (system.request_name.toUpperCase().includes(state.search.toUpperCase())
             || (system.synonyms && system.synonyms.toUpperCase().includes(state.search.toUpperCase()))
