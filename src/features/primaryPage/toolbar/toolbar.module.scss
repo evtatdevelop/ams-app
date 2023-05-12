@@ -2,12 +2,109 @@
   position: fixed;
   display: flex;
   left: 0;
-  top: o;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: white;
 
-  outline: 1px solid red;
+  .window {
+    padding: 1%;
+    min-height: 100px;
+    border: 2px solid gray;
+    background-color: rgba($color: #161619, $alpha: .9);
+    display: flex;
+    flex-direction: column;
 
-  button {
-    color: red;
-    
+    .main {
+      flex-grow: 1;
+      margin-bottom: 30px;
+
+      .systemItemList {
+        display: flex;
+        flex-direction: column;
+
+        .systemItem {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 2% 0;
+          border: 1px solid transparent;
+          transition: border .3s;
+
+          &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            right: 0;
+            width: 20%;
+            background: linear-gradient(90deg, rgba(22,22,25,0) 0%, rgba(22,22,25,1) 100%);
+          }
+
+          &:hover {
+            border: 1px solid wheat;
+            cursor: move;
+          }
+
+          .sysIcon {
+            height: 30px;
+            width: 100px;
+            background-size: cover;
+            margin-left: 1%;
+          }
+          .request_name {
+            font-size: 1.2vmax;
+            // line-height: 1.35vh;
+            flex-grow: 1;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+      
+
+    }
+
+    .btnSection {
+      display: flex;
+      justify-content: space-around;
+      // outline: 1px solid blue;
+      padding: 1% 0;
+
+      button {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        width: 30%;
+        min-width: 50px;
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgba(245, 222, 179, 0.3);
+        transition: border .3s, background-color .3s;
+        font-size: 20px;
+
+        &:hover {
+          border: 1px solid wheat;
+          background-color: #161619;
+        }
+        &.btnAccept {
+          color: lightgreen;
+        }
+        &.btnCancel {
+          color: coral
+        }
+        
+      }
+
+    }
+
+
   }
+
+
 }
