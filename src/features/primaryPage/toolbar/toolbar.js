@@ -46,7 +46,6 @@ export const Toolbar = () => {
     dispatch(onToolbar(false))
   }
 
-  
   const mkPrefersData = (pageData, userData) => {
     const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();

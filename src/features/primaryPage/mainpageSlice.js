@@ -87,7 +87,7 @@ export const primarypageSlice = createSlice({
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
-        state.orderPrefers = mkPrefersData(action.payload.sections)
+        state.orderPrefers = state.orderPrefers.length === 0 ? mkPrefersData(action.payload.sections) : state.orderPrefers
         state.loading = false;
       })
 

@@ -17,7 +17,6 @@ export const Prefers = () => {
   }, [dispatch, userData]);
 
   const mkPrefersData = (pageData, userData) => {
-    const orderPrefersArr = []
     const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();
     const removerTop = lsGet(`remobedTops${userData['id']}`, [])
@@ -26,15 +25,12 @@ export const Prefers = () => {
       ?  section.systems.map(sytem => {
           if ( !setPrefers.has(sytem.system_prefix) && !removerTop.includes(sytem.system_prefix) ) {
             prefers.systems.push({...sytem, section_prefix: section.prefix})
-            orderPrefersArr.push(sytem.system_prefix)
           }
           setPrefers.add(sytem.system_prefix)
           return null
         })
       : null
     )
-
-    // if ( orderPrefersData.length === 0 && ) dispatch(setOrderPrefers([...orderPrefersArr]))
     return orderPrefersData.length === 0 ? prefers : orderedPrefers(orderPrefersData, prefers);
   }
 
