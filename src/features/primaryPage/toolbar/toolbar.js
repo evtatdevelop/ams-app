@@ -17,35 +17,9 @@ export const Toolbar = () => {
   const _pathBase = testMode ? '' : ``;
   const [drag, onDrag] = useState(null);
   const [ordPrefers, setOrdPrefers] = useState([...orderPrefersData]);
+  
 
-  const dragItem = (e, systemPrefix) => {
-    e.preventDefault();
-    onDrag(systemPrefix);
-  }
-
-  const dropItem = (e, systemPrefix) => {
-    e.preventDefault();
-    moveItem(systemPrefix)
-  }
-
-
-  const moveItem = (drop) => {
-    const neword = ordPrefers.filter(item => item !== drag) 
-    const newOrdPrefers = [] 
-    neword.forEach(item => {
-      if ( item === drop ) newOrdPrefers.push(drag)
-      newOrdPrefers.push(item)
-    })
-    setOrdPrefers([...newOrdPrefers])
-    onDrag(null)
-  } 
-
-  const setNewOredrPrevs = () => {
-    dispatch(setOrderPrefers([...ordPrefers]))
-    localStorage.setItem(`orderPrefers${userData['id']}`, JSON.stringify([...ordPrefers])) 
-    dispatch(onToolbar(false))
-  }
-
+  
   const mkPrefersData = (pageData, userData) => {
     const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();
@@ -81,18 +55,98 @@ export const Toolbar = () => {
     return {...prefers, systems: newOredr}
   }
 
+
+  const [prefers, setPrefers] = useState(mkPrefersData(pageData, userData));
+
+  const setLocPrefers = (newOrder) => {
+    const order = []
+    newOrder.map(item => prefers.systems.map(system => {
+      if (system.system_prefix === item) {
+        order.push(system)
+      }  
+      return true;
+    }))
+    prefers.systems.map(system => {
+      if (!newOrder.includes(system.system_prefix) ) {
+        order.push(system)
+      }  
+      return true;
+    })
+    setPrefers({id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: order})
+  }
+
+
+  const dragItem = (e, systemPrefix) => {
+    e.preventDefault();
+    onDrag(systemPrefix);
+    // onmousedown(e)
+  }
+  const dropItem = (e, systemPrefix) => {
+    e.preventDefault();
+    moveItem(systemPrefix)
+  }
+  const moveItem = (drop) => {
+    const neword = ordPrefers.filter(item => item !== drag) 
+    const newOrdPrefers = [] 
+    neword.forEach(item => {
+      if ( item === drop ) newOrdPrefers.push(drag)
+      newOrdPrefers.push(item)
+    })
+    setOrdPrefers([...newOrdPrefers])
+    onDrag(null)
+    setLocPrefers(newOrdPrefers)
+  } 
+  const setNewOredrPrevs = () => {
+    dispatch(setOrderPrefers([...ordPrefers]))
+    localStorage.setItem(`orderPrefers${userData['id']}`, JSON.stringify([...ordPrefers])) 
+    dispatch(onToolbar(false))
+  }
+
+
+
+  
+  // const onmousedown = (event) => {
+  //   const item = event.target.closest('li')
+  //   // let shiftX = event.clientX - item.getBoundingClientRect().left;
+  //   let shiftY = event.clientY - item.getBoundingClientRect().top;
+  //   item.style.position = 'absolute';
+  //   item.style.zIndex = 1000;
+  //   document.getElementById('toolbar').append(item);
+  //   moveAt(event.pageX, event.pageY);
+  //   function moveAt(pageX, pageY) {
+  //     // item.style.left = pageX - shiftX + 'px';
+  //     item.style.top = pageY - shiftY + 'px';
+  //   }
+  //   function onMouseMove(event) {
+  //     moveAt(event.pageX, event.pageY);
+  //   }
+  //   document.body.addEventListener('mousemove', onMouseMove);
+  //   item.onmouseup = function() {
+  //     document.removeEventListener('mousemove', onMouseMove);
+  //     // item.onmouseup = null;
+  //   };
+  // }
+  
+
+ 
   
   return (
-    <section className={styles.toolbar}>
-      <div className={styles.window}>
+    <section className={styles.toolbar} id="toolbar">
+      <div className={styles.window} id="toolWindow">
         <main className={styles.main}>
           <ul className={styles.systemItemList}>
-            {mkPrefersData(pageData, userData).systems.map(system => 
+            {/* {mkPrefersData(pageData, userData).systems.map(system =>  */}
+            {prefers.systems.map(system => 
               <li key={system.system_prefix} className={styles.systemItem}
-                onMouseDown={(e)=>dragItem(e, system.system_prefix)}
+                onMouseDown={(e) => {
+                  dragItem(e, system.system_prefix)
+                  // onmousedown(e)
+                }}
                 onMouseUp={(e)=>dropItem(e, system.system_prefix)}
               >
-                <div className={styles.sysIcon} style={{backgroundImage: `url(./${_pathBase}system_icons/${system.icon_filename})`}}></div>      
+                <div className={`${styles.sysIcon} ${styles[system.system_prefix]}`} 
+                  style={{backgroundImage: `url(./${_pathBase}system_icons/${system.icon_filename})`}}
+                ></div>      
                 <div className={styles.request_name}>{system.request_name}</div>
               </li>
             )}

@@ -91,6 +91,10 @@
   "prefersSettings": {
     "EN": "Favorites setting",
     "RU": "Настройка избранного"    
+  },
+  "userGuide": {
+    "EN": "Renewed interface user's guide",
+    "RU": "Памятка по работе с обновленным интерфейсом системы"    
   }
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary, getMainpage, search, hint } from "./mainpageSlice";
+import { mainpage, dictionary as dictions, getMainpage, search, hint } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -11,13 +11,13 @@ import ExpirationScreen from "../expirationScreen";
 import Navigation from '../navigation';
 import { permitted } from '../../config';
 import Hint from "./hint";
-
+import dictionary from '../../dictionary.json';
 
 export const Mainpage = () => {
 
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
-  const dictionaryData = useSelector(dictionary);
+  const dictionaryData = useSelector(dictions);
   const searchString = useSelector(search);
   const dataHint = useSelector(hint);
   const dispatch = useDispatch();
@@ -39,7 +39,12 @@ export const Mainpage = () => {
       <header className={styles.header}>
         <div>
           <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
-          <a target="_blank" rel="noreferrer" href="https://request.sibgenco.local/lk/instructions" className={styles.instructions}>Памятка по работе с обновленным интерфейсом системы</a>
+          <a target="_blank" rel="noreferrer" 
+            // href="https://request.sibgenco.local/lk/instructions" 
+            href="https://request.sibgenco.local/docs/ASUZ_New_Mainpage_20230427.docx" 
+            className={styles.instructions}>
+              {dictionary['userGuide'][userData['lang']]}
+            </a>
         </div>
         
         {dictionaryData.head_currentuser && userData.ad_user
