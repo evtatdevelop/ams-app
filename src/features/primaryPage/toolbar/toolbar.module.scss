@@ -44,6 +44,24 @@
           padding: 2% 0;
           border: 1px solid transparent;
           transition: border .3s;
+          background-color: transparent;
+
+          &.draged {
+            .sysIcon {
+              background-size: 0%;
+            }
+            .request_name {
+              color:rgb(16, 16, 19)
+            }
+          }
+          &.notdraged {
+            .sysIcon {
+              background-size: cover;
+            }
+            .request_name {
+              color: white;
+            }
+          }
 
           &::after {
             content: '';
