@@ -3,5 +3,5 @@ export const testMode = true;
 // export const root = 'mainpage';
 export const root = 'ams';
 export const permitted = ['TatarenkoEG', 'GanakovskiiFS', ];
-export const mainpage = [];
+export const mainpage = ['TatarenkoEG', 'GanakovskiiFS', ];
 export const developer = ['TatarenkoEG' ];

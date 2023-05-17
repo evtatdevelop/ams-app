@@ -88,7 +88,7 @@ export const Toolbar = () => {
     const item = event.target.closest('li')
     const itemRect = item.getBoundingClientRect();
 
-    console.log(systemPrefix);
+    // console.log(systemPrefix);
     const img = item.querySelector(`.${systemPrefix.replace(/[0-9]/g, '')}`).getAttribute('style').split('/')[2].slice(0,-3)
 
     let icon = document.createElement('div');
@@ -104,7 +104,7 @@ export const Toolbar = () => {
     dragItem.style.width = itemRect.width + 'px';
     dragItem.style.height = itemRect.height + 'px';
     dragItem.style.border = `1px solid white`;
-    dragItem.style.backgroundColor = '#161619';
+    dragItem.style.backgroundColor = '#16161995';
     dragItem.style.left = event.pageX - shiftX + 'px';
     dragItem.style.top = event.pageY - shiftY + 'px';
 

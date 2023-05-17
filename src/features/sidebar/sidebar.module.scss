@@ -192,7 +192,10 @@
           align-items: center;
           font-size: 1.7vmax;
           .name { font-weight: 500; }
-          .domain { font-size: 1.5vmax; }
+          .domain { 
+            font-size: 1.5vmax;
+            font-weight: 100;
+          }
         }
         .remoteSimple {
           display: none;
@@ -216,7 +219,10 @@
       &.logPrsn {
         .remoteUser {
           font-size: 1.5vmax;
-          .domain { font-size: 1.3vmax; }
+          .domain { 
+            font-size: 1.3vmax;
+            font-weight: 100;
+          }
         }
       }
       &.lk {
@@ -237,7 +243,10 @@
       &.logPrsn {
         .remoteUser {
           font-size: 1.3vmax;
-          .domain { font-size: 1vmax; }
+          .domain { 
+            font-size: 1vmax;
+            font-weight: 100;
+          }
         }
       }
       &.lk {

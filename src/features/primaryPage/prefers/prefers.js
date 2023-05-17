@@ -48,7 +48,7 @@ export const Prefers = () => {
   }
 
   return (
-    <Section key="prefers" section={mkPrefersData(pageData, userData)}/>
+    mkPrefersData(pageData, userData)['systems'].length !== 0 ? <Section key="prefers" section={mkPrefersData(pageData, userData)}/> : null
   )
 }
 
