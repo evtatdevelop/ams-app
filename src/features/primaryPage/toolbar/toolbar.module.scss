@@ -54,7 +54,8 @@
               background-size: 0%;
             }
             .request_name {
-              color:rgb(16, 16, 19)
+              color: #161619;
+              background: linear-gradient(90deg, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%);
             }
           }
           &.notdraged {
@@ -62,7 +63,7 @@
               background-size: cover;
             }
             .request_name {
-              color: white;
+              // color: white;
             }
           }
 

@@ -3,7 +3,7 @@ import { getMainpageData, addPrefers, delPrefers  } from './mainpageSliceAPI';
 import { normalizeSystemName } from "../../helpers";
 
 const initialState = {
-  loading: false,
+  loadingPP: false,
   data: [],
   dictionary: [],
   search: '',
@@ -18,8 +18,8 @@ const initialState = {
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
 
-export const addToPrefers = createAsyncThunk( 'mainpage/addToPrefers', async ( data ) => await addPrefers(data) )
-export const delToPrefers = createAsyncThunk( 'mainpage/delToPrefers', async ( data ) => await delPrefers(data) )
+export const addToPrefers = createAsyncThunk( 'primarypage/addToPrefers', async ( data ) => await addPrefers(data) )
+export const delToPrefers = createAsyncThunk( 'primarypage/delToPrefers', async ( data ) => await delPrefers(data) )
 
 export const primarypageSlice = createSlice({
   name: 'primarypage',
@@ -83,7 +83,7 @@ export const primarypageSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getMainpage.pending, ( state ) => { state.loading = true })
+      .addCase(getMainpage.pending, ( state ) => { state.loadingPP = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
@@ -91,14 +91,14 @@ export const primarypageSlice = createSlice({
         state.loading = false;
       })
 
-      .addCase(addToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(addToPrefers.pending, ( state ) => { state.loadingPP = false })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
       })
 
-      .addCase(delToPrefers.pending, ( state ) => { state.loading = true })
+      .addCase(delToPrefers.pending, ( state ) => { state.loadingPP = false })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
         state.data = SystemRun(action.payload.sections);
