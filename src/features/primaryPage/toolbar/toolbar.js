@@ -87,6 +87,17 @@ export const Toolbar = () => {
 
     const item = event.target.closest('li')
     const itemRect = item.getBoundingClientRect();
+
+    console.log(systemPrefix);
+    const img = item.querySelector(`.${systemPrefix.replace(/[0-9]/g, '')}`).getAttribute('style').split('/')[2].slice(0,-3)
+
+    let icon = document.createElement('div');
+    icon.style.height = '30px';
+    icon.style.width = '100px';
+    icon.style.backgroundSize = 'cover';
+    icon.style.backgroundImage = `url(system_icons/${img})`
+    icon.style.backgroundRepeat = 'no-repeat'
+
     let shiftX = event.clientX - itemRect.left;
     let shiftY = event.clientY - itemRect.top;  
     let dragItem = document.createElement('div');
@@ -96,8 +107,17 @@ export const Toolbar = () => {
     dragItem.style.backgroundColor = '#161619';
     dragItem.style.left = event.pageX - shiftX + 'px';
     dragItem.style.top = event.pageY - shiftY + 'px';
+
+
+    dragItem.style.paddingLeft = '.3%';
+    dragItem.style.paddingTop = '.7%';
+    // dragItem.style.justifyContent = 'space-between';
+    dragItem.append(icon)
+
     dragItem.style.position = 'absolute';
     dragItem.style.zIndex = 1000;
+
+
     
     document.body.append(dragItem)
     moveAt(event.pageX, event.pageY)
@@ -129,7 +149,7 @@ export const Toolbar = () => {
                 className={system.system_prefix === drag ? styleSystemDraged : styleSystem}
                 onMouseDown={(e) => onmousedown(e, system.system_prefix)}
               >
-                <div className={`${styles.sysIcon} ${styles[system.system_prefix]}`} 
+                <div className={`${styles.sysIcon} ${system.system_prefix.replace(/[0-9]/g, '')}`} 
                   style={{backgroundImage: `url(./${_pathBase}system_icons/${system.icon_filename})`}}
                 ></div>      
                 <div className={styles.request_name}>{system.request_name}</div>
