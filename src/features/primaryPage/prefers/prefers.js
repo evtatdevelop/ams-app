@@ -13,13 +13,13 @@ export const Prefers = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setOrderPrefers(lsGet(`orderPrefers${userData['id']}`, [])))
+    if ( userData['id'] ) dispatch(setOrderPrefers(lsGet(`orderPrefers${userData['id']}`, [])))
   }, [dispatch, userData]);
 
   const mkPrefersData = (pageData, userData) => {
     const prefers = {id: 'prefers', prefix: 'PREFERS', name: dictionary['FAVORITES'][userData['lang']], systems: []};
     const setPrefers = new Set();
-    const removerTop = lsGet(`remobedTops${userData['id']}`, [])
+    const removerTop = userData['id'] ? lsGet(`remobedTops${userData['id']}`, []) : []
     pageData.map(section => 
       section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 
       ?  section.systems.map(sytem => {

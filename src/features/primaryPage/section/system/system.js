@@ -34,7 +34,7 @@ export const System = props => {
     })), 0);
   }
 
-  const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
+  const lsdata = userData['id'] ? JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`)) : []
   const removerTop = lsdata ? lsdata : []
 
   const styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`

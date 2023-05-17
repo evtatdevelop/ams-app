@@ -46,7 +46,7 @@ export const primarypageSlice = createSlice({
     }, 
 
     setOrderPrefers: (state, action) => {
-      state.orderPrefers = action.payload
+      state.orderPrefers = [...action.payload]
     },
 
     clearSearch: (state) => { 
@@ -147,7 +147,7 @@ const checkPicked = (data, systemPrefix) => {
   return result
 }
 
-const mkPrefersData = (pageData) => {
+export const mkPrefersData = (pageData) => {
   const setPrefers = new Set();
   pageData.map(section => 
     section.prefix === 'TOP_ORDERS' || section.prefix === 'FAVORITES' 

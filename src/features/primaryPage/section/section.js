@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from './section.module.scss';
 import { System } from './system/system';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
