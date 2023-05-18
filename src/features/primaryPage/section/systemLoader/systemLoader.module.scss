@@ -1,0 +1,54 @@
+.systemLoader {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+ width: 12vmax;
+ height: 12vmax;
+ margin-left: 1.5vmax;
+ margin-top: 1.5vmax;
+ border: .1vw solid #c2c2c2;
+ border-radius: .3vmax;
+ color: #424242;
+ animation: appearance 500ms ease-in-out forwards;
+}
+
+@keyframes appearance {
+  0% {
+    opacity: .3;
+  }
+  80% {
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  .systemLoader {
+    width: 13vmax;
+    height: 13vmax;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .systemLoader {
+    width: 10vmax;
+    height: 10vmax;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .systemLoader {
+    width: 10vmax;
+    height: 10vmax;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .systemLoader {
+    width: 8vmax;
+    height: 8vmax;
+  }
+}

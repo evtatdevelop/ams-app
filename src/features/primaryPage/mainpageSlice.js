@@ -3,7 +3,8 @@ import { getMainpageData, addPrefers, delPrefers  } from './mainpageSliceAPI';
 import { normalizeSystemName } from "../../helpers";
 
 const initialState = {
-  loadingPP: false,
+  loading: false,
+  loadingAdd: false, 
   data: [],
   dictionary: [],
   search: '',
@@ -83,7 +84,7 @@ export const primarypageSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getMainpage.pending, ( state ) => { state.loadingPP = true })
+      .addCase(getMainpage.pending, ( state ) => { state.loading = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
@@ -91,14 +92,14 @@ export const primarypageSlice = createSlice({
         state.loading = false;
       })
 
-      .addCase(addToPrefers.pending, ( state ) => { state.loadingPP = false })
+      .addCase(addToPrefers.pending, ( state ) => { state.loadingAdd = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
-        state.loading = false;
+        state.loadingAdd = false;
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
       })
 
-      .addCase(delToPrefers.pending, ( state ) => { state.loadingPP = false })
+      .addCase(delToPrefers.pending, ( state ) => { state.loading = false })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
         state.loading = false;
         state.data = SystemRun(action.payload.sections);
@@ -123,6 +124,7 @@ export const fastaccess   = ( state ) => state.primaripage.fastaccess;
 export const fastshow     = ( state ) => state.primaripage.fastshow;
 export const orderPrefers = ( state ) => state.primaripage.orderPrefers;
 export const toolbarShow  = ( state ) => state.primaripage.toolbarShow;
+export const loadingAdd   = ( state ) => state.primaripage.loadingAdd;
 
 export default primarypageSlice.reducer;
 
