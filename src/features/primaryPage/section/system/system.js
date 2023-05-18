@@ -3,7 +3,7 @@ import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
-import { onContextMenu, offContextMenu } from "../../mainpageSlice";
+import { onContextMenu, offContextMenu, loadingAdd } from "../../mainpageSlice";
 import { testMode } from "../../../../config";
 import { user } from "../../../user/userSlice";
 
@@ -14,12 +14,14 @@ export const System = props => {
   const ref = useRef();
   const dispatch = useDispatch();
   const userData = useSelector(user);
+  const loading = useSelector(loadingAdd);
 
   // useEffect(() => {
   //   sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
   // },[]);
 
   const handlerContextMenu = (e) => {
+    if ( loading ) return;
     const target = e.target.getBoundingClientRect()
     dispatch(offContextMenu());
     setTimeout(() => dispatch(onContextMenu({ 

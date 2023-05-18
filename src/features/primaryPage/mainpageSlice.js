@@ -15,6 +15,7 @@ const initialState = {
   fastshow: false,
   orderPrefers: [],
   toolbarShow: false,
+  buisySystems: [],
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -41,6 +42,12 @@ export const primarypageSlice = createSlice({
         : false  
       )
     },
+
+    runBuisySystems: (state, action) => {
+      state.buisySystems = state.buisySystems.includes(action.payload)  
+      ? state.buisySystems.filter(item => item !== action.payload)
+      : [...state.buisySystems, action.payload]
+    }, 
 
     onToolbar: (state, action) => {
       state.toolbarShow = action.payload
@@ -80,6 +87,10 @@ export const primarypageSlice = createSlice({
     onFastAccess: (state, action) => {
       state.fastaccess = action.payload
     },
+
+    stopLoadingAdd: (state) => {
+      state.loadingAdd = false
+    },
   },
 
   extraReducers: (builder) => {
@@ -94,23 +105,23 @@ export const primarypageSlice = createSlice({
 
       .addCase(addToPrefers.pending, ( state ) => { state.loadingAdd = true })
       .addCase(addToPrefers.fulfilled, ( state, action ) => {
-        state.loadingAdd = false;
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
+        state.loadingAdd = false;
       })
 
-      .addCase(delToPrefers.pending, ( state ) => { state.loading = false })
+      .addCase(delToPrefers.pending, ( state ) => { state.loadingAdd = true })
       .addCase(delToPrefers.fulfilled, ( state, action ) => {
-        state.loading = false;
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
+        state.loadingAdd = false;
       })
   }
 });
 
 export const { 
   onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification, 
-  onFastAccess, onFastShow, setOrderPrefers, onToolbar
+  onFastAccess, onFastShow, setOrderPrefers, onToolbar, runBuisySystems, stopLoadingAdd
 } = primarypageSlice.actions;
 
 export const mainpage     = ( state ) => state.primaripage.data;
@@ -125,6 +136,7 @@ export const fastshow     = ( state ) => state.primaripage.fastshow;
 export const orderPrefers = ( state ) => state.primaripage.orderPrefers;
 export const toolbarShow  = ( state ) => state.primaripage.toolbarShow;
 export const loadingAdd   = ( state ) => state.primaripage.loadingAdd;
+export const buisySystems = ( state ) => state.primaripage.buisySystems;
 
 export default primarypageSlice.reducer;
 
