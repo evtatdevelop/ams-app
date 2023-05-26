@@ -49,6 +49,12 @@ function App() {
             } 
             {developer.includes(userData.login) 
               ? <>
+                  <Route path={`/personalArea/:page`} 
+                  
+                  
+
+                  element={<PersonalArea/>}/>
+
                   <Route path={`/personalArea`} element={<PersonalArea/>}/>
                   <Route path={`/workplace`} element={<Workplace/>}/>
                   <Route path={`/resources`} element={<Resources/>}/>

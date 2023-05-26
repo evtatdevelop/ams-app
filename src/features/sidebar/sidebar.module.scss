@@ -93,6 +93,13 @@
             height: 30px;
             flex-grow: 0;
             flex-shrink: 0;
+            color: white;
+            
+
+            &.home {
+              width: 12px;
+              margin-right: 9px;
+            }
           }
         }
 

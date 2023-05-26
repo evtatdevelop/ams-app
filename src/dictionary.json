@@ -95,6 +95,10 @@
   "userGuide": {
     "EN": "Renewed interface user's guide",
     "RU": "Памятка по работе с обновленным интерфейсом системы"    
+  },
+  "PrimaryPage": {
+    "EN": "Home",
+    "RU": "Главная"    
   }
 
 

@@ -45,7 +45,7 @@ export const PrimaryPage = () => {
   return (
     <section className={styles.mainpage} onClick={()=>{ dispatch(offContextMenu()) }} >
 
-      <Sidebar/>
+      <Sidebar page = 'primaryPage'/>
 
       <main className={styles.main} onClick={()=>dispatch(onFastShow(false))}>
         
