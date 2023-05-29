@@ -53,9 +53,37 @@
       flex-grow: 1;
       font-size: 14px;
       transition: font-size .5s;
-
+      
       &:hover {
-        font-size: 24px;
+        .robot {
+          background-image: url("../../../public/system_icons/robothere.png");
+          // background-image: url("../../public/system_icons/robothere.png");
+        } 
+      }
+      
+      .robot {
+        width: 10vw;
+        height: 11vw;
+        background-size: cover;
+        background-image: url("../../../public/system_icons/inProgresRobot.png");
+        // background-image: url("../../public/system_icons/inProgresRobot.png");
+
+
+      }
+      p {
+        font: inherit;
+        font-size: 2vw;
+        color: #808080;
+      }
+      a {
+        font: inherit;
+        font-size: 1.2vw;
+        color: #808080;
+        
+        span {
+          color: #0857A1FF;
+          text-decoration: underline;
+        }
       }
     }
   }

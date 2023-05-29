@@ -99,6 +99,18 @@
   "PrimaryPage": {
     "EN": "Home",
     "RU": "Главная"    
+  },
+  "inProgress": {
+    "EN": "This Page Under Construction",
+    "RU": "Эта страница находится в разработке"    
+  },
+  "whatLooking": {
+    "EN": "What you were looking for is ",
+    "RU": "То, что вы искали, "    
+  },
+  "here": {
+    "EN": "here",
+    "RU": "здесь"    
   }
 
 

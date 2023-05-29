@@ -7,11 +7,12 @@ import { permitted } from '../../config';
 import { user } from '../user/userSlice';
 import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
-
+// import { testMode, root } from "../../config";
+import dictionary from '../../dictionary.json';
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
-
+  // const _pathBase = testMode ? '' : `/${root}`
   const { page } = useParams();
 
   return (
@@ -26,7 +27,21 @@ export const PersonalArea = () => {
           </div>
         </header>
 
-        <a href={`https://request.sibgenco.local/lk/${page}`} target="_blank" rel="noreferrer" className={styles.testLink}>{page}</a>
+         
+
+        <div className={styles.testLink}>
+          <div className={styles.robot} 
+          // style={{backgroundImage: `url(${_pathBase}/system_icons/inProgresRobot.png)`}}
+          ></div>
+          <div>
+            <p>{dictionary['inProgress'][userData['lang']]}</p>
+            <a href={`https://request.sibgenco.local/lk/${page}`} target="_blank" rel="noreferrer">
+            {dictionary['whatLooking'][userData['lang']]}<span>{dictionary['here'][userData['lang']]}</span>
+            </a>
+          </div>
+
+          
+        </div>
 
       </main>
       { permitted.includes(userData.login) ? <Navigation page = 'mainpage'/> : null }
