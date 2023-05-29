@@ -12,8 +12,7 @@ import { useParams } from "react-router-dom";
 export const PersonalArea = () => {
   const userData = useSelector(user);
 
-  let params = useParams();
-  // console.log(params.page); 
+  const { page } = useParams();
 
   return (
     <section className={styles.personalArea}>
@@ -27,7 +26,7 @@ export const PersonalArea = () => {
           </div>
         </header>
 
-        <h1>{params.page}</h1>
+        <a href={`https://request.sibgenco.local/lk/${page}`} target="_blank" rel="noreferrer" className={styles.testLink}>{page}</a>
 
       </main>
       { permitted.includes(userData.login) ? <Navigation page = 'mainpage'/> : null }
