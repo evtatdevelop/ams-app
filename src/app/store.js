@@ -3,7 +3,8 @@ import mainpageReducer from '../features/mainpage/mainpageSlice';
 import userReducer from '../features/user/userSlice'
 import workplaceReducer from '../features/workplace/workplaceSlice'
 import resourcesReducer from '../features/resources/resourcesSlice'
-import primaripageReducer from '../features/primaryPage/mainpageSlice'
+import primarypageReducer from '../features/primaryPage/mainpageSlice'
+import personalareaReducer from "../features/personalArea/personalAreaSlice"
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     user: userReducer,
     workplace: workplaceReducer,
     resources: resourcesReducer,
-    primaripage: primaripageReducer,
+    primarypage: primarypageReducer,
+    personalarea: personalareaReducer,
   },
 });

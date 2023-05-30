@@ -31,7 +31,7 @@ export const Navigation = props => {
 
           {developer.includes(userData.login) 
             ? <>
-                <li><Link to = '/personalArea'>PersonalArea</Link></li>
+                {/* <li><Link to = '/personalArea'>PersonalArea</Link></li> */}
                 <li><Link to = '/workplace'>Workplace</Link></li>
                 <li><Link to = '/resources'>Resources</Link></li> 
                 <li><Link to = '/apiTests'>API Tests</Link></li>           

@@ -124,19 +124,19 @@ export const {
   onFastAccess, onFastShow, setOrderPrefers, onToolbar, runBuisySystems, stopLoadingAdd
 } = primarypageSlice.actions;
 
-export const mainpage     = ( state ) => state.primaripage.data;
-export const dictionary   = ( state ) => state.primaripage.dictionary;
-export const loading      = ( state ) => state.primaripage.loading;
-export const search       = ( state ) => state.primaripage.search;
-export const filtred      = ( state ) => state.primaripage.filtred;
-export const contextMenu  = ( state ) => state.primaripage.contextMenu;
-export const notification = ( state ) => state.primaripage.notification;
-export const fastaccess   = ( state ) => state.primaripage.fastaccess;
-export const fastshow     = ( state ) => state.primaripage.fastshow;
-export const orderPrefers = ( state ) => state.primaripage.orderPrefers;
-export const toolbarShow  = ( state ) => state.primaripage.toolbarShow;
-export const loadingAdd   = ( state ) => state.primaripage.loadingAdd;
-export const buisySystems = ( state ) => state.primaripage.buisySystems;
+export const mainpage     = ( state ) => state.primarypage.data;
+export const dictionary   = ( state ) => state.primarypage.dictionary;
+export const loading      = ( state ) => state.primarypage.loading;
+export const search       = ( state ) => state.primarypage.search;
+export const filtred      = ( state ) => state.primarypage.filtred;
+export const contextMenu  = ( state ) => state.primarypage.contextMenu;
+export const notification = ( state ) => state.primarypage.notification;
+export const fastaccess   = ( state ) => state.primarypage.fastaccess;
+export const fastshow     = ( state ) => state.primarypage.fastshow;
+export const orderPrefers = ( state ) => state.primarypage.orderPrefers;
+export const toolbarShow  = ( state ) => state.primarypage.toolbarShow;
+export const loadingAdd   = ( state ) => state.primarypage.loadingAdd;
+export const buisySystems = ( state ) => state.primarypage.buisySystems;
 
 export default primarypageSlice.reducer;
 
