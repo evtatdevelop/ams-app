@@ -37,7 +37,7 @@ export const {
   onSearch, clearSearch,
 } = personalareaSlice.actions;
 
-export const mainpage = ( state ) => state.personalarea.data;
+export const myorders = ( state ) => state.personalarea.data;
 export const loading  = ( state ) => state.personalarea.loading;
 
 

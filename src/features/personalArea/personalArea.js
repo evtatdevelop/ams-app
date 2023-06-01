@@ -9,10 +9,11 @@ import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
 import { testMode, root } from "../../config";
 import dictionary from '../../dictionary.json';
-import { getMyorders } from "./personalAreaSlice";
+import { getMyorders, myorders } from "./personalAreaSlice";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
+  const myordersData = useSelector(myorders);
   const _pathBase = testMode ? '' : `/${root}`
   const { page } = useParams();
   const dispatch = useDispatch();
@@ -33,21 +34,29 @@ export const PersonalArea = () => {
           </div>
         </header>
 
+
+        {/* { myordersData.length !== 0
+          ? <ul className={styles.orderList}>
+              { myordersData.map(order => <li key={order.request_number}>{`${order.date_open} ${order.request_type}`}</li>) }          
+            </ul>
+          : null
+        }     */}
+  
+
+
          
-
-        <div className={styles.testLink}>
-          <div className={styles.robot} 
-          // style={{backgroundImage: `url(${_pathBase}/system_icons/inProgresRobot.png)`}}
-          ></div>
-          <div>
-            <p>{dictionary['inProgress'][userData['lang']]}</p>
-            <a href={`https://request.sibgenco.local/lk/${page}`} target="_blank" rel="noreferrer">
-            {dictionary['whatLooking'][userData['lang']]}<span>{dictionary['here'][userData['lang']]}</span>
-            </a>
-          </div>
-
-          
-        </div>
+        {/* { myordersData.length === 0 */}
+          ? <div className={styles.testLink}>
+              <div className={styles.robot}></div>
+              <div>
+                <p>{dictionary['inProgress'][userData['lang']]}</p>
+                <a href={`https://request.sibgenco.local/lk/${page}`} target="_blank" rel="noreferrer">
+                {dictionary['whatLooking'][userData['lang']]}<span>{dictionary['here'][userData['lang']]}</span>
+                </a>
+              </div>
+            </div>
+          : null
+        {/* }   */}
 
       </main>
       { permitted.includes(userData.login) ? <Navigation page = 'mainpage'/> : null }

@@ -1,7 +1,9 @@
 .system {
   position: relative;
-  width: 14vmax;
-  height: 14vmax;
+  // width: 14vmax;
+  // height: 14vmax;
+  width: 12vmax;
+  height: 12vmax;
   margin-left: 1.5vmax;
   margin-top: 1.5vmax;
   animation: appearance 500ms ease-in-out forwards;
@@ -62,8 +64,10 @@
     }
 
     .request_name {
-      line-height: 1.1vmax;
-      font-size: 1.3vmax;
+      // line-height: 1.1vmax;
+      // font-size: 1.3vmax;
+      font-size: 1.1vmax;
+      line-height: 1.35vmax;
       overflow: hidden;
       line-height: 1.15vmax;
       flex-grow: 1;
@@ -124,8 +128,10 @@
 
 @media screen and (min-width: 500px) {
   .system {
-    width: 15vmax;
-    height: 15vmax;
+    // width: 15vmax;
+    // height: 15vmax;
+    width: 13vmax;
+    height: 13vmax;
     &.topOrders {
       width: 13vmax;
       height: 13vmax;
@@ -144,8 +150,10 @@
         height: 5vmax;
       }
       .request_name {
-        font-size: 1.7vmax;
-        line-height: 1.7vmax;
+        // font-size: 1.7vmax;
+        // line-height: 1.7vmax;
+        font-size: 1.3vmax;
+        line-height: 1.5vmax;
       }
     } 
   }
@@ -154,8 +162,10 @@
 
 @media screen and (min-width: 800px) {
   .system {
-    width: 12vmax;
-    height: 12vmax;
+    // width: 12vmax;
+    // height: 12vmax;
+    width: 10vmax;
+    height: 10vmax;
     &.topOrders {
       width: 10vmax;
       height: 10vmax;
@@ -171,8 +181,10 @@
         height: 4.2vmax;
       }
       .request_name {
-        line-height: 1.2vmax;
-        font-size: 1.2vmax;
+        // line-height: 1.2vmax;
+        // font-size: 1.2vmax;
+        font-size: 1.1vmax;
+        line-height: 1.25vmax;
       }
     }  
   }
@@ -180,8 +192,10 @@
 
 @media screen and (min-width: 1000px) {
   .system {
-    width: 12vmax;
-    height: 12vmax;
+    // width: 12vmax;
+    // height: 12vmax;
+    width: 10vmax;
+    height: 10vmax;
     &.topOrders {
       width: 10vmax;
       height: 10vmax;
@@ -196,8 +210,9 @@
         height: 4vmax;
       }
       .request_name {
-        font-size: 1.1vmax;
-        line-height: 1.1vmax;
+        // font-size: 1.1vmax;
+        // line-height: 1.1vmax;
+        font-size: 1vmax;
       }
     }
   }
@@ -205,8 +220,10 @@
 
 @media screen and (min-width: 1200px) {
   .system {
-    width: 10vmax;
-    height: 10vmax;
+    // width: 10vmax;
+    // height: 10vmax;
+    width: 8vmax;
+    height: 8vmax;
     &.topOrders {
       width: 8vmax;
       height: 8vmax;
@@ -225,8 +242,10 @@
         height: 3.3vmax;
       }
       .request_name {
-        line-height: 1.1vmax;
-        font-size: 1vmax;
+        // line-height: 1.1vmax;
+        // font-size: 1vmax;
+        font-size: .9vmax;
+        line-height: 1vmax;
       }
     } 
   }
