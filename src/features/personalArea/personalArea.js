@@ -49,13 +49,18 @@ export const PersonalArea = () => {
           ? <ul className={styles.orderList}>
             { sortedData.map((year) =>
               <li key={Object.keys(year)[0]}>
-                <h2>{Object.keys(year)[0]}</h2>
+                <h2 className={styles.years}>{Object.keys(year)[0]}</h2>
                 <ul>
-                  { Object.values(year)[0].map(day => <li key={Object.keys(day)[0]}>
-                    <h3>{ getDate(+Object.keys(day)[0]) }</h3>
+                  { Object.values(year)[0].map((month, m_index) => <li key={m_index}>
+                    <h3 className={styles.months}>{ Object.keys(month)[0] }</h3>
                     <ul>
-                      { Object.values(day)[0].map(order => <li key={`${order.order_type}${order.order_id}`}>
-                        {`${order.request_type} ${order.api_status}`}
+                      { Object.values(month)[0].map(day => <li key={Object.keys(day)[0]}>
+                        <h4 className={styles.days}>{ getDate(+Object.keys(day)[0]) }</h4>
+                        <ul>
+                          { Object.values(day)[0].map(order => <li key={`${order.order_type}${order.order_id}`}>
+                          {`${order.request_number} ${order.request_type} ${order.api_status}`}
+                          </li>) }
+                        </ul>
                       </li>) }
                     </ul>
                   </li>)  }

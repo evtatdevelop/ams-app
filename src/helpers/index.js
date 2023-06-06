@@ -34,5 +34,5 @@ export const getDate = ( timeStamp ) => {
   let d = time.getDate()
   m = m > 9 ? m : `0${m}`
   d = d > 9 ? d : `0${d}`
-  return `${d}.${m}`
+  return `${d}`
 }
