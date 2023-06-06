@@ -41,6 +41,7 @@ export const {
 
 export const myorders = ( state ) => state.personalarea.data;
 export const loading  = ( state ) => state.personalarea.loading;
+export const sorted  = ( state ) => state.personalarea.sorted;
 
 
 export default personalareaSlice.reducer;
@@ -49,7 +50,17 @@ export default personalareaSlice.reducer;
 const dateSorting = (orders) => {
   const uniqDates = new Set();
   orders.map(order => uniqDates.add(order.sort_order))
-  return [...Array.from(uniqDates).map(date => {
+  const days = [...Array.from(uniqDates).map(date => {
     return{[new Date(date).getTime()]: [...orders.filter(order => order.sort_order === date)]}
   })]
+
+  const uniqYears = new Set();
+  days.map(day => uniqYears.add(new Date(+Object.keys(day)[0]).getFullYear()))
+  const years = [...Array.from(uniqYears).map(year => {
+    return{[year]: [...days.filter(day => new Date(+Object.keys(day)[0]).getFullYear() === year)]}
+  })]
+  
+  // console.log(years);
+
+  return years
 }
