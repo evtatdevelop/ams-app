@@ -22,31 +22,35 @@ export const PersonalArea = () => {
     if ( userData.api_key ) dispatch(getMyorders(userData.api_key)) 
   }, [dispatch, userData]);
 
+  // const date = new Date(myordersData[0].sort_order).getTime()
+  // console.log(date);
+
   return (
     <section className={styles.personalArea}>
       <Sidebar page = 'personalAria'/>
       <main className={styles.main}>
         
         <header className={styles.mainHeader}>
-          <h1 className={styles.pageName}>Personal Aria Test Page</h1>
+          <h1 className={styles.pageName}>Test Page</h1>
           <div className={styles.mobwraper}>
             <LangButton/>            
           </div>
         </header>
 
 
-        {/* { myordersData.length !== 0
+        { myordersData.length !== 0
           ? <ul className={styles.orderList}>
-              { myordersData.map(order => <li key={order.request_number}>{`${order.date_open} ${order.request_type}`}</li>) }          
+              { myordersData.map(order => <li key={order.request_number}>{1}</li>) }          
             </ul>
           : null
-        }     */}
+        }    
   
 
 
          
-        {/* { myordersData.length === 0 */}
-          ? <div className={styles.testLink}>
+        {/* { myordersData.length === 0
+          ?  */}
+          <div className={styles.testLink}>
               <div className={styles.robot}></div>
               <div>
                 <p>{dictionary['inProgress'][userData['lang']]}</p>
@@ -55,8 +59,7 @@ export const PersonalArea = () => {
                 </a>
               </div>
             </div>
-          : null
-        {/* }   */}
+ 
 
       </main>
       { permitted.includes(userData.login) ? <Navigation page = 'mainpage'/> : null }

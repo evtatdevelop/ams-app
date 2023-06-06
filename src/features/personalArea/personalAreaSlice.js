@@ -4,6 +4,7 @@ import { getMyordersData  } from './personalAreaSliceAPI';
 const initialState = {
   loading: false,
   data: [],
+  sorted: [],
 }
 
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -28,6 +29,7 @@ export const personalareaSlice = createSlice({
       .addCase(getMyorders.pending, ( state ) => { state.loading = true })
       .addCase(getMyorders.fulfilled, ( state, action ) => {
         state.data = action.payload;
+        state.sorted = dateSorting(action.payload);
         state.loading = false;
       })
   }
@@ -42,3 +44,12 @@ export const loading  = ( state ) => state.personalarea.loading;
 
 
 export default personalareaSlice.reducer;
+
+
+const dateSorting = (orders) => {
+  const uniqDates = new Set();
+  orders.map(order => uniqDates.add(order.sort_order))
+  return [...Array.from(uniqDates).map(date => {
+    return{[new Date(date).getTime()]: [...orders.filter(order => order.sort_order === date)]}
+  })]
+}

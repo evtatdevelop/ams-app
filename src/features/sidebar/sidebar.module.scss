@@ -103,7 +103,7 @@
           }
         }
 
-        .cnt { font-size: 10px; }
+        .cnt { font-size: 1vmax; }
 
         .lkHint {
           min-width: 150px;
@@ -213,6 +213,7 @@
           .lkLink {
             font-size: 1.4vmax;
           }
+          .cnt { font-size: .9vmax; }
         }
       }              
     }
@@ -237,6 +238,7 @@
           .lkLink {
             font-size: 1.2vmax;
           }
+          .cnt { font-size: .8vmax; }
         }
       }              
     }
@@ -249,9 +251,9 @@
     > div {
       &.logPrsn {
         .remoteUser {
-          font-size: 1.3vmax;
+          font-size: 1.1vmax;
           .domain { 
-            font-size: 1vmax;
+            font-size: .8vmax;
             font-weight: 100;
           }
         }
@@ -259,8 +261,9 @@
       &.lk {
         .lkrow {
           .lkLink {
-            font-size: 1vmax;
+            font-size: .9vmax;
           }
+          .cnt { font-size: .7vmax; }
         }
       }              
     }      
