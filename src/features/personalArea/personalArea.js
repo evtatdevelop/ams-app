@@ -14,7 +14,7 @@ import { getDate } from "../../helpers";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
-  const myordersData = useSelector(myorders);
+  // const myordersData = useSelector(myorders);
   const sortedData = useSelector(sorted);
   const _pathBase = testMode ? '' : `/${root}`
   const { page } = useParams();
@@ -52,7 +52,9 @@ export const PersonalArea = () => {
                 <h2 className={styles.years}>{Object.keys(year)[0]}</h2>
                 <ul>
                   { Object.values(year)[0].map((month, m_index) => <li key={m_index}>
-                    <h3 className={styles.months}>{ Object.keys(month)[0] }</h3>
+                    <h3 className={styles.months}>
+                      { new Date(Object.keys(year)[0], Object.keys(month)[0], 1).toLocaleString(userData['lang'], { month: 'long' }) }
+                    </h3>
                     <ul>
                       { Object.values(month)[0].map(day => <li key={Object.keys(day)[0]}>
                         <h4 className={styles.days}>{ getDate(+Object.keys(day)[0]) }</h4>

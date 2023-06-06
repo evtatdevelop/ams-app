@@ -62,16 +62,12 @@ const dateSorting = (orders) => {
 
   return years.map(year => {
     const uniqMonths = new Set();
-    Object.values(year)[0].map( order => uniqMonths.add(new Date(+Object.keys(order)[0]).getMonth() ))
-
-    const months = [...Array.from(uniqMonths).map(month => {
-      return{[month+1]: [...Object.values(year)[0].filter(day => new Date(+Object.keys(day)[0]).getMonth() === month)]}
-    })] 
-    const monthYear = {[Object.keys(year)[0]]: months}
-    // console.log(monthYear);
-    return monthYear;
+    Object.values(year)[0].map( order => uniqMonths.add(new Date(+Object.keys(order)[0]).getMonth() )) 
+    return {
+      [Object.keys(year)[0]]: 
+      [...Array.from(uniqMonths).map(month => {
+        return{[month]: [...Object.values(year)[0].filter(day => new Date(+Object.keys(day)[0]).getMonth() === month)]}
+      })]
+    }
   })
-
-
-  // return years
 }
