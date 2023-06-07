@@ -1,0 +1,26 @@
+.sectionDay {
+  .days {
+    color: orange;
+  }
+
+  input[type=checkbox] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+
+    &:checked {
+      &~ul {
+        height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0; 
+      }        
+    }
+  }  
+}

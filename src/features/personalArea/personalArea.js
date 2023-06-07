@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { testMode, root } from "../../config";
 import dictionary from '../../dictionary.json';
 import { getMyorders, myorders, sorted } from "./personalAreaSlice";
-import { getDate } from "../../helpers";
+import { SectionYear } from "./sectionYear/sectionYear";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
@@ -26,11 +26,9 @@ export const PersonalArea = () => {
 
   const inProgress = ['myagree', 'myagree_settings', 'myagree_arch', 'myexec', 'myexec_arch', ].includes(page)
 
-  const getDataString = timeStamp => {
-    const date = Date(+Object.keys(timeStamp)[0]);
-    
-    return date
-  }
+  const showHide = () => {
+    console.log("open/close");
+  } 
 
   return (
     <section className={styles.personalArea}>
@@ -47,27 +45,37 @@ export const PersonalArea = () => {
 
         { sortedData.length !== 0 && !inProgress
           ? <ul className={styles.orderList}>
-            { sortedData.map((year) =>
-              <li key={Object.keys(year)[0]}>
-                <h2 className={styles.years}>{Object.keys(year)[0]}</h2>
-                <ul>
-                  { Object.values(year)[0].map((month, m_index) => <li key={m_index}>
-                    <h3 className={styles.months}>
-                      { new Date(Object.keys(year)[0], Object.keys(month)[0], 1).toLocaleString(userData['lang'], { month: 'long' }) }
-                    </h3>
-                    <ul>
-                      { Object.values(month)[0].map(day => <li key={Object.keys(day)[0]}>
-                        <h4 className={styles.days}>{ getDate(+Object.keys(day)[0]) }</h4>
-                        <ul>
-                          { Object.values(day)[0].map(order => <li key={`${order.order_type}${order.order_id}`}>
-                          {`${order.request_number} ${order.request_type} ${order.api_status}`}
-                          </li>) }
-                        </ul>
-                      </li>) }
-                    </ul>
-                  </li>)  }
-                </ul>
-              </li>
+            { sortedData.map((year) => <SectionYear key={Object.keys(year)[0]} year={year}/>
+              // <li key={Object.keys(year)[0]}>
+              //   { new Date().getFullYear() !== +Object.keys(year)[0]
+              //     ? <>
+              //         <label htmlFor={Object.keys(year)[0]}><h2 className={styles.years}>{Object.keys(year)[0]}</h2></label>
+              //         <input type="checkbox" id={Object.keys(year)[0]}
+              //           checked={false}
+              //           onChange={()=>showHide()}
+              //         /> 
+              //       </>
+              //     : null
+              //   }
+
+              //   <ul>
+              //     { Object.values(year)[0].map((month, m_index) => <li key={m_index}>
+              //       <h3 className={styles.months}>
+              //         { new Date(Object.keys(year)[0], Object.keys(month)[0], 1).toLocaleString(userData['lang'], { month: 'long' }) }
+              //       </h3>
+              //       <ul>
+              //         { Object.values(month)[0].map(day => <li key={Object.keys(day)[0]}>
+              //           <h4 className={styles.days}>{ new Date(+Object.keys(day)[0]).getDate() }</h4>
+              //           <ul>
+              //             { Object.values(day)[0].map(order => <li key={`${order.order_type}${order.order_id}`}>
+              //             {`${order.request_number} ${order.request_type} ${order.api_status}`}
+              //             </li>) }
+              //           </ul>
+              //         </li>) }
+              //       </ul>
+              //     </li>)  }
+              //   </ul>
+              // </li>
             )}
           </ul>
           : null
