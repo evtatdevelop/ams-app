@@ -1,8 +1,12 @@
 .sectionYear {
   position: relative;
+  margin-bottom: 1vmax;
+  padding-bottom: 1vmax;
+  border-bottom: 1px solid rgb(209, 209, 209);
 
   .years {
-    color: red;
+    color: #0857A1FF;
+    font-weight: 700;
   }
 
 

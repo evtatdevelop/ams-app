@@ -32,7 +32,8 @@ export const getDate = ( timeStamp ) => {
   // const Y = time.getFullYear()
   let m = time.getMonth() + 1
   let d = time.getDate()
+  const wd = time.toLocaleString('en', { weekday: 'short' })
   m = m > 9 ? m : `0${m}`
   d = d > 9 ? d : `0${d}`
-  return `${d}`
+  return `(${wd}) ${d}`
 }

@@ -4,7 +4,7 @@ import { SectionMonth } from "./sectionMonth/sectionMonth";
 
 export const SectionYear = props => {
   const { year } = props;
-  const [hide, onHide] = useState(true);
+  const [hide, onHide] = useState( new Date().getFullYear() !== +Object.keys(year)[0] );
 
   const showHide = () => {
     onHide(!hide)

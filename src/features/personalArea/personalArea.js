@@ -45,45 +45,11 @@ export const PersonalArea = () => {
 
         { sortedData.length !== 0 && !inProgress
           ? <ul className={styles.orderList}>
-            { sortedData.map((year) => <SectionYear key={Object.keys(year)[0]} year={year}/>
-              // <li key={Object.keys(year)[0]}>
-              //   { new Date().getFullYear() !== +Object.keys(year)[0]
-              //     ? <>
-              //         <label htmlFor={Object.keys(year)[0]}><h2 className={styles.years}>{Object.keys(year)[0]}</h2></label>
-              //         <input type="checkbox" id={Object.keys(year)[0]}
-              //           checked={false}
-              //           onChange={()=>showHide()}
-              //         /> 
-              //       </>
-              //     : null
-              //   }
-
-              //   <ul>
-              //     { Object.values(year)[0].map((month, m_index) => <li key={m_index}>
-              //       <h3 className={styles.months}>
-              //         { new Date(Object.keys(year)[0], Object.keys(month)[0], 1).toLocaleString(userData['lang'], { month: 'long' }) }
-              //       </h3>
-              //       <ul>
-              //         { Object.values(month)[0].map(day => <li key={Object.keys(day)[0]}>
-              //           <h4 className={styles.days}>{ new Date(+Object.keys(day)[0]).getDate() }</h4>
-              //           <ul>
-              //             { Object.values(day)[0].map(order => <li key={`${order.order_type}${order.order_id}`}>
-              //             {`${order.request_number} ${order.request_type} ${order.api_status}`}
-              //             </li>) }
-              //           </ul>
-              //         </li>) }
-              //       </ul>
-              //     </li>)  }
-              //   </ul>
-              // </li>
-            )}
+            { sortedData.map((year) => <SectionYear key={Object.keys(year)[0]} year={year}/>) }
           </ul>
           : null
         }    
-  
 
-
-         
         { inProgress
           ? <div className={styles.testLink}>
               <div className={styles.robot}></div>
