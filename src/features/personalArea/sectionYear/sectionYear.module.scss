@@ -4,12 +4,19 @@
   padding-bottom: 1vmax;
   border-bottom: 1px solid rgb(209, 209, 209);
 
+  transition: padding-bottom .5s;
+  &:hover {
+    padding-bottom: 2vmax;
+  }
   .years {
     color: #0857A1FF;
     font-weight: 700;
   }
 
+  label {
+    cursor: pointer;
 
+  }
 
   input[type=checkbox] {
     position: absolute;
