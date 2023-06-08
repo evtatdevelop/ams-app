@@ -1,9 +1,27 @@
 .sectionMonth {
-  margin-top: .5vmax;
+  // padding-bottom: .5vmax;
   padding-left: .5vmax;
+  
+  // &:last-child {
+  //   margin-bottom: 1vmax;
+  // }
 
-  .months {
-    color: green;
+  .monthLabel {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: .2vmax; 
+    cursor: pointer;
+    &:hover {
+      .months {
+        padding-left: .3vmax;
+      }
+    }
+    .months {
+      color: rgb(6, 113, 33);
+      transition: padding-left .3s;
+    }
+
   }
 
   input[type=checkbox] {
@@ -25,6 +43,11 @@
         opacity: 0; 
       }        
     }
+  }
+
+  .daysList {
+    transition: opacity .6s, padding-bottom .3s;
+    padding-bottom: .5vmax;
   }
 
 }

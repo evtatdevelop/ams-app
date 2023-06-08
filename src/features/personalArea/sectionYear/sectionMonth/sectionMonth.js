@@ -14,7 +14,7 @@ export const SectionMonth = props => {
 
   return (
     <li className={styles.sectionMonth}>
-      <label htmlFor={`${year}${Object.keys(month)[0]}`}>
+      <label htmlFor={`${year}${Object.keys(month)[0]}`} className={styles.monthLabel}>
         <h3 className={styles.months}>
           { new Date(year, Object.keys(month)[0], 1).toLocaleString(userData['lang'], { month: 'long' }) }
         </h3>        
@@ -25,7 +25,7 @@ export const SectionMonth = props => {
         onChange={()=>showHide()}
       /> 
 
-      <ul>
+      <ul className={styles.daysList}>
         { Object.values(month)[0].map(day => <SectionDay day={day} month={Object.keys(month)[0]} year={year} key={Object.keys(day)[0]}/>) }
       </ul>
     </li>

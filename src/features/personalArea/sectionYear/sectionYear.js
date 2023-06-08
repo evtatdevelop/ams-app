@@ -12,7 +12,7 @@ export const SectionYear = props => {
 
   return (
     <li className={styles.sectionYear}>
-      <label htmlFor={Object.keys(year)[0]}>
+      <label htmlFor={Object.keys(year)[0]} className={styles.yearLabel}>
         <h2 className={styles.years}>{ Object.keys(year)[0]}</h2>
       </label>
 
@@ -21,7 +21,7 @@ export const SectionYear = props => {
         onChange={()=>showHide()}
       /> 
 
-      <ul>
+      <ul className={styles.monthList}>
         { Object.values(year)[0].map((month, m_index) => <SectionMonth month={month} year={Object.keys(year)[0]} key={m_index}/>)}
       </ul>
     </li>

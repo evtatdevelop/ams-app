@@ -41,6 +41,9 @@ function App() {
         {permitted.includes(userData.login) ? <Route path={`/components`} element={<Components/>}/> : null} 
         {permitted.includes(userData.login) ? <Route path={`/apiTests`} element={<TestPage/>}/> : null}  */}
 
+        <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
+        <Route path={`/personalArea`} element={<PersonalArea/>}/> 
+
         {permitted.includes(userData.login)
           ? <>
             {mainpage.includes(userData.login) || root === 'ams' 
@@ -57,9 +60,7 @@ function App() {
               </>
               : null
             } 
-            <Route path={`/components`} element={<Components/>}/> 
-            <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
-            <Route path={`/personalArea`} element={<PersonalArea/>}/>          
+            <Route path={`/components`} element={<Components/>}/>          
           </>
           : null
         }

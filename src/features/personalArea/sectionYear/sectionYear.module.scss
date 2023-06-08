@@ -1,20 +1,24 @@
 .sectionYear {
   position: relative;
-  margin-bottom: 1vmax;
-  padding-bottom: 1vmax;
   border-bottom: 1px solid rgb(209, 209, 209);
 
-  transition: padding-bottom .5s;
-  &:hover {
-    padding-bottom: 2vmax;
-  }
-  .years {
-    color: #0857A1FF;
-    font-weight: 700;
-  }
-
-  label {
+  .yearLabel {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 1vmax;
+    padding-bottom: 1vmax;    
     cursor: pointer;
+    &:hover {
+      .years {
+        padding-left: .5vmax;
+      }
+    }
+    .years {
+      color: #0857A1FF;
+      font-weight: 700;
+      transition: padding-left .3s;
+    }
 
   }
 
@@ -29,14 +33,20 @@
     overflow: hidden;
 
     &:checked {
-      &~ul {
+      &~.monthList {
         height: 0;
         overflow: hidden;
         padding-top: 0;
         padding-bottom: 0;
         opacity: 0; 
+        padding-bottom: 0vmax;
       }        
     }
+  }
+
+  .monthList {
+    transition: opacity .6s, padding-bottom .3s;
+    padding-bottom: 1vmax;
   }
 
 }

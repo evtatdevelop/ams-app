@@ -23,7 +23,7 @@ export const SectionDay = props => {
 
   return (
     <li className={styles.sectionDay}>
-      <label htmlFor={`${year}${month}${Object.keys(day)[0]}`}>
+      <label htmlFor={`${year}${month}${Object.keys(day)[0]}`} className={styles.dayLabel}>
         <h4 className={styles.days}>{ getDateString() }</h4>
       </label>
       
@@ -32,7 +32,7 @@ export const SectionDay = props => {
         onChange={()=>showHide()}
       /> 
 
-      <ul>
+      <ul className={styles.orderListPA}>
         { Object.values(day)[0].map(order => <SectionOrder order={order} key={`${order.order_type}${order.order_id}`}/>) }
       </ul>
     </li>
