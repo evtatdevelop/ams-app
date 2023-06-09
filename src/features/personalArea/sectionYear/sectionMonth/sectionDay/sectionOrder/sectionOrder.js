@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faCheck, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 
 export const SectionOrder = props => {
-  const { order } = props;
+  const { order, hide } = props;
 
   const getIconStatus = () => {
     switch ( order.api_status ) {
@@ -24,20 +24,26 @@ export const SectionOrder = props => {
   }
 
   return (
-    <li className={styles.sectionOrder}>
-      <button type="button" className={styles.btnOpenOrder}>
-        <p className={styles.orderName}>
-          <span className={styles.requestNuber}>({order.request_number}) </span>
-          {order.request_type} 
-          {order.order_type === 'WORKPLACE' || order.order_type === 'CORPSYSTEMS'
-            ? <span className={styles.oredrUser}> [ <span className={styles.italic}>{getShortName(order.api_order_user.name)}</span> ]</span>
-            : null
-          }
-          
-        </p>
-        <p className={styles.orderStatus}>{getIconStatus()}</p>
-        <FontAwesomeIcon icon={ faArrowUpRightFromSquare } className={`${styles.openOrder}`} />
-      </button>
-    </li>
+    <> { !hide
+        ? <li className={styles.sectionOrder}>
+            <button type="button" className={styles.btnOpenOrder}>
+              <p className={styles.orderName}>
+                <span className={styles.requestNuber}>({order.request_number}) </span>
+                {order.request_type} 
+                {order.order_type === 'WORKPLACE' || order.order_type === 'CORPSYSTEMS'
+                  ? <span className={styles.oredrUser}> [ <span className={styles.italic}>{getShortName(order.api_order_user.name)}</span> ]</span>
+                  : null
+                }
+                
+              </p>
+              <p className={styles.orderStatus}>{getIconStatus()}</p>
+              <FontAwesomeIcon icon={ faArrowUpRightFromSquare } className={`${styles.openOrder}`} />
+            </button>
+          </li>
+        : null
+    }
+    </>
+
+
   )
 }

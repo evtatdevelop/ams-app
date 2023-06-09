@@ -26,7 +26,7 @@ export const SectionMonth = props => {
       /> 
 
       <ul className={styles.daysList}>
-        { Object.values(month)[0].map(day => <SectionDay day={day} month={Object.keys(month)[0]} year={year} key={Object.keys(day)[0]}/>) }
+        { Object.values(month)[0].map(day => <SectionDay day={day} month={Object.keys(month)[0]} year={year} key={Object.keys(day)[0]}  hideDay={hide}/>) }
       </ul>
     </li>
   )
