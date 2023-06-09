@@ -61,7 +61,7 @@ export const Sidebar = props => {
                 <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
                 {dictionary[system.system_prefix][userData['lang']]}                
               </Link>
-              <p className={styles.cnt}>{system.cnt}</p>
+              {['LK_02', 'LK_06'].includes(system.system_prefix) && system.cnt !== "0" ? <p className={styles.cnt}>{system.cnt}</p> : null}
               <div className={styles.lkHint}>{system.request_name}</div>               
             </div>
           )
