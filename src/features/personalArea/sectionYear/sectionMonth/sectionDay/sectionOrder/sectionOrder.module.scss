@@ -28,6 +28,15 @@
       .orderName {
         color: rgb(12, 105, 192);
       }
+      .orderStatus {
+        .statusSign {
+          opacity: 0;
+        }
+        .statusHint {
+          opacity: 1;
+        }  
+      }
+
     }
     
     .orderName {
@@ -35,7 +44,7 @@
       color: #424242;
       transition: color .1s;
       margin-right: 1vmax;
-      width: 30%;
+      width: 50%;
 
       .requestNuber {
         color: #00539c;
@@ -55,15 +64,39 @@
 
     .orderStatus {
       margin-right: 1vmax;
+      // outline: 1px solid rgb(195, 174, 174);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 200px;
 
-      .agreed {
+      &.agreed {
         color: rgb(42, 142, 42);
       }
-      .refused {
+      &.refused {
         color: coral;
       }
-      .inprogress {
+      &.inprogress {
         color: #00539c;
+      }        
+      &.cuestion {
+        color: #70787e;
+      }       
+      .statusSign {
+        opacity: 1;
+        transition: opacity .3s;
+       
+      }
+
+      .statusHint {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        transition: opacity .3s;
+        width: 100%;
+        text-align: center;
+        font-size: .8vmax;
       }
     }
 

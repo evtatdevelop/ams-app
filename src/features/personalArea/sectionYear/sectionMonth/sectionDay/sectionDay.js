@@ -8,10 +8,13 @@ import { useSelector } from "react-redux";
 export const SectionDay = props => {
   const { day, month, year, hideDay } = props;
   const userData = useSelector(user);
-  const [hide, onHide] = useState(false);
+  // const [hide, onHide] = useState(false);
+  const [hide, onHide] = useState( !Object.values(day)[0].some( order => order.api_status === 'inprogress' ) );
   const showHide = () => {
     onHide(!hide)
   } 
+
+  // console.log(Object.values(day)[0]);
 
   const getDateString = () => {
     const time = new Date(+Object.keys(day)[0])

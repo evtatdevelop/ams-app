@@ -4,11 +4,11 @@ import { SectionMonth } from "./sectionMonth/sectionMonth";
 
 export const SectionYear = props => {
   const { year } = props;
-  const [hide, onHide] = useState( new Date().getFullYear() !== +Object.keys(year)[0] );
+  // const [hide, onHide] = useState( new Date().getFullYear() !== +Object.keys(year)[0] );
+  const [hide, onHide] = useState( !Object.values(year)[0].some(month =>  Object.values(month)[0].some(day => Object.values(day)[0].some(order => order.api_status === 'inprogress' ) ) ) );
 
-  const showHide = () => {
-    onHide(!hide)
-  } 
+
+  const showHide = () => onHide(!hide)
 
   return (
     <li className={styles.sectionYear}>

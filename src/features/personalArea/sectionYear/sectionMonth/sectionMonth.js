@@ -7,7 +7,8 @@ import { SectionDay } from "./sectionDay/sectionDay";
 export const SectionMonth = props => {
   const { month, year } = props;
   const userData = useSelector(user);
-  const [hide, onHide] = useState( new Date().getFullYear() !== +year || new Date().getMonth() !== +Object.keys(month)[0] );
+  // const [hide, onHide] = useState( new Date().getFullYear() !== +year || new Date().getMonth() !== +Object.keys(month)[0] );
+  const [hide, onHide] = useState( !Object.values(month)[0].some(day => Object.values(day)[0].some(order => order.api_status === 'inprogress' ) ) );
   const showHide = () => {
     onHide(!hide)
   } 
