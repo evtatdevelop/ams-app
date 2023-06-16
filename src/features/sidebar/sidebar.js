@@ -8,9 +8,10 @@ import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseUser } from '@fortawesome/free-solid-svg-icons'
+import { setPage } from "../personalArea/personalAreaSlice";
 
 export const Sidebar = props => {
-  const { page } = props;
+  // const { page } = props;
   const _pathBase = testMode ? '' : `/${root}`
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
@@ -40,15 +41,13 @@ export const Sidebar = props => {
       </div>
 
       <div className={styles.lk}>
-        { page === 'personalAria' 
-          ? <div className={styles.lkrow}>   
+          <div className={styles.lkrow}>   
               <Link to = {`${_pathBase}/`} className={styles.lkLink}>
               <FontAwesomeIcon icon={ faHouseUser }  className={`${styles.lkIkon} ${styles.home}`}  /> 
                 {dictionary['PrimaryPage'][userData['lang']]}                
               </Link> 
             </div>
-          : null  
-        }
+
         { pageData.map(section => section.prefix === 'LK' 
           ? section.systems.map(system => 
             <div key={system.system_prefix} className={styles.lkrow}>             
@@ -57,7 +56,7 @@ export const Sidebar = props => {
                 {dictionary[system.system_prefix][userData['lang']]}
               </a> */}
               {/* <Link to = {`/personalArea`} className={styles.lkLink}> */}
-              <Link to = {`/personalArea/${system.request_url.split('/')[2]}`} className={styles.lkLink}>
+              <Link to = {`/personalArea/${system.request_url.split('/')[2]}`} className={styles.lkLink}  onClick={() => dispatch(setPage(system.request_url.split('/')[2]))}>
                 <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
                 {dictionary[system.system_prefix][userData['lang']]}                
               </Link>

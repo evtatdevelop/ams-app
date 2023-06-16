@@ -2,8 +2,15 @@
   padding-left: 1vmax;
 
   .dayLabel {
+    cursor: pointer;
+    &:hover {
+      .days {
+        padding-left: .3vmax;
+      }
+    }
     .days {
       color: rgb(69, 28, 181);
+      transition: padding-left .3s;
     }    
   }
 

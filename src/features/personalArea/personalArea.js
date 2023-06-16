@@ -8,20 +8,29 @@ import { user } from '../user/userSlice';
 import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
 import dictionary from '../../dictionary.json';
-import { getMyorders, sorted } from "./personalAreaSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
+import Input from "../components/input";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
   const sortedData = useSelector(sorted);
+  const allClosed = useSelector(everyClose);
   const { page } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if ( userData.api_key ) dispatch(getMyorders(userData.api_key)) 
-  }, [dispatch, userData]);
+    dispatch(setPage(page)) 
+    if ( userData.api_key ) {
+      dispatch(getMyorders(userData.api_key)) 
+      dispatch(getMyarchive(userData.api_key))
+      dispatch(getMyexecarch(userData.api_key))
+    }
+  }, [dispatch, page, userData]);
 
-  const inProgress = ['myagree', 'myagree_settings', 'myagree_arch', 'myexec', 'myexec_arch', ].includes(page)
+  const inProgress = ['myagree', 'myagree_settings', 'myexec', 'myexec_arch' ].includes(page)
+
+  const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
 
   return (
     <section className={styles.personalArea}>
@@ -38,16 +47,30 @@ export const PersonalArea = () => {
 
         { sortedData.length !== 0 && !inProgress
           ? <section className={styles.myordersSectioon}>
+              
               <ul className={styles.orderList}>
+                <li><button type="button" className={styleOpenCloseBtn} 
+                  onClick={()=>dispatch(everyOpenClose())}></button></li>
                 { sortedData.map((year) => <SectionYear key={Object.keys(year)[0]} year={year}/>) }
               </ul>
+
+              
             </section>
 
           : null
         }    
 
-
-
+        { !inProgress
+          ? <div className={styles.searchBar}>
+              <Input 
+                inputHandler = { val => console.log(val) }
+                inputClear = { () => console.log('clear') }
+                placeholder = {dictionary['searchAppNum'][userData['lang']]}
+                val = ''
+              />
+            </div>
+          : null
+        }  
 
         { inProgress
           ? <div className={styles.testLink}>

@@ -4,13 +4,13 @@
   position: relative;
 
   .langSwitcher {
-    height: 2vmax;
-    width: 2vmax;
+    height: 1.5vmax;
+    width: 1.5vmax;
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
-    font-size: 1vmax; 
+    font-size: .8vmax; 
     color: rgb(8, 87, 161);
     border-radius: .2vmax;
     transition: border .3s;

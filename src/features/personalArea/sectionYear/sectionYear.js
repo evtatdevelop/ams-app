@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import styles from './sectionYear.module.scss';
 import { SectionMonth } from "./sectionMonth/sectionMonth";
+import { everyClose } from "../personalAreaSlice";
+import { useSelector } from "react-redux";
 
 export const SectionYear = props => {
   const { year } = props;
+  const yearsClose = useSelector(everyClose);
   // const [hide, onHide] = useState( new Date().getFullYear() !== +Object.keys(year)[0] );
-  const [hide, onHide] = useState( !Object.values(year)[0].some(month =>  Object.values(month)[0].some(day => Object.values(day)[0].some(order => order.api_status === 'inprogress' ) ) ) );
+  const [hide, onHide] = useState( 
+    !Object.values(year)[0].some(month =>  Object.values(month)[0].some(day => Object.values(day)[0].some(order => order.api_status === 'inprogress' ) ) ) 
+  );
 
 
   const showHide = () => onHide(!hide)
@@ -17,7 +22,7 @@ export const SectionYear = props => {
       </label>
 
       <input type="checkbox" id={Object.keys(year)[0]}
-        checked={hide}
+        checked={hide && yearsClose}
         onChange={()=>showHide()}
       /> 
 

@@ -2,9 +2,13 @@ import React from "react";
 import styles from './sectionOrder.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faCheck, faArrowUpRightFromSquare, faQuestion } from '@fortawesome/free-solid-svg-icons'
+// import { page } from "../../../../personalAreaSlice";
+// import { useSelector } from "react-redux";
+
 
 export const SectionOrder = props => {
   const { order, hide } = props;
+  // const pageMode = useSelector(page);
 
   const getIconStatus = () => {
     switch ( order.api_status ) {
@@ -46,12 +50,15 @@ export const SectionOrder = props => {
                 <span> <FontAwesomeIcon icon={ faArrowUpRightFromSquare } className={`${styles.openOrder}`} /></span>
               </p>
 
-             
+             {/* { pageMode === 'myagree_arch'
+                ? <div >{order.myagree_status} </div>
+                : null   
+             } */}
 
               <div className={`${styles.orderStatus} ${getStyleStatus()}`}>
                 <p className={styles.statusSign}>{getIconStatus()}</p>
                 <p className={styles.statusHint}>{order.status}</p>
-                </div>  
+              </div>  
               
             </button>
           </li>

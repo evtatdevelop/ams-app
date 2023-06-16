@@ -135,6 +135,18 @@
   "myexec_arch": {
     "EN": "Сompleted",
     "RU": "Исполненные"  
+  },
+  "expandList": {
+    "EN": "Expand List",
+    "RU": "Показать всё"  
+  },
+  "collapseList": {
+    "EN": "Collapse list",
+    "RU": "Свернуть список"  
+  },
+  "searchAppNum": {
+    "EN": "Search by application number",
+    "RU": "Поиск по номеру заявки"  
   }
 
 
