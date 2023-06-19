@@ -116,8 +116,8 @@
 
     .searchBar {
       position: fixed;
-      width: 15vmax;
-      height: 700px;
+      width: 335px;
+      // height: 700px;
       top: calc(7vh + 1vmax);
       right: 1vmax;
       display: flex;
@@ -125,7 +125,14 @@
       background-color: white;
       border-radius: 3px;
       padding: .5vmax;
-      box-shadow: 0px 0px 5px rgba(8, 87, 161, 0.501);
+      box-shadow: 0px 0px 5px rgba(8, 87, 161, 0.501), -10px 0px 0px rgba(255, 255, 255, 1);
+
+      .saerchCaption {
+        margin-top: 20px;
+        margin-bottom: 8px;
+        color: grey;
+        font-weight: 500;
+      }
     }
 
     .testLink {
@@ -161,6 +168,9 @@
     }
     
   }
+
+
+
 
   @media screen and (min-width: 500px) {
   }

@@ -145,8 +145,12 @@
     "RU": "Свернуть список"  
   },
   "searchAppNum": {
-    "EN": "Search by application number",
-    "RU": "Поиск по номеру заявки"  
+    "EN": "Request number",
+    "RU": "Номер заявки"  
+  },
+  "timePeriod": {
+    "EN": "Period of time",
+    "RU": "Период времени"  
   }
 
 

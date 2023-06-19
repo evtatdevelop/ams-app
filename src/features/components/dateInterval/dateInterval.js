@@ -5,7 +5,7 @@ import DatePicker from "./datePicker";
 
 export const DateInterval = props => {
   const ref = useRef(null)
-  const {dateHandler, lang} = props
+  const {dateHandler, lang, dateClear} = props
   
   const [value, setValue] = useState("")
   const [jsDateFrom, setJsDateFrom] = useState(null)
@@ -24,7 +24,7 @@ export const DateInterval = props => {
 
     const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
     const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
-    const strDate = lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
+    const strDate = lang === 'RU' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
     const splitVal = value.split(' - ')
     if ( !jsDateFrom 
       || ( jsDateFrom && jsDateTill ) 
@@ -47,9 +47,10 @@ export const DateInterval = props => {
   const clearInput = () => {
     onSetDate(null)
     setShowPicker(false)
+    dateClear()
   }
 
-  const localMask = lang === 'ru' ? 'дд.мм.гггг - дд.мм.гггг' : 'dd-mm-yyyy - dd-mm-yyyy'
+  const localMask = lang === 'RU' ? 'дд.мм.гггг - дд.мм.гггг' : 'dd-mm-yyyy - dd-mm-yyyy'
   const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
   const stylePickerCloser = `${styles.pickerCloser}`
