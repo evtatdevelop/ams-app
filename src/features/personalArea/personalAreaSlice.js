@@ -35,12 +35,14 @@ export const personalareaSlice = createSlice({
     setSearchNum:  (state, action) => {
       const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
       state.filters.searchNum = action.payload
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate) state.everyClose = true;
       switchPage(state, filters)      
     },
 
     setSearchDate:  (state, action) => {
       const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum) state.everyClose = true;
       switchPage(state, filters)    
     }
 
@@ -59,11 +61,6 @@ export const personalareaSlice = createSlice({
       .addCase(getMyarchive.fulfilled, ( state, action ) => {
         state.myarchive = action.payload;
         if ( state.page === 'myagree_arch' ) state.sorted = dateSorting(action.payload, {})      
-        // ? NEEDS_TO_BE_RESOLVED: Dublicated orders in case of existing several agreements in one order at deffereht stages
-        // dateSorting(action.payload).map(
-        //   year => Object.values(year)[0].map(
-        //     mont => Object.values(mont)[0].map(
-        //       days => Object.values(days)[0].map(order => console.log(order)))))
         state.loading = false;
       })
 
@@ -91,19 +88,6 @@ export const page  = ( state ) => state.personalarea.page;
 export default personalareaSlice.reducer;
 
 const dataFltering = (orders, filters) => {
-  // console.log(orders);
-  // console.log(filters.searchNum, filters.searchDate);
-  // console.log(filters);
-  // if ( filters.searchDate && filters.searchDate.length === 2 ) console.log(filters.searchDate[0], filters.searchDate[1]);
-  // if ( filters.searchDate && filters.searchDate.length === 2 ) console.log(Date.parse(filters.searchDate[0]), Date.parse(filters.searchDate[1]));
-  // if ( filters.searchDate && filters.searchDate.length === 2 ) console.log(new Date( Date.parse(filters.searchDate[0])));
-  // if ( filters.searchDate && filters.searchDate.length === 2 ) console.log(new Date( Date.parse(filters.searchDate[1]))); 
-  // if ( filters.searchDate && filters.searchDate.length === 2 ) {
-  //   const dtOpnArr = [...orders[0].date_open.split(' ')[0].split('.'), ...orders[0].date_open.split(' ')[1].split(':')]
-  //   const date_open = `${dtOpnArr[2]}-${dtOpnArr[1]}-${dtOpnArr[0]}`
-  //   console.log(new Date(Date.parse(date_open)));    
-  // }
-
   let result = orders
   if ( filters.searchNum ) result = orders.filter(order => order.request_number.includes(filters.searchNum))
   if ( filters.searchDate && filters.searchDate.length === 2 ) result = result.filter(order => {
