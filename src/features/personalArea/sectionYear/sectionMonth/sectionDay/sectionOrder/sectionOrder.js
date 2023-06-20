@@ -3,12 +3,14 @@ import styles from './sectionOrder.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faCheck, faArrowUpRightFromSquare, faQuestion } from '@fortawesome/free-solid-svg-icons'
 // import { page } from "../../../../personalAreaSlice";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { filters } from "../../../../personalAreaSlice";
 
 
 export const SectionOrder = props => {
   const { order, hide } = props;
   // const pageMode = useSelector(page);
+  const filtersData = useSelector(filters);
 
   const getIconStatus = () => {
     switch ( order.api_status ) {
@@ -35,10 +37,14 @@ export const SectionOrder = props => {
   }
 
   const onClic = () => window.open(`${order.urls.htm}${order.key}`, '_blank');
+ 
+  const stylesSectionOrder = filtersData.searchNum && order.request_number.includes(filtersData.searchNum) ? `${styles.sectionOrder} ${styles.found}` : `${styles.sectionOrder}`
+
+console.log(filtersData.searchNum, order.request_number);
 
   return (
     <> { !hide
-        ? <li className={styles.sectionOrder}>
+        ? <li className={stylesSectionOrder}>
             <button type="button" onClick={() => onClic()} className={styles.btnOpenOrder}>
               <p className={styles.orderName}>
                 <span className={styles.requestNuber}>({order.request_number}) </span>

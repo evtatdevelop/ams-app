@@ -83,6 +83,7 @@ export const loading  = ( state ) => state.personalarea.loading;
 export const sorted  = ( state ) => state.personalarea.sorted;
 export const everyClose  = ( state ) => state.personalarea.everyClose;
 export const page  = ( state ) => state.personalarea.page;
+export const filters  = ( state ) => state.personalarea.filters;
 
 
 export default personalareaSlice.reducer;
