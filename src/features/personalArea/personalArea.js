@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from './personalArea.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "../sidebar";
@@ -10,10 +10,11 @@ import { useParams } from "react-router-dom";
 import dictionary from '../../dictionary.json';
 import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, setSearchNum, setSearchDate } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
-import Input from "../components/input";
-import DateInterval from "../components/dateInterval";
+import Input from "./input";
+import DateInterval from "./dateInterval";
 
 export const PersonalArea = () => {
+  const ref = useRef(null)
   const userData = useSelector(user);
   const sortedData = useSelector(sorted);
   const allClosed = useSelector(everyClose);
@@ -32,17 +33,6 @@ export const PersonalArea = () => {
   const inProgress = ['myagree', 'myagree_settings', 'myexec', 'myexec_arch' ].includes(page)
 
   const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
-
-  const mkSearchDate = data => {
-    dispatch(setSearchDate(
-      data.map(date => {
-        const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
-        const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
-        // return userData['lang'] === 'RU' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`
-        return `${date.getFullYear()}-${mm}-${dd}`
-      })     
-    ))
-  } 
 
   return (
     <section className={styles.personalArea}>
@@ -73,19 +63,9 @@ export const PersonalArea = () => {
 
         { !inProgress
           ? <div className={styles.searchBar}>
-              <Input 
-                inputHandler = { val => dispatch(setSearchNum(val)) }
-                inputClear = { () => dispatch(setSearchNum(null)) }
-                placeholder = {dictionary['searchAppNum'][userData['lang']]}
-                val = ''
-              />
+              <Input placeholder = {dictionary['searchAppNum'][userData['lang']]}/>
               <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p>
-              <></>
-              <DateInterval 
-                dateHandler = { val => mkSearchDate(val) }
-                dateClear = { () => dispatch(setSearchDate(null)) }
-                lang={userData['lang']}
-              />
+              <DateInterval lang={userData['lang']}/>
             </div>
           : null
         }  

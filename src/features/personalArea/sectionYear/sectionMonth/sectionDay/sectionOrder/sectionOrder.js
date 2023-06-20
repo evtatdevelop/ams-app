@@ -40,7 +40,7 @@ export const SectionOrder = props => {
  
   const stylesSectionOrder = filtersData.searchNum && order.request_number.includes(filtersData.searchNum) ? `${styles.sectionOrder} ${styles.found}` : `${styles.sectionOrder}`
 
-console.log(filtersData.searchNum, order.request_number);
+// console.log(filtersData.searchNum, order.request_number);
 
   return (
     <> { !hide
