@@ -133,6 +133,39 @@
         color: grey;
         font-weight: 500;
       }
+
+      .searchStatus {
+        display: flex;
+        justify-content: space-around;
+
+        .serchStatBtn {
+          width: 30px;
+          height: 30px;
+          border-radius: 15px;
+          cursor: pointer;
+          background-color: transparent;
+          border-width: 1px;
+          border-style: solid;
+          transition: color .3s, border-color .3s;
+
+          &.agreed {
+            color: rgb(42, 142, 42);
+            border-color: rgb(42, 142, 42);;
+          }
+          &.refused {
+            color: coral;
+            border-color: coral;
+          }
+          &.inprogress {
+            color: #00539c;
+            border-color: #00539c;
+          }
+          &.off {
+            color: rgb(174, 174, 174);
+            border-color:  rgb(174, 174, 174);
+          }
+        }
+      }
     }
 
     .testLink {

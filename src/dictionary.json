@@ -113,7 +113,7 @@
     "RU": "здесь"    
   },
   "myorders": {
-    "EN": "My applications",
+    "EN": "My requests",
     "RU": "Мои заявки"    
   },
   "myagree": {
@@ -151,6 +151,22 @@
   "timePeriod": {
     "EN": "Period of time",
     "RU": "Период времени"  
+  },
+  "searchStatus": {
+    "EN": "Request status",
+    "RU": "Статус заявки"  
+  },
+  "agreed": {
+    "EN": "Agreed",
+    "RU": "Согласованные"  
+  },
+  "refused": {
+    "EN": "Rejected",
+    "RU": "Отклонённые"  
+  },
+  "inprogress": {
+    "EN": "In progress",
+    "RU": "На рассмотрение"  
   }
 
 

@@ -33,18 +33,31 @@ export const personalareaSlice = createSlice({
     },
 
     setSearchNum:  (state, action) => {
-      const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
+      // const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
+      const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
       if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate) state.everyClose = true;
       switchPage(state, filters)      
     },
 
     setSearchDate:  (state, action) => {
-      const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
+      // const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
+      const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
       if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum) state.everyClose = true;
       switchPage(state, filters)    
-    }
+    },
+
+    setSearchStat:  (state, action) => {
+      let searchNoStatus = new Set();
+      if ( state.filters.searchNoStatus ) searchNoStatus = new Set(state.filters.searchNoStatus); else searchNoStatus = new Set()
+      if ( searchNoStatus.has(action.payload) ) searchNoStatus.delete(action.payload); else searchNoStatus.add(action.payload);
+
+      state.filters.searchNoStatus = Array.from(searchNoStatus);
+      const filters = {...state.filters, searchStatus: Array.from(searchNoStatus) }
+      
+      switchPage(state, filters)    
+    },
 
   },
 
@@ -74,7 +87,7 @@ export const personalareaSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate
+  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat
 } = personalareaSlice.actions;
 
 export const myorders = ( state ) => state.personalarea.myorders;
@@ -88,32 +101,35 @@ export const filters  = ( state ) => state.personalarea.filters;
 
 export default personalareaSlice.reducer;
 
+
+
 const dataFltering = (orders, filters) => {
   let result = orders
+
   if ( filters.searchNum ) result = orders.filter(order => order.request_number.includes(filters.searchNum))
-  if ( filters.searchDate && filters.searchDate.length === 2 ) result = result.filter(order => {
-    const dtOpnArr = [...order.date_open.split(' ')[0].split('.'), ...order.date_open.split(' ')[1].split(':')]
-    const date_open = `${dtOpnArr[2]}-${dtOpnArr[1]}-${dtOpnArr[0]}`
-    if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchDate[0])) && new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchDate[1])) )
-    return order
-  })
+  
+  if ( filters.searchDate && filters.searchDate.length === 2 ) {
+    const dateResult = []
+    result.forEach(order => {
+      const dtOpnArr = [...order.date_open.split(' ')[0].split('.'), ...order.date_open.split(' ')[1].split(':')]
+      const date_open = `${dtOpnArr[2]}-${dtOpnArr[1]}-${dtOpnArr[0]}`
+      if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchDate[0])) && new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchDate[1])) )
+      dateResult.push(order)
+    })
+    result = dateResult;
+  }
+
+  // console.log(result);
   return result
 }
 
-const switchPage = (state, filters) => {
-  switch ( state.page ) {
-    case 'myorders': state.sorted = dateSorting(state.myorders, filters); break;
-    case 'myagree_arch': state.sorted = dateSorting(state.myarchive, filters); break;
-    case 'myexecarch': state.sorted = dateSorting(state.nyexecarch, filters); break;
-    default: state.sorted = []
-  }
-} 
 
 const dateSorting = (orders, filters) => {
   const uniqDates = new Set();
-  dataFltering(orders, filters).map(order => uniqDates.add(order.sort_order))
+  const sortedOrders =  dataFltering(orders, filters);
+  sortedOrders.map(order => uniqDates.add(order.sort_order))
   const days = [...Array.from(uniqDates).map(date => {
-    return{[new Date(date).getTime()]: [...orders.filter(order => order.sort_order === date)]}
+    return{[new Date(date).getTime()]: [...sortedOrders.filter(order => order.sort_order === date)]}
   })]
 
   const uniqYears = new Set();
@@ -133,3 +149,13 @@ const dateSorting = (orders, filters) => {
     }
   })
 }
+
+
+const switchPage = (state, filters) => {
+  switch ( state.page ) {
+    case 'myorders': state.sorted = dateSorting(Array.from(state.myorders), filters); break;
+    case 'myagree_arch': state.sorted = dateSorting(Array.from(state.myarchive), filters); break;
+    case 'myexecarch': state.sorted = dateSorting(Array.from(state.nyexecarch), filters); break;
+    default: state.sorted = []
+  }
+} 

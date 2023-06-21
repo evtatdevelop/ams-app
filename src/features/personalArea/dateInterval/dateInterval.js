@@ -62,8 +62,8 @@ export const DateInterval = props => {
       setJsDateTill(date)
       splitVal[1] = strDate 
       setValue(splitVal.join(' - ')) 
-      // dateHandler([jsDateFrom, date])
       mkSearchDate([jsDateFrom, date])
+      setShowPicker(false)
     }
   }
 
@@ -73,7 +73,6 @@ export const DateInterval = props => {
   const clearInput = () => {
     onSetDate(null)
     setShowPicker(false)
-    // dateClear()
     dispatch(setSearchDate(null))
   }
 

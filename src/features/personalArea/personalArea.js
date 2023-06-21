@@ -8,16 +8,19 @@ import { user } from '../user/userSlice';
 import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
 import dictionary from '../../dictionary.json';
-import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, setSearchNum, setSearchDate } from "./personalAreaSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, setSearchStat, filters } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
 import Input from "./input";
 import DateInterval from "./dateInterval";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faArrowRight, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 export const PersonalArea = () => {
   const ref = useRef(null)
   const userData = useSelector(user);
   const sortedData = useSelector(sorted);
   const allClosed = useSelector(everyClose);
+  const filtersData = useSelector(filters);
   const { page } = useParams();
   const dispatch = useDispatch();
 
@@ -33,6 +36,17 @@ export const PersonalArea = () => {
   const inProgress = ['myagree', 'myagree_settings', 'myexec', 'myexec_arch' ].includes(page)
 
   const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
+
+  let styleOnOffAgreed = ''
+  let styleOnOffRefused = ''
+  let styleOnOffInProgress = ''
+
+  if ( filtersData.searchNoStatus && filtersData.searchNoStatus.length > 0 ) {
+
+    styleOnOffAgreed = filtersData.searchNoStatus.includes('agreed') ? `${styles.off}` : ''
+    styleOnOffRefused = filtersData.searchNoStatus.includes('refused') ? `${styles.off}`: ''
+    styleOnOffInProgress = filtersData.searchNoStatus.includes('inprogress') ? `${styles.off}` : ''
+  }
 
   return (
     <section className={styles.personalArea}>
@@ -64,6 +78,23 @@ export const PersonalArea = () => {
         { !inProgress
           ? <div className={styles.searchBar}>
               <Input placeholder = {dictionary['searchAppNum'][userData['lang']]}/>
+              
+              <p className={styles.saerchCaption}>{dictionary['searchStatus'][userData['lang']]}</p>
+              <nav className={styles.searchStatus}>
+                <button type="bytton" className={`${styles.serchStatBtn} ${styles.agreed} ${styleOnOffAgreed}`} 
+                  title={dictionary['agreed'][userData['lang']]}
+                  onClick={() => dispatch(setSearchStat('agreed'))}
+                ><FontAwesomeIcon icon={ faCheck }/></button>
+                <button type="bytton" className={`${styles.serchStatBtn} ${styles.refused} ${styleOnOffRefused}`} 
+                  title={dictionary['refused'][userData['lang']]}
+                  onClick={() => dispatch(setSearchStat('refused'))}
+                ><FontAwesomeIcon icon={ faXmark }/></button>
+                <button type="bytton" className={`${styles.serchStatBtn} ${styles.inprogress} ${styleOnOffInProgress}`} 
+                  title={dictionary['inprogress'][userData['lang']]}
+                  onClick={() => dispatch(setSearchStat('inprogress'))}
+                ><FontAwesomeIcon icon={ faArrowRight }/></button>
+              </nav>
+              
               <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p>
               <DateInterval lang={userData['lang']}/>
             </div>

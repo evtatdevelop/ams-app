@@ -5,7 +5,14 @@
   padding-bottom: 2px;
 
   &.found {
-    background-color: rgba(127, 255, 212, 0.393);
+    .btnOpenOrder {
+      .orderName {
+        .requestNuber {
+          background-color: rgba(127, 255, 212, 0.393);
+        }
+      }
+    }
+    
   }
 // height: 0;
 // padding: 0;
