@@ -63,7 +63,7 @@ export const DateInterval = props => {
       splitVal[1] = strDate 
       setValue(splitVal.join(' - ')) 
       mkSearchDate([jsDateFrom, date])
-      setShowPicker(false)
+      setTimeout(() => setShowPicker(false), 500) 
     }
   }
 

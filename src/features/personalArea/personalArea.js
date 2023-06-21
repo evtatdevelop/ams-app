@@ -42,7 +42,6 @@ export const PersonalArea = () => {
   let styleOnOffInProgress = ''
 
   if ( filtersData.searchNoStatus && filtersData.searchNoStatus.length > 0 ) {
-
     styleOnOffAgreed = filtersData.searchNoStatus.includes('agreed') ? `${styles.off}` : ''
     styleOnOffRefused = filtersData.searchNoStatus.includes('refused') ? `${styles.off}`: ''
     styleOnOffInProgress = filtersData.searchNoStatus.includes('inprogress') ? `${styles.off}` : ''
@@ -97,6 +96,8 @@ export const PersonalArea = () => {
               
               <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p>
               <DateInterval lang={userData['lang']}/>
+
+              
             </div>
           : null
         }  

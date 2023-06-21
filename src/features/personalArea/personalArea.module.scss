@@ -139,7 +139,7 @@
         justify-content: space-around;
 
         .serchStatBtn {
-          width: 30px;
+          width: 90px;
           height: 30px;
           border-radius: 15px;
           cursor: pointer;
@@ -150,20 +150,27 @@
 
           &.agreed {
             color: rgb(42, 142, 42);
-            border-color: rgb(42, 142, 42);;
+            border-color: rgb(42, 142, 42); 
           }
           &.refused {
             color: coral;
-            border-color: coral;
+            border-color: coral; 
           }
           &.inprogress {
             color: #00539c;
-            border-color: #00539c;
+            border-color: #00539c;  
           }
           &.off {
             color: rgb(174, 174, 174);
             border-color:  rgb(174, 174, 174);
+          } 
+
+          &:hover {
+            color: rgb(174, 174, 174);
+            border-color:  rgb(174, 174, 174);
           }
+          
+
         }
       }
     }

@@ -56,13 +56,13 @@ export const DatePicker = props => {
       </nav>
 
       <div className={styles.dayNames}>
-        {[{'en': 'Mon', 'ru': 'пн'},
-          {'en': 'Tue', 'ru': 'вт'},
-          {'en': 'Wed', 'ru': 'ср'},
-          {'en': 'Thu', 'ru': 'чт'},
-          {'en': 'Fri', 'ru': 'пт'},
-          {'en': 'Sat', 'ru': 'сб'},
-          {'en': 'Sun', 'ru': 'вс'}].map((item, index) => {
+        {[{'EN': 'Mon', 'RU': 'пн'},
+          {'EN': 'Tue', 'RU': 'вт'},
+          {'EN': 'Wed', 'RU': 'ср'},
+          {'EN': 'Thu', 'RU': 'чт'},
+          {'EN': 'Fri', 'RU': 'пт'},
+          {'EN': 'Sat', 'RU': 'сб'},
+          {'EN': 'Sun', 'RU': 'вс'}].map((item, index) => {
             const styleNameDay = index === 5 || index === 6 ? `${styles.weekDayName} ${styles.weekend}` : `${styles.weekDayName}`  
             return <div key={index} className={styleNameDay}>{item[lang]}</div>
         })}
@@ -80,7 +80,7 @@ export const DatePicker = props => {
             ? `${styleDateCell} ${styles.weekend}`
             : `${styleDateCell}`
           
-            styleDateCell = valueFrom && day.getTime() >= valueFrom.setHours(0, 0, 0, 0) && valueTill &&  day.getTime() <= valueTill.setHours(0, 0, 0, 0)
+            styleDateCell = (valueFrom && day.getTime() === valueFrom.setHours(0, 0, 0, 0)) || (valueFrom && day.getTime() >= valueFrom.setHours(0, 0, 0, 0) && valueTill &&  day.getTime() <= valueTill.setHours(0, 0, 0, 0))
             ? `${styleDateCell} ${styles.selected}`
             : `${styleDateCell}`
 
@@ -88,7 +88,6 @@ export const DatePicker = props => {
                     className={styleDateCell}
                     onClick={()=>{
                       setValue(day)
-                      // closePicker()
                     }}
                   >{`${d}`}</div>
         })}

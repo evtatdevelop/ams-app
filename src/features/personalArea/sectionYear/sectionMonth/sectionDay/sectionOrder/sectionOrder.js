@@ -5,6 +5,7 @@ import { faXmark, faArrowRight, faCheck, faArrowUpRightFromSquare, faQuestion } 
 // import { page } from "../../../../personalAreaSlice";
 import { useSelector } from "react-redux";
 import { filters } from "../../../../personalAreaSlice";
+import { getFrontStatus } from "../../../../../../helpers";
 
 
 export const SectionOrder = props => {
@@ -13,20 +14,18 @@ export const SectionOrder = props => {
   const filtersData = useSelector(filters);
 
   const getIconStatus = () => {
-    switch ( order.api_status ) {
-      case 'agreed': case 'senttocpp': return <FontAwesomeIcon icon={ faCheck }/>
-      case 'refused': case 'canceled': case 'timeout': case 'failed': return <FontAwesomeIcon icon={ faXmark }/>
+    switch ( getFrontStatus(order.api_status) ) {
+      case 'agreed': return <FontAwesomeIcon icon={ faCheck }/>
+      case 'refused': return <FontAwesomeIcon icon={ faXmark }/>
       case 'inprogress': return <FontAwesomeIcon icon={ faArrowRight }/>
-      case 'added': return <FontAwesomeIcon icon={ faQuestion }/>
-      default: return null  
+      default: return <FontAwesomeIcon icon={ faQuestion }/>  
     } 
   }
   const getStyleStatus = () => {
-    switch ( order.api_status ) {
-      case 'agreed': case 'senttocpp': return `${styles.agreed}`
-      case 'refused': case 'canceled': case 'timeout': case 'failed': return `${styles.refused}`
+    switch ( getFrontStatus(order.api_status) ) {
+      case 'agreed': return `${styles.agreed}`
+      case 'refused': return `${styles.refused}`
       case 'inprogress': return `${styles.inprogress}`
-      case 'added': return `${styles.cuestion}`
       default: return `${styles.cuestion}`
     } 
   }

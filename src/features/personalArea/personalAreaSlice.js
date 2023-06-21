@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getMyordersData, getMyarchiveData, getMyexecarchData  } from './personalAreaSliceAPI';
+import { getFrontStatus } from "../../helpers";
 
 const initialState = {
   loading: false,
@@ -36,7 +37,7 @@ export const personalareaSlice = createSlice({
       // const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
       const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus) state.everyClose = true;
       switchPage(state, filters)      
     },
 
@@ -44,7 +45,7 @@ export const personalareaSlice = createSlice({
       // const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
       const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus) state.everyClose = true;
       switchPage(state, filters)    
     },
 
@@ -53,9 +54,11 @@ export const personalareaSlice = createSlice({
       if ( state.filters.searchNoStatus ) searchNoStatus = new Set(state.filters.searchNoStatus); else searchNoStatus = new Set()
       if ( searchNoStatus.has(action.payload) ) searchNoStatus.delete(action.payload); else searchNoStatus.add(action.payload);
 
-      state.filters.searchNoStatus = Array.from(searchNoStatus);
+      state.filters.searchNoStatus = Array.from(searchNoStatus).length > 0 ? Array.from(searchNoStatus) : null;
       const filters = {...state.filters, searchStatus: Array.from(searchNoStatus) }
       
+      if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum) state.everyClose = true;
+
       switchPage(state, filters)    
     },
 
@@ -119,7 +122,14 @@ const dataFltering = (orders, filters) => {
     result = dateResult;
   }
 
-  // console.log(result);
+  if ( filters.searchNoStatus && filters.searchNoStatus.length > 0 ) {
+    const statusResult = []
+    result.forEach(order => {
+      if ( !filters.searchNoStatus.includes(getFrontStatus(order.api_status))  )
+      statusResult.push(order)
+    })
+    result = statusResult;
+  }
   return result
 }
 

@@ -37,3 +37,12 @@ export const getDate = ( timeStamp ) => {
   d = d > 9 ? d : `0${d}`
   return `(${wd}) ${d}`
 }
+
+export const getFrontStatus = ( order_api_status ) => {
+  switch ( order_api_status ) {
+    case 'agreed': case 'senttocpp': return 'agreed'
+    case 'refused': case 'canceled': case 'timeout': case 'failed': case 'added': return 'refused'
+    case 'inprogress': return 'inprogress'
+    default: return null  
+  } 
+}
