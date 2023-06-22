@@ -167,6 +167,10 @@
   "inprogress": {
     "EN": "In progress",
     "RU": "На рассмотрении"  
+  },
+  "clearSearchBtn": {
+    "EN": "Сlear",
+    "RU": "Очистить"  
   }
 
 

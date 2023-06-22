@@ -8,7 +8,7 @@ import { user } from '../user/userSlice';
 import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
 import dictionary from '../../dictionary.json';
-import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, setSearchStat, filters } from "./personalAreaSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, setSearchStat, filters, clearSearch } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
 import Input from "./input";
 import DateInterval from "./dateInterval";
@@ -76,6 +76,7 @@ export const PersonalArea = () => {
 
         { !inProgress
           ? <div className={styles.searchBar}>
+              
               <Input placeholder = {dictionary['searchAppNum'][userData['lang']]}/>
               
               <p className={styles.saerchCaption}>{dictionary['searchStatus'][userData['lang']]}</p>
@@ -98,6 +99,11 @@ export const PersonalArea = () => {
               <DateInterval lang={userData['lang']}/>
 
               
+              
+              <button type="button" className={styles.clearSearchBtn}
+                onClick={ () => dispatch(clearSearch()) }
+              >{dictionary['clearSearchBtn'][userData['lang']]}</button>
+
             </div>
           : null
         }  

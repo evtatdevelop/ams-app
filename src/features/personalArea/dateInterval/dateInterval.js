@@ -78,7 +78,7 @@ export const DateInterval = props => {
 
   const localMask = lang === 'RU' ? 'дд.мм.гггг - дд.мм.гггг' : 'dd-mm-yyyy - dd-mm-yyyy'
   const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
-  const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
+  const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper} ${styles.hidePicker}`
   const stylePickerCloser = `${styles.pickerCloser}`
 
   return (

@@ -33,7 +33,7 @@ export const personalareaSlice = createSlice({
       state.everyClose = !state.everyClose
     },
 
-    setSearchNum:  (state, action) => {
+    setSearchNum: (state, action) => {
       // const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
       const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
@@ -41,7 +41,7 @@ export const personalareaSlice = createSlice({
       switchPage(state, filters)      
     },
 
-    setSearchDate:  (state, action) => {
+    setSearchDate: (state, action) => {
       // const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
       const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
@@ -49,18 +49,21 @@ export const personalareaSlice = createSlice({
       switchPage(state, filters)    
     },
 
-    setSearchStat:  (state, action) => {
+    setSearchStat: (state, action) => {
       let searchNoStatus = new Set();
       if ( state.filters.searchNoStatus ) searchNoStatus = new Set(state.filters.searchNoStatus); else searchNoStatus = new Set()
       if ( searchNoStatus.has(action.payload) ) searchNoStatus.delete(action.payload); else searchNoStatus.add(action.payload);
-
       state.filters.searchNoStatus = Array.from(searchNoStatus).length > 0 ? Array.from(searchNoStatus) : null;
       const filters = {...state.filters, searchStatus: Array.from(searchNoStatus) }
-      
       if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum) state.everyClose = true;
-
       switchPage(state, filters)    
     },
+
+    clearSearch: (state) => {
+      state.filters = {}
+      switchPage(state, {}) 
+      state.everyClose = true;
+    }
 
   },
 
@@ -90,7 +93,7 @@ export const personalareaSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat
+  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch
 } = personalareaSlice.actions;
 
 export const myorders = ( state ) => state.personalarea.myorders;

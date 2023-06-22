@@ -137,7 +137,6 @@
       .searchStatus {
         display: flex;
         justify-content: space-around;
-
         .serchStatBtn {
           width: 90px;
           height: 30px;
@@ -147,7 +146,6 @@
           border-width: 1px;
           border-style: solid;
           transition: color .3s, border-color .3s;
-
           &.agreed {
             color: rgb(42, 142, 42);
             border-color: rgb(42, 142, 42); 
@@ -164,14 +162,23 @@
             color: rgb(174, 174, 174);
             border-color:  rgb(174, 174, 174);
           } 
-
           &:hover {
             color: rgb(174, 174, 174);
             border-color:  rgb(174, 174, 174);
           }
-          
-
         }
+      }
+
+      .clearSearchBtn {
+        margin-top: 20px;
+        border: 1px solid gray;
+        border-radius: 3px;
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0857A1FF;
+        color: white;
       }
     }
 

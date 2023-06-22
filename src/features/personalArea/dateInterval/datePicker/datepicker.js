@@ -7,6 +7,9 @@ export const DatePicker = props => {
   const { lang, valueFrom, valueTill, setValue, closePicker } = props
 
   const [monthDay, setmonthDay] = useState(new Date(Date.now()))
+  const [monthNav, setmmonthNav] = useState(false)
+  const [yearNav, setyearNav] = useState(false)
+
   useEffect(()=> setmonthDay(valueFrom ? valueFrom : new Date(Date.now())), [valueFrom])
 
   const year = monthDay.getFullYear(),
@@ -40,19 +43,54 @@ export const DatePicker = props => {
     setmonthDay(new Date(setYear, month , 1))
   }
 
+  const toggleMnNav = () => setmmonthNav(!monthNav)
+  const toggleYrNav = () => setyearNav(!yearNav)
+  const setNavMonth = ( monthNum ) => {
+    setmonthDay(new Date(year, monthNum , 1))
+    setmmonthNav(false)
+  }
+  const setNavYear = ( year ) => {
+    setmonthDay(new Date(year, month , 1))
+    setyearNav(false)
+  }
+
   return (
     <div className={styles.picker}>
       <nav className={styles.navigation}>
-        <div>
-          <button type="button" onClick={() => setPickerMonth('prev')}><FontAwesomeIcon icon={ faCaretLeft } className={styles.faCaret} /></button>
-          <button type="button" className={styles.rest} onClick={() => setPickerMonth('curr')}>{monthDay.toLocaleString(lang, { month: 'long' })}</button>         
-          <button type="button" onClick={() => setPickerMonth('next')}><FontAwesomeIcon icon={ faCaretRight } className={styles.faCaret} /></button>          
-        </div>
-        <div>
+      <div className={styles.yearhNav}>
           <button type="button" onClick={() => setPickerYear('prev')}><FontAwesomeIcon icon={ faCaretLeft } className={styles.faCaret} /></button>
-          <button type="button" onClick={() => setPickerYear('curr')}>{monthDay.getFullYear()}</button>
-          <button type="button" onClick={() => setPickerYear('next')}><FontAwesomeIcon icon={ faCaretRight } className={styles.faCaret} /></button>         
+          <button type="button" className={styles.navNav} onClick={() => toggleYrNav()}>{monthDay.getFullYear()}</button>
+          <button type="button" onClick={() => setPickerYear('next')}><FontAwesomeIcon icon={ faCaretRight } className={styles.faCaret} /></button> 
+          { yearNav 
+            ? <div className={styles.yearLs}>
+                { [ ...Array(new Date(Date.now()).getFullYear() - 2014).keys() ].map(i=>
+                    <button key={2015+i} type="button" 
+                      onClick={() => setNavYear(2015+i)}
+                      className={2015+i === new Date(Date.now()).getFullYear() ? `${styles.curYear}` : "" }
+                    >{2015+i}</button>
+                ) }
+              </div>
+            : null
+          }                  
         </div>
+
+        <div className={styles.monthNav}>
+          <button type="button" onClick={() => setPickerMonth('prev')}><FontAwesomeIcon icon={ faCaretLeft } className={styles.faCaret} /></button>
+          <button type="button" className={`${styles.rest} ${styles.navNav}`} onClick={() => toggleMnNav()}>{monthDay.toLocaleString(lang, { month: 'long' })}</button>         
+          <button type="button" onClick={() => setPickerMonth('next')}><FontAwesomeIcon icon={ faCaretRight } className={styles.faCaret} /></button>          
+          { monthNav 
+            ? <div className={styles.monthLs}>
+                { [0,1,2,3,4,5,6,7,8,9,10,11].map(mnNum => 
+                  <button key={mnNum} type="button" 
+                    onClick={() => setNavMonth(mnNum)}
+                    className={mnNum === new Date(Date.now()).getMonth() ? `${styles.curMonth}` : "" }
+                  >{new Date(year, mnNum + 1,0,23,59,59,999).toLocaleString(lang, { month: 'long' })}</button>
+                ) }
+              </div>
+            : null
+          }
+        </div>
+
       </nav>
 
       <div className={styles.dayNames}>
