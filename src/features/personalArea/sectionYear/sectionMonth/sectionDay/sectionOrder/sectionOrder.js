@@ -37,32 +37,32 @@ export const SectionOrder = props => {
 
   const onClic = () => window.open(`${order.urls.htm}${order.key}`, '_blank');
  
-  const stylesSectionOrder = filtersData.searchNum && order.request_number.includes(filtersData.searchNum) ? `${styles.sectionOrder} ${styles.found}` : `${styles.sectionOrder}`
+  // const stylesSectionOrder = filtersData.searchNum && order.request_number.includes(filtersData.searchNum) ? `${styles.sectionOrder} ${styles.found}` : `${styles.sectionOrder}`
 
-// console.log(filtersData.searchNum, order.request_number);
+  const formatNum = order.request_number.split(filtersData.searchNum)
+  // .join(`<span>${filtersData.searchNum}</span>`);
+  // console.log(formatNum);
 
   return (
     <> { !hide
-        ? <li className={stylesSectionOrder}>
+        ? <li className={styles.sectionOrder}>
             <button type="button" onClick={() => onClic()} className={styles.btnOpenOrder}>
               <p className={styles.orderName}>
-                <span className={styles.requestNuber}>({order.request_number}) </span>
-                {order.request_type} 
+                {/* <span className={styles.requestNuber}>({order.request_number}) </span> */}
+                <span className={styles.requestNuber}>({`${formatNum[0]}`}<span className={styles.found}>{filtersData.searchNum}</span>{`${formatNum[1]}`}) </span>
+                <span> {order.request_type}</span> 
                 {order.order_type === 'WORKPLACE' || order.order_type === 'CORPSYSTEMS'
                   ? <span className={styles.oredrUser}> [ <span className={styles.italic}>{getShortName(order.api_order_user.name)}</span> ]</span>
                   : null
                 }
-                <span> <FontAwesomeIcon icon={ faArrowUpRightFromSquare } className={`${styles.openOrder}`} /></span>
+                {/* <span> <FontAwesomeIcon icon={ faArrowUpRightFromSquare } className={`${styles.openOrder}`} /></span> */}
               </p>
 
-             {/* { pageMode === 'myagree_arch'
-                ? <div >{order.myagree_status} </div>
-                : null   
-             } */}
+              
 
               <div className={`${styles.orderStatus} ${getStyleStatus()}`}>
                 <p className={styles.statusSign}>{getIconStatus()}</p>
-                <p className={styles.statusHint}>{order.status}</p>
+                {/* <p className={styles.statusHint}>{order.status}</p> */}
               </div>  
               
             </button>

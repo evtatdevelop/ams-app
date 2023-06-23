@@ -4,16 +4,16 @@
   padding-top: 2px;
   padding-bottom: 2px;
 
-  &.found {
-    .btnOpenOrder {
-      .orderName {
-        .requestNuber {
-          background-color: rgba(127, 255, 212, 0.393);
-        }
-      }
-    }
+  // &.found {
+  //   .btnOpenOrder {
+  //     .orderName {
+  //       .requestNuber {
+  //         background-color: rgba(127, 255, 212, 0.393);
+  //       }
+  //     }
+  //   }
     
-  }
+  // }
 // height: 0;
 // padding: 0;
 // margin: 0;
@@ -39,12 +39,12 @@
         color: rgb(12, 105, 192);
       }
       .orderStatus {
-        .statusSign {
-          opacity: 0;
-        }
-        .statusHint {
-          opacity: 1;
-        }  
+        // .statusSign {
+        //   opacity: 0;
+        // }
+        // .statusHint {
+        //   opacity: 1;
+        // }  
       }
 
     }
@@ -54,11 +54,14 @@
       color: #424242;
       transition: color .1s;
       margin-right: 1vmax;
-      width: 50%;
+      width: 35%;
 
       .requestNuber {
         color: #00539c;
         font-size: .9vmax;
+        .found {
+          background-color: rgba(127, 255, 212, 0.393);
+        }        
       }
 
       .oredrUser {
@@ -79,7 +82,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 10vmax;
+      width: 1vmax;
 
       &.agreed {
         color: rgb(42, 142, 42);

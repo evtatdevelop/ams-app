@@ -89,23 +89,26 @@
       .pickerCloser {
         width: 20px;
         height: 20px;
-        border-radius: 7px;
         border: none;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 0;
         margin: 0;
-        background-color: transparent;
-        color: gray;
+        background-color: rgb(251, 67, 0);
+        outline: 1px solid white;
+        color: white;
         font-size: 24px;
         font-weight: 100;
-        margin-top: -2px;
-        transition: opacity 1s, background-color .3s;
+        margin-top: 1px;
+        margin-left: 1px;
+        transition: opacity 1s, background-color .3s, outline .3s;
+        cursor: pointer;
         &:focus,
         &:hover {
           color: red;
           background-color: white;
+          outline: 1px solid red;
         }
         &.hidePickerCloser {
           opacity: 0;

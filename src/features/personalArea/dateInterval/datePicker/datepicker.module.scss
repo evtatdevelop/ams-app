@@ -15,6 +15,13 @@
     &>div {
       flex-shrink: 0;
 
+      &:hover {
+        .navNav {
+          
+          border-bottom: 3px solid #0857A1FF;
+        }
+      }
+
       button {
         background-color: transparent;
         font: inherit;
@@ -36,9 +43,11 @@
           background-color: transparent;
           transition: background-color .3s;
           cursor: pointer;
+          border-bottom: 3px solid transparent;
+
           &:hover {
             color: #0857A1FF;
-            background-color: rgba(127, 255, 212, 0.509);
+            background-color: rgba(8, 87, 161, 0.081);
           }
         }
         &:hover:has(.faCaret) {
@@ -71,7 +80,7 @@
           margin: 0;
           padding: 0;
           font: inherit;
-          margin-top: 4px;
+          padding: 4px 0;
           cursor: pointer;
           border-style: solid;
           border-width: 1px;
@@ -111,7 +120,8 @@
           margin: 0;
           padding: 0;
           font: inherit;
-          margin-top: 4px;
+          // margin-top: 8px;
+          padding: 4px 0;
           cursor: pointer;
           border-style: solid;
           border-width: 1px;
