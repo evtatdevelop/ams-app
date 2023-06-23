@@ -10,6 +10,8 @@ export const DatePicker = props => {
   const [monthNav, setmmonthNav] = useState(false)
   const [yearNav, setyearNav] = useState(false)
 
+  const [readyNavMnt, setReadyNavMnt] = useState(false)
+
   useEffect(()=> setmonthDay(valueFrom ? valueFrom : new Date(Date.now())), [valueFrom])
 
   const year = monthDay.getFullYear(),
@@ -48,10 +50,12 @@ export const DatePicker = props => {
   const setNavMonth = ( monthNum ) => {
     setmonthDay(new Date(year, monthNum , 1))
     setmmonthNav(false)
+    setReadyNavMnt(true)
   }
   const setNavYear = ( year ) => {
     setmonthDay(new Date(year, month , 1))
     setyearNav(false)
+    setmmonthNav(!readyNavMnt)
   }
 
   return (
@@ -64,10 +68,10 @@ export const DatePicker = props => {
           { yearNav 
             ? <div className={styles.yearLs}>
                 { [ ...Array(new Date(Date.now()).getFullYear() - 2014).keys() ].map(i=>
-                    <button key={2015+i} type="button" 
-                      onClick={() => setNavYear(2015+i)}
-                      className={2015+i === new Date(Date.now()).getFullYear() ? `${styles.curYear}` : "" }
-                    >{2015+i}</button>
+                    <button key={i} type="button" 
+                      onClick={() => setNavYear(new Date(Date.now()).getFullYear() - i)}
+                      className={new Date(Date.now()).getFullYear() - i === new Date(Date.now()).getFullYear() ? `${styles.curYear}` : "" }
+                    >{new Date(Date.now()).getFullYear() - i}</button>
                 ) }
               </div>
             : null
@@ -126,6 +130,7 @@ export const DatePicker = props => {
                     className={styleDateCell}
                     onClick={()=>{
                       setValue(day)
+                      setReadyNavMnt(false)
                     }}
                   >{`${d}`}</div>
         })}
