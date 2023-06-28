@@ -49,7 +49,7 @@ export const SectionOrder = props => {
             <button type="button" onClick={() => onClic()} className={styles.btnOpenOrder}>
               <p className={styles.orderName}>
                 {/* <span className={styles.requestNuber}>({order.request_number}) </span> */}
-                <span className={styles.requestNuber}>({`${formatNum[0]}`}<span className={styles.found}>{filtersData.searchNum}</span>{`${formatNum[1]}`}) </span>
+                <span className={styles.requestNuber}>({`${formatNum[0]}`}<span className={styles.found}>{filtersData.searchNum}</span>{formatNum[1] ? `${formatNum[1]}`: ""}) </span>
                 <span> {order.request_type}</span> 
                 {order.order_type === 'WORKPLACE' || order.order_type === 'CORPSYSTEMS'
                   ? <span className={styles.oredrUser}> [ <span className={styles.italic}>{getShortName(order.api_order_user.name)}</span> ]</span>

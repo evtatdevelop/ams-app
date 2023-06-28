@@ -5,6 +5,7 @@ import workplaceReducer from '../features/workplace/workplaceSlice'
 import resourcesReducer from '../features/resources/resourcesSlice'
 import primarypageReducer from '../features/primaryPage/mainpageSlice'
 import personalareaReducer from "../features/personalArea/personalAreaSlice"
+import lkReducer from "../features/lk/lkSlice"
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     resources: resourcesReducer,
     primarypage: primarypageReducer,
     personalarea: personalareaReducer,
+    lk: lkReducer,
   },
 });

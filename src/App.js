@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Mainpage } from './features/mainpage/mainpage';
 import { PrimaryPage } from './features/primaryPage/mainpage';
 import { PersonalArea } from './features/personalArea/personalArea';
+import { Lk } from './features/lk/lk';
 import { Components } from './features/components/components';
 import { Loader } from './features/loader/loader';
 import { useSelector, useDispatch } from "react-redux";
@@ -24,7 +25,8 @@ function App() {
     <div className="App">
       <Routes>
         {/* <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/> */}        
-        {mainpage.includes(userData.login) || root === 'ams' 
+        {/* {mainpage.includes(userData.login) || root === 'ams'  */}
+        {mainpage.includes(userData.login) 
           ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
           : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         }
@@ -43,6 +45,9 @@ function App() {
 
         <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/> 
+
+        <Route path={`/lk/:page`} element={<Lk/>}/>
+        <Route path={`/lk`} element={<Lk/>}/> 
 
         {permitted.includes(userData.login)
           ? <>

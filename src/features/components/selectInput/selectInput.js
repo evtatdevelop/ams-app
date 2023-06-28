@@ -57,6 +57,8 @@ export const SelectInput = props => {
   const styleLoading = loading ? `${styles.loading} ${styles.showLoading}` : `${styles.loading}`
   const styleSelectList = show ? `${styles.selectList} ${styles.showSelectList}` : `${styles.selectList} ${styles.hideSelectList}`
 
+  // console.log(selectList);
+
   return (
     <div className={styles.selectInput}>
       <div className={styles.input}>

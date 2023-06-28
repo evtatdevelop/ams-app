@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
 import { user } from '../../../user/userSlice';
 import dictionary from '../../../../dictionary.json';
+import { Link } from 'react-router-dom';
 
 export const System = props => {
   const { system, prefix, index } = props;
@@ -29,15 +30,26 @@ export const System = props => {
 
   return (
     <li className={styles.system} style={{zIndex: `${zIndex}`}}>
-      <a href={`${system.request_url}`} className={styles.request_url}>
-        <div>
-          <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
-          <div className={styles.request_name}>{system.request_name}</div>         
-        </div>
-
-        {system.cnt ? <div className={styles.cnt}>{system.cnt}</div> : null}
+      {prefix === 'LK'
+        ? <Link to = {`/lk/${system.request_url.split('/')[2]}`} className={styles.request_url}>
+            <div>
+              <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
+              <div className={styles.request_name}>{system.request_name}</div>         
+            </div>
+            {system.cnt ? <div className={styles.cnt}>{system.cnt}</div> : null}              
+          </Link>
+        : <a href={`${system.request_url}`} className={styles.request_url}>
+            <div>
+              <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
+              <div className={styles.request_name}>{system.request_name}</div>         
+            </div>
+            {system.cnt ? <div className={styles.cnt}>{system.cnt}</div> : null}
+          </a>
+      }
       
-      </a>
+
+
+
       {prefix !== 'LK'
        ? <nav className={styles.systemNav}>
           <div>

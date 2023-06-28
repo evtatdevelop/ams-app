@@ -11,6 +11,7 @@ const initialState = {
   sorted: [],
   everyClose: true,
   filters: {},
+  oredrUsers: [],
 }
 
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -34,7 +35,6 @@ export const personalareaSlice = createSlice({
     },
 
     setSearchNum: (state, action) => {
-      // const filters = {searchNum: action.payload, searchDate: state.filters.searchDate ? Array.from(state.filters.searchDate) : null}
       const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
       if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus) state.everyClose = true;
@@ -42,7 +42,6 @@ export const personalareaSlice = createSlice({
     },
 
     setSearchDate: (state, action) => {
-      // const filters = {searchNum: state.filters.searchNum, searchDate: action.payload ? Array.from(action.payload) : null}
       const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
       if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus) state.everyClose = true;
@@ -72,21 +71,30 @@ export const personalareaSlice = createSlice({
       .addCase(getMyorders.pending, ( state ) => { state.loading = true })
       .addCase(getMyorders.fulfilled, ( state, action ) => {
         state.myorders = action.payload;
-        if ( state.page === 'myorders' ) state.sorted = dateSorting(action.payload, {});
+        if ( state.page === 'myorders' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.oredrUsers = getOrderUsers(action.payload);
+        }
         state.loading = false;
       })
 
       .addCase(getMyarchive.pending, ( state ) => { state.loading = true })
       .addCase(getMyarchive.fulfilled, ( state, action ) => {
         state.myarchive = action.payload;
-        if ( state.page === 'myagree_arch' ) state.sorted = dateSorting(action.payload, {})      
+        if ( state.page === 'myagree_arch' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.oredrUsers = getOrderUsers(action.payload);
+        }
         state.loading = false;
       })
 
       .addCase(getMyexecarch.pending, ( state ) => { state.loading = true })
       .addCase(getMyexecarch.fulfilled, ( state, action ) => {
         state.nyexecarch = action.payload;
-        if ( state.page === 'myexec_arch' ) state.sorted = dateSorting(action.payload, {});
+        if ( state.page === 'myexec_arch' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.oredrUsers = getOrderUsers(action.payload);
+        }
         state.loading = false;
       })
   }
@@ -163,12 +171,30 @@ const dateSorting = (orders, filters) => {
   })
 }
 
+const getOrderUsers = ( orders ) => {
+  const users = []
+  orders.forEach(order => {
+    if ( order.api_order_user ) users.push({
+      id: order.api_order_user
+    })
+  })
+  return orders;
+}
 
 const switchPage = (state, filters) => {
   switch ( state.page ) {
-    case 'myorders': state.sorted = dateSorting(Array.from(state.myorders), filters); break;
-    case 'myagree_arch': state.sorted = dateSorting(Array.from(state.myarchive), filters); break;
-    case 'myexecarch': state.sorted = dateSorting(Array.from(state.nyexecarch), filters); break;
+    case 'myorders': 
+      state.sorted = dateSorting(Array.from(state.myorders), filters);
+      state.oredrUsers = getOrderUsers(state.myorders);
+      break;
+    case 'myagree_arch': 
+      state.sorted = dateSorting(Array.from(state.myarchive), filters);
+      state.oredrUsers = getOrderUsers(state.myarchive);
+      break;
+    case 'myexecarch': 
+      state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
+      state.oredrUsers = getOrderUsers(state.nyexecarch);
+      break;
     default: state.sorted = []
   }
 } 
