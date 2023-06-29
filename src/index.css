@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'segoeui';
+  src: local('segoeui'),
+    url('./fonts/segoeui.ttf') format('truetype');
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -6,14 +12,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+/* body {
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: 1px;
+  scrollbar-width: 0px;
   scrollbar-color: #b12300 #F04E25;
 }
-body::-webkit-scrollbar { width: 1px; }
+body::-webkit-scrollbar { width: 0px; }
 body::-webkit-scrollbar-track { background: #F04E25; }
-body::-webkit-scrollbar-thumb { background-color: #b12300; }
+body::-webkit-scrollbar-thumb { background-color: #b12300; } */
 
 code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }

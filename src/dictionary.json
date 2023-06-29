@@ -171,6 +171,42 @@
   "clearSearchBtn": {
     "EN": "Сlear",
     "RU": "Очистить"  
+  },
+  "lk_header": {
+    "EN": "AUTOMATED REQUEST MANAGEMENT SYSTEM (ASUZ)",
+    "RU": "АВТОМАТИЗИРОВАННАЯ СИСТЕМА УПРАВЛЕНИЯ ЗАЯВКАМИ (АСУЗ)"
+  },
+  "lk_createdBy": {
+    "RU": "Заявки, созданные сотрудником",
+    "EN": "Requests created by"
+  },
+  "lk_th_number": {
+    "RU": "Номер заявки",
+    "EN": "Request number"
+  },
+  "lk_th_createDate": {
+    "RU": "Дата создания",
+    "EN": "Date of creation"
+  },
+  "lk_th_requestType": {
+    "RU": "Тип заявки",
+    "EN": "Request type"
+  },
+  "lk_th_oderUser": {
+    "RU": "Пользователь, для которого запрошены полномочия / ресурсы / РМ,  либо за которого запрошено замещение",
+    "EN": "The employee it is requested for access / privileges"
+  },
+  "lk_th_privs": {
+    "RU": "Запрошенные полномочия / ресурсы / активы",
+    "EN": "Requested privileges"
+  },
+  "lk_th_status": {
+    "RU": "Статус",
+    "EN": "Request status"
+  },
+  "lk_th_action": {
+    "RU": "Доступные действия",
+    "EN": "Available actions"
   }
 
 

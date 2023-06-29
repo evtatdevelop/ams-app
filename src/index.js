@@ -8,6 +8,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './rest.css'
 import './index.css';
+import './fonts/segoeui.ttf';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
