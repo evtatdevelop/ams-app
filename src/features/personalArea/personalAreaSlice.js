@@ -185,15 +185,15 @@ const switchPage = (state, filters) => {
   switch ( state.page ) {
     case 'myorders': 
       state.sorted = dateSorting(Array.from(state.myorders), filters);
-      state.oredrUsers = getOrderUsers(state.myorders);
+      // state.oredrUsers = getOrderUsers(state.myorders);
       break;
     case 'myagree_arch': 
       state.sorted = dateSorting(Array.from(state.myarchive), filters);
-      state.oredrUsers = getOrderUsers(state.myarchive);
+      // state.oredrUsers = getOrderUsers(state.myarchive);
       break;
-    case 'myexecarch': 
+    case 'myexec_arch': 
       state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
-      state.oredrUsers = getOrderUsers(state.nyexecarch);
+      // state.oredrUsers = getOrderUsers(state.nyexecarch);
       break;
     default: state.sorted = []
   }

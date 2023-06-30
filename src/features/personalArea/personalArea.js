@@ -28,7 +28,7 @@ export const PersonalArea = () => {
     }
   }, [dispatch, page, userData]);
 
-  const inProgress = ['myagree', 'myagree_settings', 'myexec', 'myexec_arch' ].includes(page)
+  const inProgress = ['myagree', 'myagree_settings', 'myexec' ].includes(page)
   const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
 
   return (
