@@ -39,6 +39,29 @@
           font-weight: 700;
         }
       }
+
+      .control {
+        a {
+          font-size: 14px;
+          color: #F47435;
+          text-decoration: none;
+          margin-right: 20px;
+        }
+        .langBtns {
+          padding: 0;
+          margin: 0;
+          margin-left: 5px;
+          background-color: transparent;
+          font-size: 14px;
+          color: #F47435;
+
+          &.active {
+            text-decoration: underline;
+          }
+          
+
+        }
+      }
     }
 
     .table {

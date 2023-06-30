@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import styles from './lk.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import LangButton from "../mainpage/langButton";
-import { user } from '../user/userSlice';
+import { user, setLang } from '../user/userSlice';
 import { useParams } from "react-router-dom";
 import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted } from "./lkSlice";
 import { Tr } from "./tr/tr";
 import dictionary from '../../dictionary.json';
+import { Link } from 'react-router-dom';
+import { testMode, root } from '../../config';
 
 export const Lk = () => {
   const userData = useSelector(user);
   const sortedData = useSelector(sorted);
   const { page } = useParams();
   const dispatch = useDispatch();
+  const _pathBase = testMode ? '' : `/${root}`
 
   useEffect(() => {
     dispatch(setPage(page)) 
@@ -23,6 +26,8 @@ export const Lk = () => {
     }
   }, [dispatch, page, userData]);
 
+  const langBtnRu = userData['lang'] === 'RU' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
+  const langBtnEn = userData['lang'] === 'EN' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
 
   return (
     <section className={styles.lk}>
@@ -33,9 +38,11 @@ export const Lk = () => {
               <p>{dictionary['lk_createdBy'][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
               {/* <LangButton/> */}
               <div className={styles.control}>
-                <a>На главную страницу</a>
-                <button type='button'>RU</button>
-                <button type='button'>EN</button>
+                <Link to = {`${_pathBase}/`} className={styles.lkLink}>
+                  {dictionary['lk_toMain'][userData['lang']]}                
+                </Link> 
+                <button type='button' className={langBtnRu} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'RU', 'api_key': userData.api_key}))}>RU</button>
+                <button type='button' className={langBtnEn} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'EN', 'api_key': userData.api_key}))}>EN</button>
               </div>
             </div>
             
