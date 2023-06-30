@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import styles from './lk.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import LangButton from "../mainpage/langButton";
+// import LangButton from "../mainpage/langButton";
 import { user, setLang } from '../user/userSlice';
 import { useParams } from "react-router-dom";
 import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted } from "./lkSlice";
-import { Tr } from "./tr/tr";
 import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
 import { testMode, root } from '../../config';
+import { MyOrders } from "./myOrders/myOrders";
+import { MyAgreeArch } from "./myAgreeArch/myAgreeArch";
+import { MyExecArch } from "./myExecArch/myExecArch";
 
 export const Lk = () => {
   const userData = useSelector(user);
@@ -47,25 +49,9 @@ export const Lk = () => {
             </div>
             
             <div>
-              <table className={styles.table}>
-                <thead  className={styles.thead}>
-                  <tr>
-                    <th style={{width: '80px'}}>{dictionary['lk_th_number'][userData['lang']]}</th>
-                    <th style={{width: '130px'}}>{dictionary['lk_th_createDate'][userData['lang']]}</th>
-                    <th style={{width: '180px'}}>{dictionary['lk_th_requestType'][userData['lang']]}</th>
-                    <th style={{width: '180px'}}>{dictionary['lk_th_oderUser'][userData['lang']]}</th>
-                    <th style={{width: '330px'}}>{dictionary['lk_th_privs'][userData['lang']]}</th>
-                    <th style={{width: '130px'}}>{dictionary['lk_th_status'][userData['lang']]}</th>
-                    <th style={{width: '210px'}}>{dictionary['lk_th_action'][userData['lang']]}</th>
-                  </tr>            
-                </thead>
-                <tbody>
-                  {sortedData.map( (order, index) => 
-                    <Tr key={index} order={order} />
-                  )}            
-                </tbody>
-
-              </table>        
+              { page === 'myorders' ? <MyOrders/> : null}
+              { page === 'myagree_arch' ? <MyAgreeArch/> : null}
+              { page === 'myexec_arch' ? <MyExecArch/> : null}
             </div>
 
           </div>

@@ -208,6 +208,34 @@
     "RU": "Доступные действия",
     "EN": "Available actions"
   },
+  "lk_th_initiator": {
+    "RU": "Инициатор заявки",
+    "EN": "Initiator"
+  },
+  "lk_th_approvals": {
+    "RU": "Этапы согласования / запрошенные полномочия",
+    "EN": "Approval steps / Requested authority"
+  },
+  "lk_th_userStatus": {
+    "RU": "Результат согласования сотрудником ",
+    "EN": "Approval result of "
+  },
+  "lk_th_targetUser": {
+    "RU": "Сотрудник, для которого создана заявка",
+    "EN": "The employee for whom the request is"
+  },
+  "lk_th_submission": {
+    "RU": "Дата передачи на исполнение",
+    "EN": "Date of submission for execution"
+  },
+  "lk_th_dateExec": {
+    "RU": "Дата исполнения",
+    "EN": "Execution date"
+  },
+  "lk_th_commentExec": {
+    "RU": "Комментарии при исполнении",
+    "EN": "Execution Comments"
+  },
   "lk_toMain": {
     "RU": "На главную страницу",
     "EN": "ASUZ main page"
