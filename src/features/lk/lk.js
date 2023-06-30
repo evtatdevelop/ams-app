@@ -11,6 +11,7 @@ import { testMode, root } from '../../config';
 import { MyOrders } from "./myOrders/myOrders";
 import { MyAgreeArch } from "./myAgreeArch/myAgreeArch";
 import { MyExecArch } from "./myExecArch/myExecArch";
+import { Filters } from "./filters/filters";
 
 export const Lk = () => {
   const userData = useSelector(user);
@@ -48,6 +49,8 @@ export const Lk = () => {
               </div>
             </div>
             
+            <Filters/>
+
             <div>
               { page === 'myorders' ? <MyOrders/> : null}
               { page === 'myagree_arch' ? <MyAgreeArch/> : null}

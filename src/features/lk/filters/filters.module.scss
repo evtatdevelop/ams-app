@@ -1,0 +1,21 @@
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  // outline: 1px solid #317EC1FF;
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    p {
+      display: block;
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+  }
+}

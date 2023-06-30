@@ -148,6 +148,18 @@
     "EN": "Request number",
     "RU": "Номер заявки"  
   },
+  "searchAppFrom": {
+    "EN": "Date from",
+    "RU": "Дата с"  
+  },
+  "searchAppTo": {
+    "EN": "Date to",
+    "RU": "Дата по"  
+  },
+  "searchType": {
+    "RU": "Тип заявки",
+    "EN": "Request type" 
+  },
   "timePeriod": {
     "EN": "Period of time",
     "RU": "Период времени"  
