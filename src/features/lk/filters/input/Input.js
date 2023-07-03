@@ -1,30 +1,29 @@
-import React, {useState, useRef } from "react";
+import React, {useRef } from "react";
 import styles from './input.module.scss';
+import { filters, setSearchNum } from "../../lkSlice";
+
+import { useSelector, useDispatch } from "react-redux";
 
 export const Input = props => {
   const ref = useRef(null)
-  const {inputHandler, inputClear, placeholder, val} = props
-  const [value, setValue] = useState(val ? val : "")
-  const [timerId, setTimerId] = useState(null)
+  
+  const dispatch = useDispatch();
+  const {placeholder} = props
+  const filtersData = useSelector(filters);
   const onInput = val => {
-    setValue(val);
-    clearTimeout(timerId);
-    const timer = setTimeout(() => inputHandler(val), 500);
-    setTimerId(timer);
+    dispatch(setSearchNum(val))
   }
   const clearInput = () => {
-    clearTimeout(timerId);
-    setValue(val);
-    inputClear();
+    dispatch(setSearchNum(null));
     ref.current.focus();
   }
 
-  const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
+  const styleClnBtn = filtersData.searchNum ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
 
   return (
     <div className={styles.input}>
       <input type="text" className={styles.htmInput}
-        value={value}
+        value={filtersData.searchNum ? filtersData.searchNum : ""}
         onInput={e => onInput(e.target.value)}
         placeholder = {placeholder}
         ref={ref}

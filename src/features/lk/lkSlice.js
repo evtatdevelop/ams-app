@@ -39,6 +39,7 @@ export const lkSlice = createSlice({
     },
 
     clearSearch: (state) => {
+      console.log('clearSearch');
       state.filters = {}
       switchPage(state, {}) 
     }

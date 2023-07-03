@@ -32,31 +32,39 @@ export const Lk = () => {
   const langBtnRu = userData['lang'] === 'RU' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
   const langBtnEn = userData['lang'] === 'EN' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
 
+  
+
   return (
     <section className={styles.lk}>
-      { sortedData.length !== 0
+      { true
         ? <div className={styles.blank}>
             <h1 className={styles.header}>{dictionary['lk_header'][userData['lang']]}</h1>
-            <div className={styles.info}>
-              <p>{dictionary['lk_createdBy'][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
-              {/* <LangButton/> */}
-              <div className={styles.control}>
-                <Link to = {`${_pathBase}/`} className={styles.lkLink}>
-                  {dictionary['lk_toMain'][userData['lang']]}                
-                </Link> 
-                <button type='button' className={langBtnRu} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'RU', 'api_key': userData.api_key}))}>RU</button>
-                <button type='button' className={langBtnEn} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'EN', 'api_key': userData.api_key}))}>EN</button>
-              </div>
-            </div>
+              { userData['lang']
+                ? <>
+                  <div className={styles.info}>
+                    <p>{dictionary['lk_createdBy'][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
+                    
+                    {/* <LangButton/> */}
+
+                    <div className={styles.control}>
+                      <Link to = {`${_pathBase}/`} className={styles.lkLink}>
+                        {dictionary['lk_toMain'][userData['lang']]}                
+                      </Link> 
+                      <button type='button' className={langBtnRu} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'RU', 'api_key': userData.api_key}))}>RU</button>
+                      <button type='button' className={langBtnEn} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'EN', 'api_key': userData.api_key}))}>EN</button>
+                    </div>                  
+                  </div>
             
-            <Filters/>
+                  <Filters/>
 
-            <div>
-              { page === 'myorders' ? <MyOrders/> : null}
-              { page === 'myagree_arch' ? <MyAgreeArch/> : null}
-              { page === 'myexec_arch' ? <MyExecArch/> : null}
-            </div>
-
+                  <div>
+                    { page === 'myorders' ? <MyOrders/> : null}
+                    { page === 'myagree_arch' ? <MyAgreeArch/> : null}
+                    { page === 'myexec_arch' ? <MyExecArch/> : null}
+                  </div>
+                </>
+              : null  
+            }
           </div>
         : null
       }

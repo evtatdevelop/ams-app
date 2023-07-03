@@ -2,12 +2,10 @@
 import React, {useState, useRef } from "react";
 import styles from './inputDate.module.scss';
 import DatePicker from "./datePicker";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
 
 export const InputDate = props => {
   const ref = useRef(null)
-  const {dateHandler, lang} = props
+  const {dateHandler, lang, placeholder, dateClear} = props
   
   const [value, setValue] = useState("")
   const [jsDate, setJsDate] = useState(null)
@@ -49,15 +47,14 @@ export const InputDate = props => {
   const clearInput = () => {
     onSetDate(null)
     setShowPicker(false)
+    dateClear()
     // ref.current.focus();
   }
 
-  const localMask = lang === 'ru' ? 'дд.мм.гггг' : 'dd-mm-yyyy'
+  // const localMask = lang === 'ru' ? 'дд.мм.гггг' : 'dd-mm-yyyy'
   const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper}  ${styles.hidePicker}`
-  // const stylePickerCloser = jsDate ? `${styles.pickerCloser} ${styles.showPickerCloser}` : `${styles.pickerCloser}  ${styles.hidePickerCloser}`
   const stylePickerCloser = `${styles.pickerCloser}`
-  const styleIconClock = `${styles.iconClock}`
 
   return (
     <div className={styles.calendar}>
@@ -65,7 +62,8 @@ export const InputDate = props => {
         <input type="text" className={styles.htmInput}
           value={value}
           onInput={e => onInput(e.target.value)}
-          placeholder = {localMask}
+          // placeholder = {localMask}
+          placeholder = {placeholder}
           ref={ref}
           onBlur={() => onBlur()}
           onFocus={()=>onShowPicker()}
@@ -85,22 +83,20 @@ export const InputDate = props => {
           closePicker={()=>setShowPicker(false)}
         />
 
-        <div className={styles.pickerControl}>
-          <button type="button" 
-            className={stylePickerCloser}
-            onClick={()=>{
-              setShowPicker(false)
-              onBlur()
-            }}
-          >&times;</button>
-
-          <button type="button" 
-            className={styleIconClock}
-            onClick={()=>{}}
-          ><FontAwesomeIcon icon={ faClock } className={styles.faCaret} /></button>          
-        </div>
-
       </div>  
+
+      { showPicker
+        ? <div className={styles.pickerControl}>
+            <button type="button" 
+              className={stylePickerCloser}
+              onClick={()=>{
+                setShowPicker(false)
+                onBlur()
+              }}
+            >&times;</button>
+          </div>
+        :null
+      }  
 
 
     </div>

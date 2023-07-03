@@ -4,7 +4,6 @@
   width: 100%;
   position: relative;
 
-  
   .date {
     display: flex;
     align-items: center;
@@ -59,7 +58,7 @@
     position: absolute;
     z-index: 99;
     transition: opacity .3s, max-height .5s;
-    // overflow: hidden;
+    overflow: hidden;
     
     &.hidePicker {
       max-height: 0px;
@@ -71,64 +70,42 @@
       max-height: 350px;
       opacity: 1;
     }
-    
-    .pickerControl {
-      position: absolute;
-      right: -20px;
-      top: 00px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .pickerCloser {
-        // position: absolute;
-        // right: -20px;
-        // top: 00px;
-        // z-index: 100;
-        border: none;
-        padding: 0;
-        margin: 0;
-        background-color: white;
-        color: gray;
-        font-size: 24px;
-        font-weight: 100;
-        transition: opacity 1s;
-        &:focus,
-        &:hover {
-          color: red;
-        }
-        &.hidePickerCloser {
-          opacity: 0;
-        }
-    
-        &.showPickerCloser {
-          opacity: 1;
-        }
-      }
-      
-      .iconClock {
-        // position: absolute;
-        // right: -20px;
-        // top: 30px;
-        // z-index: 100;
-        border: none;
-        padding: 0;
-        margin: 0;
-        background-color: white;
-        color: gray;
-        font-size: 14px;
-        font-weight: 100;
-        transition: opacity 1s;
-        &:focus,
-        &:hover {
-          color: #424242;
-        }
-      }
-    }
-
 
   }
 
-  // outline: 1px solid grey;
+
+  .pickerControl {
+    position: absolute;
+    right: -47px;
+    top: 38px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pickerCloser {
+      border: none;
+
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      color: red;
+      font-size: 24px;
+      font-weight: 100;
+      transition: opacity 1s;
+      &:focus,
+      &:hover {
+        color: red;
+      }
+      &.hidePickerCloser {
+        opacity: 0;
+      }
+  
+      &.showPickerCloser {
+        opacity: 1;
+      }
+    }
+  }  
+
+  
 }
