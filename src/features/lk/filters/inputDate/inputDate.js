@@ -1,36 +1,61 @@
 /* eslint-disable no-useless-escape */
-import React, {useState, useRef } from "react";
+import React, {useState, useRef, useEffect } from "react";
 import styles from './inputDate.module.scss';
 import DatePicker from "./datePicker";
+import { filters } from "../../lkSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export const InputDate = props => {
   const ref = useRef(null)
-  const {dateHandler, lang, placeholder, dateClear} = props
+  const {dateHandler, lang, placeholder, dateClear, mode} = props
   
   const [value, setValue] = useState("")
   const [jsDate, setJsDate] = useState(null)
   const [showPicker, setShowPicker] = useState(false)
 
+  const {searchDateTo, searchDateFrom} = useSelector(filters)
+  const searchDate = mode === 'from' ? searchDateFrom : searchDateTo;
+
   const onShowPicker = () => {
     setShowPicker(true)
   }
+
+  useEffect(() => {
+    if ( !searchDate ) {
+      setValue('');
+      setShowPicker(false)
+      setJsDate(null)
+    }
+  }, [searchDate]);
 
   const onSetDate = date => {
     if ( !date ) { setValue(''); setJsDate(null); return }
     setJsDate(date)
     const dd = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`
     const mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : `0${date.getMonth()+1}`
-    setValue(lang === 'ru' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`)
-    dateHandler(date)
-    // setShowPicker(false)
+    setValue(lang === 'RU' ? `${dd}.${mm}.${date.getFullYear()}` : `${dd}-${mm}-${date.getFullYear()}`)
+    dateHandler(`${date.getFullYear()}-${mm}-${dd}`)
   }
 
-  const onInput = val => {
-    let dateVal = val.replace(/[^0-9\.\/-: ]/ig, "")
+  const onInput = e => {
+    let dateVal = e.target.value.replace(/[^0-9\.\/-]/ig, "")
     dateVal = dateVal.replace(/\.{2,}/ig, ".")
     dateVal = dateVal.replace(/\/{2,}/ig, "/")
     dateVal = dateVal.replace(/-{2,}/ig, "-")
     setValue(dateVal);
+  }
+
+  const keyDown = e => {
+    switch ( e.keyCode ) {
+      case 13: onBlur(); 
+        setTimeout(() => setShowPicker(false), 700);
+        e.target.blur();
+        break;
+      case 27: clearInput(); break;
+
+      default: return;
+    }
+    
   }
 
   const onBlur = () => {
@@ -61,12 +86,13 @@ export const InputDate = props => {
       <div className={styles.date}>
         <input type="text" className={styles.htmInput}
           value={value}
-          onInput={e => onInput(e.target.value)}
+          onInput={e => onInput(e)}
           // placeholder = {localMask}
           placeholder = {placeholder}
           ref={ref}
           onBlur={() => onBlur()}
           onFocus={()=>onShowPicker()}
+          onKeyDown={e => keyDown(e)}
         />
         {<button type="button" className={styleClnBtn}
             onClick={() => clearInput()}

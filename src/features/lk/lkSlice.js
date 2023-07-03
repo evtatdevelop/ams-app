@@ -32,14 +32,18 @@ export const lkSlice = createSlice({
       switchPage(state, filters)      
     },
 
-    setSearchDate: (state, action) => {
-      const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
-      state.filters.searchDate = action.payload 
+    setSearchDateFrom: (state, action) => {
+      const filters = {...state.filters, searchDateFrom: action.payload ? action.payload : null}
+      state.filters.searchDateFrom = action.payload 
+      switchPage(state, filters)    
+    },
+    setSearchDateTo: (state, action) => {
+      const filters = {...state.filters, searchDateTo: action.payload ? action.payload : null}
+      state.filters.searchDateTo = action.payload 
       switchPage(state, filters)    
     },
 
     clearSearch: (state) => {
-      console.log('clearSearch');
       state.filters = {}
       switchPage(state, {}) 
     }
@@ -78,7 +82,7 @@ export const lkSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch
+  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch
 } = lkSlice.actions;
 
 export const myorders = ( state ) => state.lk.myorders;
@@ -98,25 +102,33 @@ const dataFltering = (orders, filters) => {
 
   if ( filters.searchNum ) result = orders.filter(order => order.request_number.includes(filters.searchNum))
   
-  if ( filters.searchDate && filters.searchDate.length === 2 ) {
+  if ( filters.searchDateFrom ) {
     const dateResult = []
     result.forEach(order => {
       const dtOpnArr = [...order.date_open.split(' ')[0].split('.'), ...order.date_open.split(' ')[1].split(':')]
       const date_open = `${dtOpnArr[2]}-${dtOpnArr[1]}-${dtOpnArr[0]}`
-      if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchDate[0])) && new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchDate[1])) )
+      if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchDateFrom)) )
       dateResult.push(order)
     })
     result = dateResult;
   }
-
+  
+  if ( filters.searchDateTo ) {
+    const dateResult = []
+    result.forEach(order => {
+      const dtOpnArr = [...order.date_open.split(' ')[0].split('.'), ...order.date_open.split(' ')[1].split(':')]
+      const date_open = `${dtOpnArr[2]}-${dtOpnArr[1]}-${dtOpnArr[0]}`
+      if ( new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchDateTo)) )
+      dateResult.push(order)
+    })
+    result = dateResult;
+  }
   return result
 }
 
 
 const dateSorting = (orders, filters) => {
-  
   return dataFltering(orders, filters);
-
 }
 
 
@@ -128,7 +140,7 @@ const switchPage = (state, filters) => {
     case 'myagree_arch': 
       state.sorted = dateSorting(Array.from(state.myarchive), filters);
       break;
-    case 'myexecarch': 
+    case 'myexec_arch': 
       state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
       break;
     default: state.sorted = []

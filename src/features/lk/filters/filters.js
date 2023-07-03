@@ -7,7 +7,7 @@ import dictionary from '../../../dictionary.json';
 import Input from "./input";
 import Select from "./select";
 import InputDate from "./inputDate";
-import { clearSearch, setSearchNum } from "../lkSlice";
+import { clearSearch, setSearchNum, setSearchDateFrom, setSearchDateTo } from "../lkSlice";
 
 export const Filters = () => {
   const userData = useSelector(user);
@@ -26,19 +26,21 @@ export const Filters = () => {
       
       <div>
         <InputDate
-          dateHandler = { val =>console.log(val) }
-          dateClear = { () =>console.log('dateClearFrom') }
+          dateHandler = { val => dispatch(setSearchDateFrom(val)) }
+          dateClear = { () => dispatch(setSearchDateFrom(null)) }
           lang = {userData['lang']}
           placeholder = {dictionary['searchAppFrom'][userData['lang']]}
+          mode = 'from'
         />
       </div>
       
       <div>
         <InputDate
-          dateHandler = { val =>console.log(val) }
-          dateClear = { () =>console.log('dateClearTo') }
+          dateHandler = { val => dispatch(setSearchDateTo(val)) }
+          dateClear = { () => dispatch(setSearchDateTo(null)) }
           lang = {userData['lang']}
           placeholder = {dictionary['searchAppTo'][userData['lang']]}
+          mode = 'to'
         />
       </div>
       
