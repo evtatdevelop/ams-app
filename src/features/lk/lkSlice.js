@@ -9,6 +9,7 @@ const initialState = {
   nyexecarch: [],
   sorted: [],
   filters: {},
+  orderTypes: [],
 }
 
 export const getMyorders = createAsyncThunk( 'lk/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -42,6 +43,11 @@ export const lkSlice = createSlice({
       state.filters.searchDateTo = action.payload 
       switchPage(state, filters)    
     },
+    setSearchType: (state, action) => {
+      const filters = {...state.filters, searchType: action.payload ? action.payload : null}
+      state.filters.searchType = action.payload 
+      switchPage(state, filters)    
+    },
 
     clearSearch: (state) => {
       state.filters = {}
@@ -57,6 +63,7 @@ export const lkSlice = createSlice({
         state.myorders = action.payload;
         if ( state.page === 'myorders' ) {
           state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -66,6 +73,7 @@ export const lkSlice = createSlice({
         state.myarchive = action.payload;
         if ( state.page === 'myagree_arch' ) {
           state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -75,6 +83,7 @@ export const lkSlice = createSlice({
         state.nyexecarch = action.payload;
         if ( state.page === 'myexec_arch' ) {
           state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -82,7 +91,7 @@ export const lkSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch
+  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch, setSearchType
 } = lkSlice.actions;
 
 export const myorders = ( state ) => state.lk.myorders;
@@ -91,6 +100,7 @@ export const loading  = ( state ) => state.lk.loading;
 export const sorted  = ( state ) => state.lk.sorted;
 export const page  = ( state ) => state.lk.page;
 export const filters  = ( state ) => state.lk.filters;
+export const orderTypes  = ( state ) => state.lk.orderTypes;
 
 
 export default lkSlice.reducer;
@@ -123,25 +133,52 @@ const dataFltering = (orders, filters) => {
     })
     result = dateResult;
   }
+
+  if ( filters.searchType ) {
+    const serchStrs = filters.searchType.split('-');
+    result = result.filter(order => !serchStrs[1] ? order.order_type === filters.searchType : order.api_system.system_prefix === serchStrs[1] )
+  }
+
   return result
 }
 
 
 const dateSorting = (orders, filters) => {
+
   return dataFltering(orders, filters);
 }
 
+const getOrderTypes = orders => {
+  const set = new Set()
+  const result = [];
+  orders.forEach(order => {
+    let id = order.order_type === 'CORPSYSTEMS' ? `${order.order_type}-${order.api_system.system_prefix}` : order.order_type
+    if ( !set.has(id) ) result.push({
+      'id': id, 
+      'name': order.api_system.name,
+      'name_en': order.api_system.name_en
+    })
+    set.add(id)
+  });
+
+  // console.log(result);
+
+  return result
+}
 
 const switchPage = (state, filters) => {
   switch ( state.page ) {
     case 'myorders': 
-      state.sorted = dateSorting(Array.from(state.myorders), filters);
+      state.sorted = dateSorting(state.myorders, filters);
+      state.orderTypes = getOrderTypes(state.myorders);
       break;
     case 'myagree_arch': 
-      state.sorted = dateSorting(Array.from(state.myarchive), filters);
+      state.sorted = dateSorting(state.myarchive, filters);
+      state.orderTypes = getOrderTypes(state.myarchive);
       break;
     case 'myexec_arch': 
-      state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
+      state.sorted = dateSorting(state.nyexecarch, filters);
+      state.orderTypes = getOrderTypes(state.nyexecarch);
       break;
     default: state.sorted = []
   }

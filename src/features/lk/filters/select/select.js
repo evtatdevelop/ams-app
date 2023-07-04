@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './select.module.scss';
+import { filters } from "../../lkSlice";
+import { useSelector } from "react-redux";
 
 export const Select = props => {
-  const {selectHandler, selectClear, placeholder, selectList, val, name} = props
+  const {selectHandler, selectClear, placeholder, selectList, val, name, lang} = props
   const [value, setValue] = useState(val ? val : "")
   const [show, setShow] = useState(false)
   const onChange = item => {
@@ -11,10 +13,20 @@ export const Select = props => {
     setShow(false)
   }
   const onBlur = () => setTimeout(()=>setShow(false), 100)
+  
   const clearInput = () => {
     setValue('')
     selectClear('')
   }
+  
+  const { searchType } = useSelector(filters)
+  
+  useEffect(() => {
+    if ( !searchType ) setValue('')
+  }, [searchType])
+
+  
+
   const styleClnBtn = value ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const styleSelectList = show ? `${styles.selectList} ${styles.showSelectList}` : `${styles.selectList} ${styles.hideSelectList}`
 
@@ -43,7 +55,7 @@ export const Select = props => {
               id={`${item.id}${name}`} 
               name={name}
               onClick={()=>onChange(item)}
-            /><label htmlFor={`${item.id}${name}`}>{item.name}</label>
+            /><label htmlFor={`${item.id}${name}`}>{lang === 'RU' ? item.name : item.name_en}</label>
           </li>
         )}
       </ul>

@@ -7,10 +7,11 @@ import dictionary from '../../../dictionary.json';
 import Input from "./input";
 import Select from "./select";
 import InputDate from "./inputDate";
-import { clearSearch, setSearchNum, setSearchDateFrom, setSearchDateTo } from "../lkSlice";
+import { clearSearch, setSearchNum, setSearchDateFrom, setSearchDateTo, orderTypes, setSearchType } from "../lkSlice";
 
 export const Filters = () => {
   const userData = useSelector(user);
+  const orderTypesData = useSelector(orderTypes);
   const dispatch = useDispatch();
 
   return (
@@ -46,12 +47,13 @@ export const Filters = () => {
       
       <div>
         <Select
-          selectHandler = { val => console.log(val) }
-          selectClear = { val => console.log('selectClear') }
+          selectHandler = { val => dispatch(setSearchType(val)) }
+          selectClear = { () => dispatch(setSearchType(null)) }
           placeholder = {dictionary['searchType'][userData['lang']]}
-          selectList = {[{'id':1, 'name': 'one'}, {'id':2, 'name': 'two'}, {'id':3, 'name': 'three'}, {'id':4, 'name': 'four'}, {'id':5, 'name': 'five'}, {'id':6, 'name': 'six'}, {'id':7, 'name': 'seven'}, {'id':8, 'name': 'eight'}, ]}
+          selectList = {orderTypesData}
           val = ''
           name='orderType'
+          lang = {userData['lang']}
         />
       </div>
 
