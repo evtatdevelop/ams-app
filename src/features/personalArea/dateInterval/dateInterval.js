@@ -4,6 +4,7 @@ import styles from './dateInterval.module.scss';
 import DatePicker from "./datePicker";
 import { useSelector, useDispatch } from "react-redux";
 import { filters, setSearchDate } from "../personalAreaSlice";
+import dictionary from "../../../dictionary.json";
 
 export const DateInterval = props => {
   const ref = useRef(null)
@@ -76,7 +77,7 @@ export const DateInterval = props => {
     dispatch(setSearchDate(null))
   }
 
-  const localMask = lang === 'RU' ? 'дд.мм.гггг - дд.мм.гггг' : 'dd-mm-yyyy - dd-mm-yyyy'
+  // const localMask = lang === 'RU' ? 'дд.мм.гггг - дд.мм.гггг' : 'dd-mm-yyyy - dd-mm-yyyy'
   const styleClnBtn = value || showPicker ? `${styles.clearBtn} ${styles.showClnBtn}` : `${styles.clearBtn}`
   const stylePickerWrapper = showPicker ? `${styles.datePickerWrapper} ${styles.showPicker}` : `${styles.datePickerWrapper} ${styles.hidePicker}`
   const stylePickerCloser = `${styles.pickerCloser}`
@@ -87,7 +88,8 @@ export const DateInterval = props => {
         <input type="text" className={styles.htmInput}
           value={value}
           onInput={e => onInput(e.target.value)}
-          placeholder = {localMask}
+          // placeholder = {localMask}
+          placeholder = {dictionary['timePeriod'][lang]}
           ref={ref}
           onBlur={() => onBlur()}
           onFocus={()=>onShowPicker()}

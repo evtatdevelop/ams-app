@@ -5,7 +5,8 @@
   align-items: center;
   position: relative;
   width: 100%;
-
+  margin-top: 20px;
+  
   .input {
     display: flex;
     align-items: center;
@@ -57,7 +58,7 @@
 
   .selectList {
     position: absolute;
-    left: 0;
+    right: 0;
     z-index: 99;
     display: flex;
     flex-direction: column;

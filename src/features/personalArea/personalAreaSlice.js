@@ -11,7 +11,8 @@ const initialState = {
   sorted: [],
   everyClose: true,
   filters: {},
-  oredrUsers: [],
+  orderTypes: [],
+  
 }
 
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -37,14 +38,14 @@ export const personalareaSlice = createSlice({
     setSearchNum: (state, action) => {
       const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus && !state.filters.searchType) state.everyClose = true;
       switchPage(state, filters)      
     },
 
     setSearchDate: (state, action) => {
       const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus && !state.filters.searchType) state.everyClose = true;
       switchPage(state, filters)    
     },
 
@@ -54,7 +55,14 @@ export const personalareaSlice = createSlice({
       if ( searchNoStatus.has(action.payload) ) searchNoStatus.delete(action.payload); else searchNoStatus.add(action.payload);
       state.filters.searchNoStatus = Array.from(searchNoStatus).length > 0 ? Array.from(searchNoStatus) : null;
       const filters = {...state.filters, searchStatus: Array.from(searchNoStatus) }
-      if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum) state.everyClose = true;
+      if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchType) state.everyClose = true;
+      switchPage(state, filters)    
+    },
+
+    setSearchType: (state, action) => {
+      const filters = {...state.filters, searchType: action.payload ? action.payload : null}
+      state.filters.searchType = action.payload 
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchNoStatus) state.everyClose = true;
       switchPage(state, filters)    
     },
 
@@ -73,7 +81,7 @@ export const personalareaSlice = createSlice({
         state.myorders = action.payload;
         if ( state.page === 'myorders' ) {
           state.sorted = dateSorting(action.payload, {});
-          state.oredrUsers = getOrderUsers(action.payload);
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -83,7 +91,7 @@ export const personalareaSlice = createSlice({
         state.myarchive = action.payload;
         if ( state.page === 'myagree_arch' ) {
           state.sorted = dateSorting(action.payload, {});
-          state.oredrUsers = getOrderUsers(action.payload);
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -93,7 +101,7 @@ export const personalareaSlice = createSlice({
         state.nyexecarch = action.payload;
         if ( state.page === 'myexec_arch' ) {
           state.sorted = dateSorting(action.payload, {});
-          state.oredrUsers = getOrderUsers(action.payload);
+          state.orderTypes = getOrderTypes(action.payload);
         }
         state.loading = false;
       })
@@ -101,7 +109,7 @@ export const personalareaSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch
+  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType
 } = personalareaSlice.actions;
 
 export const myorders = ( state ) => state.personalarea.myorders;
@@ -111,11 +119,10 @@ export const sorted  = ( state ) => state.personalarea.sorted;
 export const everyClose  = ( state ) => state.personalarea.everyClose;
 export const page  = ( state ) => state.personalarea.page;
 export const filters  = ( state ) => state.personalarea.filters;
+export const orderTypes  = ( state ) => state.personalarea.orderTypes;
 
 
 export default personalareaSlice.reducer;
-
-
 
 const dataFltering = (orders, filters) => {
   let result = orders
@@ -141,6 +148,12 @@ const dataFltering = (orders, filters) => {
     })
     result = statusResult;
   }
+
+  if ( filters.searchType ) {
+    const serchStrs = filters.searchType.split('-');
+    result = result.filter(order => !serchStrs[1] ? order.order_type === filters.searchType : order.api_system.system_prefix === serchStrs[1] )
+  }
+
   return result
 }
 
@@ -171,29 +184,32 @@ const dateSorting = (orders, filters) => {
   })
 }
 
-const getOrderUsers = ( orders ) => {
-  const users = []
+const getOrderTypes = orders => {
+  const set = new Set()
+  const result = [];
   orders.forEach(order => {
-    if ( order.api_order_user ) users.push({
-      id: order.api_order_user
+    let id = order.order_type === 'CORPSYSTEMS' ? `${order.order_type}-${order.api_system.system_prefix}` : order.order_type
+    if ( !set.has(id) ) result.push({
+      'id': id, 
+      'name': order.api_system.name,
+      'name_en': order.api_system.name_en
     })
-  })
-  return orders;
+    set.add(id)
+  });
+
+  return result
 }
 
 const switchPage = (state, filters) => {
   switch ( state.page ) {
     case 'myorders': 
       state.sorted = dateSorting(Array.from(state.myorders), filters);
-      // state.oredrUsers = getOrderUsers(state.myorders);
       break;
     case 'myagree_arch': 
       state.sorted = dateSorting(Array.from(state.myarchive), filters);
-      // state.oredrUsers = getOrderUsers(state.myarchive);
       break;
     case 'myexec_arch': 
       state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
-      // state.oredrUsers = getOrderUsers(state.nyexecarch);
       break;
     default: state.sorted = []
   }

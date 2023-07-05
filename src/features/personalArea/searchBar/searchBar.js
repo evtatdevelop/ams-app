@@ -7,6 +7,7 @@ import { clearSearch } from "../personalAreaSlice";
 import Input from "../input";
 import DateInterval from "../dateInterval";
 import { SearchStatus } from "./searchStatus/searchStatus";
+import Select from "../select";
 
 export const SearchBar = () => {
   const userData = useSelector(user);
@@ -16,12 +17,18 @@ export const SearchBar = () => {
     <div className={styles.searchBar}>
               
       <Input placeholder = {dictionary['searchAppNum'][userData['lang']]}/>
+
+      <Select
+          placeholder = {dictionary['searchType'][userData['lang']]}
+          name='orderType'
+          lang = {userData['lang']}
+        />  
       
-      <p className={styles.saerchCaption}>{dictionary['searchStatus'][userData['lang']]}</p>
-      <SearchStatus/>
-      
-      <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p>
+      {/* <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p> */}
       <DateInterval lang={userData['lang']}/>
+
+      <p className={styles.saerchCaption}>{dictionary['searchStatus'][userData['lang']]}</p>
+      <SearchStatus/> 
       
       <button type="button" className={styles.clearSearchBtn}
         onClick={ () => dispatch(clearSearch()) }
