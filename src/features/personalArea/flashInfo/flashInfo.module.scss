@@ -1,0 +1,28 @@
+.orderInfo {
+  position: absolute;
+  width: 50vw;
+  height: 50px;
+  border: 1px solid rgba(8, 87, 161, 0.412);
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(8, 87, 161, 0.501);
+  background-color: white;
+  padding: 4px;
+  font-size: 12px;
+
+  &.show {
+    animation: appearance 500ms ease-in-out forwards;
+  }
+
+}
+
+@keyframes appearance {
+  0% {
+    opacity: .0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

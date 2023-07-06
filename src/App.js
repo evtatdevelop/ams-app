@@ -25,23 +25,19 @@ function App() {
     <div className="App">
       <Routes>
         {/* <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/> */}        
-        {/* {mainpage.includes(userData.login) || root === 'ams'  */}
-        {mainpage.includes(userData.login) 
-          ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
-          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
-        }
-
-        {/* <Route path={`/primarypage`} element={<PrimaryPage/>}/> */}
 
         {/* {mainpage.includes(userData.login) 
-          ? <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
-          : <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
-        } 
-        <Route path={`/personalArea`} element={<PersonalArea/>}/>
-        <Route path={`/workplace`} element={<Workplace/>}/>
-        <Route path={`/resources`} element={<Resources/>}/>
-        {permitted.includes(userData.login) ? <Route path={`/components`} element={<Components/>}/> : null} 
-        {permitted.includes(userData.login) ? <Route path={`/apiTests`} element={<TestPage/>}/> : null}  */}
+          ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
+          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+        } */}
+
+        { root === 'ams'
+          ? mainpage.includes(userData.login) 
+            ? <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+            : <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
+          
+          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+        }
 
         <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/> 
@@ -51,22 +47,20 @@ function App() {
 
         {permitted.includes(userData.login)
           ? <>
-            {mainpage.includes(userData.login) || root === 'ams' 
-              ? <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
-              : <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
-            } 
-            {developer.includes(userData.login) 
-              ? <>
-                  {/* <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
-                  <Route path={`/personalArea`} element={<PersonalArea/>}/> */}
-                  <Route path={`/workplace`} element={<Workplace/>}/>
-                  <Route path={`/resources`} element={<Resources/>}/>
-                  <Route path={`/apiTests`} element={<TestPage/>}/>              
-              </>
-              : null
-            } 
-            <Route path={`/components`} element={<Components/>}/>          
-          </>
+              <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
+              <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
+              <Route path={`/components`} element={<Components/>}/>
+              <Route path={`/apiTests`} element={<TestPage/>}/>
+              
+              {developer.includes(userData.login) 
+                ? <>
+                    <Route path={`/workplace`} element={<Workplace/>}/>
+                    <Route path={`/resources`} element={<Resources/>}/>       
+                </>
+                : null
+              } 
+
+            </>
           : null
         }
       </Routes>

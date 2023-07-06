@@ -12,7 +12,7 @@ const initialState = {
   everyClose: true,
   filters: {},
   orderTypes: [],
-  
+  orderInfo: {}
 }
 
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -70,7 +70,11 @@ export const personalareaSlice = createSlice({
       state.filters = {}
       switchPage(state, {}) 
       state.everyClose = true;
-    }
+    },
+
+    showOrderInfo: (state, action) => {
+      state.orderInfo = action.payload;
+    },
 
   },
 
@@ -109,7 +113,7 @@ export const personalareaSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType
+  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType, showOrderInfo
 } = personalareaSlice.actions;
 
 export const myorders = ( state ) => state.personalarea.myorders;
@@ -120,6 +124,7 @@ export const everyClose  = ( state ) => state.personalarea.everyClose;
 export const page  = ( state ) => state.personalarea.page;
 export const filters  = ( state ) => state.personalarea.filters;
 export const orderTypes  = ( state ) => state.personalarea.orderTypes;
+export const orderInfo  = ( state ) => state.personalarea.orderInfo;
 
 
 export default personalareaSlice.reducer;

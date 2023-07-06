@@ -21,11 +21,11 @@ export const Navigation = props => {
           <li>        
             { page === 'mainpage'
               ? mainpage.includes(userData.login) 
-                ? <Link to = {`${_pathBase}/`}>PrimaryPage</Link>
-                : <Link to = {`${_pathBase}/primarypage`}>PrimaryPage</Link>
+                ? <Link to = {`${_pathBase}/primarypage`}>PrimaryPage</Link>
+                : <Link to = {`${_pathBase}/`}>PrimaryPage</Link>
               : mainpage.includes(userData.login) 
-                ? <Link to = {`${_pathBase}/mainpage`}>FreakPage</Link>
-                : <Link to = {`${_pathBase}/`}>FreakPage</Link>  
+                ? <Link to = {`${_pathBase}/`}>FreakPage</Link>
+                : <Link to = {`${_pathBase}/mainpage`}>FreakPage</Link>
             }
           </li>
 

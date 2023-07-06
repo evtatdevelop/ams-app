@@ -11,6 +11,7 @@ import dictionary from '../../dictionary.json';
 import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
 import { SearchBar } from "./searchBar/searchBar";
+import { FlasInfo } from "./flashInfo/flashInfo";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
@@ -81,6 +82,9 @@ export const PersonalArea = () => {
 
 
       </main>
+
+     <FlasInfo/> 
+      
       { permitted.includes(userData.login) ? <Navigation page = 'mainpage'/> : null }
     </section>
   )
