@@ -71,7 +71,28 @@ export const FlasInfo = () => {
                       </li>
                     : null
                   }</>
-                : null}
+                : null
+              }
+
+              { dataOI.order_type === 'CORPSYSTEMS'
+                ? <>{ dataOI.api_privs
+                    ? <li>
+                        <span className={styles.label}>Запрошено:</span>
+                        { dataOI.api_privs.map((priv, index) => <div key={index} style={{marginBottom: '8px'}}>
+                            <p>{`${index+1}. ${priv.asz00_name} /${priv.asz02_name} /${priv.asz03_name} (${priv.role_cod})`}</p>
+                            {priv.levels.map(level => <p>
+                              <span className={styles.label}>{level.asz05_name}</span>
+                              {level.values.map(val => ` ${val}`)}
+                            </p>)}
+                          </div>
+                        )}
+                          
+                        
+                      </li>
+                    : null
+                  }</>
+                : null
+              }
               
             </ul>         
 
