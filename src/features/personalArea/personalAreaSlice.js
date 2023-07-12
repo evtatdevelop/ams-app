@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMyordersData, getMyarchiveData, getMyexecarchData  } from './personalAreaSliceAPI';
+import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyagreeData } from './personalAreaSliceAPI';
 import { getFrontStatus } from "../../helpers";
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
   myorders: [],
   myarchive: [],
   nyexecarch: [],
+  myagree: [],
   sorted: [],
   everyClose: true,
   filters: {},
@@ -18,6 +19,8 @@ const initialState = {
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
 export const getMyarchive = createAsyncThunk( 'personalarea/getMyarchive', async (api_key) => await getMyarchiveData({'api_key': api_key}) )
 export const getMyexecarch = createAsyncThunk( 'personalarea/getMyexecarch', async (api_key) => await getMyexecarchData({'api_key': api_key}) )
+
+export const getMyagree = createAsyncThunk( 'personalarea/getMyagreeData', async (api_key) => await getMyagreeData({'api_key': api_key}) )
 
 export const personalareaSlice = createSlice({
   name: 'personalarea',
@@ -109,6 +112,16 @@ export const personalareaSlice = createSlice({
         }
         state.loading = false;
       })
+
+      .addCase(getMyagree.pending, ( state ) => { state.loading = true })
+      .addCase(getMyagree.fulfilled, ( state, action ) => {
+        state.myagree = action.payload;
+        if ( state.page === 'myagree' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
+        }
+        state.loading = false;
+      })
   }
 });
 
@@ -116,8 +129,8 @@ export const {
   setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType, showOrderInfo
 } = personalareaSlice.actions;
 
-export const myorders = ( state ) => state.personalarea.myorders;
-export const myarchive = ( state ) => state.personalarea.myarchive;
+// export const myorders = ( state ) => state.personalarea.myorders;
+// export const myarchive = ( state ) => state.personalarea.myarchive;
 export const loading  = ( state ) => state.personalarea.loading;
 export const sorted  = ( state ) => state.personalarea.sorted;
 export const everyClose  = ( state ) => state.personalarea.everyClose;
@@ -215,6 +228,9 @@ const switchPage = (state, filters) => {
       break;
     case 'myexec_arch': 
       state.sorted = dateSorting(Array.from(state.nyexecarch), filters);
+      break;
+    case 'myagree': 
+      state.sorted = dateSorting(Array.from(state.myagree), filters);
       break;
     default: state.sorted = []
   }

@@ -8,12 +8,14 @@
   background-color: white;
   padding: 12px;
   font-size: 12px;
+  padding-bottom: 0;
 
   &.show {
     animation: appearance 500ms ease-in-out forwards;
   }
 
   .orderInfoList {
+    // outline: 1px solid red;
     li {
       margin-bottom: 8px;
 
@@ -31,6 +33,19 @@
       }
       .green {
         color: green;
+      }
+      &.privsLi {
+        position: relative;
+        max-height: 250px;
+        overflow-y: hidden;
+        
+        .privsBottom {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 30px;
+          background: linear-gradient(transparent, rgb(255, 255, 255));
+        }
       }
     }
   }

@@ -3,6 +3,11 @@
   margin-top: .2vmax;
   padding-top: 2px;
   padding-bottom: 2px;
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+
+  // outline: 1px solid green;
 
   // &.found {
   //   .btnOpenOrder {
@@ -19,7 +24,11 @@
 // margin: 0;
 
   .btnOpenOrder {
-    width: 100%;
+    // outline: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+
+    width: 65%;
     height: 100%;
     background-color: transparent;
     border: none;
@@ -54,7 +63,7 @@
       color: #424242;
       transition: color .1s;
       margin-right: 1vmax;
-      width: 35%;
+      // width: 35%;
 
       .requestNuber {
         color: #00539c;
@@ -77,7 +86,6 @@
 
     .orderStatus {
       margin-right: 1vmax;
-      // outline: 1px solid rgb(195, 174, 174);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,5 +129,57 @@
     }
   }
 
-  // outline: 1px solid red;
+  .agreeBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+
+    button {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      cursor: pointer;
+      background-color: transparent;
+      border: 1px solid rgb(214, 214, 214);
+      width: 5vw;      
+      font: inherit;
+      font-size: .7vmax;
+      font-weight: 500;
+      transition: border-color .3s;
+
+      &:hover {
+        &.agreed {
+          border-color: rgb(42, 142, 42);
+        }
+        &.refused {
+          border-color: coral;
+        }
+        &.open {
+          border-color: #00539c;
+        }
+      }
+
+      &.agreed {
+        color: rgb(42, 142, 42);
+      }
+      &.refused {
+        color: coral;
+      }
+      &.open {
+        color: #00539c;
+      } 
+
+      div {
+        display: flex;
+        justify-content: center;
+        font-size: .7vmax;
+        width: 90%;
+      }
+
+    }
+  }
 }

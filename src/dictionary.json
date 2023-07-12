@@ -251,6 +251,42 @@
   "lk_toMain": {
     "RU": "На главную страницу",
     "EN": "ASUZ main page"
+  },
+  "finf_status": {
+    "RU": "Статус запроса",
+    "EN": "Request status"
+  },
+  "finf_date": {
+    "RU": "Дата подачи",
+    "EN": "Date of creation"
+  },
+  "finf_emplotype": {
+    "RU": "Тип трудоустройства",
+    "EN": "Employment type"
+  },
+  "finf_user": {
+    "RU": "Cотрудник",
+    "EN": "Employee"
+  },
+  "finf_create": {
+    "RU": "Создание",
+    "EN": "Creation"
+  },
+  "finf_modify": {
+    "RU": "Изменение",
+    "EN": "Modifying"
+  },
+  "finf_fs": {
+    "RU": "файлового ресурса",
+    "EN": "a file share"
+  },
+  "finf_sr": {
+    "RU": "серверного ресурса",
+    "EN": "a server resource"
+  },
+  "finf_req": {
+    "RU": "Запрошено",
+    "EN": "Requested"
   }
 
 
