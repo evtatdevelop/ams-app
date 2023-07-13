@@ -14,3 +14,5 @@ export const getMysubstitutionData  = ( api_key ) => service.getResource(`${_api
 export const getMyarchiveData       = ( api_key ) => service.getResource(`${_apiBase}/?q=myarchive`, api_key);
 export const getMyexecData          = ( api_key ) => service.getResource(`${_apiBase}/?q=myexec`, api_key);
 export const getMyexecarchData      = ( api_key ) => service.getResource(`${_apiBase}/?q=myexecarch`, api_key);
+
+export const review = ( data ) => service.updateResource(`${_apiBase}/?q=review`, data);

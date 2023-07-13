@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyagreeData } from './personalAreaSliceAPI';
+import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyagreeData, review } from './personalAreaSliceAPI';
 import { getFrontStatus } from "../../helpers";
 
 const initialState = {
@@ -21,6 +21,7 @@ export const getMyarchive = createAsyncThunk( 'personalarea/getMyarchive', async
 export const getMyexecarch = createAsyncThunk( 'personalarea/getMyexecarch', async (api_key) => await getMyexecarchData({'api_key': api_key}) )
 
 export const getMyagree = createAsyncThunk( 'personalarea/getMyagreeData', async (api_key) => await getMyagreeData({'api_key': api_key}) )
+export const rqstReview = createAsyncThunk( 'personalarea/rqstReview', async ( data ) => await review(data) )
 
 export const personalareaSlice = createSlice({
   name: 'personalarea',
@@ -122,6 +123,13 @@ export const personalareaSlice = createSlice({
         }
         state.loading = false;
       })
+
+      .addCase(rqstReview.pending, ( state ) => { state.loading = true })
+      .addCase(rqstReview.fulfilled, ( state, action ) => {
+        console.log( action.payload );
+        state.loading = false;
+      })
+
   }
 });
 

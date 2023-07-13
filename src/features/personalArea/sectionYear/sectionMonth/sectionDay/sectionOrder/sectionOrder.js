@@ -3,15 +3,20 @@ import styles from './sectionOrder.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faCheck, faQuestion, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
-import { filters, showOrderInfo, page } from "../../../../personalAreaSlice";
+import { filters, showOrderInfo, page, rqstReview } from "../../../../personalAreaSlice";
 import { getFrontStatus } from "../../../../../../helpers";
-
+import { user } from "../../../../../user/userSlice";
 
 export const SectionOrder = props => {
   const { order, hide } = props;
+  const userData = useSelector(user);
   const filtersData = useSelector(filters);
   const pageData = useSelector(page);
   const dispatch = useDispatch();
+
+  const review = (order_type, order_id, action) => {
+    dispatch(rqstReview( {'order_type': order_type, 'order_id': order_id, 'action': action, 'api_key': userData.api_key} ))
+  }
 
   const getIconStatus = () => {
     switch ( getFrontStatus(order.api_status) ) {
@@ -85,10 +90,10 @@ export const SectionOrder = props => {
             { pageData === 'myagree'
                 ? <div className={styles.agreeBtn}>
                     <button type="button" className={styles.agreed}
-                      onClick={() => console.log('Fpprove', order.request_id)}
+                      onClick={() => review(order.order_type, order.order_id, 'approve')}
                     ><FontAwesomeIcon icon={ faCheck }/> <div>Approve</div></button>
                     <button type="button" className={styles.refused}
-                      onClick={() => console.log('Reject', order.request_id)}
+                      onClick={() => review(order.order_type, order.order_id, 'reject')}
                     ><FontAwesomeIcon icon={ faXmark }/> <div>Reject</div></button> 
                     <button type="button" className={styles.open}
                       onClick={() => console.log('View', order.request_id)}

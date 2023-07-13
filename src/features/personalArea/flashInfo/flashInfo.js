@@ -87,7 +87,7 @@ export const FlasInfo = () => {
                           </div>
                         )}
                         { h > 250
-                          ? <div className={styles.privsBottom}></div>
+                          ? <div className={styles.privsBottom}>...</div>
                           : null
                         }
                         
