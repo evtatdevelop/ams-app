@@ -14,8 +14,14 @@ export const SectionOrder = props => {
   const pageData = useSelector(page);
   const dispatch = useDispatch();
 
-  const review = (order_type, order_id, action) => {
-    dispatch(rqstReview( {'order_type': order_type, 'order_id': order_id, 'action': action, 'api_key': userData.api_key} ))
+  const review = (order_type, order_id, action, comments='') => {
+    dispatch(rqstReview( {
+      'order_type': order_type, 
+      'order_id': order_id, 
+      'action': action, 
+      'comments': comments, 
+      'api_key': userData.api_key
+    } ))
   }
 
   const getIconStatus = () => {
