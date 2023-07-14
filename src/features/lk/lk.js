@@ -42,7 +42,7 @@ export const Lk = () => {
               { userData['lang']
                 ? <>
                   <div className={styles.info}>
-                    <p>{dictionary['lk_createdBy'][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
+                    <p>{dictionary[`lk_name_${page}`][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
                     
                     {/* <LangButton/> */}
 

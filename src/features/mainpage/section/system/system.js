@@ -30,8 +30,8 @@ export const System = props => {
 
   return (
     <li className={styles.system} style={{zIndex: `${zIndex}`}}>
-      {prefix === 'LK'
-        ? <Link to = {`/lk/${system.request_url.split('/')[2]}`} className={styles.request_url}>
+      {prefix === 'LK' && ( system.system_prefix === "LK_01" || system.system_prefix === "LK_03" || system.system_prefix === "LK_07" )
+        ?  <Link to = {`/lk/${system.request_url.split('/')[2]}`} className={styles.request_url}>
             <div>
               <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
               <div className={styles.request_name}>{system.request_name}</div>         

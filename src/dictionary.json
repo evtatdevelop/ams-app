@@ -188,9 +188,17 @@
     "EN": "AUTOMATED REQUEST MANAGEMENT SYSTEM (ASUZ)",
     "RU": "АВТОМАТИЗИРОВАННАЯ СИСТЕМА УПРАВЛЕНИЯ ЗАЯВКАМИ (АСУЗ)"
   },
-  "lk_createdBy": {
+  "lk_name_myorders": {
     "RU": "Заявки, созданные сотрудником",
     "EN": "Requests created by"
+  },
+  "lk_name_myagree_arch": {
+    "RU": "Заявки, согласованные / отклоненные в АСУЗ сотрудником",
+    "EN": "equests approved / rejected by"
+  },
+  "lk_name_myexec_arch": {
+    "RU": "Заявки, исполненные / делегированные сотрудником",
+    "EN": "Applications completed/delegated by an employee"
   },
   "lk_th_number": {
     "RU": "Номер заявки",
