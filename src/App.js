@@ -42,8 +42,8 @@ function App() {
         <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
         <Route path={`/personalArea`} element={<PersonalArea/>}/> 
 
-        <Route path={`/lk/:page`} element={<Lk/>}/>
-        <Route path={`/lk`} element={<Lk/>}/> 
+        <Route path={`/lknew/:page`} element={<Lk/>}/>
+        <Route path={`/lknew`} element={<Lk/>}/> 
 
         {permitted.includes(userData.login)
           ? <>
