@@ -50,3 +50,16 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 Add to package.json:
 
 "homepage": ".",
+
+## Start JSON Server
+
+json-server --watch db.json
+config.js:
+offline = true
+offlinelang = /'ru' or 'en'/
+
+## Docker building -> runing
+
+!! The line "background-image: url("../../../public/system_icons/inProgresRobot.png");" in /src/features/personalArea/personalArea.module.scss/ should be changed or commented out before building image.
+docker build -t amsapp:latest .
+docker run --name ams -d -p 3000:3000 amsapp:latest
