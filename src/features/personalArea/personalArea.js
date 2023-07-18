@@ -8,7 +8,7 @@ import { user } from '../user/userSlice';
 import Navigation from "../navigation";
 import { useParams } from "react-router-dom";
 import dictionary from '../../dictionary.json';
-import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, getMyagree } from "./personalAreaSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sorted, everyClose, getMyagree, getMyexec } from "./personalAreaSlice";
 import { SectionYear } from "./sectionYear/sectionYear";
 import { SearchBar } from "./searchBar/searchBar";
 import { FlasInfo } from "./flashInfo/flashInfo";
@@ -27,10 +27,11 @@ export const PersonalArea = () => {
       dispatch(getMyarchive(userData.api_key))
       dispatch(getMyexecarch(userData.api_key))
       dispatch(getMyagree(userData.api_key))
+      dispatch(getMyexec(userData.api_key))
     }
   }, [dispatch, page, userData]);
 
-  const inProgress = ['myagree_settings', 'myexec' ].includes(page)
+  const inProgress = ['myagree_settings' ].includes(page)
   const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
 
   return (

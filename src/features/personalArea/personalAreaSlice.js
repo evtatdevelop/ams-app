@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyagreeData, review } from './personalAreaSliceAPI';
+import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyagreeData, review, getMyexecData } from './personalAreaSliceAPI';
 import { getFrontStatus } from "../../helpers";
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
   myorders: [],
   myarchive: [],
   nyexecarch: [],
+  nyexec: [],
   myagree: [],
   sorted: [],
   everyClose: true,
@@ -19,6 +20,7 @@ const initialState = {
 export const getMyorders = createAsyncThunk( 'personalarea/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
 export const getMyarchive = createAsyncThunk( 'personalarea/getMyarchive', async (api_key) => await getMyarchiveData({'api_key': api_key}) )
 export const getMyexecarch = createAsyncThunk( 'personalarea/getMyexecarch', async (api_key) => await getMyexecarchData({'api_key': api_key}) )
+export const getMyexec = createAsyncThunk( 'personalarea/getMyexec', async (api_key) => await getMyexecData({'api_key': api_key}) )
 
 export const getMyagree = createAsyncThunk( 'personalarea/getMyagreeData', async (api_key) => await getMyagreeData({'api_key': api_key}) )
 export const rqstReview = createAsyncThunk( 'personalarea/rqstReview', async ( data ) => await review(data) )
@@ -108,6 +110,16 @@ export const personalareaSlice = createSlice({
       .addCase(getMyexecarch.fulfilled, ( state, action ) => {
         state.nyexecarch = action.payload;
         if ( state.page === 'myexec_arch' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
+        }
+        state.loading = false;
+      })
+
+      .addCase(getMyexec.pending, ( state ) => { state.loading = true })
+      .addCase(getMyexec.fulfilled, ( state, action ) => {
+        state.nyexecarch = action.payload;
+        if ( state.page === 'myexec' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
         }
@@ -239,6 +251,9 @@ const switchPage = (state, filters) => {
       break;
     case 'myagree': 
       state.sorted = dateSorting(Array.from(state.myagree), filters);
+      break;
+    case 'myexec': 
+      state.sorted = dateSorting(Array.from(state.nyexec), filters);
       break;
     default: state.sorted = []
   }
