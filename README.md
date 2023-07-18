@@ -53,13 +53,16 @@ Add to package.json:
 
 ## Start JSON Server
 
-json-server --watch db.json
-config.js:
-offline = true
+### `json-server --watch db.json`
+
+config.js:\
+offline = true\
 offlinelang = /'ru' or 'en'/
 
 ## Docker building -> runing
 
-!! The line "background-image: url("../../../public/system_icons/inProgresRobot.png");" in /src/features/personalArea/personalArea.module.scss/ should be changed or commented out before building image.
-docker build -t amsapp:latest .
-docker run --name ams -d -p 3000:3000 amsapp:latest
+!! The line "background-image: url("../../../public/system_icons/inProgresRobot.png");" in /src/features/personalArea/personalArea.module.scss/ should be changed or commented out before building image.\
+
+### `docker build -t amsapp:latest .`
+
+### `docker run --name ams -d -p 3000:3000 amsapp:latest`
