@@ -168,6 +168,10 @@
     "EN": "Request status",
     "RU": "Статус заявки"  
   },
+  "searchUser": {
+    "EN": "User as a request object",
+    "RU": "Целевой сотрудник"  
+  },
   "agreed": {
     "EN": "Agreed",
     "RU": "Согласованные"  

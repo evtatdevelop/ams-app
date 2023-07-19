@@ -8,6 +8,7 @@ import Input from "./input";
 import Select from "./select";
 import InputDate from "./inputDate";
 import { clearSearch, setSearchNum, setSearchDateFrom, setSearchDateTo, orderTypes, setSearchType } from "../lkSlice";
+import SelectInput from "./selectInput";
 
 export const Filters = () => {
   const userData = useSelector(user);
@@ -16,7 +17,7 @@ export const Filters = () => {
 
   return (
     <div className={styles.filters}>
-      <div>
+      <div style={{width: '165px'}}>
         <Input 
           inputHandler = { val => dispatch(setSearchNum(val)) }
           inputClear = { val => dispatch(setSearchNum(null)) }
@@ -25,7 +26,7 @@ export const Filters = () => {
         />
       </div>
       
-      <div>
+      <div style={{width: '165px'}}>
         <InputDate
           dateHandler = { val => dispatch(setSearchDateFrom(val)) }
           dateClear = { () => dispatch(setSearchDateFrom(null)) }
@@ -35,7 +36,7 @@ export const Filters = () => {
         />
       </div>
       
-      <div>
+      <div style={{width: '165px'}}>
         <InputDate
           dateHandler = { val => dispatch(setSearchDateTo(val)) }
           dateClear = { () => dispatch(setSearchDateTo(null)) }
@@ -45,7 +46,7 @@ export const Filters = () => {
         />
       </div>
       
-      <div>
+      <div style={{width: '275px'}}>
         <Select
           selectHandler = { val => dispatch(setSearchType(val)) }
           selectClear = { () => dispatch(setSearchType(null)) }
@@ -54,6 +55,15 @@ export const Filters = () => {
           val = ''
           name='orderType'
           lang = {userData['lang']}
+        />
+      </div>
+
+      <div style={{width: '375px'}}>
+      <SelectInput
+          selectHandler = { val => console.log(val) }
+          placeholder = {dictionary['searchUser'][userData['lang']]}
+          val = ''
+          name='TestSelectInput'
         />
       </div>
 

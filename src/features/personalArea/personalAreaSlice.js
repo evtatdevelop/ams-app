@@ -44,14 +44,14 @@ export const personalareaSlice = createSlice({
     setSearchNum: (state, action) => {
       const filters = {...state.filters, searchNum: action.payload}
       state.filters.searchNum = action.payload
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus && !state.filters.searchType) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNoStatus && !state.filters.searchType && !state.filters.searchUser) state.everyClose = true;
       switchPage(state, filters)      
     },
 
     setSearchDate: (state, action) => {
       const filters = {...state.filters, searchDate: action.payload ? Array.from(action.payload) : null}
       state.filters.searchDate = action.payload 
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus && !state.filters.searchType) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchNum && !state.filters.searchNoStatus && !state.filters.searchType && !state.filters.searchUser) state.everyClose = true;
       switchPage(state, filters)    
     },
 
@@ -61,14 +61,21 @@ export const personalareaSlice = createSlice({
       if ( searchNoStatus.has(action.payload) ) searchNoStatus.delete(action.payload); else searchNoStatus.add(action.payload);
       state.filters.searchNoStatus = Array.from(searchNoStatus).length > 0 ? Array.from(searchNoStatus) : null;
       const filters = {...state.filters, searchStatus: Array.from(searchNoStatus) }
-      if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchType) state.everyClose = true;
+      if ( searchNoStatus.size !== 0 ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchType && !state.filters.searchUser) state.everyClose = true;
       switchPage(state, filters)    
     },
 
     setSearchType: (state, action) => {
       const filters = {...state.filters, searchType: action.payload ? action.payload : null}
       state.filters.searchType = action.payload 
-      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchNoStatus) state.everyClose = true;
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchNoStatus && !state.filters.searchUser) state.everyClose = true;
+      switchPage(state, filters)    
+    },
+
+    setSearchUser: (state, action) => {
+      const filters = {...state.filters, searchUser: action.payload ? action.payload : null}
+      state.filters.searchUser = action.payload 
+      if ( action.payload ) state.everyClose = false; else if (!state.filters.searchDate && !state.filters.searchNum && !state.filters.searchNoStatus && !state.filters.searchType) state.everyClose = true;
       switchPage(state, filters)    
     },
 
@@ -146,7 +153,7 @@ export const personalareaSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType, showOrderInfo
+  setPage, everyOpenClose, setSearchNum, setSearchDate, setSearchStat, clearSearch, setSearchType, showOrderInfo, setSearchUser
 } = personalareaSlice.actions;
 
 // export const myorders = ( state ) => state.personalarea.myorders;
@@ -190,6 +197,10 @@ const dataFltering = (orders, filters) => {
   if ( filters.searchType ) {
     const serchStrs = filters.searchType.split('-');
     result = result.filter(order => !serchStrs[1] ? order.order_type === filters.searchType : order.api_system.system_prefix === serchStrs[1] )
+  }
+
+  if ( filters.searchUser ) {
+    console.log(filters.searchUser);
   }
 
   return result

@@ -8,6 +8,7 @@ import Input from "../input";
 import DateInterval from "../dateInterval";
 import { SearchStatus } from "./searchStatus/searchStatus";
 import Select from "../select";
+import { SelectInput } from "../selectInput/selectInput";
 
 export const SearchBar = () => {
   const userData = useSelector(user);
@@ -27,6 +28,13 @@ export const SearchBar = () => {
       
       {/* <p className={styles.saerchCaption}>{dictionary['timePeriod'][userData['lang']]}</p> */}
       <DateInterval lang={userData['lang']}/>
+      
+      <SelectInput
+          selectHandler = { val => console.log(val) }
+          placeholder = {dictionary['searchUser'][userData['lang']]}
+          val = ''
+          name='TestSelectInput'
+        />
 
       { pageData !== 'myagree'
         ? <>
