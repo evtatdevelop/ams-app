@@ -39,11 +39,11 @@ function App() {
           : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
         }
 
-        <Route path={`/personalArea/:page`} element={<PersonalArea/>}/>
-        <Route path={`/personalArea`} element={<PersonalArea/>}/> 
+        <Route path={`${_pathBase}/personalArea/:page`} element={<PersonalArea/>}/>
+        <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/> 
 
-        <Route path={`/lknew/:page`} element={<Lk/>}/>
-        <Route path={`/lknew`} element={<Lk/>}/> 
+        <Route path={`/lk/:page`} element={<Lk/>}/>
+        <Route path={`/lk`} element={<Lk/>}/> 
 
         {permitted.includes(userData.login)
           ? <>

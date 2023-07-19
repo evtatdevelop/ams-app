@@ -9,12 +9,15 @@ import { addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
 import { user } from '../../../user/userSlice';
 import dictionary from '../../../../dictionary.json';
 import { Link } from 'react-router-dom';
+import { testMode, root } from "../../../../config";
 
 export const System = props => {
   const { system, prefix, index } = props;
   let zIndex = 100-index;
   const dispatch = useDispatch();
   const userData = useSelector(user);
+  
+  const _pathBase = testMode ? '' : `/${root}`
 
   const hintHandler = (e) => dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
 
@@ -30,8 +33,9 @@ export const System = props => {
 
   return (
     <li className={styles.system} style={{zIndex: `${zIndex}`}}>
-      {prefix === 'LK' && ( system.system_prefix === "LK_01" || system.system_prefix === "LK_03" || system.system_prefix === "LK_07" )
-        ?  <Link to = {`/lknew/${system.request_url.split('/')[2]}`} className={styles.request_url}>
+      {prefix === 'LK' && ( system.system_prefix === "LK_01" || system.system_prefix === "LK_03" || system.system_prefix === "LK_07" || system.system_prefix === "LK_06" )
+        // ?  <Link to = {`${_pathBase}/lknew/${system.request_url.split('/')[2]}`} className={styles.request_url}>
+        ?  <Link to = {`/lk/${system.request_url.split('/')[2]}`} className={styles.request_url}>
             <div>
               <div className={styles.sysIcon} style={{backgroundImage: `url(./system_icons/${system.icon_filename})`}}></div>      
               <div className={styles.request_name}>{system.request_name}</div>         

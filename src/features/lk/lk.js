@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import LangButton from "../mainpage/langButton";
 import { user, setLang } from '../user/userSlice';
 import { useParams } from "react-router-dom";
-import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted } from "./lkSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted, getMyexec } from "./lkSlice";
 import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
 import { testMode, root } from '../../config';
@@ -12,6 +12,7 @@ import { MyOrders } from "./myOrders/myOrders";
 import { MyAgreeArch } from "./myAgreeArch/myAgreeArch";
 import { MyExecArch } from "./myExecArch/myExecArch";
 import { Filters } from "./filters/filters";
+import { MyExec } from "./myExec/myExec";
 
 export const Lk = () => {
   const userData = useSelector(user);
@@ -26,6 +27,7 @@ export const Lk = () => {
       dispatch(getMyorders(userData.api_key)) 
       dispatch(getMyarchive(userData.api_key))
       dispatch(getMyexecarch(userData.api_key))
+      dispatch(getMyexec(userData.api_key))
     }
   }, [dispatch, page, userData]);
 
@@ -61,6 +63,7 @@ export const Lk = () => {
                     { page === 'myorders' ? <MyOrders/> : null}
                     { page === 'myagree_arch' ? <MyAgreeArch/> : null}
                     { page === 'myexec_arch' ? <MyExecArch/> : null}
+                    { page === 'myexec' ? <MyExec/> : null}
                   </div>
                 </>
               : null  

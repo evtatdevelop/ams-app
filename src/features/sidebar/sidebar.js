@@ -56,7 +56,7 @@ export const Sidebar = props => {
                 {dictionary[system.system_prefix][userData['lang']]}
               </a> */}
               {/* <Link to = {`/personalArea`} className={styles.lkLink}> */}
-              <Link to = {`/personalArea/${system.request_url.split('/')[2]}`} className={styles.lkLink}  onClick={() => dispatch(setPage(system.request_url.split('/')[2]))}>
+              <Link to = {`${_pathBase}/personalArea/${system.request_url.split('/')[2]}`} className={styles.lkLink}  onClick={() => dispatch(setPage(system.request_url.split('/')[2]))}>
                 <div className={styles.lkIkon} style={{backgroundImage: `url(${_pathBase}/system_icons/${system.icon_filename})`}}></div> 
                 {dictionary[system.system_prefix][userData['lang']]}                
               </Link>

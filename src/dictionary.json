@@ -200,6 +200,10 @@
     "RU": "Заявки, исполненные / делегированные сотрудником",
     "EN": "Applications completed/delegated by an employee"
   },
+  "lk_name_myexec": {
+    "RU": "Заявки, находящиеся на исполнении у сотрудника",
+    "EN": "Applications being processed by"
+  },
   "lk_th_number": {
     "RU": "Номер заявки",
     "EN": "Request number"
@@ -255,6 +259,10 @@
   "lk_th_commentExec": {
     "RU": "Комментарии при исполнении",
     "EN": "Execution Comments"
+  },
+  "lk_th_rqst_dates": {
+    "RU": "Запрошенные даты в заявке",
+    "EN": "Requested dates"
   },
   "lk_toMain": {
     "RU": "На главную страницу",

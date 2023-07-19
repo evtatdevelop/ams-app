@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMyordersData, getMyarchiveData, getMyexecarchData  } from './lkSliceAPI';
+import { getMyordersData, getMyarchiveData, getMyexecarchData, getMyexecData  } from './lkSliceAPI';
 
 const initialState = {
   loading: false,
@@ -7,6 +7,7 @@ const initialState = {
   myorders: [],
   myarchive: [],
   nyexecarch: [],
+  myexec: [],
   sorted: [],
   filters: {},
   orderTypes: [],
@@ -15,6 +16,7 @@ const initialState = {
 export const getMyorders = createAsyncThunk( 'lk/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
 export const getMyarchive = createAsyncThunk( 'lk/getMyarchive', async (api_key) => await getMyarchiveData({'api_key': api_key}) )
 export const getMyexecarch = createAsyncThunk( 'lk/getMyexecarch', async (api_key) => await getMyexecarchData({'api_key': api_key}) )
+export const getMyexec = createAsyncThunk( 'lk/getMyexec', async (api_key) => await getMyexecData({'api_key': api_key}) )
 
 export const lkSlice = createSlice({
   name: 'lk',
@@ -82,6 +84,16 @@ export const lkSlice = createSlice({
       .addCase(getMyexecarch.fulfilled, ( state, action ) => {
         state.nyexecarch = action.payload;
         if ( state.page === 'myexec_arch' ) {
+          state.sorted = dateSorting(action.payload, {});
+          state.orderTypes = getOrderTypes(action.payload);
+        }
+        state.loading = false;
+      })
+
+      .addCase(getMyexec.pending, ( state ) => { state.loading = true })
+      .addCase(getMyexec.fulfilled, ( state, action ) => {
+        state.myexec = action.payload;
+        if ( state.page === 'myexec' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
         }
@@ -179,6 +191,10 @@ const switchPage = (state, filters) => {
     case 'myexec_arch': 
       state.sorted = dateSorting(state.nyexecarch, filters);
       state.orderTypes = getOrderTypes(state.nyexecarch);
+      break;
+    case 'myexec': 
+      state.sorted = dateSorting(state.myexec, filters);
+      state.orderTypes = getOrderTypes(state.myexec);
       break;
     default: state.sorted = []
   }
