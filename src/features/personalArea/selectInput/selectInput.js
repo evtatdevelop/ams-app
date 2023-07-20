@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from './selectInput.module.scss';
-import { searchUsers } from "../../user/userSliceAPI";
+// import { searchUsers } from "../../user/userSliceAPI";
 import { TestLoader } from "./testLoader";
-import { user } from "../../user/userSlice";
+// import { user } from "../../user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchUser, filters } from "../personalAreaSlice";
+import { setSearchUser, filters, orderUsers } from "../personalAreaSlice";
 
 export const SelectInput = props => {
   const ref = useRef(null)
   const {selectHandler, placeholder, val, name} = props
   
-  const userData = useSelector(user);
+  // const userData = useSelector(user);
   const { searchUser } = useSelector(filters);
+  const lsUsers = useSelector(orderUsers);
 
   const [value, setValue] = useState(val ? val : "")
   const [show, setShow] = useState(false)
@@ -23,14 +24,27 @@ export const SelectInput = props => {
   
   useEffect(() => {
     if ( !searchUser ) setValue('')
+    // setSelectList(lsUsers)
+  // }, [searchUser, lsUsers])
   }, [searchUser])
     
   const onSearchUsers  = (string) => {
-    if ( string ) searchUsers({'string': string, 'api_key': userData.api_key}).then(value => {
-      setSelectList(value)
+    // if ( string ) searchUsers({'string': string, 'api_key': userData.api_key}).then(value => {
+    //   console.log(value);
+    //   setSelectList(value)
+    //   setShow(true)
+    //   setloading(false)
+    // }) 
+
+    if ( string ) {
+      const upStr = string.toUpperCase()
+      const lsOrderUsers = lsUsers.filter(item => `${item.first_name} ${item.last_name} ${item.middle_name}`.toUpperCase().includes(upStr))
+      // console.log(lsOrderUsers);
+      setSelectList(lsOrderUsers)
+      
       setShow(true)
       setloading(false)
-    }) 
+    }
   }
 
   const onInput = val => {
@@ -47,7 +61,7 @@ export const SelectInput = props => {
       ? `${item.last_name ? item.last_name : ''} ${item.first_name ? item.first_name : ''} ${item.middle_name ? item.middle_name : ''}`
       : `${item.first_name ? item.first_name : ''} ${item.last_name ? item.last_name : ''}`
     );
-    selectHandler(item.id)
+    // selectHandler(item.id)
     dispatch(setSearchUser(`${item.last_name} ${item.first_name} ${item.middle_name}`))
     setShow(false)
   }

@@ -30,7 +30,7 @@ export const SearchBar = () => {
       <DateInterval lang={userData['lang']}/>
       
       <SelectInput
-          selectHandler = { val => console.log(val) }
+          // selectHandler = { val => console.log(val) }
           placeholder = {dictionary['searchUser'][userData['lang']]}
           val = ''
           name='TestSelectInput'

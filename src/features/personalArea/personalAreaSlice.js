@@ -14,6 +14,7 @@ const initialState = {
   everyClose: true,
   filters: {},
   orderTypes: [],
+  orderUsers: [],
   orderInfo: {}
 }
 
@@ -99,6 +100,7 @@ export const personalareaSlice = createSlice({
         if ( state.page === 'myorders' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -109,6 +111,7 @@ export const personalareaSlice = createSlice({
         if ( state.page === 'myagree_arch' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -119,6 +122,7 @@ export const personalareaSlice = createSlice({
         if ( state.page === 'myexec_arch' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -129,6 +133,7 @@ export const personalareaSlice = createSlice({
         if ( state.page === 'myexec' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -139,6 +144,7 @@ export const personalareaSlice = createSlice({
         if ( state.page === 'myagree' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -164,6 +170,7 @@ export const everyClose  = ( state ) => state.personalarea.everyClose;
 export const page  = ( state ) => state.personalarea.page;
 export const filters  = ( state ) => state.personalarea.filters;
 export const orderTypes  = ( state ) => state.personalarea.orderTypes;
+export const orderUsers  = ( state ) => state.personalarea.orderUsers;
 export const orderInfo  = ( state ) => state.personalarea.orderInfo;
 
 
@@ -200,7 +207,9 @@ const dataFltering = (orders, filters) => {
   }
 
   if ( filters.searchUser ) {
-    console.log(filters.searchUser);
+    // console.log(filters.searchUser);
+    // result.map(item => item.api_order_user ? console.log(item.api_order_user.name) : 'null')
+    result = result.filter(order => order.api_order_user ? order.api_order_user.name.includes(filters.searchUser) : null )
   }
 
   return result
@@ -244,6 +253,27 @@ const getOrderTypes = orders => {
       'name_en': order.api_system.name_en
     })
     set.add(id)
+  });
+
+  return result
+}
+
+const getOrderUsers = orders => {
+  const set = new Set()
+  const result = [];
+  orders.forEach((order, index) => {
+    if ( order.api_order_user ) {
+      let namearr = order.api_order_user.name.split(' ')
+      if ( !set.has(order.api_order_user.name) ) result.push({
+        'email': null,
+        'first_name': namearr[1],
+        'id': index,
+        'last_name': namearr[0],
+        'middle_name': namearr[2]
+      })
+      set.add(order.api_order_user.name)      
+    }
+
   });
 
   return result

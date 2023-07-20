@@ -1,24 +1,46 @@
-import React, { useState, useRef  } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from './selectInput.module.scss';
-import { searchUsers } from "../../../user/userSliceAPI";
+// import { searchUsers } from "../../../user/userSliceAPI";
 import { TestLoader } from "./testLoader";
+// import { user } from "../../../user/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchUser, filters, orderUsers } from "../../lkSlice";
 
 export const SelectInput = props => {
   const ref = useRef(null)
   const {selectHandler, placeholder, val, name} = props
+
+  // const userData = useSelector(user);
+  const { searchUser } = useSelector(filters);
+  const lsUsers = useSelector(orderUsers);
 
   const [value, setValue] = useState(val ? val : "")
   const [show, setShow] = useState(false)
   const [timerId, setTimerId] = useState(null)
   const [selectList, setSelectList] = useState([])
   const [loading, setloading] = useState(false)
-    
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if ( !searchUser ) setValue('')
+  }, [searchUser])
+
   const onSearchUsers  = (string) => {
-    if ( string ) searchUsers({'string': string, 'api_key': 'TatarenkoEG'}).then(value => {
-      setSelectList(value)
+    // if ( string ) searchUsers({'string': string, 'api_key': userData.api_key}).then(value => {
+    //   setSelectList(value)
+    //   setShow(true)
+    //   setloading(false)
+    // }) 
+
+    if ( string ) {
+      const upStr = string.toUpperCase()
+      const lsOrderUsers = lsUsers.filter(item => `${item.first_name} ${item.last_name} ${item.middle_name}`.toUpperCase().includes(upStr))
+      console.log(lsOrderUsers);
+      setSelectList(lsOrderUsers)
+      
       setShow(true)
       setloading(false)
-    }) 
+    }      
   }
 
   const onInput = val => {
@@ -36,6 +58,7 @@ export const SelectInput = props => {
       : `${item.first_name ? item.first_name : ''} ${item.last_name ? item.last_name : ''}`
     );
     selectHandler(item.id)
+    dispatch(setSearchUser(`${item.last_name} ${item.first_name} ${item.middle_name}`))
     setShow(false)
   }
 
@@ -50,6 +73,7 @@ export const SelectInput = props => {
     clearTimeout(timerId);
     setValue('')
     setSelectList([])
+    dispatch(setSearchUser(null))
     setTimeout(()=>ref.current.focus(), 100)
   }
 

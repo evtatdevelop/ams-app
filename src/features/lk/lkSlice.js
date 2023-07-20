@@ -11,6 +11,7 @@ const initialState = {
   sorted: [],
   filters: {},
   orderTypes: [],
+  orderUsers: [],
 }
 
 export const getMyorders = createAsyncThunk( 'lk/getMyorders', async (api_key) => await getMyordersData({'api_key': api_key}) )
@@ -51,6 +52,12 @@ export const lkSlice = createSlice({
       switchPage(state, filters)    
     },
 
+    setSearchUser: (state, action) => {
+      const filters = {...state.filters, searchUser: action.payload ? action.payload : null}
+      state.filters.searchUser = action.payload 
+      switchPage(state, filters)    
+    },
+    
     clearSearch: (state) => {
       state.filters = {}
       switchPage(state, {}) 
@@ -66,6 +73,7 @@ export const lkSlice = createSlice({
         if ( state.page === 'myorders' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -76,6 +84,7 @@ export const lkSlice = createSlice({
         if ( state.page === 'myagree_arch' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -86,6 +95,7 @@ export const lkSlice = createSlice({
         if ( state.page === 'myexec_arch' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -96,6 +106,7 @@ export const lkSlice = createSlice({
         if ( state.page === 'myexec' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
+          state.orderUsers = getOrderUsers(action.payload);
         }
         state.loading = false;
       })
@@ -103,7 +114,7 @@ export const lkSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch, setSearchType
+  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch, setSearchType, setSearchUser
 } = lkSlice.actions;
 
 export const myorders = ( state ) => state.lk.myorders;
@@ -113,6 +124,7 @@ export const sorted  = ( state ) => state.lk.sorted;
 export const page  = ( state ) => state.lk.page;
 export const filters  = ( state ) => state.lk.filters;
 export const orderTypes  = ( state ) => state.lk.orderTypes;
+export const orderUsers  = ( state ) => state.personalarea.orderUsers;
 
 
 export default lkSlice.reducer;
@@ -151,6 +163,10 @@ const dataFltering = (orders, filters) => {
     result = result.filter(order => !serchStrs[1] ? order.order_type === filters.searchType : order.api_system.system_prefix === serchStrs[1] )
   }
 
+  if ( filters.searchUser ) {
+    result = result.filter(order => order.api_order_user ? order.api_order_user.name.includes(filters.searchUser) : null )
+  }
+
   return result
 }
 
@@ -174,6 +190,27 @@ const getOrderTypes = orders => {
   });
 
   // console.log(result);
+
+  return result
+}
+
+const getOrderUsers = orders => {
+  const set = new Set()
+  const result = [];
+  orders.forEach((order, index) => {
+    if ( order.api_order_user ) {
+      let namearr = order.api_order_user.name.split(' ')
+      if ( !set.has(order.api_order_user.name) ) result.push({
+        'email': null,
+        'first_name': namearr[1],
+        'id': index,
+        'last_name': namearr[0],
+        'middle_name': namearr[2]
+      })
+      set.add(order.api_order_user.name)      
+    }
+
+  });
 
   return result
 }

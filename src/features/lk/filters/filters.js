@@ -63,7 +63,7 @@ export const Filters = () => {
           selectHandler = { val => console.log(val) }
           placeholder = {dictionary['searchUser'][userData['lang']]}
           val = ''
-          name='TestSelectInput'
+          name='TestSelectInputLk'
         />
       </div>
 
