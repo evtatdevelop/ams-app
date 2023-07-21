@@ -57,7 +57,7 @@ export const SelectInput = props => {
       ? `${item.last_name ? item.last_name : ''} ${item.first_name ? item.first_name : ''} ${item.middle_name ? item.middle_name : ''}`
       : `${item.first_name ? item.first_name : ''} ${item.last_name ? item.last_name : ''}`
     );
-    selectHandler(item.id)
+    // selectHandler(item.id)
     dispatch(setSearchUser(`${item.last_name} ${item.first_name} ${item.middle_name}`))
     setShow(false)
   }

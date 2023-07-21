@@ -124,7 +124,7 @@ export const sorted  = ( state ) => state.lk.sorted;
 export const page  = ( state ) => state.lk.page;
 export const filters  = ( state ) => state.lk.filters;
 export const orderTypes  = ( state ) => state.lk.orderTypes;
-export const orderUsers  = ( state ) => state.personalarea.orderUsers;
+export const orderUsers  = ( state ) => state.lk.orderUsers;
 
 
 export default lkSlice.reducer;
