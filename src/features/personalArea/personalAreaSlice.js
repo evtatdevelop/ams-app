@@ -151,7 +151,7 @@ export const personalareaSlice = createSlice({
 
       .addCase(rqstReview.pending, ( state ) => { state.loading = true })
       .addCase(rqstReview.fulfilled, ( state, action ) => {
-        console.log( action.payload );
+        // console.log( action.payload );
         state.loading = false;
       })
 
