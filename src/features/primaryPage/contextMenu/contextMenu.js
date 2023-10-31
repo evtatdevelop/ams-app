@@ -1,7 +1,7 @@
 import React  from "react";
 import styles from './contextMenu.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { addToPrefers, delToPrefers, onNotification, offNotification, contextMenu, runBuisySystems, loadingAdd, stopLoadingAdd } from "../mainpageSlice";
+import { addToPrefers, delToPrefers, onNotification, offNotification, contextMenu, loadingAdd, nightTheme } from "../mainpageSlice";
 import { user } from '../../user/userSlice';
 import dictionary from '../../../dictionary.json';
 import { lsGet } from "../../../helpers";
@@ -13,6 +13,7 @@ export const ContextMenu = props => {
   const dispatch = useDispatch();
   const userData = useSelector(user);
   const loading = useSelector(loadingAdd);
+  const theme = useSelector(nightTheme);
   const width= 140;
 
   const addPrefers = () => {
@@ -62,11 +63,13 @@ export const ContextMenu = props => {
 
   // const lsdata = JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`))
   // const removerTop = lsdata ? lsdata : []s
-  const removerTop = lsGet(`remobedTops${userData['id']}`, [])
+  const removerTop = lsGet(`remobedTops${userData['id']}`, []);
+  const styleContextMenu = theme ? `${styles.contextMenu} ${styles.dark}` : `${styles.contextMenu}`;
 
   return (
     left && top && !loading
-      ? <div className={styles.contextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
+      // ? <div className={styles.contextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
+      ? <div className={styleContextMenu} style={{left: `${X}px`, top: `${top}px`, width: `auto`}}>
           {about ? <button type="button" onClick={()=>notify()}>{dictionary.about[userData['lang']]}</button> : null}
           { section === 'PREFERS' || ( picked && !removerTop.includes(sysPrefix) )
             ? <button type="button" onClick={()=>delPrefersHandler(section_prefix)}>{dictionary.del_from_preferences[userData['lang']]}</button>

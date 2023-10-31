@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, search, 
-  offContextMenu, notification, fastaccess, onFastShow, toolbarShow
+  offContextMenu, notification, fastaccess, onFastShow, toolbarShow, nightTheme
 } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
@@ -28,6 +28,7 @@ export const PrimaryPage = () => {
   const notice = useSelector(notification);
   const fastSection = useSelector(fastaccess);
   const showToolbar = useSelector(toolbarShow);
+  const theme = useSelector(nightTheme);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,8 +43,11 @@ export const PrimaryPage = () => {
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);
 
+  const styleMainpage = theme ? `${styles.mainpage} ${styles.dark}` : `${styles.mainpage}`;
+
   return (
-    <section className={styles.mainpage} onClick={()=>{ dispatch(offContextMenu()) }} >
+    // <section className={styles.mainpage} onClick={()=>{ dispatch(offContextMenu()) }} >
+    <section className={styleMainpage} onClick={()=>{ dispatch(offContextMenu()) }} >
 
       <Sidebar page = 'primaryPage'/>
 

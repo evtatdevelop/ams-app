@@ -5,6 +5,18 @@
   z-index: 700;
   font-weight: 400;
 
+  &.dark {
+    .fastAccessMenu {
+      border: .1vmax solid rgb(153, 153, 153);
+    }
+    .btnShowOn {
+      color: rgba($color: #ffffff, $alpha: .5);     
+      &:hover {
+        color: rgba($color: #ffffff, $alpha: 1);
+      }
+    }
+  }
+
   .fastAccessMenu {
     width: 1px;
     height: 1px;
@@ -13,6 +25,9 @@
     overflow: hidden;
     transition: opacity .3s;
     opacity: 0;
+
+    // blk
+    // border: .1vmax solid rgb(153, 153, 153);
 
     li {
       color: white;
@@ -54,8 +69,14 @@
     border: none;
     transition: color .3s;
 
+    // blk
+    // color: rgba($color: #ffffff, $alpha: .5);
+
     &:hover {
-      color: rgba($color: #424242, $alpha: 1)
+      color: rgba($color: #424242, $alpha: 1);
+      
+      // blk
+      // color: rgba($color: #ffffff, $alpha: 1);
     }
     &.hide {
       display: none;

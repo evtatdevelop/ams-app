@@ -7,6 +7,21 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 
+  // blk
+  &.dark {
+    background-color: #282828;
+    .main {
+      .mainHeader {
+        background-color: #37373D;
+        background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D); 
+        .pageName {
+          color: rgb(230, 228, 228); 
+        }       
+      }
+    }
+  }
+  
+
   .main {
     flex-grow: 1;
     overflow: hidden;
@@ -26,6 +41,10 @@
       background-color: #fefefe;
       background-image: linear-gradient(rgba(8, 87, 161, 0.143), white);
 
+      // // blk
+      // background-color: #37373D;
+      // background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D);  
+
       .pageName {
         width: 100%;
         font-family: pple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
@@ -36,6 +55,9 @@
         font-size: 1.3vmax;
         font-weight: 700;
         color: rgb(8, 87, 161);
+
+        // // blk
+        // color: rgb(230, 228, 228); 
       }
       .mobwraper {
         width: 100%;

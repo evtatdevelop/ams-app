@@ -5,6 +5,13 @@
   // outline: 1px solid red;
   border-bottom: 1px solid rgba(128, 128, 128, 0.418);
 
+  // blk
+  &.dark {
+    .sectionName {
+      color: wheat;
+    }  
+  }
+
   .sectionName {
     color: rgb(60, 135, 204);
     font-size: 1.3vmax;

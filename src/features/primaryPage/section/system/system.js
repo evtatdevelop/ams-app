@@ -3,7 +3,7 @@ import styles from './system.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
-import { onContextMenu, offContextMenu, loadingAdd } from "../../mainpageSlice";
+import { onContextMenu, offContextMenu, loadingAdd, nightTheme } from "../../mainpageSlice";
 import { testMode } from "../../../../config";
 import { user } from "../../../user/userSlice";
 
@@ -15,6 +15,7 @@ export const System = props => {
   const dispatch = useDispatch();
   const userData = useSelector(user);
   const loading = useSelector(loadingAdd);
+  const theme = useSelector(nightTheme);
 
   // useEffect(() => {
   //   sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
@@ -39,7 +40,8 @@ export const System = props => {
   const lsdata = userData['id'] ? JSON.parse(localStorage.getItem(`remobedTops${userData['id']}`)) : []
   const removerTop = lsdata ? lsdata : []
 
-  const styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`
+  let styleSystem = prefix === 'TOP_ORDERS' || prefix === 'PREFERS' ? `${styles.system} ${styles.topOrders}` : `${styles.system}`;
+      styleSystem = theme ? `${styleSystem} ${styles.dark}` : `${styleSystem}`;
   return (
     <li  ref={ref} className={styleSystem}>
       <a href={`${system.request_url}`} className={styles.request_url} target="_balank" rel="noreferrer">

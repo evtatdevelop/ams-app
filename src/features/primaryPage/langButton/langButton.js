@@ -2,15 +2,19 @@ import React from "react";
 import styles from './langButton.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { user, setLang } from "../../user/userSlice";
-import { clearSearch } from "../mainpageSlice";
+import { clearSearch, nightTheme } from "../mainpageSlice";
 
 export const LangButton = () => {
   const userData = useSelector(user);
+  const theme = useSelector(nightTheme);
   const dispatch = useDispatch();
   const lang = userData['lang'];
 
+  const styleLangButton = theme ? `${styles.langButton} ${styles.dark}` : `${styles.langButton}`;
+
   return (
-    <div className={styles.langButton}>
+    // <div className={styles.langButton}>
+    <div className={styleLangButton}>
       <button type='button'
         className={styles.langSwitcher}
         onClick={() => {

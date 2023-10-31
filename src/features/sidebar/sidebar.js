@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from './sidebar.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary as dicts, getMainpage } from "../primaryPage/mainpageSlice";
+import { mainpage, dictionary as dicts, getMainpage, nightTheme } from "../primaryPage/mainpageSlice";
 import { user } from '../user/userSlice';
 import { testMode, root } from '../../config';
 import dictionary from '../../dictionary.json';
@@ -16,11 +16,16 @@ export const Sidebar = props => {
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dicts);
+  const theme = useSelector(nightTheme);
   const dispatch = useDispatch();
   useEffect(() => { if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) }, [dispatch, userData.api_key]);
 
+  const styleSidebar = theme ? `${styles.sidebar} ${styles.dark}` : `${styles.sidebar}`;
+
   return (
-    <aside className={styles.sidebar}>      
+    // <aside className={styles.sidebar}>      
+    <aside className={styleSidebar}> 
+      {theme ? <div className={styles.themePattern}><h1>ams</h1></div> : null}     
       <div className={styles.logPrsn}>
         {dictionaryData.head_currentuser && userData.ad_user
           ? <>

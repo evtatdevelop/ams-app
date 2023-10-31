@@ -5,11 +5,12 @@ import { user } from '../../user/userSlice';
 import dictionary from '../../../dictionary.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
-import { onToolbar, setOrderPrefers, mkPrefersData, mainpage } from "../mainpageSlice";
+import { onToolbar, setOrderPrefers, mkPrefersData, mainpage, setNightTheme, nightTheme } from "../mainpageSlice";
 
 export const PageSettings = () => {
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
+  const theme = useSelector(nightTheme);
   const [show, onShow] = useState(false);
   const dispatch = useDispatch();
 
@@ -27,6 +28,11 @@ export const PageSettings = () => {
     onShow(false)
   }
 
+  const onNightTheme = () => {
+    dispatch(setNightTheme());
+    onShow(false);
+  }
+
   return (
     <nav className={styles.pageSettings}>
       {!show
@@ -39,6 +45,10 @@ export const PageSettings = () => {
       <ul className={optionsPageSettings}>
         <li><button type="button" onClick={() => toolbar()}>{dictionary['prefersSettings'][userData['lang']]}</button></li>
         <li><button type="button" onClick={() => restDefault()}>{dictionary['defaultPageSettings'][userData['lang']]}</button></li>
+        <li><button type="button" onClick={() => onNightTheme()}>{ theme 
+          ? dictionary['lightTheme'][userData['lang']] 
+          : dictionary['nightTheme'][userData['lang']]
+        }</button></li>
         <li><button type="button" onClick={() => onShow(false)}>{dictionary['cancel'][userData['lang']]}</button></li>
       </ul>
     </nav>

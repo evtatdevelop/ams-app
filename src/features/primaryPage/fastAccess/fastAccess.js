@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './fastAccess.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, onFastAccess, onFastShow, fastshow } from "../mainpageSlice";
+import { mainpage, onFastAccess, onFastShow, fastshow, nightTheme } from "../mainpageSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import dictionary from '../../../dictionary.json';
@@ -11,6 +11,7 @@ export const FastAccess = props => {
   const pageData = useSelector(mainpage);
   const userData = useSelector(user);
   const show = useSelector(fastshow);
+  const theme = useSelector(nightTheme);
   const dispatch = useDispatch();
 
   const onClick = (sectionId) => {
@@ -18,11 +19,13 @@ export const FastAccess = props => {
     dispatch(onFastShow(false));
   }
 
+  const stylefastAccess = theme ? `${styles.fastAccess} ${styles.dark}` : `${styles.fastAccess}`;
   const fastAccessMenu = show ? `${styles.fastAccessMenu} ${styles.show}` : `${styles.fastAccessMenu}`
   const btnShowOn = show ? `${styles.btnShowOn} ${styles.hide}` : `${styles.btnShowOn}`
 
   return (
-    <div className={styles.fastAccess}>
+    // <div className={styles.fastAccess}>
+    <div className={stylefastAccess}>
 
         <ul className={fastAccessMenu}>
           <li key='all'><button type="button" onClick={() => onClick(null)}>{dictionary['all_sections'][userData['lang']]}</button></li>

@@ -80,6 +80,14 @@
     "EN": "Favorites by default",
     "RU": "Избранное по умолчанию"    
   },
+  "nightTheme": {
+    "EN": "Dark theme",
+    "RU": "Темная тема"    
+  },
+  "lightTheme": {
+    "EN": "Light theme",
+    "RU": "Светлая тема"    
+  },
   "systemsOrder": {
     "EN": "Set up favorites",
     "RU": "Настроить избранное"    

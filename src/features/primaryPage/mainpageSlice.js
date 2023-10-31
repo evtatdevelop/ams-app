@@ -16,6 +16,7 @@ const initialState = {
   orderPrefers: [],
   toolbarShow: false,
   buisySystems: [],
+  nightTheme: false,
 }
 
 export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
@@ -91,6 +92,11 @@ export const primarypageSlice = createSlice({
     stopLoadingAdd: (state) => {
       state.loadingAdd = false
     },
+
+    setNightTheme: (state) => {
+      state.nightTheme = !state.nightTheme;
+      localStorage.setItem(`nightTheme`, JSON.stringify(state.nightTheme));
+    },
   },
 
   extraReducers: (builder) => {
@@ -101,6 +107,7 @@ export const primarypageSlice = createSlice({
         state.dictionary = action.payload.dictionary;
         state.orderPrefers = state.orderPrefers.length === 0 ? mkPrefersData(action.payload.sections) : state.orderPrefers
         state.loading = false;
+        state.nightTheme = false || JSON.parse(localStorage.getItem('nightTheme'));
       })
 
       .addCase(addToPrefers.pending, ( state ) => { state.loadingAdd = true })
@@ -121,7 +128,7 @@ export const primarypageSlice = createSlice({
 
 export const { 
   onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification, 
-  onFastAccess, onFastShow, setOrderPrefers, onToolbar, runBuisySystems, stopLoadingAdd
+  onFastAccess, onFastShow, setOrderPrefers, onToolbar, runBuisySystems, stopLoadingAdd, setNightTheme
 } = primarypageSlice.actions;
 
 export const mainpage     = ( state ) => state.primarypage.data;
@@ -137,6 +144,7 @@ export const orderPrefers = ( state ) => state.primarypage.orderPrefers;
 export const toolbarShow  = ( state ) => state.primarypage.toolbarShow;
 export const loadingAdd   = ( state ) => state.primarypage.loadingAdd;
 export const buisySystems = ( state ) => state.primarypage.buisySystems;
+export const nightTheme   = ( state ) => state.primarypage.nightTheme;
 
 export default primarypageSlice.reducer;
 
