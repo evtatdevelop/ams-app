@@ -8,18 +8,24 @@
   font-weight: 400;
 
   // blk
-  &.dark {
-    background-color: #282828;
-    .main {
-      .mainHeader {
-        background-color: #37373D;
-        background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D); 
-        .pageName {
-          color: rgb(230, 228, 228); 
-        }       
-      }
-    }
-  }
+  // &.dark {
+  //   background-color: #282828;
+  //   .main {
+  //     .mainHeader {
+  //       background-color: #37373D;
+  //       background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D); 
+  //       .pageName {
+  //         color: rgb(230, 228, 228); 
+  //       }       
+  //     }
+  //   }
+  //   .systemList {
+  //     scrollbar-color:rgb(122, 123, 124) #282828;
+  //     &::-webkit-scrollbar { width: 4px; }
+  //     &::-webkit-scrollbar-track { background: #282828; }
+  //     &::-webkit-scrollbar-thumb { background-color: rgb(122, 123, 124); }
+  //   }
+  // }
   
 
   .main {
@@ -89,7 +95,25 @@
     }
   }
 
-
+  // blk
+  &.dark {
+    background-color: #282828;
+    .main {
+      .mainHeader {
+        background-color: #37373D;
+        background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D); 
+        .pageName {
+          color: rgb(230, 228, 228); 
+        }       
+      }
+    }
+    .systemList {
+      scrollbar-color:rgb(122, 123, 124) #282828;
+      &::-webkit-scrollbar { width: 4px; }
+      &::-webkit-scrollbar-track { background: #282828; }
+      &::-webkit-scrollbar-thumb { background-color: rgb(122, 123, 124); }
+    }
+  }
 
   @media screen and (min-width: 500px) {
   }

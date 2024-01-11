@@ -14,3 +14,5 @@ export const getMainpageData = ( api_key ) => offline
 
 export const addPrefers = ( data ) => service.updateResource(`${_apiBase}/?q=addprefers`, data);
 export const delPrefers = ( data ) => service.updateResource(`${_apiBase}/?q=delprefers`, data);
+
+export const getTestData = ( api_key ) => service.getResource(`${_apiBase}/?q=testEmail`, api_key);

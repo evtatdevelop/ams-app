@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, search, 
-  offContextMenu, notification, fastaccess, onFastShow, toolbarShow, nightTheme
+  offContextMenu, notification, fastaccess, onFastShow, toolbarShow, nightTheme, getTest
 } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
@@ -32,7 +32,10 @@ export const PrimaryPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
+    if ( userData.api_key ) {
+      dispatch(getTest(userData.api_key));
+      dispatch(getMainpage(userData.api_key));
+    }
     setTimeout(() => {
       onExpired(true)
       document.body.style.overflow = "hidden"

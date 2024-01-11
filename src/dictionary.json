@@ -272,6 +272,10 @@
     "RU": "Дата исполнения",
     "EN": "Execution date"
   },
+  "lk_th_execStatRoutes": {
+    "RU": "Статус исполнения по смежным маршрутам",
+    "EN": "Execution status of adjacent routes"
+  },  
   "lk_th_commentExec": {
     "RU": "Комментарии при исполнении",
     "EN": "Execution Comments"

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMainpageData, addPrefers, delPrefers  } from './mainpageSliceAPI';
+import { getMainpageData, addPrefers, delPrefers, getTestData  } from './mainpageSliceAPI';
 import { normalizeSystemName } from "../../helpers";
 
 const initialState = {
@@ -19,10 +19,11 @@ const initialState = {
   nightTheme: false,
 }
 
-export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )
+export const getTest = createAsyncThunk( 'primarypage/getTest', async (api_key) => await getTestData({'api_key': api_key}) );
 
-export const addToPrefers = createAsyncThunk( 'primarypage/addToPrefers', async ( data ) => await addPrefers(data) )
-export const delToPrefers = createAsyncThunk( 'primarypage/delToPrefers', async ( data ) => await delPrefers(data) )
+export const getMainpage = createAsyncThunk( 'primarypage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) );
+export const addToPrefers = createAsyncThunk( 'primarypage/addToPrefers', async ( data ) => await addPrefers(data) );
+export const delToPrefers = createAsyncThunk( 'primarypage/delToPrefers', async ( data ) => await delPrefers(data) );
 
 export const primarypageSlice = createSlice({
   name: 'primarypage',
@@ -101,6 +102,12 @@ export const primarypageSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
+      .addCase(getTest.pending, ( state ) => { state.loading = true })
+      .addCase(getTest.fulfilled, ( state, action ) => {
+        console.log(action.payload);
+        state.loading = false;
+      })
+
       .addCase(getMainpage.pending, ( state ) => { state.loading = true })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
@@ -126,7 +133,7 @@ export const primarypageSlice = createSlice({
   }
 });
 
-export const { 
+export const {
   onSearch, clearSearch, onContextMenu, offContextMenu, onNotification, offNotification, 
   onFastAccess, onFastShow, setOrderPrefers, onToolbar, runBuisySystems, stopLoadingAdd, setNightTheme
 } = primarypageSlice.actions;

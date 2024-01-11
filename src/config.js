@@ -4,7 +4,7 @@ export const testMode = true;
 // export const root = 'mainpage';
 export const root = 'ams';
 
-// export const mainpage = ['MartynenkoAA'];
+// export const mainpage = ['TatarenkoEG', 'MartynenkoAA'];
 export const mainpage = [];
 // export const mainpage = [];
 export const permitted = ['TatarenkoEG', 'GanakovskiiFS'];
