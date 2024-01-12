@@ -1,0 +1,51 @@
+.loadPage {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // flex-direction: column;
+  z-index: 999;
+
+  background-blend-mode: screen;
+  background:
+      linear-gradient(limegreen, transparent),
+      linear-gradient(90deg, skyblue, transparent),
+      linear-gradient(-90deg, coral, transparent);
+
+  & > header {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin-left: .3vmax;
+    padding-bottom: 10px;
+
+    // outline: 1px solid red;
+    & > div {
+      line-height: 30px;
+      display: flex;
+      
+      text-shadow: 0px 0px 10px #11024d;
+
+      &:first-child > span {
+        padding-left: .2vmax;
+      }
+ 
+      &:last-child > span {
+        padding-left: .4vmax;
+      }
+
+      // & > span {
+      //   display: flex;
+      //   justify-content: center;
+      // }
+    }
+    
+  }
+
+
+}

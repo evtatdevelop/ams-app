@@ -4,6 +4,7 @@ import { normalizeSystemName } from "../../helpers";
 
 const initialState = {
   loading: false,
+  firstLoad: true,
   loadingAdd: false, 
   data: [],
   dictionary: [],
@@ -102,18 +103,21 @@ export const primarypageSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getTest.pending, ( state ) => { state.loading = true })
-      .addCase(getTest.fulfilled, ( state, action ) => {
-        console.log(action.payload);
-        state.loading = false;
-      })
+      // .addCase(getTest.pending, ( state ) => { state.loading = true })
+      // .addCase(getTest.fulfilled, ( state, action ) => {
+      //   console.log(action.payload);
+      //   state.loading = false;
+      // })
 
-      .addCase(getMainpage.pending, ( state ) => { state.loading = true })
+      .addCase(getMainpage.pending, ( state ) => { 
+        if ( !state.firstLoad ) state.loading = true 
+      })
       .addCase(getMainpage.fulfilled, ( state, action ) => {
         state.data = SystemRun(action.payload.sections);
         state.dictionary = action.payload.dictionary;
         state.orderPrefers = state.orderPrefers.length === 0 ? mkPrefersData(action.payload.sections) : state.orderPrefers
         state.loading = false;
+        state.firstLoad = false;
         state.nightTheme = false || JSON.parse(localStorage.getItem('nightTheme'));
       })
 
@@ -141,6 +145,7 @@ export const {
 export const mainpage     = ( state ) => state.primarypage.data;
 export const dictionary   = ( state ) => state.primarypage.dictionary;
 export const loading      = ( state ) => state.primarypage.loading;
+export const firstLoad      = ( state ) => state.primarypage.firstLoad;
 export const search       = ( state ) => state.primarypage.search;
 export const filtred      = ( state ) => state.primarypage.filtred;
 export const contextMenu  = ( state ) => state.primarypage.contextMenu;

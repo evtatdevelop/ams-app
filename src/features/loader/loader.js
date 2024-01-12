@@ -2,17 +2,18 @@ import React from "react";
 import styles from './loader.module.scss';
 import { useSelector } from "react-redux";
 import { loading } from "../mainpage/mainpageSlice";
-import { loading as primeLoad } from "../primaryPage/mainpageSlice";
+import { loading as primeLoad, firstLoad } from "../primaryPage/mainpageSlice";
 import { loading as userLoad } from "../user/userSlice";
 
 export const Loader = () => {
 
   const load = useSelector(loading);
   const primeload = useSelector(primeLoad);
+  const firstLoading = useSelector(firstLoad);
   const userload = useSelector(userLoad);
 
   return (
-    load || primeload || userload ? <div className={styles.loader}>
+    load || primeload || ( userload && !firstLoading) ? <div className={styles.loader}>
     
     <svg className={styles.spinner} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
     <g transform="rotate(0 50 50)">
