@@ -12,11 +12,13 @@ import { getMyorders, getMyarchive, getMyexecarch, setPage, everyOpenClose, sort
 import { SectionYear } from "./sectionYear/sectionYear";
 import { SearchBar } from "./searchBar/searchBar";
 import { FlasInfo } from "./flashInfo/flashInfo";
+import { nightTheme } from "../primaryPage/mainpageSlice";
 
 export const PersonalArea = () => {
   const userData = useSelector(user);
   const sortedData = useSelector(sorted);
   const allClosed = useSelector(everyClose);
+  const theme = useSelector(nightTheme);
   const { page } = useParams();
   const dispatch = useDispatch();
 
@@ -33,9 +35,10 @@ export const PersonalArea = () => {
 
   const inProgress = ['myagree_settings' ].includes(page)
   const styleOpenCloseBtn = !allClosed ? `${styles.openCloseBtn}` : `${styles.openCloseBtn} ${styles.open}`
+  const stylePersonalArea = theme ? `${styles.personalArea} ${styles.dark}` : `${styles.personalArea}`;
 
   return (
-    <section className={styles.personalArea}>
+    <section className={stylePersonalArea}>
       <Sidebar page = 'personalAria'/>
       <main className={styles.main}>
         

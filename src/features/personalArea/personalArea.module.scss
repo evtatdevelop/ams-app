@@ -7,6 +7,19 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 
+  &.dark {
+    background-color: #282828;
+    .main {
+      .mainHeader {
+        background-color: #37373D;
+        background-image: linear-gradient(rgba(8, 87, 161, 0.143), #37373D); 
+        .pageName {
+          color: rgb(230, 228, 228); 
+        }       
+      }
+    }
+  }
+
   .main {
     flex-grow: 1;
     height: 100vh;
