@@ -42,8 +42,8 @@ export const PrimaryPage = () => {
       onExpired(true)
       document.body.style.overflow = "hidden"
     }, 
-    // 12*60*60*1000
-    12*1000
+    12*60*60*1000
+    // 12*1000
     )
   }, [dispatch, userData]);
   const [expired, onExpired] = useState(false);

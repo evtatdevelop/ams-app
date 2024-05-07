@@ -2,10 +2,11 @@ import Service from "../../services";
 import { testMode } from "../../config";
 
 const service = new Service();
-
+const currentUrl = window.location.href.split('/')[2];
 const _apiBase = testMode 
 ? 'https://request.sibgenco.local/ams_api_tst'
-: 'https://request.sibgenco.local/ams_api';
+// : 'https://request.sibgenco.local/ams_api';
+: `https://${currentUrl}/ams_api`;
 
 export const getMyordersData        = ( api_key ) => service.getResource(`${_apiBase}/?q=myorders`, api_key);
 export const getMyagreeData         = ( api_key ) => service.getResource(`${_apiBase}/?q=myagree`, api_key);

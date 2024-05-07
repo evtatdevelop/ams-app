@@ -3,9 +3,14 @@ import { testMode, offline, offlinelang } from "../../config";
 
 const service = new Service();
 
+const currentUrl = window.location.href.split('/')[2];
+console.log( currentUrl );
+
 const _apiBase = testMode 
 ? 'https://request.sibgenco.local/ams_api_tst'
-: 'https://request.sibgenco.local/ams_api';
+// : 'https://request.sibgenco.local/ams_api';
+// : 'https://asuz.digtp.com/ams_api';
+: `https://${currentUrl}/ams_api`;
 
 // export const getRemoteUser = ( data ) => service.getResource(`${_apiBase}/?q=remoteuser`, data);
 export const getRemoteUser = ( data ) => offline 
