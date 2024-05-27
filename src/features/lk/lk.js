@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 // import LangButton from "../mainpage/langButton";
 import { user, setLang } from '../user/userSlice';
 import { useParams } from "react-router-dom";
-import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted, getMyexec } from "./lkSlice";
+// import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted, getMyexec } from "./lkSlice";
+import { getMyorders, getMyarchive, getMyexecarch, setPage, getMyexec } from "./lkSlice";
 import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
-import { testMode, root } from '../../config';
+import { mode, root } from '../../config';
 import { MyOrders } from "./myOrders/myOrders";
 import { MyAgreeArch } from "./myAgreeArch/myAgreeArch";
 import { MyExecArch } from "./myExecArch/myExecArch";
@@ -16,10 +17,11 @@ import { MyExec } from "./myExec/myExec";
 
 export const Lk = () => {
   const userData = useSelector(user);
-  const sortedData = useSelector(sorted);
+  // const sortedData = useSelector(sorted);
   const { page } = useParams();
   const dispatch = useDispatch();
-  const _pathBase = testMode ? '' : `/${root}`
+  // const _pathBase = testMode ? '' : `/${root}`
+  const _pathBase = mode === 'local' ? '' : `/${root}`
 
   useEffect(() => {
     dispatch(setPage(page)) 

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './navigation.module.scss';
 import { Link } from 'react-router-dom';
-import { mainpage, developer, testMode, root} from '../../config';
+import { mainpage, developer, mode, root} from '../../config';
 import { user } from '../user/userSlice';
 import { useSelector } from "react-redux";
 
@@ -10,7 +10,8 @@ import { useSelector } from "react-redux";
 export const Navigation = props => {
   const { page } = props;
   const userData = useSelector(user);
-  const _pathBase = testMode ? '' : `/${root}`
+  // const _pathBase = testMode ? '' : `/${root}`
+  const _pathBase = mode === 'local' ? '' : `/${root}`
 
   return (
     <div className={styles.navigation}>

@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
 import { onContextMenu, offContextMenu, loadingAdd, nightTheme } from "../../mainpageSlice";
-import { testMode } from "../../../../config";
+import { mode } from "../../../../config";
 import { user } from "../../../user/userSlice";
 
 export const System = props => {
   // const _pathBase = testMode ? '' : `${root}/`;
-  const _pathBase = testMode ? '' : ``;
+  // const _pathBase = testMode ? '' : ``;
+  const _pathBase = mode === 'local' ? '' : ``
+
   const { system, prefix } = props;
   const ref = useRef();
   const dispatch = useDispatch();

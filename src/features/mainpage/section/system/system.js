@@ -9,7 +9,7 @@ import { addToPrefers, delToPrefers, onHint } from "../../mainpageSlice";
 import { user } from '../../../user/userSlice';
 import dictionary from '../../../../dictionary.json';
 import { Link } from 'react-router-dom';
-import { testMode, root } from "../../../../config";
+// import { mode, root } from "../../../../config";
 
 export const System = props => {
   const { system, prefix, index } = props;
@@ -17,7 +17,8 @@ export const System = props => {
   const dispatch = useDispatch();
   const userData = useSelector(user);
   
-  const _pathBase = testMode ? '' : `/${root}`
+  // const _pathBase = testMode ? '' : `/${root}`
+  // const _pathBase = mode === 'local' ? '' : `/${root}`
 
   const hintHandler = (e) => dispatch(onHint({text: system.hint_text, top: e.pageY, left: e.pageX}))
 

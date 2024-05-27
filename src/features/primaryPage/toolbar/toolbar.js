@@ -7,14 +7,15 @@ import dictionary from '../../../dictionary.json';
 import { lsGet } from "../../../helpers";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faBan, } from '@fortawesome/free-solid-svg-icons'
-import { testMode } from "../../../config";
+import { mode } from "../../../config";
 
 export const Toolbar = () => {
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   let orderPrefersData = useSelector(orderPrefers);
   const dispatch = useDispatch();
-  const _pathBase = testMode ? '' : ``;
+  // const _pathBase = testMode ? '' : ``;
+  const _pathBase = mode === 'local' ? '' : ``
   const [drag, onDrag] = useState(null);
   const [ordPrefers, setOrdPrefers] = useState([...orderPrefersData]);
     

@@ -1,16 +1,25 @@
 import Service from "../../services";
-import { testMode, offline, offlinelang } from "../../config";
+import { mode, offline, offlinelang } from "../../config";
 
 const service = new Service();
 
-const currentUrl = window.location.href.split('/')[2];
-console.log( currentUrl );
+// const currentUrl = window.location.href.split('/')[2];
+// console.log( window.location.href.split('/')[2] );
+// console.log( window.location );
 
-const _apiBase = testMode 
-? 'https://request.sibgenco.local/ams_api_tst'
-// : 'https://request.sibgenco.local/ams_api';
-// : 'https://asuz.digtp.com/ams_api';
-: `https://${currentUrl}/ams_api`;
+let _apiBase;
+// const _apiBase = testMode 
+// ? 'https://request.sibgenco.local/ams_api_tst'
+// // : `https://${currentUrl}/ams_api`;
+// : `https://${window.location.hostname}/ams_api`;
+
+switch ( mode ) {
+  // case 'test': _apiBase ='https://request.sibgenco.local/ams_api_tst'; break;
+  case 'test': _apiBase ='https://asuz.digtp.com/ams_api_tst'; break;
+  case 'prod': _apiBase = `https://${window.location.hostname}/ams_api`; break;
+  // default: _apiBase ='https://request.sibgenco.local/ams_api_tst'
+  default: _apiBase ='https://asuz.digtp.com/ams_api_tst'
+}
 
 // export const getRemoteUser = ( data ) => service.getResource(`${_apiBase}/?q=remoteuser`, data);
 export const getRemoteUser = ( data ) => offline 

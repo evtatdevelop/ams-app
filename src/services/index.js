@@ -5,7 +5,8 @@ export default class Service {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'API-Key': data.api_key
+        'API-Key': data.api_key,
+        'href': window.location.href
       }
     });
     if (!res.ok) throw new Error(`Could non fetch ${url}. Status: ${res.status}`);
@@ -18,7 +19,8 @@ export default class Service {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'API-Key': data.api_key
+        'API-Key': data.api_key,
+        'href': window.location.href
       }
     });
     if (!res.ok) throw new Error(`Could non fetch ${url}. Status: ${res.status}`);
@@ -31,7 +33,8 @@ export default class Service {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'API-Key': data.api_key
+        'API-Key': data.api_key,
+        'href': window.location.href
       }
     });
     if (!res.ok) throw new Error(`Could non fetch ${url}. Status: ${res.status}`);
@@ -43,7 +46,8 @@ export default class Service {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'API-Key': api_key
+        'API-Key': api_key,
+        'href': window.location.href
       }
     });
     if (!res.ok) throw new Error(`Could non fetch ${url}. Status: ${res.status}`);

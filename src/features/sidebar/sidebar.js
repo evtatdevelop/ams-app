@@ -3,7 +3,7 @@ import styles from './sidebar.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { mainpage, dictionary as dicts, getMainpage, nightTheme } from "../primaryPage/mainpageSlice";
 import { user } from '../user/userSlice';
-import { testMode, root } from '../../config';
+import { mode, root } from '../../config';
 import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +12,8 @@ import { setPage } from "../personalArea/personalAreaSlice";
 
 export const Sidebar = props => {
   // const { page } = props;
-  const _pathBase = testMode ? '' : `/${root}`
+  // const _pathBase = testMode ? '' : `/${root}`
+  const _pathBase = mode === 'local' ? '' : `/${root}`
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   const dictionaryData = useSelector(dicts);
