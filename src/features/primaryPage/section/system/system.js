@@ -4,13 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from "react-redux";
 import { onContextMenu, offContextMenu, loadingAdd, nightTheme } from "../../mainpageSlice";
-import { mode } from "../../../../config";
 import { user } from "../../../user/userSlice";
 
 export const System = props => {
-  // const _pathBase = testMode ? '' : `${root}/`;
-  // const _pathBase = testMode ? '' : ``;
-  const _pathBase = mode === 'local' ? '' : ``
+  const _pathBase = ``;
 
   const { system, prefix } = props;
   const ref = useRef();
@@ -18,10 +15,6 @@ export const System = props => {
   const userData = useSelector(user);
   const loading = useSelector(loadingAdd);
   const theme = useSelector(nightTheme);
-
-  // useEffect(() => {
-  //   sethintTextPos(document.documentElement.clientWidth - (ref.current.getBoundingClientRect().left + widthSysInfo) <= 0 ? 'right' : 'left')
-  // },[]);
 
   const handlerContextMenu = (e) => {
     if ( loading ) return;

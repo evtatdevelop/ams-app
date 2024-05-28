@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import styles from './lk.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-// import LangButton from "../mainpage/langButton";
 import { user, setLang } from '../user/userSlice';
 import { useParams } from "react-router-dom";
-// import { getMyorders, getMyarchive, getMyexecarch, setPage, sorted, getMyexec } from "./lkSlice";
 import { getMyorders, getMyarchive, getMyexecarch, setPage, getMyexec } from "./lkSlice";
 import dictionary from '../../dictionary.json';
 import { Link } from 'react-router-dom';
-import { mode, root } from '../../config';
+import { pathBase } from '../../config';
 import { MyOrders } from "./myOrders/myOrders";
 import { MyAgreeArch } from "./myAgreeArch/myAgreeArch";
 import { MyExecArch } from "./myExecArch/myExecArch";
@@ -17,11 +15,8 @@ import { MyExec } from "./myExec/myExec";
 
 export const Lk = () => {
   const userData = useSelector(user);
-  // const sortedData = useSelector(sorted);
   const { page } = useParams();
   const dispatch = useDispatch();
-  // const _pathBase = testMode ? '' : `/${root}`
-  const _pathBase = mode === 'local' ? '' : `/${root}`
 
   useEffect(() => {
     dispatch(setPage(page)) 
@@ -36,8 +31,6 @@ export const Lk = () => {
   const langBtnRu = userData['lang'] === 'RU' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
   const langBtnEn = userData['lang'] === 'EN' ? `${styles.langBtns} ${styles.active}` : `${styles.langBtns}`
 
-  
-
   return (
     <section className={styles.lk}>
       { true
@@ -47,11 +40,9 @@ export const Lk = () => {
                 ? <>
                   <div className={styles.info}>
                     <p>{dictionary[`lk_name_${page}`][userData['lang']]}: <span className={styles.login}>{userData.shortname} ({userData.ad_user})</span></p>
-                    
-                    {/* <LangButton/> */}
 
                     <div className={styles.control}>
-                      <Link to = {`${_pathBase}/`} className={styles.lkLink}>
+                      <Link to = {`${pathBase}/`} className={styles.lkLink}>
                         {dictionary['lk_toMain'][userData['lang']]}                
                       </Link> 
                       <button type='button' className={langBtnRu} onClick={() => dispatch(setLang({'app12_id': userData['id'], 'lang': 'RU', 'api_key': userData.api_key}))}>RU</button>
@@ -74,9 +65,6 @@ export const Lk = () => {
         : null
       }
 
-
-
-      
     </section>
   )
 }

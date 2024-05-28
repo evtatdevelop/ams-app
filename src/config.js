@@ -1,19 +1,32 @@
 
-export const mode = 'local';
-// export const mode = 'test';
-// export const mode = 'prod';
+const mode = 'local';
+// const mode = 'prod';
+// const mode = 'test';
+// const mode = 'offLine';
 
-// export const testMode = true;
-// export const testMode = false;
 
-export const root = 'mainpage';
-// export const root = 'ams';
-// export const mainpage = ['MartynenkoAA', ];
-export const mainpage = [];
+export const root = 'ams';
+// export const root = 'mainpage';
+  // export const mainpage = ['MartynenkoAA', 'TatarenkoEG'];
+  export const mainpage = [];
+
+export let offlinelang; // if it defined the project use offline mode 
+export let apiBase;
+export let pathBase = '';
+switch ( mode ) {
+  case 'local':   apiBase = 'https://asuz.digtp.com/ams_api_tst'; 
+                  break;
+
+  case 'prod':    apiBase = `https://${window.location.hostname}/ams_api`;
+                  pathBase = `/${root}`
+                  break;
+
+  case 'offLine': apiBase = `http://localhost:3000`;
+                  offlinelang = 'en';
+                  break;
+
+  default: apiBase = 'https://asuz.digtp.com/ams_api_tst';
+}
 
 export const permitted = ['TatarenkoEG', 'GanakovskiiFS'];
 export const developer = ['TatarenkoEG' ];
-
-export const offline = false;
-// export const offline = true;
-export const offlinelang = 'en';

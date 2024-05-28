@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { mode, permitted, root, mainpage, developer } from './config';
+import { permitted, root, mainpage, developer, pathBase } from './config';
 import { TestPage } from './testPage/testPage';
 import { Workplace } from './features/workplace/workplace';
 import { Resources } from './features/resources/resources';
@@ -19,37 +19,27 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
 
-  // const _pathBase = testMode ? '' : `/${root}`
-  const _pathBase = mode === 'local' ? '' : `/${root}`
-
   return (
     <div className="App">
       <Routes>
-        {/* <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/> */}        
-
-        {/* {mainpage.includes(userData.login) 
-          ? <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
-          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
-        } */}
-
         { root === 'ams'
           ? mainpage.includes(userData.login) 
-            ? <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
-            : <Route path={`${_pathBase}/`} exact element={<PrimaryPage/>}/> 
+            ? <Route path={`${pathBase}/`} exact element={<Mainpage/>}/>
+            : <Route path={`${pathBase}/`} exact element={<PrimaryPage/>}/> 
           
-          : <Route path={`${_pathBase}/`} exact element={<Mainpage/>}/>
+          : <Route path={`${pathBase}/`} exact element={<Mainpage/>}/>
         }
 
-        <Route path={`${_pathBase}/personalArea/:page`} element={<PersonalArea/>}/>
-        <Route path={`${_pathBase}/personalArea`} element={<PersonalArea/>}/> 
+        <Route path={`${pathBase}/personalArea/:page`} element={<PersonalArea/>}/>
+        <Route path={`${pathBase}/personalArea`} element={<PersonalArea/>}/> 
 
         <Route path={`/lk/:page`} element={<Lk/>}/>
         <Route path={`/lk`} element={<Lk/>}/> 
 
         {permitted.includes(userData.login)
           ? <>
-              <Route path={`${_pathBase}/mainpage`} element={<Mainpage/>}/> 
-              <Route path={`${_pathBase}/primarypage`} element={<PrimaryPage/>}/>
+              <Route path={`${pathBase}/mainpage`} element={<Mainpage/>}/> 
+              <Route path={`${pathBase}/primarypage`} element={<PrimaryPage/>}/>
               <Route path={`/components`} element={<Components/>}/>
               <Route path={`/apiTests`} element={<TestPage/>}/>
               

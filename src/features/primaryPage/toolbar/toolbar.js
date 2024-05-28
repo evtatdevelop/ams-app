@@ -7,15 +7,13 @@ import dictionary from '../../../dictionary.json';
 import { lsGet } from "../../../helpers";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faBan, } from '@fortawesome/free-solid-svg-icons'
-import { mode } from "../../../config";
 
 export const Toolbar = () => {
   const userData = useSelector(user);
   const pageData = useSelector(mainpage);
   let orderPrefersData = useSelector(orderPrefers);
   const dispatch = useDispatch();
-  // const _pathBase = testMode ? '' : ``;
-  const _pathBase = mode === 'local' ? '' : ``
+  const _pathBase = ``;
   const [drag, onDrag] = useState(null);
   const [ordPrefers, setOrdPrefers] = useState([...orderPrefersData]);
     
@@ -88,8 +86,6 @@ export const Toolbar = () => {
 
     const item = event.target.closest('li')
     const itemRect = item.getBoundingClientRect();
-
-    // console.log(systemPrefix);
     const img = item.querySelector(`.${systemPrefix.replace(/[0-9]/g, '')}`).getAttribute('style').split('/')[2].slice(0,-3)
 
     let icon = document.createElement('div');
@@ -109,17 +105,13 @@ export const Toolbar = () => {
     dragItem.style.left = event.pageX - shiftX + 'px';
     dragItem.style.top = event.pageY - shiftY + 'px';
 
-
     dragItem.style.paddingLeft = '.3%';
     dragItem.style.paddingTop = '.7%';
-    // dragItem.style.justifyContent = 'space-between';
     dragItem.append(icon)
 
     dragItem.style.position = 'absolute';
     dragItem.style.zIndex = 1000;
 
-
-    
     document.body.append(dragItem)
     moveAt(event.pageX, event.pageY)
     function moveAt(pageX, pageY) {  dragItem.style.top = pageY - shiftY + 'px' }

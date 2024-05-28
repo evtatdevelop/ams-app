@@ -41,7 +41,7 @@ export const Mainpage = () => {
           <h1 className={styles.head_systemname_sf}>{dictionaryData.head_systemname}</h1>
           <a target="_blank" rel="noreferrer" 
             // href="https://request.sibgenco.local/docs/ASUZ_New_Mainpage_20230427.docx" 
-            href="https://asuz.digtp.com/docs/ASUZ_New_Mainpage_20240522.docx" 
+            href="https://asuz.digtp.com/docs/ASUZ_New_Mainpage_20240522.docx"
             className={styles.instructions}>
               {dictionary['userGuide'][userData['lang']]}
             </a>
