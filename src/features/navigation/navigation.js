@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './navigation.module.scss';
 import { Link } from 'react-router-dom';
-import { mainpage, developer, apiBase} from '../../config';
+import { mainpage, developer, pathBase} from '../../config';
 import { user } from '../user/userSlice';
 import { useSelector } from "react-redux";
 
@@ -18,11 +18,11 @@ export const Navigation = props => {
           <li>        
             { page === 'mainpage'
               ? mainpage.includes(userData.login) 
-                ? <Link to = {`${apiBase}/primarypage`}>PrimaryPage</Link>
-                : <Link to = {`${apiBase}/`}>PrimaryPage</Link>
-              : mainpage.includes(apiBase.login) 
-                ? <Link to = {`${apiBase}/`}>FreakPage</Link>
-                : <Link to = {`${apiBase}/mainpage`}>FreakPage</Link>
+                ? <Link to = {`${pathBase}/primarypage`}>PrimaryPage</Link>
+                : <Link to = {`${pathBase}/`}>PrimaryPage</Link>
+              : mainpage.includes(userData.login) 
+                ? <Link to = {`${pathBase}/`}>FreakPage</Link>
+                : <Link to = {`${pathBase}/mainpage`}>FreakPage</Link>
             }
           </li>
 

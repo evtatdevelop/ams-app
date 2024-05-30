@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { permitted, root, mainpage, developer, pathBase } from './config';
+import { root, mainpage, pathBase, permitted, developer } from './config';
 import { TestPage } from './testPage/testPage';
 import { Workplace } from './features/workplace/workplace';
 import { Resources } from './features/resources/resources';
@@ -40,11 +40,13 @@ function App() {
           ? <>
               <Route path={`${pathBase}/mainpage`} element={<Mainpage/>}/> 
               <Route path={`${pathBase}/primarypage`} element={<PrimaryPage/>}/>
-              <Route path={`/components`} element={<Components/>}/>
-              <Route path={`/apiTests`} element={<TestPage/>}/>
+              {/* <Route path={`/components`} element={<Components/>}/>
+              <Route path={`/apiTests`} element={<TestPage/>}/> */}
               
               {developer.includes(userData.login) 
                 ? <>
+                    <Route path={`/components`} element={<Components/>}/>
+                    <Route path={`/apiTests`} element={<TestPage/>}/>
                     <Route path={`/workplace`} element={<Workplace/>}/>
                     <Route path={`/resources`} element={<Resources/>}/>       
                 </>

@@ -12,14 +12,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* body {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scrollbar-width: 0px;
-  scrollbar-color: #b12300 #F04E25;
-}
-body::-webkit-scrollbar { width: 0px; }
-body::-webkit-scrollbar-track { background: #F04E25; }
-body::-webkit-scrollbar-thumb { background-color: #b12300; } */
-
 code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
