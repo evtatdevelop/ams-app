@@ -61,7 +61,19 @@ export const lkSlice = createSlice({
     clearSearch: (state) => {
       state.filters = {}
       switchPage(state, {}) 
-    }
+    },
+
+    setOrderDateFrom: (state, action) => {
+      const filters = {...state.filters, searchOrderFrom: action.payload ? action.payload : null}
+      state.filters.searchOrderFrom = action.payload 
+      switchPage(state, filters)    
+    },
+
+    setOrderDateTo: (state, action) => {
+      const filters = {...state.filters, searchOrderTo: action.payload ? action.payload : null}
+      state.filters.searchOrderTo = action.payload 
+      switchPage(state, filters)    
+    },
 
   },
 
@@ -102,11 +114,16 @@ export const lkSlice = createSlice({
 
       .addCase(getMyexec.pending, ( state ) => { state.loading = true })
       .addCase(getMyexec.fulfilled, ( state, action ) => {
+
+        action.payload[0].order_dates = '';
+
         state.myexec = action.payload;
         if ( state.page === 'myexec' ) {
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
           state.orderUsers = getOrderUsers(action.payload);
+          console.log(action.payload);
+          
         }
         state.loading = false;
       })
@@ -114,7 +131,7 @@ export const lkSlice = createSlice({
 });
 
 export const {
-  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch, setSearchType, setSearchUser
+  setPage, everyOpenClose, setSearchNum, setSearchDateFrom, setSearchDateTo, setSearchStat, clearSearch, setSearchType, setSearchUser, setOrderDateFrom, setOrderDateTo
 } = lkSlice.actions;
 
 export const myorders = ( state ) => state.lk.myorders;
@@ -165,6 +182,41 @@ const dataFltering = (orders, filters) => {
 
   if ( filters.searchUser ) {
     result = result.filter(order => order.api_order_user ? order.api_order_user.name.includes(filters.searchUser) : null )
+  }
+
+  if ( filters.searchOrderFrom ) {
+    // const dateTripStart =  orders[0]['order_dates'].split('с')[1].split('<')[0].trim().split('.')  // Дата командировки<br> с 07.11.2022<br> по 11.11.2022
+    const dateResult = []
+    result.forEach(order => {
+      const dateTripStart =  order['order_dates']?.split('с')[1]?.split('<')[0]?.trim()?.split('.')
+      console.log('OrderFrom', dateTripStart);
+      
+      const date_open = `${dateTripStart[2]}-${dateTripStart[1]}-${dateTripStart[0]}`
+      // console.log(date_open);
+      // console.log(filters.searchOrderFrom);
+      if ( new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchOrderFrom)) )
+      dateResult.push(order)
+    })
+    result = dateResult;
+    // console.log(result);
+  }
+
+  if ( filters.searchOrderTo ) {
+    // const dateTripStart =  orders[0]['order_dates'].split('по')[1].trim().split('.')  // Дата командировки<br> с 07.11.2022<br> по 11.11.2022
+    // console.log(dateTripStart);
+    
+    const dateResult = []
+    result.forEach(order => {
+      const dateTripStart =  order['order_dates']?.split('по')[1]?.trim()?.split('.');
+      console.log('OrderTo', dateTripStart);
+      const date_open = `${dateTripStart[2]}-${dateTripStart[1]}-${dateTripStart[0]}`
+      // console.log(date_open);
+      // console.log(filters.searchOrderTo);
+      if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchOrderTo)) )
+      dateResult.push(order)
+    })
+    result = dateResult;
+    // console.log(result);
   }
 
   return result

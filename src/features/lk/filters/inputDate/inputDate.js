@@ -3,18 +3,30 @@ import React, {useState, useRef, useEffect } from "react";
 import styles from './inputDate.module.scss';
 import DatePicker from "./datePicker";
 import { filters } from "../../lkSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector,  } from "react-redux";
 
 export const InputDate = props => {
   const ref = useRef(null)
-  const {dateHandler, lang, placeholder, dateClear, mode} = props
+  const {dateHandler, lang, placeholder, dateClear, mode, width} = props
   
   const [value, setValue] = useState("")
   const [jsDate, setJsDate] = useState(null)
   const [showPicker, setShowPicker] = useState(false)
 
-  const {searchDateTo, searchDateFrom} = useSelector(filters)
-  const searchDate = mode === 'from' ? searchDateFrom : searchDateTo;
+  const {searchDateTo, searchDateFrom, searchOrderFrom, searchOrderTo, } = useSelector(filters);
+
+  // const searchDate = mode === 'from' ? searchDateFrom : searchDateTo;
+
+  const modeSet = mode => {
+    switch ( mode ) {
+      case 'from': return searchDateFrom;
+      case 'to': return searchDateTo;
+      case 'orderFrom': return searchOrderFrom;
+      case 'orderTo': return searchOrderTo;
+      default: return;
+    }
+  }
+  const searchDate = modeSet(mode);
 
   const onShowPicker = () => {
     setShowPicker(true)
@@ -22,6 +34,8 @@ export const InputDate = props => {
 
   useEffect(() => {
     if ( !searchDate ) {
+      // console.log('!!!');
+      
       setValue('');
       setShowPicker(false)
       setJsDate(null)
@@ -82,7 +96,7 @@ export const InputDate = props => {
   const stylePickerCloser = `${styles.pickerCloser}`
 
   return (
-    <div className={styles.calendar}>
+    <div className={styles.calendar} style={ width ? {width: `${width}px`} : null }>
       <div className={styles.date}>
         <input type="text" className={styles.htmInput}
           value={value}

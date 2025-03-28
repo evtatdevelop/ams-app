@@ -5,200 +5,208 @@
   },
   "search": {
     "EN": "Search",
-    "RU": "Поиск"    
+    "RU": "Поиск"
   },
   "page_timeout_exceeded": {
     "EN": "Page idle timeout exceeded",
-    "RU": "Превышено время бездействия на странице"    
+    "RU": "Превышено время бездействия на странице"
   },
   "continue_work": {
     "EN": "Continue work",
-    "RU": "Продолжить работу"    
+    "RU": "Продолжить работу"
   },
   "about": {
     "EN": "About",
-    "RU": "Информация"    
+    "RU": "Информация"
   },
   "request_info": {
     "EN": "Request info",
-    "RU": "Информация о запросе / заявке"    
+    "RU": "Информация о запросе / заявке"
   },
   "add_into_preferences": {
     "EN": "Add to favorites",
-    "RU": "Добавить в избранное"    
+    "RU": "Добавить в избранное"
   },
   "del_from_preferences": {
     "EN": "Remove from favorites",
-    "RU": "Удалить из избранного"    
+    "RU": "Удалить из избранного"
   },
   "added_preferences": {
     "EN": "Added to favorites",
-    "RU": "Добавлено в Избранное"    
+    "RU": "Добавлено в Избранное"
   },
   "removed_preferences": {
     "EN": "Removed from favorites",
-    "RU": "Удалено из избранного"    
+    "RU": "Удалено из избранного"
   },
 
   "LK_01": {
     "EN": "My applications",
-    "RU": "Мои заявки"    
+    "RU": "Мои заявки"
   },
   "LK_02": {
     "EN": "Pending",
-    "RU": "На согласовании"    
+    "RU": "На согласовании"
   },
   "LK_04_05": {
     "EN": "Settings",
-    "RU": "Настройки"    
+    "RU": "Настройки"
   },
   "LK_03": {
     "EN": "Resolved",
-    "RU": "Рассмотренные"    
+    "RU": "Рассмотренные"
   },
   "LK_06": {
     "EN": "On execution",
-    "RU": "На исполнении"    
+    "RU": "На исполнении"
   },
   "LK_07": {
     "EN": "Сompleted",
-    "RU": "Исполненные"    
+    "RU": "Исполненные"
   },
   "FAVORITES": {
     "EN": "Favorites",
-    "RU": "Избранное"    
+    "RU": "Избранное"
   },
   "all_sections": {
     "EN": "All sections",
-    "RU": "Все разделы"    
+    "RU": "Все разделы"
   },
   "pageSettings": {
     "EN": "Page settings",
-    "RU": "Настройки страницы"    
+    "RU": "Настройки страницы"
   },
   "defaultPageSettings": {
     "EN": "Favorites by default",
-    "RU": "Избранное по умолчанию"    
+    "RU": "Избранное по умолчанию"
   },
   "nightTheme": {
     "EN": "Dark theme",
-    "RU": "Темная тема"    
+    "RU": "Темная тема"
   },
   "lightTheme": {
     "EN": "Light theme",
-    "RU": "Светлая тема"    
+    "RU": "Светлая тема"
   },
   "systemsOrder": {
     "EN": "Set up favorites",
-    "RU": "Настроить избранное"    
+    "RU": "Настроить избранное"
   },
   "cancel": {
     "EN": "Cancel",
-    "RU": "Отмена"    
+    "RU": "Отмена"
   },
   "prefersSettings": {
     "EN": "Favorites setting",
-    "RU": "Настройка избранного"    
+    "RU": "Настройка избранного"
   },
   "userGuide": {
     "EN": "Renewed interface user's guide",
-    "RU": "Памятка по работе с обновленным интерфейсом системы"    
+    "RU": "Памятка по работе с обновленным интерфейсом системы"
   },
   "PrimaryPage": {
     "EN": "Home",
-    "RU": "Главная"    
+    "RU": "Главная"
   },
   "inProgress": {
     "EN": "This Page Under Construction",
-    "RU": "Эта страница находится в разработке"    
+    "RU": "Эта страница находится в разработке"
   },
   "whatLooking": {
     "EN": "What you were looking for is ",
-    "RU": "То, что вы искали, "    
+    "RU": "То, что вы искали, "
   },
   "here": {
     "EN": "here",
-    "RU": "здесь"    
+    "RU": "здесь"
   },
   "myorders": {
     "EN": "My requests",
-    "RU": "Мои заявки"    
+    "RU": "Мои заявки"
   },
   "myagree": {
     "EN": "Pending for my review",
-    "RU": "У меня на согласовании"     
+    "RU": "У меня на согласовании"
   },
   "myagree_settings": {
     "EN": "Setting up approvals and substitutions ",
-    "RU": "Настройка согласовании и замещений"    
+    "RU": "Настройка согласовании и замещений"
   },
   "myagree_arch": {
     "EN": "Resolved by me",
-    "RU": "Рассмотренные мной"   
+    "RU": "Рассмотренные мной"
   },
   "myexec": {
     "EN": "Should be fulfilled",
-    "RU": "У меня на исполнении"    
+    "RU": "У меня на исполнении"
   },
   "myexec_arch": {
     "EN": "Сompleted",
-    "RU": "Исполненные"  
+    "RU": "Исполненные"
   },
   "expandList": {
     "EN": "Expand List",
-    "RU": "Показать всё"  
+    "RU": "Показать всё"
   },
   "collapseList": {
     "EN": "Collapse list",
-    "RU": "Свернуть список"  
+    "RU": "Свернуть список"
   },
   "searchAppNum": {
     "EN": "Request number",
-    "RU": "Номер заявки"  
+    "RU": "Номер заявки"
   },
   "searchAppFrom": {
     "EN": "Date from",
-    "RU": "Дата с"  
+    "RU": "Дата с"
   },
   "searchAppTo": {
     "EN": "Date to",
-    "RU": "Дата по"  
+    "RU": "Дата по"
+  },
+  "orderDataFrom": {
+    "EN": "... from",
+    "RU": "... from"
+  },
+  "orderDataTo": {
+    "EN": "... to",
+    "RU": "... to"
   },
   "searchType": {
     "RU": "Тип заявки",
-    "EN": "Request type" 
+    "EN": "Request type"
   },
   "timePeriod": {
     "EN": "Period of time",
-    "RU": "Период времени"  
+    "RU": "Период времени"
   },
   "searchStatus": {
     "EN": "Request status",
-    "RU": "Статус заявки"  
+    "RU": "Статус заявки"
   },
   "searchFullname": {
     "EN": "User name",
-    "RU": "ФИО пользователя"  
+    "RU": "ФИО пользователя"
   },
   "searchUser": {
     "EN": "User as a request object",
-    "RU": "Целевой сотрудник"  
+    "RU": "Целевой сотрудник"
   },
   "agreed": {
     "EN": "Agreed",
-    "RU": "Согласованные"  
+    "RU": "Согласованные"
   },
   "refused": {
     "EN": "Rejected",
-    "RU": "Отклонённые"  
+    "RU": "Отклонённые"
   },
   "inprogress": {
     "EN": "In progress",
-    "RU": "На рассмотрении"  
+    "RU": "На рассмотрении"
   },
   "clearSearchBtn": {
     "EN": "Сlear",
-    "RU": "Очистить"  
+    "RU": "Очистить"
   },
   "lk_header": {
     "EN": "AUTOMATED REQUEST MANAGEMENT SYSTEM (ASUZ)",
@@ -275,7 +283,7 @@
   "lk_th_execStatRoutes": {
     "RU": "Статус исполнения по смежным маршрутам",
     "EN": "Execution status of adjacent routes"
-  },  
+  },
   "lk_th_commentExec": {
     "RU": "Комментарии при исполнении",
     "EN": "Execution Comments"
@@ -324,6 +332,4 @@
     "RU": "Запрошено",
     "EN": "Requested"
   }
-
-
 }

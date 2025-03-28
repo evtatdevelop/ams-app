@@ -50,7 +50,7 @@ export const Lk = () => {
                     </div>                  
                   </div>
             
-                  <Filters/>
+                  <Filters page={page}/>
 
                   <div>
                     { page === 'myorders' ? <MyOrders/> : null}
