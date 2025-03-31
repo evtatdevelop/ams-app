@@ -185,18 +185,14 @@ const dataFltering = (orders, filters) => {
   }
 
   if ( filters.searchOrderFrom ) {
-    // const dateTripStart =  orders[0]['order_dates'].split('с')[1].split('<')[0].trim().split('.')  // Дата командировки<br> с 07.11.2022<br> по 11.11.2022
     const dateResult = []
     result.forEach(order => {
       const dateTripStart =  order['order_dates']?.split('с')[1]?.split('<')[0]?.trim()?.split('.');
-
-      // console.log('OrderFrom', dateTripStart);  //ToDo: case if fild is amty 
-      
       if ( dateTripStart ) {
         const date_open = `${dateTripStart[2]}-${dateTripStart[1]}-${dateTripStart[0]}`
         // console.log(date_open);
         // console.log(filters.searchOrderFrom);
-        if ( new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchOrderFrom)) )
+        if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchOrderFrom)) )
         dateResult.push(order)        
       }
 
@@ -206,19 +202,15 @@ const dataFltering = (orders, filters) => {
   }
 
   if ( filters.searchOrderTo ) {
-    // const dateTripStart =  orders[0]['order_dates'].split('по')[1].trim().split('.')  // Дата командировки<br> с 07.11.2022<br> по 11.11.2022
-    // console.log(dateTripStart);
-    
     const dateResult = []
     result.forEach(order => {
-      const dateTripStart =  order['order_dates']?.split('по')[1]?.trim()?.split('.');
-
-      // console.log('OrderTo', dateTripStart); //ToDo: case if fild is amty 
+      // const dateTripStart =  order['order_dates']?.split('по')[1]?.trim()?.split('.');
+      const dateTripStart =  order['order_dates']?.split('с')[1]?.split('<')[0]?.trim()?.split('.');
       if ( dateTripStart ) {
         const date_open = `${dateTripStart[2]}-${dateTripStart[1]}-${dateTripStart[0]}`
         // console.log(date_open);
         // console.log(filters.searchOrderTo);
-        if ( new Date(Date.parse(date_open)) >= new Date(Date.parse(filters.searchOrderTo)) )
+        if ( new Date(Date.parse(date_open)) <= new Date(Date.parse(filters.searchOrderTo)) )
         dateResult.push(order)        
       }
 

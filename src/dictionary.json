@@ -157,20 +157,20 @@
     "RU": "Номер заявки"
   },
   "searchAppFrom": {
-    "EN": "Date from",
-    "RU": "Дата с"
+    "EN": "Date created from",
+    "RU": "Дата создания с"
   },
   "searchAppTo": {
-    "EN": "Date to",
-    "RU": "Дата по"
+    "EN": "Date created to",
+    "RU": "Дата создания по"
   },
   "orderDataFrom": {
-    "EN": "... from",
-    "RU": "... from"
+    "EN": "Start date from",
+    "RU": "Дата начала с"
   },
   "orderDataTo": {
-    "EN": "... to",
-    "RU": "... to"
+    "EN": "Start date to",
+    "RU": "Дата начала по"
   },
   "searchType": {
     "RU": "Тип заявки",

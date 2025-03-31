@@ -49,9 +49,9 @@ export const Filters = props => {
         
         
         <div style={ 
-            page === 'myexec' || page === 'myexec_arch' 
-            ? {width: '165px', height:' 90px', disply: 'flex', justifyContent: 'space-between', flexDirection: 'column'} 
-            : {width: '350px', disply: 'flex', justifyContent: 'space-between'}
+            page === 'myexec' 
+            ? {width: '200px', height:' 90px', disply: 'flex', justifyContent: 'space-between', flexDirection: 'column'} 
+            : {width: '425px', disply: 'flex', justifyContent: 'space-between'}
         }>
           <InputDate
             dateHandler = { val => dispatch(setSearchDateFrom(val)) }
@@ -59,7 +59,7 @@ export const Filters = props => {
             lang = {userData['lang']}
             placeholder = {dictionary['searchAppFrom'][userData['lang']]}
             mode = 'from'
-            width = '165'
+            width = '200'
           />
 
           <InputDate
@@ -68,12 +68,12 @@ export const Filters = props => {
             lang = {userData['lang']}
             placeholder = {dictionary['searchAppTo'][userData['lang']]}
             mode = 'to' 
-            width = '165'
+            width = '200'
           />
         </div>
         
-        { page === 'myexec' || page === 'myexec_arch'
-          ? <div style={{width: '165px', height:' 90px', disply: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+        { page === 'myexec'
+          ? <div style={{width: '200px', height:' 90px', disply: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
               <InputDate
                 dateHandler = { val => dispatch(setOrderDateFrom(val)) }
                 dateClear = { () => dispatch(setOrderDateFrom(null)) }
@@ -106,7 +106,7 @@ export const Filters = props => {
           />
         </div>
 
-        <div style={{width: '375px'}}>
+        <div style={{width: '275px'}}>
         <SelectInput
             // selectHandler = { val => console.log(val) }
             placeholder = {dictionary['searchFullname'][userData['lang']]}

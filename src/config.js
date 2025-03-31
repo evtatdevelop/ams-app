@@ -1,12 +1,12 @@
-const mode = 'local';
-// const mode = 'prod';
+// const mode = 'local';
+const mode = 'prod';
 // const mode = 'test';
 // const mode = 'offLine';
 
-// export const root = 'mainpage';
-export const root = 'ams';
-  export const mainpage = ['MartynenkoAA', 'TatarenkoEG', 'GanakovskiiFS'];
-  // export const mainpage = [];
+export const root = 'mainpage';
+// export const root = 'ams';
+  // export const mainpage = ['MartynenkoAA', 'TatarenkoEG', 'GanakovskiiFS'];
+  export const mainpage = [];
 
 export let offlinelang; // if it defined the project use offline mode 
 export let apiBase;
