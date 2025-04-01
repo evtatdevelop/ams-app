@@ -3,8 +3,8 @@ const mode = 'prod';
 // const mode = 'test';
 // const mode = 'offLine';
 
-export const root = 'mainpage';
-// export const root = 'ams';
+// export const root = 'mainpage';
+export const root = 'ams';
   // export const mainpage = ['MartynenkoAA', 'TatarenkoEG', 'GanakovskiiFS'];
   export const mainpage = [];
 
@@ -25,3 +25,4 @@ switch ( mode ) {
 
 export const permitted = ['TatarenkoEG', ];
 export const developer = ['TatarenkoEG', ];
+ 
