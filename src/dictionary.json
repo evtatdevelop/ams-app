@@ -102,7 +102,11 @@
   },
   "userGuide": {
     "EN": "Renewed interface user's guide",
-    "RU": "Памятка по работе с обновленным интерфейсом системы"
+    "RU": "Памятка по работе с интерфейсом системы"
+  },
+  "faq": {
+    "EN": "Frequently Asked Questions",
+    "RU": "Часто задаваемые вопросы (FAQ)"
   },
   "PrimaryPage": {
     "EN": "Home",

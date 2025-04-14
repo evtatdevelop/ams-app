@@ -122,7 +122,7 @@ export const lkSlice = createSlice({
           state.sorted = dateSorting(action.payload, {});
           state.orderTypes = getOrderTypes(action.payload);
           state.orderUsers = getOrderUsers(action.payload);
-          console.log(action.payload);
+          // console.log(action.payload);
           
         }
         state.loading = false;

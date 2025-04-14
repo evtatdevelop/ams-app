@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './mainpage.module.scss';
 import { useSelector, useDispatch } from "react-redux";
-import { mainpage, dictionary as dictions, getMainpage, search, hint } from "./mainpageSlice";
+import { mainpage, dictionary as dictions, getMainpage, search, hint, setShowInfoWindow, showInfoWindow } from "./mainpageSlice";
 import { user } from '../user/userSlice';
 import Section from "./section";
 import LangButton from "./langButton";
@@ -12,6 +12,7 @@ import Navigation from '../navigation';
 import { permitted } from '../../config';
 import Hint from "./hint";
 import dictionary from '../../dictionary.json';
+import { Faq } from './InfoText/faq';
 
 export const Mainpage = () => {
 
@@ -20,6 +21,11 @@ export const Mainpage = () => {
   const dictionaryData = useSelector(dictions);
   const searchString = useSelector(search);
   const dataHint = useSelector(hint);
+  const showInfoWin = useSelector(showInfoWindow);
+
+// console.log(showInfoWin);
+
+
   const dispatch = useDispatch();
   useEffect(() => { 
     if ( userData.api_key ) dispatch(getMainpage(userData.api_key)) 
@@ -44,7 +50,11 @@ export const Mainpage = () => {
             href="https://asuz.digtp.com/docs/ASUZ_New_Mainpage_20240522.docx"
             className={styles.instructions}>
               {dictionary['userGuide'][userData['lang']]}
-            </a>
+          </a>
+          <button type="button" 
+            className={styles.linkBtn}
+            onClick={() => dispatch(setShowInfoWindow(true))}
+          >{dictionary['faq'][userData['lang']]}</button>
         </div>
         
         {dictionaryData.head_currentuser && userData.ad_user
@@ -69,7 +79,23 @@ export const Mainpage = () => {
        { permitted.includes(userData.login) 
         ? <Navigation page = 'mainpage'/>
         : null
-      }     
+      }  
+      { showInfoWin
+        ? <section className={styles.infoWindow}
+            onClick={(e) => {
+              if ( e.target.tagName === 'SECTION' )
+                dispatch(setShowInfoWindow(false))
+            }}
+          >
+            <button type='button' className={styles.winCloser}
+              onClick={() => dispatch(setShowInfoWindow(false))}
+            >&times;</button>
+            <div className={styles.document}>
+              <Faq/>
+            </div>
+          </section>
+        : null
+      }   
     </section>
   )
 }

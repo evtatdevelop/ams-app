@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { user, getRemote } from './features/user/userSlice';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { root, mainpage, pathBase, permitted, developer } from './config';
+import { root, mainpage, pathBase, permitted, developer, deployDate } from './config';
 import { TestPage } from './testPage/testPage';
 import { Workplace } from './features/workplace/workplace';
 import { Resources } from './features/resources/resources';
@@ -18,6 +18,13 @@ function App() {
   const userData = useSelector(user);
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getRemote()) }, [dispatch, ]);
+
+  useEffect(() => {
+    if ( localStorage.getItem('deploy') !== deployDate ) {
+      localStorage.setItem('deploy', deployDate);
+      window.location.reload(true);
+    }
+  }, []);
 
   return (
     <div className="App">
