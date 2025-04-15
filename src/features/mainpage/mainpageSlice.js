@@ -8,7 +8,7 @@ const initialState = {
   search: '',
   filtred: [],
   hint: {},
-  showInfoWindow: false,
+  showInfoWindow: null,
 }
 
 export const getMainpage = createAsyncThunk( 'mainpage/getMainpage', async (api_key) => await getMainpageData({'api_key': api_key}) )

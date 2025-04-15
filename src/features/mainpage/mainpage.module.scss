@@ -54,6 +54,30 @@
       justify-content: center;
       animation: appearance 500ms ease-in-out forwards;
     }
+
+    .guides {
+      display: flex;
+      // width: 100%;
+      // justify-content: space-between;
+
+      .linkBtn {
+        font: inherit;
+        background-color: transparent;
+        color: white;
+        font-size: 0.7vmax;
+        font-weight: 500;
+        text-decoration: none;
+
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:first-child {
+          margin-right: 50px;
+        }
+      }
+    }
   }
 
   .syetems {
@@ -70,20 +94,6 @@
     }
     100% {
       opacity: 1;
-    }
-  }
-
-  .linkBtn {
-    font: inherit;
-    background-color: transparent;
-    color: white;
-    font-size: 0.7vmax;
-    font-weight: 500;
-    text-decoration: none;
-    margin-left: 50px;
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
     }
   }
 

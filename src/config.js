@@ -3,7 +3,7 @@ let mode = 'local';
 // const mode = 'test';
 // const mode = 'offLine';
 
-export const deployDate = '2025-04-14';
+export const deployDate = '2025-04-15';
 
 // export const root = 'mainpage';
 export const root = 'ams';
