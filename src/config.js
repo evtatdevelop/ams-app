@@ -1,5 +1,5 @@
 let mode = 'local';
-    // mode = 'prod';
+    mode = 'prod';
 // const mode = 'test';
 // const mode = 'offLine';
 
