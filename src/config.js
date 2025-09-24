@@ -3,10 +3,10 @@ let mode = 'local';
 // const mode = 'test';
 // const mode = 'offLine';
 
-export const deployDate = '2025-04-15';
+export const deployDate = '2025-09-25';
 
-// export const root = 'mainpage';
-export const root = 'ams';
+export const root = 'mainpage';
+// export const root = 'ams';
   export const mainpage = ['MartynenkoAA', 'TatarenkoEG', 'GanakovskiiFS'];
   // export const mainpage = [];
 
@@ -16,6 +16,7 @@ export let pathBase = '';
 switch ( mode ) {
   case 'local':   apiBase = 'https://asuz.digtp.com/ams_api_tst'; 
                   break;
+  // case 'prod':    apiBase = 'https://asuz.digtp.com/ams_api_tst'; //!TESTT!!!                
   case 'prod':    apiBase = `https://${window.location.hostname}/ams_api`;
                   pathBase = `/${root}`
                   break;

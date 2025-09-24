@@ -47,10 +47,11 @@ export const Faq = () => {
         <li>
           <p>6. Я являюсь согласующим / исполнителем по заявкам в АСУЗ. Как настроить замещение на период моего отпуска или отсутствия?</p>
           <p>
-          Настроить замещение по согласованию можно на главной странице АСУЗ <a href="https://asuz.digtp.com" target="_blank" rel="noreferrer" >https://asuz.digtp.com</a><>&nbsp;</>
-          в разделе «Личный кабинет» - «Настройки моих согласование/замещений»,
-          либо через заявку на портале поддержки АСУЗ <a href="https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543" target="_blank" rel="noreferrer" >https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543</a>, раздел «Настройка ролей».
-          <br/>Настройка замещения по исполнению заявок осуществляется через подачу заявки на портале поддержки АСУЗ <a href="https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543" target="_blank" rel="noreferrer" >https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543</a>, раздел «Настройка ролей».     
+          Настроить замещение по согласованию / исполнению заявок можно на главной странице АСУЗ <a href="https://asuz.digtp.com" target="_blank" rel="noreferrer" >https://asuz.digtp.com</a><>&nbsp;</>
+          в разделе «Личный кабинет»,
+          <br/>плитки «Настройки моих согласований/замещений по согласованию» и  «Настройки моих исполнений/замещений по исполнению»,
+          <br/>либо через заявку на портале поддержки АСУЗ <a href="https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543" target="_blank" rel="noreferrer" >https://jira.digtp.com/plugins/servlet/desk/portal/100?requestGroup=543</a>, раздел «Настройка ролей».
+          
           </p>          
         </li>
 

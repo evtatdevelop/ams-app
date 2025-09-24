@@ -24,7 +24,7 @@ export const Mainpage = () => {
   const dataHint = useSelector(hint);
   const showInfoWin = useSelector(showInfoWindow);
 
-console.log(showInfoWin);
+// console.log(showInfoWin);
 
 
   const dispatch = useDispatch();
